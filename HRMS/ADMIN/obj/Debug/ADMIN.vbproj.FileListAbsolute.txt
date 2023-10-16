@@ -1,0 +1,46 @@
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\bin\Debug\HRM1.exe.config
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\bin\Debug\HRM1.exe
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\bin\Debug\HRM1.pdb
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\bin\Debug\HRM1.xml
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.AssemblyReference.cache
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.DashBoard.resources
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.Resources.resources
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.GenerateResource.cache
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CoreCompileInputs.cache
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.exe
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.xml
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.pdb
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.Login.resources
+C:\Users\Jhay2\Desktop\HRMS\ADMIN\obj\Debug\HRM1.Form2.resources
+J:\HRMS\ADMIN\bin\Debug\HRM1.exe.config
+J:\HRMS\ADMIN\bin\Debug\HRM1.exe
+J:\HRMS\ADMIN\bin\Debug\HRM1.pdb
+J:\HRMS\ADMIN\bin\Debug\HRM1.xml
+J:\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.AssemblyReference.cache
+J:\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.SuggestedBindingRedirects.cache
+J:\HRMS\ADMIN\obj\Debug\HRM1.DashBoard.resources
+J:\HRMS\ADMIN\obj\Debug\HRM1.Login.resources
+J:\HRMS\ADMIN\obj\Debug\HRM1.Form2.resources
+J:\HRMS\ADMIN\obj\Debug\HRM1.Resources.resources
+J:\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.GenerateResource.cache
+J:\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CoreCompileInputs.cache
+J:\HRMS\ADMIN\obj\Debug\HRM1.exe
+J:\HRMS\ADMIN\obj\Debug\HRM1.xml
+J:\HRMS\ADMIN\obj\Debug\HRM1.pdb
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\bin\Debug\HRM1.exe.config
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\bin\Debug\HRM1.exe
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\bin\Debug\HRM1.pdb
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\bin\Debug\HRM1.xml
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.AssemblyReference.cache
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.SuggestedBindingRedirects.cache
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.DashBoard.resources
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.Login.resources
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.Form2.resources
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.Resources.resources
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.SplashScreen1.resources
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.GenerateResource.cache
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CoreCompileInputs.cache
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.exe
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.xml
+C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.pdb
