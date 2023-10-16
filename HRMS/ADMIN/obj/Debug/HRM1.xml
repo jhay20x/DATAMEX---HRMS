@@ -77,6 +77,11 @@ HRM1
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:HRM1.My.Resources.Resources.delete">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:HRM1.My.Resources.Resources.edit">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -118,6 +123,11 @@ HRM1
 </summary>
 </member>
 <member name="P:HRM1.My.Resources.Resources.splashscreen">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:HRM1.My.Resources.Resources.View">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

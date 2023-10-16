@@ -22,12 +22,12 @@ Partial Class DashBoard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DashBoard))
         Me.DashboardPanel = New System.Windows.Forms.Panel()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -52,7 +52,6 @@ Partial Class DashBoard
         Me.TimeOut = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Status = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Button14 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -72,9 +71,6 @@ Partial Class DashBoard
         Me.EmailAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -95,8 +91,6 @@ Partial Class DashBoard
         Me.Reason = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel10 = New System.Windows.Forms.Panel()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Panel11 = New System.Windows.Forms.Panel()
@@ -111,10 +105,6 @@ Partial Class DashBoard
         Me.HolidayDetails = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HolidayType = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel14 = New System.Windows.Forms.Panel()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Panel15 = New System.Windows.Forms.Panel()
@@ -134,10 +124,6 @@ Partial Class DashBoard
         Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel21 = New System.Windows.Forms.Panel()
-        Me.Button12 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button13 = New System.Windows.Forms.Button()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.Panel22 = New System.Windows.Forms.Panel()
@@ -155,27 +141,39 @@ Partial Class DashBoard
         Me.Panel20 = New System.Windows.Forms.Panel()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label46 = New System.Windows.Forms.Label()
+        Me.Button20 = New System.Windows.Forms.Button()
+        Me.Button21 = New System.Windows.Forms.Button()
+        Me.Panel12 = New System.Windows.Forms.Panel()
+        Me.MenuHide4Button = New System.Windows.Forms.Button()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.MenuHide5Button = New System.Windows.Forms.Button()
+        Me.Label42 = New System.Windows.Forms.Label()
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Button15 = New System.Windows.Forms.Button()
         Me.Button18 = New System.Windows.Forms.Button()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.MenuHide7Button = New System.Windows.Forms.Button()
         Me.Label43 = New System.Windows.Forms.Label()
-        Me.Panel23 = New System.Windows.Forms.Panel()
-        Me.MenuHide6Button = New System.Windows.Forms.Button()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.Panel12 = New System.Windows.Forms.Panel()
-        Me.MenuHide4Button = New System.Windows.Forms.Button()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Panel16 = New System.Windows.Forms.Panel()
-        Me.MenuHide5Button = New System.Windows.Forms.Button()
-        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.MenuHide3Button = New System.Windows.Forms.Button()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.Button14 = New System.Windows.Forms.Button()
+        Me.Button17 = New System.Windows.Forms.Button()
+        Me.Button19 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.MenuHide2Button = New System.Windows.Forms.Button()
         Me.Label27 = New System.Windows.Forms.Label()
+        Me.Panel23 = New System.Windows.Forms.Panel()
+        Me.MenuHide6Button = New System.Windows.Forms.Button()
+        Me.Label54 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.MenuHide1Button = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -207,6 +205,10 @@ Partial Class DashBoard
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.DashboardPanel.SuspendLayout()
         Me.AttendanceTodayPanel.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -231,12 +233,12 @@ Partial Class DashBoard
         Me.EmployeesSalaryPanel.SuspendLayout()
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel20.SuspendLayout()
-        Me.Panel13.SuspendLayout()
-        Me.Panel23.SuspendLayout()
         Me.Panel12.SuspendLayout()
         Me.Panel16.SuspendLayout()
+        Me.Panel13.SuspendLayout()
         Me.Panel9.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel23.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.PanelPayroll.SuspendLayout()
@@ -430,14 +432,14 @@ Partial Class DashBoard
         'DataGridView1
         '
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmployeeName, Me.EmployeeId, Me.Department, Me.TimeIn, Me.TimeOut, Me.Status})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -480,6 +482,8 @@ Partial Class DashBoard
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.Button14)
+        Me.Panel3.Controls.Add(Me.Button17)
+        Me.Panel3.Controls.Add(Me.Button19)
         Me.Panel3.Controls.Add(Me.TextBox1)
         Me.Panel3.Controls.Add(Me.Label15)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
@@ -487,17 +491,6 @@ Partial Class DashBoard
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(802, 41)
         Me.Panel3.TabIndex = 7
-        '
-        'Button14
-        '
-        Me.Button14.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button14.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button14.Location = New System.Drawing.Point(715, 9)
-        Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(75, 25)
-        Me.Button14.TabIndex = 8
-        Me.Button14.Text = "REFRESH"
-        Me.Button14.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
@@ -606,14 +599,14 @@ Partial Class DashBoard
         'DataGridView2
         '
         Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.Age, Me.Address, Me.ContactNumber, Me.EmailAddress, Me.DataGridViewTextBoxColumn4})
         Me.DataGridView2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -665,9 +658,9 @@ Partial Class DashBoard
         '
         'Panel7
         '
-        Me.Panel7.Controls.Add(Me.Button9)
-        Me.Panel7.Controls.Add(Me.Button2)
         Me.Panel7.Controls.Add(Me.Button1)
+        Me.Panel7.Controls.Add(Me.Button2)
+        Me.Panel7.Controls.Add(Me.Button9)
         Me.Panel7.Controls.Add(Me.TextBox2)
         Me.Panel7.Controls.Add(Me.Label18)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
@@ -675,39 +668,6 @@ Partial Class DashBoard
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(802, 41)
         Me.Panel7.TabIndex = 7
-        '
-        'Button9
-        '
-        Me.Button9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button9.Location = New System.Drawing.Point(553, 9)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(75, 25)
-        Me.Button9.TabIndex = 9
-        Me.Button9.Text = "ADD"
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(715, 9)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 25)
-        Me.Button2.TabIndex = 8
-        Me.Button2.Text = "REFRESH"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(634, 9)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 25)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "EDIT"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'TextBox2
         '
@@ -804,14 +764,14 @@ Partial Class DashBoard
         'DataGridView3
         '
         Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn7, Me.Type, Me.DateRequested, Me.EffectiveDate, Me.ReturnDate, Me.Duration, Me.Reason, Me.DataGridViewTextBoxColumn8})
         Me.DataGridView3.Dock = System.Windows.Forms.DockStyle.Fill
@@ -873,8 +833,8 @@ Partial Class DashBoard
         '
         'Panel10
         '
-        Me.Panel10.Controls.Add(Me.Button11)
-        Me.Panel10.Controls.Add(Me.Button3)
+        Me.Panel10.Controls.Add(Me.Button20)
+        Me.Panel10.Controls.Add(Me.Button21)
         Me.Panel10.Controls.Add(Me.TextBox3)
         Me.Panel10.Controls.Add(Me.Label29)
         Me.Panel10.Dock = System.Windows.Forms.DockStyle.Top
@@ -882,28 +842,6 @@ Partial Class DashBoard
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(802, 41)
         Me.Panel10.TabIndex = 9
-        '
-        'Button11
-        '
-        Me.Button11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button11.Location = New System.Drawing.Point(634, 9)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(75, 25)
-        Me.Button11.TabIndex = 9
-        Me.Button11.Text = "VIEW"
-        Me.Button11.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(715, 9)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 25)
-        Me.Button3.TabIndex = 8
-        Me.Button3.Text = "REFRESH"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'TextBox3
         '
@@ -1000,14 +938,14 @@ Partial Class DashBoard
         'DataGridView4
         '
         Me.DataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView4.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.HolidayName, Me.HolidayDate, Me.HolidayDetails, Me.HolidayType})
         Me.DataGridView4.Dock = System.Windows.Forms.DockStyle.Fill
@@ -1040,8 +978,8 @@ Partial Class DashBoard
         'Panel14
         '
         Me.Panel14.Controls.Add(Me.Button10)
-        Me.Panel14.Controls.Add(Me.Button5)
         Me.Panel14.Controls.Add(Me.Button4)
+        Me.Panel14.Controls.Add(Me.Button5)
         Me.Panel14.Controls.Add(Me.Button6)
         Me.Panel14.Controls.Add(Me.TextBox4)
         Me.Panel14.Controls.Add(Me.Label35)
@@ -1050,50 +988,6 @@ Partial Class DashBoard
         Me.Panel14.Name = "Panel14"
         Me.Panel14.Size = New System.Drawing.Size(802, 41)
         Me.Panel14.TabIndex = 7
-        '
-        'Button10
-        '
-        Me.Button10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button10.Location = New System.Drawing.Point(472, 9)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(75, 25)
-        Me.Button10.TabIndex = 10
-        Me.Button10.Text = "ADD"
-        Me.Button10.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.Location = New System.Drawing.Point(553, 9)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 25)
-        Me.Button5.TabIndex = 9
-        Me.Button5.Text = "EDIT"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(715, 9)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 25)
-        Me.Button4.TabIndex = 8
-        Me.Button4.Text = "REFRESH"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button6.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(634, 9)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 25)
-        Me.Button6.TabIndex = 7
-        Me.Button6.Text = "DELETE"
-        Me.Button6.UseVisualStyleBackColor = True
         '
         'TextBox4
         '
@@ -1214,14 +1108,14 @@ Partial Class DashBoard
         'DataGridView6
         '
         Me.DataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView6.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView6.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView6.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15})
         Me.DataGridView6.Dock = System.Windows.Forms.DockStyle.Fill
@@ -1268,10 +1162,10 @@ Partial Class DashBoard
         '
         'Panel21
         '
-        Me.Panel21.Controls.Add(Me.Button12)
+        Me.Panel21.Controls.Add(Me.Button3)
         Me.Panel21.Controls.Add(Me.Button7)
         Me.Panel21.Controls.Add(Me.Button8)
-        Me.Panel21.Controls.Add(Me.Button13)
+        Me.Panel21.Controls.Add(Me.Button11)
         Me.Panel21.Controls.Add(Me.TextBox6)
         Me.Panel21.Controls.Add(Me.Label49)
         Me.Panel21.Dock = System.Windows.Forms.DockStyle.Top
@@ -1279,50 +1173,6 @@ Partial Class DashBoard
         Me.Panel21.Name = "Panel21"
         Me.Panel21.Size = New System.Drawing.Size(802, 41)
         Me.Panel21.TabIndex = 9
-        '
-        'Button12
-        '
-        Me.Button12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button12.Location = New System.Drawing.Point(472, 9)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(75, 25)
-        Me.Button12.TabIndex = 10
-        Me.Button12.Text = "ADD"
-        Me.Button12.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(553, 9)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 25)
-        Me.Button7.TabIndex = 9
-        Me.Button7.Text = "EDIT"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button8.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button8.Location = New System.Drawing.Point(715, 9)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 25)
-        Me.Button8.TabIndex = 8
-        Me.Button8.Text = "REFRESH"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button13
-        '
-        Me.Button13.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button13.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button13.Location = New System.Drawing.Point(634, 9)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(75, 25)
-        Me.Button13.TabIndex = 7
-        Me.Button13.Text = "DELETE"
-        Me.Button13.UseVisualStyleBackColor = True
         '
         'TextBox6
         '
@@ -1418,14 +1268,14 @@ Partial Class DashBoard
         'DataGridView5
         '
         Me.DataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView5.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.Salary})
         Me.DataGridView5.Dock = System.Windows.Forms.DockStyle.Fill
@@ -1494,8 +1344,171 @@ Partial Class DashBoard
         Me.Label46.Tag = ""
         Me.Label46.Text = "Search:"
         '
+        'Button20
+        '
+        Me.Button20.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button20.BackColor = System.Drawing.Color.Transparent
+        Me.Button20.BackgroundImage = Global.HRM1.My.Resources.Resources.View
+        Me.Button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button20.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button20.FlatAppearance.BorderSize = 0
+        Me.Button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button20.ForeColor = System.Drawing.Color.Transparent
+        Me.Button20.Location = New System.Drawing.Point(722, 5)
+        Me.Button20.Name = "Button20"
+        Me.Button20.Size = New System.Drawing.Size(30, 30)
+        Me.Button20.TabIndex = 18
+        Me.Button20.UseVisualStyleBackColor = False
+        '
+        'Button21
+        '
+        Me.Button21.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button21.BackColor = System.Drawing.Color.Transparent
+        Me.Button21.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.Button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button21.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button21.FlatAppearance.BorderSize = 0
+        Me.Button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button21.ForeColor = System.Drawing.Color.Transparent
+        Me.Button21.Location = New System.Drawing.Point(760, 5)
+        Me.Button21.Name = "Button21"
+        Me.Button21.Size = New System.Drawing.Size(30, 30)
+        Me.Button21.TabIndex = 17
+        Me.Button21.UseVisualStyleBackColor = False
+        '
+        'Panel12
+        '
+        Me.Panel12.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel12.Controls.Add(Me.MenuHide4Button)
+        Me.Panel12.Controls.Add(Me.Label34)
+        Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel12.Location = New System.Drawing.Point(0, 0)
+        Me.Panel12.Name = "Panel12"
+        Me.Panel12.Size = New System.Drawing.Size(802, 52)
+        Me.Panel12.TabIndex = 0
+        '
+        'MenuHide4Button
+        '
+        Me.MenuHide4Button.BackgroundImage = CType(resources.GetObject("MenuHide4Button.BackgroundImage"), System.Drawing.Image)
+        Me.MenuHide4Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.MenuHide4Button.Location = New System.Drawing.Point(7, 9)
+        Me.MenuHide4Button.Name = "MenuHide4Button"
+        Me.MenuHide4Button.Size = New System.Drawing.Size(41, 35)
+        Me.MenuHide4Button.TabIndex = 1
+        Me.MenuHide4Button.UseVisualStyleBackColor = True
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.BackColor = System.Drawing.Color.Transparent
+        Me.Label34.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.ForeColor = System.Drawing.Color.White
+        Me.Label34.Location = New System.Drawing.Point(54, 9)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(219, 37)
+        Me.Label34.TabIndex = 0
+        Me.Label34.Text = "LEAVE REQUEST"
+        '
+        'Button10
+        '
+        Me.Button10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button10.BackColor = System.Drawing.Color.Transparent
+        Me.Button10.BackgroundImage = Global.HRM1.My.Resources.Resources.delete
+        Me.Button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button10.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button10.FlatAppearance.BorderSize = 0
+        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button10.ForeColor = System.Drawing.Color.Transparent
+        Me.Button10.Location = New System.Drawing.Point(760, 5)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(30, 30)
+        Me.Button10.TabIndex = 16
+        Me.Button10.UseVisualStyleBackColor = False
+        '
+        'Button4
+        '
+        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.BackgroundImage = Global.HRM1.My.Resources.Resources.dda
+        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button4.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button4.FlatAppearance.BorderSize = 0
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.ForeColor = System.Drawing.Color.Transparent
+        Me.Button4.Location = New System.Drawing.Point(646, 5)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(30, 30)
+        Me.Button4.TabIndex = 15
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Button5
+        '
+        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button5.BackColor = System.Drawing.Color.Transparent
+        Me.Button5.BackgroundImage = Global.HRM1.My.Resources.Resources.edit
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button5.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button5.FlatAppearance.BorderSize = 0
+        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button5.ForeColor = System.Drawing.Color.Transparent
+        Me.Button5.Location = New System.Drawing.Point(684, 5)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(30, 30)
+        Me.Button5.TabIndex = 14
+        Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button6
+        '
+        Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button6.BackColor = System.Drawing.Color.Transparent
+        Me.Button6.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button6.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button6.FlatAppearance.BorderSize = 0
+        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button6.ForeColor = System.Drawing.Color.Transparent
+        Me.Button6.Location = New System.Drawing.Point(722, 5)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(30, 30)
+        Me.Button6.TabIndex = 13
+        Me.Button6.UseVisualStyleBackColor = False
+        '
+        'Panel16
+        '
+        Me.Panel16.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel16.Controls.Add(Me.MenuHide5Button)
+        Me.Panel16.Controls.Add(Me.Label42)
+        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel16.Location = New System.Drawing.Point(0, 0)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(802, 52)
+        Me.Panel16.TabIndex = 0
+        '
+        'MenuHide5Button
+        '
+        Me.MenuHide5Button.BackgroundImage = CType(resources.GetObject("MenuHide5Button.BackgroundImage"), System.Drawing.Image)
+        Me.MenuHide5Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.MenuHide5Button.Location = New System.Drawing.Point(7, 9)
+        Me.MenuHide5Button.Name = "MenuHide5Button"
+        Me.MenuHide5Button.Size = New System.Drawing.Size(41, 35)
+        Me.MenuHide5Button.TabIndex = 1
+        Me.MenuHide5Button.UseVisualStyleBackColor = True
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.BackColor = System.Drawing.Color.Transparent
+        Me.Label42.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label42.ForeColor = System.Drawing.Color.White
+        Me.Label42.Location = New System.Drawing.Point(54, 9)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(210, 37)
+        Me.Label42.TabIndex = 0
+        Me.Label42.Text = "HOLIDAYS LIST"
+        '
         'Button16
         '
+        Me.Button16.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button16.BackColor = System.Drawing.Color.Transparent
         Me.Button16.BackgroundImage = Global.HRM1.My.Resources.Resources.dda
         Me.Button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -1503,14 +1516,15 @@ Partial Class DashBoard
         Me.Button16.FlatAppearance.BorderSize = 0
         Me.Button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button16.ForeColor = System.Drawing.Color.Transparent
-        Me.Button16.Location = New System.Drawing.Point(654, 4)
+        Me.Button16.Location = New System.Drawing.Point(684, 5)
         Me.Button16.Name = "Button16"
-        Me.Button16.Size = New System.Drawing.Size(40, 35)
+        Me.Button16.Size = New System.Drawing.Size(30, 30)
         Me.Button16.TabIndex = 12
         Me.Button16.UseVisualStyleBackColor = False
         '
         'Button15
         '
+        Me.Button15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button15.BackColor = System.Drawing.Color.Transparent
         Me.Button15.BackgroundImage = Global.HRM1.My.Resources.Resources.edit
         Me.Button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -1518,14 +1532,15 @@ Partial Class DashBoard
         Me.Button15.FlatAppearance.BorderSize = 0
         Me.Button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button15.ForeColor = System.Drawing.Color.Transparent
-        Me.Button15.Location = New System.Drawing.Point(704, 4)
+        Me.Button15.Location = New System.Drawing.Point(722, 5)
         Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(40, 35)
+        Me.Button15.Size = New System.Drawing.Size(30, 30)
         Me.Button15.TabIndex = 11
         Me.Button15.UseVisualStyleBackColor = False
         '
         'Button18
         '
+        Me.Button18.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button18.BackColor = System.Drawing.Color.Transparent
         Me.Button18.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
         Me.Button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
@@ -1533,9 +1548,9 @@ Partial Class DashBoard
         Me.Button18.FlatAppearance.BorderSize = 0
         Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button18.ForeColor = System.Drawing.Color.Transparent
-        Me.Button18.Location = New System.Drawing.Point(750, 4)
+        Me.Button18.Location = New System.Drawing.Point(760, 5)
         Me.Button18.Name = "Button18"
-        Me.Button18.Size = New System.Drawing.Size(40, 35)
+        Me.Button18.Size = New System.Drawing.Size(30, 30)
         Me.Button18.TabIndex = 10
         Me.Button18.UseVisualStyleBackColor = False
         '
@@ -1572,104 +1587,53 @@ Partial Class DashBoard
         Me.Label43.TabIndex = 0
         Me.Label43.Text = "EMPLOYEES SALARY"
         '
-        'Panel23
+        'Button1
         '
-        Me.Panel23.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
-        Me.Panel23.Controls.Add(Me.MenuHide6Button)
-        Me.Panel23.Controls.Add(Me.Label54)
-        Me.Panel23.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel23.Location = New System.Drawing.Point(0, 0)
-        Me.Panel23.Name = "Panel23"
-        Me.Panel23.Size = New System.Drawing.Size(802, 52)
-        Me.Panel23.TabIndex = 0
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.Transparent
+        Me.Button1.BackgroundImage = Global.HRM1.My.Resources.Resources.dda
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.Transparent
+        Me.Button1.Location = New System.Drawing.Point(684, 5)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(30, 30)
+        Me.Button1.TabIndex = 15
+        Me.Button1.UseVisualStyleBackColor = False
         '
-        'MenuHide6Button
+        'Button2
         '
-        Me.MenuHide6Button.BackgroundImage = CType(resources.GetObject("MenuHide6Button.BackgroundImage"), System.Drawing.Image)
-        Me.MenuHide6Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.MenuHide6Button.Location = New System.Drawing.Point(7, 9)
-        Me.MenuHide6Button.Name = "MenuHide6Button"
-        Me.MenuHide6Button.Size = New System.Drawing.Size(41, 35)
-        Me.MenuHide6Button.TabIndex = 1
-        Me.MenuHide6Button.UseVisualStyleBackColor = True
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Button2.BackgroundImage = Global.HRM1.My.Resources.Resources.edit
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.Color.Transparent
+        Me.Button2.Location = New System.Drawing.Point(722, 5)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(30, 30)
+        Me.Button2.TabIndex = 14
+        Me.Button2.UseVisualStyleBackColor = False
         '
-        'Label54
+        'Button9
         '
-        Me.Label54.AutoSize = True
-        Me.Label54.BackColor = System.Drawing.Color.Transparent
-        Me.Label54.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.ForeColor = System.Drawing.Color.White
-        Me.Label54.Location = New System.Drawing.Point(54, 9)
-        Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(207, 37)
-        Me.Label54.TabIndex = 0
-        Me.Label54.Text = "PROJECTS LIST"
-        '
-        'Panel12
-        '
-        Me.Panel12.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
-        Me.Panel12.Controls.Add(Me.MenuHide4Button)
-        Me.Panel12.Controls.Add(Me.Label34)
-        Me.Panel12.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel12.Location = New System.Drawing.Point(0, 0)
-        Me.Panel12.Name = "Panel12"
-        Me.Panel12.Size = New System.Drawing.Size(802, 52)
-        Me.Panel12.TabIndex = 0
-        '
-        'MenuHide4Button
-        '
-        Me.MenuHide4Button.BackgroundImage = CType(resources.GetObject("MenuHide4Button.BackgroundImage"), System.Drawing.Image)
-        Me.MenuHide4Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.MenuHide4Button.Location = New System.Drawing.Point(7, 9)
-        Me.MenuHide4Button.Name = "MenuHide4Button"
-        Me.MenuHide4Button.Size = New System.Drawing.Size(41, 35)
-        Me.MenuHide4Button.TabIndex = 1
-        Me.MenuHide4Button.UseVisualStyleBackColor = True
-        '
-        'Label34
-        '
-        Me.Label34.AutoSize = True
-        Me.Label34.BackColor = System.Drawing.Color.Transparent
-        Me.Label34.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.ForeColor = System.Drawing.Color.White
-        Me.Label34.Location = New System.Drawing.Point(54, 9)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(219, 37)
-        Me.Label34.TabIndex = 0
-        Me.Label34.Text = "LEAVE REQUEST"
-        '
-        'Panel16
-        '
-        Me.Panel16.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
-        Me.Panel16.Controls.Add(Me.MenuHide5Button)
-        Me.Panel16.Controls.Add(Me.Label42)
-        Me.Panel16.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel16.Location = New System.Drawing.Point(0, 0)
-        Me.Panel16.Name = "Panel16"
-        Me.Panel16.Size = New System.Drawing.Size(802, 52)
-        Me.Panel16.TabIndex = 0
-        '
-        'MenuHide5Button
-        '
-        Me.MenuHide5Button.BackgroundImage = CType(resources.GetObject("MenuHide5Button.BackgroundImage"), System.Drawing.Image)
-        Me.MenuHide5Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.MenuHide5Button.Location = New System.Drawing.Point(7, 9)
-        Me.MenuHide5Button.Name = "MenuHide5Button"
-        Me.MenuHide5Button.Size = New System.Drawing.Size(41, 35)
-        Me.MenuHide5Button.TabIndex = 1
-        Me.MenuHide5Button.UseVisualStyleBackColor = True
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.BackColor = System.Drawing.Color.Transparent
-        Me.Label42.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label42.ForeColor = System.Drawing.Color.White
-        Me.Label42.Location = New System.Drawing.Point(54, 9)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(210, 37)
-        Me.Label42.TabIndex = 0
-        Me.Label42.Text = "HOLIDAYS LIST"
+        Me.Button9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button9.BackColor = System.Drawing.Color.Transparent
+        Me.Button9.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button9.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button9.FlatAppearance.BorderSize = 0
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.ForeColor = System.Drawing.Color.Transparent
+        Me.Button9.Location = New System.Drawing.Point(760, 5)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(30, 30)
+        Me.Button9.TabIndex = 13
+        Me.Button9.UseVisualStyleBackColor = False
         '
         'Panel9
         '
@@ -1704,6 +1668,54 @@ Partial Class DashBoard
         Me.Label28.TabIndex = 0
         Me.Label28.Text = "EMPLOYEES LIST"
         '
+        'Button14
+        '
+        Me.Button14.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button14.BackColor = System.Drawing.Color.Transparent
+        Me.Button14.BackgroundImage = Global.HRM1.My.Resources.Resources.dda
+        Me.Button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button14.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button14.FlatAppearance.BorderSize = 0
+        Me.Button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button14.ForeColor = System.Drawing.Color.Transparent
+        Me.Button14.Location = New System.Drawing.Point(684, 5)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(30, 30)
+        Me.Button14.TabIndex = 15
+        Me.Button14.UseVisualStyleBackColor = False
+        '
+        'Button17
+        '
+        Me.Button17.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button17.BackColor = System.Drawing.Color.Transparent
+        Me.Button17.BackgroundImage = Global.HRM1.My.Resources.Resources.edit
+        Me.Button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button17.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button17.FlatAppearance.BorderSize = 0
+        Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button17.ForeColor = System.Drawing.Color.Transparent
+        Me.Button17.Location = New System.Drawing.Point(722, 5)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(30, 30)
+        Me.Button17.TabIndex = 14
+        Me.Button17.UseVisualStyleBackColor = False
+        '
+        'Button19
+        '
+        Me.Button19.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button19.BackColor = System.Drawing.Color.Transparent
+        Me.Button19.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.Button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button19.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button19.FlatAppearance.BorderSize = 0
+        Me.Button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button19.ForeColor = System.Drawing.Color.Transparent
+        Me.Button19.Location = New System.Drawing.Point(760, 5)
+        Me.Button19.Name = "Button19"
+        Me.Button19.Size = New System.Drawing.Size(30, 30)
+        Me.Button19.TabIndex = 13
+        Me.Button19.UseVisualStyleBackColor = False
+        '
         'Panel5
         '
         Me.Panel5.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
@@ -1736,6 +1748,39 @@ Partial Class DashBoard
         Me.Label27.Size = New System.Drawing.Size(306, 37)
         Me.Label27.TabIndex = 0
         Me.Label27.Text = "ATTENDANCE - TODAY"
+        '
+        'Panel23
+        '
+        Me.Panel23.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel23.Controls.Add(Me.MenuHide6Button)
+        Me.Panel23.Controls.Add(Me.Label54)
+        Me.Panel23.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel23.Location = New System.Drawing.Point(0, 0)
+        Me.Panel23.Name = "Panel23"
+        Me.Panel23.Size = New System.Drawing.Size(802, 52)
+        Me.Panel23.TabIndex = 0
+        '
+        'MenuHide6Button
+        '
+        Me.MenuHide6Button.BackgroundImage = CType(resources.GetObject("MenuHide6Button.BackgroundImage"), System.Drawing.Image)
+        Me.MenuHide6Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.MenuHide6Button.Location = New System.Drawing.Point(7, 9)
+        Me.MenuHide6Button.Name = "MenuHide6Button"
+        Me.MenuHide6Button.Size = New System.Drawing.Size(41, 35)
+        Me.MenuHide6Button.TabIndex = 1
+        Me.MenuHide6Button.UseVisualStyleBackColor = True
+        '
+        'Label54
+        '
+        Me.Label54.AutoSize = True
+        Me.Label54.BackColor = System.Drawing.Color.Transparent
+        Me.Label54.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label54.ForeColor = System.Drawing.Color.White
+        Me.Label54.Location = New System.Drawing.Point(54, 9)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(207, 37)
+        Me.Label54.TabIndex = 0
+        Me.Label54.Text = "PROJECTS LIST"
         '
         'Panel6
         '
@@ -2210,16 +2255,80 @@ Partial Class DashBoard
         Me.Panel2.Size = New System.Drawing.Size(245, 193)
         Me.Panel2.TabIndex = 0
         '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button3.BackColor = System.Drawing.Color.Transparent
+        Me.Button3.BackgroundImage = Global.HRM1.My.Resources.Resources.delete
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button3.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button3.FlatAppearance.BorderSize = 0
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.ForeColor = System.Drawing.Color.Transparent
+        Me.Button3.Location = New System.Drawing.Point(760, 5)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(30, 30)
+        Me.Button3.TabIndex = 20
+        Me.Button3.UseVisualStyleBackColor = False
+        '
+        'Button7
+        '
+        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button7.BackColor = System.Drawing.Color.Transparent
+        Me.Button7.BackgroundImage = Global.HRM1.My.Resources.Resources.dda
+        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button7.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button7.FlatAppearance.BorderSize = 0
+        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button7.ForeColor = System.Drawing.Color.Transparent
+        Me.Button7.Location = New System.Drawing.Point(646, 5)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(30, 30)
+        Me.Button7.TabIndex = 19
+        Me.Button7.UseVisualStyleBackColor = False
+        '
+        'Button8
+        '
+        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button8.BackColor = System.Drawing.Color.Transparent
+        Me.Button8.BackgroundImage = Global.HRM1.My.Resources.Resources.edit
+        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button8.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button8.FlatAppearance.BorderSize = 0
+        Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button8.ForeColor = System.Drawing.Color.Transparent
+        Me.Button8.Location = New System.Drawing.Point(684, 5)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(30, 30)
+        Me.Button8.TabIndex = 18
+        Me.Button8.UseVisualStyleBackColor = False
+        '
+        'Button11
+        '
+        Me.Button11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button11.BackColor = System.Drawing.Color.Transparent
+        Me.Button11.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.Button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button11.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button11.FlatAppearance.BorderSize = 0
+        Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button11.ForeColor = System.Drawing.Color.Transparent
+        Me.Button11.Location = New System.Drawing.Point(722, 5)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(30, 30)
+        Me.Button11.TabIndex = 17
+        Me.Button11.UseVisualStyleBackColor = False
+        '
         'DashBoard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1064, 676)
-        Me.Controls.Add(Me.EmployeesSalaryPanel)
         Me.Controls.Add(Me.ProjectsListPanel)
-        Me.Controls.Add(Me.LeaveRequestPanel)
         Me.Controls.Add(Me.HolidayListPanel)
+        Me.Controls.Add(Me.LeaveRequestPanel)
+        Me.Controls.Add(Me.EmployeesSalaryPanel)
         Me.Controls.Add(Me.EmployeeAllPanel)
         Me.Controls.Add(Me.AttendanceTodayPanel)
         Me.Controls.Add(Me.DashboardPanel)
@@ -2264,18 +2373,18 @@ Partial Class DashBoard
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel20.ResumeLayout(False)
         Me.Panel20.PerformLayout()
-        Me.Panel13.ResumeLayout(False)
-        Me.Panel13.PerformLayout()
-        Me.Panel23.ResumeLayout(False)
-        Me.Panel23.PerformLayout()
         Me.Panel12.ResumeLayout(False)
         Me.Panel12.PerformLayout()
         Me.Panel16.ResumeLayout(False)
         Me.Panel16.PerformLayout()
+        Me.Panel13.ResumeLayout(False)
+        Me.Panel13.PerformLayout()
         Me.Panel9.ResumeLayout(False)
         Me.Panel9.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel23.ResumeLayout(False)
+        Me.Panel23.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -2361,12 +2470,9 @@ Partial Class DashBoard
     Friend WithEvents Panel9 As Panel
     Friend WithEvents MenuHide3Button As Button
     Friend WithEvents Label28 As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents LeaveRequestPanel As Panel
     Friend WithEvents DataGridView3 As DataGridView
     Friend WithEvents Panel10 As Panel
-    Friend WithEvents Button3 As Button
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label29 As Label
     Friend WithEvents Panel11 As Panel
@@ -2384,9 +2490,6 @@ Partial Class DashBoard
     Friend WithEvents HolidayDetails As DataGridViewTextBoxColumn
     Friend WithEvents HolidayType As DataGridViewTextBoxColumn
     Friend WithEvents Panel14 As Panel
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button6 As Button
     Friend WithEvents TextBox4 As TextBox
     Friend WithEvents Label35 As Label
     Friend WithEvents Panel15 As Panel
@@ -2409,9 +2512,6 @@ Partial Class DashBoard
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents Panel21 As Panel
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
-    Friend WithEvents Button13 As Button
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents Label49 As Label
     Friend WithEvents Panel22 As Panel
@@ -2422,11 +2522,6 @@ Partial Class DashBoard
     Friend WithEvents Panel23 As Panel
     Friend WithEvents MenuHide6Button As Button
     Friend WithEvents Label54 As Label
-    Friend WithEvents Button14 As Button
-    Friend WithEvents Button9 As Button
-    Friend WithEvents Button11 As Button
-    Friend WithEvents Button10 As Button
-    Friend WithEvents Button12 As Button
     Friend WithEvents EmployeesSalaryPanel As Panel
     Friend WithEvents DataGridView5 As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
@@ -2467,4 +2562,20 @@ Partial Class DashBoard
     Friend WithEvents Button18 As Button
     Friend WithEvents Button15 As Button
     Friend WithEvents Button16 As Button
+    Friend WithEvents Button14 As Button
+    Friend WithEvents Button17 As Button
+    Friend WithEvents Button19 As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button9 As Button
+    Friend WithEvents Button10 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button20 As Button
+    Friend WithEvents Button21 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button11 As Button
 End Class
