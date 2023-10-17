@@ -22,6 +22,11 @@ HRM1
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:HRM1.My.Resources.Resources._EXIT">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:HRM1.My.Resources.Resources.bg">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -52,7 +57,22 @@ HRM1
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:HRM1.My.Resources.Resources.clear">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:HRM1.My.Resources.Resources.dcsa">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:HRM1.My.Resources.Resources.LOG_IN">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:HRM1.My.Resources.Resources.logo">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

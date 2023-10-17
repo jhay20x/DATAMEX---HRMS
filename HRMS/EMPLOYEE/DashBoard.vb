@@ -20,7 +20,19 @@
         End If
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+    Private Sub MenuHide6Button_Click(sender As Object, e As EventArgs) Handles MenuHide6Button.Click
+        Try
+            If Panel1.AutoSize = True Then
+                Panel1.AutoSize = False
+            Else
+                Panel1.AutoSize = True
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
     End Sub
 End Class
