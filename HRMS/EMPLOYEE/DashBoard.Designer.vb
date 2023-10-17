@@ -22,6 +22,23 @@ Partial Class DashBoard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DashBoard))
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.MenuHide6Button = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.btnPayroll = New System.Windows.Forms.Button()
@@ -37,262 +54,19 @@ Partial Class DashBoard
         Me.btnAttendance = New System.Windows.Forms.Button()
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Panel1.SuspendLayout()
-        Me.PanelLeave.SuspendLayout()
-        Me.PanelAtt.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.PanelLeave.SuspendLayout()
+        Me.PanelAtt.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.AutoScroll = True
-        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Panel1.BackgroundImage = Global.HRM1.My.Resources.Resources.bg
-        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Controls.Add(Me.btnLogOut)
-        Me.Panel1.Controls.Add(Me.btnPayroll)
-        Me.Panel1.Controls.Add(Me.brnProject)
-        Me.Panel1.Controls.Add(Me.btnHoliday)
-        Me.Panel1.Controls.Add(Me.PanelLeave)
-        Me.Panel1.Controls.Add(Me.btnLeave)
-        Me.Panel1.Controls.Add(Me.PanelAtt)
-        Me.Panel1.Controls.Add(Me.btnAttendance)
-        Me.Panel1.Controls.Add(Me.btnDashboard)
-        Me.Panel1.Controls.Add(Me.Panel2)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(250, 635)
-        Me.Panel1.TabIndex = 0
-        '
-        'btnLogOut
-        '
-        Me.btnLogOut.BackColor = System.Drawing.Color.Transparent
-        Me.btnLogOut.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnLogOut.FlatAppearance.BorderSize = 0
-        Me.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogOut.ForeColor = System.Drawing.Color.White
-        Me.btnLogOut.Location = New System.Drawing.Point(0, 724)
-        Me.btnLogOut.Name = "btnLogOut"
-        Me.btnLogOut.Size = New System.Drawing.Size(233, 50)
-        Me.btnLogOut.TabIndex = 15
-        Me.btnLogOut.Text = "ACCOUNT"
-        Me.btnLogOut.UseVisualStyleBackColor = False
-        '
-        'btnPayroll
-        '
-        Me.btnPayroll.BackColor = System.Drawing.Color.Transparent
-        Me.btnPayroll.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnPayroll.FlatAppearance.BorderSize = 0
-        Me.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPayroll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPayroll.ForeColor = System.Drawing.Color.White
-        Me.btnPayroll.Location = New System.Drawing.Point(0, 674)
-        Me.btnPayroll.Name = "btnPayroll"
-        Me.btnPayroll.Size = New System.Drawing.Size(233, 50)
-        Me.btnPayroll.TabIndex = 11
-        Me.btnPayroll.Text = "PAYROLL"
-        Me.btnPayroll.UseVisualStyleBackColor = False
-        '
-        'brnProject
-        '
-        Me.brnProject.BackColor = System.Drawing.Color.Transparent
-        Me.brnProject.Dock = System.Windows.Forms.DockStyle.Top
-        Me.brnProject.FlatAppearance.BorderSize = 0
-        Me.brnProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.brnProject.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.brnProject.ForeColor = System.Drawing.Color.White
-        Me.brnProject.Location = New System.Drawing.Point(0, 624)
-        Me.brnProject.Name = "brnProject"
-        Me.brnProject.Size = New System.Drawing.Size(233, 50)
-        Me.brnProject.TabIndex = 9
-        Me.brnProject.Text = "PROJECT"
-        Me.brnProject.UseVisualStyleBackColor = False
-        '
-        'btnHoliday
-        '
-        Me.btnHoliday.BackColor = System.Drawing.Color.Transparent
-        Me.btnHoliday.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnHoliday.FlatAppearance.BorderSize = 0
-        Me.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHoliday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHoliday.ForeColor = System.Drawing.Color.White
-        Me.btnHoliday.Location = New System.Drawing.Point(0, 574)
-        Me.btnHoliday.Name = "btnHoliday"
-        Me.btnHoliday.Size = New System.Drawing.Size(233, 50)
-        Me.btnHoliday.TabIndex = 7
-        Me.btnHoliday.Text = "HOLIDAY"
-        Me.btnHoliday.UseVisualStyleBackColor = False
-        '
-        'PanelLeave
-        '
-        Me.PanelLeave.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelLeave.Controls.Add(Me.btnLev2)
-        Me.PanelLeave.Controls.Add(Me.btnLev1)
-        Me.PanelLeave.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelLeave.Location = New System.Drawing.Point(0, 469)
-        Me.PanelLeave.Name = "PanelLeave"
-        Me.PanelLeave.Size = New System.Drawing.Size(233, 105)
-        Me.PanelLeave.TabIndex = 6
-        '
-        'btnLev2
-        '
-        Me.btnLev2.BackColor = System.Drawing.Color.Transparent
-        Me.btnLev2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnLev2.FlatAppearance.BorderSize = 0
-        Me.btnLev2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLev2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLev2.ForeColor = System.Drawing.Color.White
-        Me.btnLev2.Location = New System.Drawing.Point(0, 50)
-        Me.btnLev2.Name = "btnLev2"
-        Me.btnLev2.Size = New System.Drawing.Size(233, 50)
-        Me.btnLev2.TabIndex = 3
-        Me.btnLev2.Text = "LEAVE BALANCE"
-        Me.btnLev2.UseVisualStyleBackColor = False
-        '
-        'btnLev1
-        '
-        Me.btnLev1.BackColor = System.Drawing.Color.Transparent
-        Me.btnLev1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnLev1.FlatAppearance.BorderSize = 0
-        Me.btnLev1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLev1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLev1.ForeColor = System.Drawing.Color.White
-        Me.btnLev1.Location = New System.Drawing.Point(0, 0)
-        Me.btnLev1.Name = "btnLev1"
-        Me.btnLev1.Size = New System.Drawing.Size(233, 50)
-        Me.btnLev1.TabIndex = 2
-        Me.btnLev1.Text = "LEAVE REQUEST"
-        Me.btnLev1.UseVisualStyleBackColor = False
-        '
-        'btnLeave
-        '
-        Me.btnLeave.BackColor = System.Drawing.Color.Transparent
-        Me.btnLeave.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnLeave.FlatAppearance.BorderSize = 0
-        Me.btnLeave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLeave.ForeColor = System.Drawing.Color.White
-        Me.btnLeave.Location = New System.Drawing.Point(0, 419)
-        Me.btnLeave.Name = "btnLeave"
-        Me.btnLeave.Size = New System.Drawing.Size(233, 50)
-        Me.btnLeave.TabIndex = 5
-        Me.btnLeave.Text = "LEAVE MANAGEMENT"
-        Me.btnLeave.UseVisualStyleBackColor = False
-        '
-        'PanelAtt
-        '
-        Me.PanelAtt.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelAtt.Controls.Add(Me.btnAtt3)
-        Me.PanelAtt.Controls.Add(Me.btnAtt1)
-        Me.PanelAtt.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelAtt.Location = New System.Drawing.Point(0, 319)
-        Me.PanelAtt.Name = "PanelAtt"
-        Me.PanelAtt.Size = New System.Drawing.Size(233, 100)
-        Me.PanelAtt.TabIndex = 4
-        '
-        'btnAtt3
-        '
-        Me.btnAtt3.BackColor = System.Drawing.Color.Transparent
-        Me.btnAtt3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnAtt3.FlatAppearance.BorderSize = 0
-        Me.btnAtt3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAtt3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAtt3.ForeColor = System.Drawing.Color.White
-        Me.btnAtt3.Location = New System.Drawing.Point(0, 50)
-        Me.btnAtt3.Name = "btnAtt3"
-        Me.btnAtt3.Size = New System.Drawing.Size(233, 50)
-        Me.btnAtt3.TabIndex = 4
-        Me.btnAtt3.Text = "ATTENDANCE SHEET"
-        Me.btnAtt3.UseVisualStyleBackColor = False
-        '
-        'btnAtt1
-        '
-        Me.btnAtt1.BackColor = System.Drawing.Color.Transparent
-        Me.btnAtt1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnAtt1.FlatAppearance.BorderSize = 0
-        Me.btnAtt1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAtt1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAtt1.ForeColor = System.Drawing.Color.White
-        Me.btnAtt1.Location = New System.Drawing.Point(0, 0)
-        Me.btnAtt1.Name = "btnAtt1"
-        Me.btnAtt1.Size = New System.Drawing.Size(233, 50)
-        Me.btnAtt1.TabIndex = 2
-        Me.btnAtt1.Text = "TODAY'S ATTENDANCE"
-        Me.btnAtt1.UseVisualStyleBackColor = False
-        '
-        'btnAttendance
-        '
-        Me.btnAttendance.BackColor = System.Drawing.Color.Transparent
-        Me.btnAttendance.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnAttendance.FlatAppearance.BorderSize = 0
-        Me.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAttendance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAttendance.ForeColor = System.Drawing.Color.White
-        Me.btnAttendance.Location = New System.Drawing.Point(0, 269)
-        Me.btnAttendance.Name = "btnAttendance"
-        Me.btnAttendance.Size = New System.Drawing.Size(233, 50)
-        Me.btnAttendance.TabIndex = 3
-        Me.btnAttendance.Text = "ATTENDANCE"
-        Me.btnAttendance.UseVisualStyleBackColor = False
-        '
-        'btnDashboard
-        '
-        Me.btnDashboard.BackColor = System.Drawing.Color.Transparent
-        Me.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnDashboard.FlatAppearance.BorderSize = 0
-        Me.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDashboard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDashboard.ForeColor = System.Drawing.Color.White
-        Me.btnDashboard.Location = New System.Drawing.Point(0, 219)
-        Me.btnDashboard.Name = "btnDashboard"
-        Me.btnDashboard.Size = New System.Drawing.Size(233, 50)
-        Me.btnDashboard.TabIndex = 1
-        Me.btnDashboard.Text = "DASH BOARD"
-        Me.btnDashboard.UseVisualStyleBackColor = False
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.BackgroundImage = Global.HRM1.My.Resources.Resources.dcsa
-        Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Panel2.Controls.Add(Me.Label1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(233, 219)
-        Me.Panel2.TabIndex = 0
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(36, 179)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(166, 25)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "WELCOME ADMIN"
         '
         'Panel4
         '
+        Me.Panel4.Controls.Add(Me.GroupBox3)
         Me.Panel4.Controls.Add(Me.GroupBox2)
         Me.Panel4.Controls.Add(Me.GroupBox1)
         Me.Panel4.Controls.Add(Me.Panel6)
@@ -301,6 +75,55 @@ Partial Class DashBoard
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(599, 635)
         Me.Panel4.TabIndex = 1
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label9)
+        Me.GroupBox3.Controls.Add(Me.Label10)
+        Me.GroupBox3.Controls.Add(Me.Label11)
+        Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.GroupBox3.Location = New System.Drawing.Point(0, 246)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(599, 97)
+        Me.GroupBox3.TabIndex = 3
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "LEAVE "
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI Semilight", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(458, 43)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(122, 20)
+        Me.Label9.TabIndex = 2
+        Me.Label9.Tag = ""
+        Me.Label9.Text = "Leave Balance: 15"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI Semilight", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(285, 43)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(156, 20)
+        Me.Label10.TabIndex = 1
+        Me.Label10.Tag = ""
+        Me.Label10.Text = "Leave Type: Sick Leave"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI Semilight", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(136, 43)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(113, 20)
+        Me.Label11.TabIndex = 0
+        Me.Label11.Tag = ""
+        Me.Label11.Text = "Status: Rejected"
         '
         'GroupBox2
         '
@@ -403,6 +226,7 @@ Partial Class DashBoard
         'Panel6
         '
         Me.Panel6.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel6.Controls.Add(Me.MenuHide6Button)
         Me.Panel6.Controls.Add(Me.Label2)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
@@ -410,17 +234,269 @@ Partial Class DashBoard
         Me.Panel6.Size = New System.Drawing.Size(599, 52)
         Me.Panel6.TabIndex = 0
         '
+        'MenuHide6Button
+        '
+        Me.MenuHide6Button.BackgroundImage = CType(resources.GetObject("MenuHide6Button.BackgroundImage"), System.Drawing.Image)
+        Me.MenuHide6Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.MenuHide6Button.Location = New System.Drawing.Point(6, 7)
+        Me.MenuHide6Button.Name = "MenuHide6Button"
+        Me.MenuHide6Button.Size = New System.Drawing.Size(41, 35)
+        Me.MenuHide6Button.TabIndex = 2
+        Me.MenuHide6Button.UseVisualStyleBackColor = True
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(6, 6)
+        Me.Label2.Location = New System.Drawing.Point(53, 7)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(193, 37)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "DASH BOARD"
+        '
+        'Panel1
+        '
+        Me.Panel1.AutoScroll = True
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Panel1.BackgroundImage = Global.HRM1.My.Resources.Resources.bg
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Panel1.Controls.Add(Me.btnLogOut)
+        Me.Panel1.Controls.Add(Me.btnPayroll)
+        Me.Panel1.Controls.Add(Me.brnProject)
+        Me.Panel1.Controls.Add(Me.btnHoliday)
+        Me.Panel1.Controls.Add(Me.PanelLeave)
+        Me.Panel1.Controls.Add(Me.btnLeave)
+        Me.Panel1.Controls.Add(Me.PanelAtt)
+        Me.Panel1.Controls.Add(Me.btnAttendance)
+        Me.Panel1.Controls.Add(Me.btnDashboard)
+        Me.Panel1.Controls.Add(Me.Panel2)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(250, 635)
+        Me.Panel1.TabIndex = 0
+        '
+        'btnLogOut
+        '
+        Me.btnLogOut.BackColor = System.Drawing.Color.Transparent
+        Me.btnLogOut.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLogOut.FlatAppearance.BorderSize = 0
+        Me.btnLogOut.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLogOut.ForeColor = System.Drawing.Color.White
+        Me.btnLogOut.Location = New System.Drawing.Point(0, 724)
+        Me.btnLogOut.Name = "btnLogOut"
+        Me.btnLogOut.Size = New System.Drawing.Size(233, 50)
+        Me.btnLogOut.TabIndex = 15
+        Me.btnLogOut.Text = "ACCOUNT"
+        Me.btnLogOut.UseVisualStyleBackColor = False
+        '
+        'btnPayroll
+        '
+        Me.btnPayroll.BackColor = System.Drawing.Color.Transparent
+        Me.btnPayroll.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnPayroll.FlatAppearance.BorderSize = 0
+        Me.btnPayroll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnPayroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPayroll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPayroll.ForeColor = System.Drawing.Color.White
+        Me.btnPayroll.Location = New System.Drawing.Point(0, 674)
+        Me.btnPayroll.Name = "btnPayroll"
+        Me.btnPayroll.Size = New System.Drawing.Size(233, 50)
+        Me.btnPayroll.TabIndex = 11
+        Me.btnPayroll.Text = "PAYROLL"
+        Me.btnPayroll.UseVisualStyleBackColor = False
+        '
+        'brnProject
+        '
+        Me.brnProject.BackColor = System.Drawing.Color.Transparent
+        Me.brnProject.Dock = System.Windows.Forms.DockStyle.Top
+        Me.brnProject.FlatAppearance.BorderSize = 0
+        Me.brnProject.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.brnProject.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.brnProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.brnProject.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.brnProject.ForeColor = System.Drawing.Color.White
+        Me.brnProject.Location = New System.Drawing.Point(0, 624)
+        Me.brnProject.Name = "brnProject"
+        Me.brnProject.Size = New System.Drawing.Size(233, 50)
+        Me.brnProject.TabIndex = 9
+        Me.brnProject.Text = "PROJECT"
+        Me.brnProject.UseVisualStyleBackColor = False
+        '
+        'btnHoliday
+        '
+        Me.btnHoliday.BackColor = System.Drawing.Color.Transparent
+        Me.btnHoliday.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnHoliday.FlatAppearance.BorderSize = 0
+        Me.btnHoliday.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnHoliday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHoliday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHoliday.ForeColor = System.Drawing.Color.White
+        Me.btnHoliday.Location = New System.Drawing.Point(0, 574)
+        Me.btnHoliday.Name = "btnHoliday"
+        Me.btnHoliday.Size = New System.Drawing.Size(233, 50)
+        Me.btnHoliday.TabIndex = 7
+        Me.btnHoliday.Text = "HOLIDAY"
+        Me.btnHoliday.UseVisualStyleBackColor = False
+        '
+        'PanelLeave
+        '
+        Me.PanelLeave.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.PanelLeave.Controls.Add(Me.btnLev2)
+        Me.PanelLeave.Controls.Add(Me.btnLev1)
+        Me.PanelLeave.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelLeave.Location = New System.Drawing.Point(0, 469)
+        Me.PanelLeave.Name = "PanelLeave"
+        Me.PanelLeave.Size = New System.Drawing.Size(233, 105)
+        Me.PanelLeave.TabIndex = 6
+        '
+        'btnLev2
+        '
+        Me.btnLev2.BackColor = System.Drawing.Color.Transparent
+        Me.btnLev2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLev2.FlatAppearance.BorderSize = 0
+        Me.btnLev2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnLev2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnLev2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLev2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLev2.ForeColor = System.Drawing.Color.White
+        Me.btnLev2.Location = New System.Drawing.Point(0, 50)
+        Me.btnLev2.Name = "btnLev2"
+        Me.btnLev2.Size = New System.Drawing.Size(233, 50)
+        Me.btnLev2.TabIndex = 3
+        Me.btnLev2.Text = "LEAVE BALANCE"
+        Me.btnLev2.UseVisualStyleBackColor = False
+        '
+        'btnLev1
+        '
+        Me.btnLev1.BackColor = System.Drawing.Color.Transparent
+        Me.btnLev1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLev1.FlatAppearance.BorderSize = 0
+        Me.btnLev1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnLev1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnLev1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLev1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLev1.ForeColor = System.Drawing.Color.White
+        Me.btnLev1.Location = New System.Drawing.Point(0, 0)
+        Me.btnLev1.Name = "btnLev1"
+        Me.btnLev1.Size = New System.Drawing.Size(233, 50)
+        Me.btnLev1.TabIndex = 2
+        Me.btnLev1.Text = "LEAVE REQUEST"
+        Me.btnLev1.UseVisualStyleBackColor = False
+        '
+        'btnLeave
+        '
+        Me.btnLeave.BackColor = System.Drawing.Color.Transparent
+        Me.btnLeave.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnLeave.FlatAppearance.BorderSize = 0
+        Me.btnLeave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnLeave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnLeave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLeave.ForeColor = System.Drawing.Color.White
+        Me.btnLeave.Location = New System.Drawing.Point(0, 419)
+        Me.btnLeave.Name = "btnLeave"
+        Me.btnLeave.Size = New System.Drawing.Size(233, 50)
+        Me.btnLeave.TabIndex = 5
+        Me.btnLeave.Text = "LEAVE MANAGEMENT"
+        Me.btnLeave.UseVisualStyleBackColor = False
+        '
+        'PanelAtt
+        '
+        Me.PanelAtt.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.PanelAtt.Controls.Add(Me.btnAtt3)
+        Me.PanelAtt.Controls.Add(Me.btnAtt1)
+        Me.PanelAtt.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PanelAtt.Location = New System.Drawing.Point(0, 319)
+        Me.PanelAtt.Name = "PanelAtt"
+        Me.PanelAtt.Size = New System.Drawing.Size(233, 100)
+        Me.PanelAtt.TabIndex = 4
+        '
+        'btnAtt3
+        '
+        Me.btnAtt3.BackColor = System.Drawing.Color.Transparent
+        Me.btnAtt3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAtt3.FlatAppearance.BorderSize = 0
+        Me.btnAtt3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnAtt3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnAtt3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAtt3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAtt3.ForeColor = System.Drawing.Color.White
+        Me.btnAtt3.Location = New System.Drawing.Point(0, 50)
+        Me.btnAtt3.Name = "btnAtt3"
+        Me.btnAtt3.Size = New System.Drawing.Size(233, 50)
+        Me.btnAtt3.TabIndex = 4
+        Me.btnAtt3.Text = "ATTENDANCE SHEET"
+        Me.btnAtt3.UseVisualStyleBackColor = False
+        '
+        'btnAtt1
+        '
+        Me.btnAtt1.BackColor = System.Drawing.Color.Transparent
+        Me.btnAtt1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAtt1.FlatAppearance.BorderSize = 0
+        Me.btnAtt1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnAtt1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnAtt1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAtt1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAtt1.ForeColor = System.Drawing.Color.White
+        Me.btnAtt1.Location = New System.Drawing.Point(0, 0)
+        Me.btnAtt1.Name = "btnAtt1"
+        Me.btnAtt1.Size = New System.Drawing.Size(233, 50)
+        Me.btnAtt1.TabIndex = 2
+        Me.btnAtt1.Text = "TODAY'S ATTENDANCE"
+        Me.btnAtt1.UseVisualStyleBackColor = False
+        '
+        'btnAttendance
+        '
+        Me.btnAttendance.BackColor = System.Drawing.Color.Transparent
+        Me.btnAttendance.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAttendance.FlatAppearance.BorderSize = 0
+        Me.btnAttendance.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnAttendance.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAttendance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAttendance.ForeColor = System.Drawing.Color.White
+        Me.btnAttendance.Location = New System.Drawing.Point(0, 269)
+        Me.btnAttendance.Name = "btnAttendance"
+        Me.btnAttendance.Size = New System.Drawing.Size(233, 50)
+        Me.btnAttendance.TabIndex = 3
+        Me.btnAttendance.Text = "ATTENDANCE"
+        Me.btnAttendance.UseVisualStyleBackColor = False
+        '
+        'btnDashboard
+        '
+        Me.btnDashboard.BackColor = System.Drawing.Color.Transparent
+        Me.btnDashboard.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnDashboard.FlatAppearance.BorderSize = 0
+        Me.btnDashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnDashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDashboard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDashboard.ForeColor = System.Drawing.Color.White
+        Me.btnDashboard.Location = New System.Drawing.Point(0, 219)
+        Me.btnDashboard.Name = "btnDashboard"
+        Me.btnDashboard.Size = New System.Drawing.Size(233, 50)
+        Me.btnDashboard.TabIndex = 1
+        Me.btnDashboard.Text = "DASH BOARD"
+        Me.btnDashboard.UseVisualStyleBackColor = False
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
+        Me.Panel2.BackgroundImage = Global.HRM1.My.Resources.Resources.logo
+        Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(233, 219)
+        Me.Panel2.TabIndex = 0
         '
         'DashBoard
         '
@@ -431,18 +507,18 @@ Partial Class DashBoard
         Me.Controls.Add(Me.Panel1)
         Me.Name = "DashBoard"
         Me.Text = "DashBoard"
-        Me.Panel1.ResumeLayout(False)
-        Me.PanelLeave.ResumeLayout(False)
-        Me.PanelAtt.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.Panel4.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.PanelLeave.ResumeLayout(False)
+        Me.PanelAtt.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -451,7 +527,6 @@ Partial Class DashBoard
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnAttendance As Button
     Friend WithEvents btnDashboard As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents PanelAtt As Panel
     Friend WithEvents btnAtt3 As Button
     Friend WithEvents btnAtt1 As Button
@@ -474,4 +549,9 @@ Partial Class DashBoard
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents MenuHide6Button As Button
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
 End Class
