@@ -4,6 +4,7 @@ Public Class DashBoardForm
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'HRMSDataSet.EmployeesInformation' table. You can move, or remove it, as needed.
         Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
+        con.Open()
         PanelAtt.Visible = False
         PanelLeave.Visible = False
         PanelPayroll.Visible = False
@@ -235,7 +236,7 @@ Public Class DashBoardForm
     Private Sub EmployeeListAddButton_Click(sender As Object, e As EventArgs) Handles EmployeeListAddButton.Click
         'Me.Hide()
         Me.Enabled = False
-        EmployeeListAddForm.Show()
+        EmployeeListAddForm.Show(Me)
     End Sub
 
     Private Sub DashBoard_Shown(sender As Object, e As EventArgs) Handles Me.EnabledChanged
