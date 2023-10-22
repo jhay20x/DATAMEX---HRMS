@@ -299,6 +299,14 @@ Partial Public Class HRMSDataSet
         
         Private columnStatus As Global.System.Data.DataColumn
         
+        Private columnSSSNo As Global.System.Data.DataColumn
+        
+        Private columnPhilHealthNo As Global.System.Data.DataColumn
+        
+        Private columnPagibigNo As Global.System.Data.DataColumn
+        
+        Private columnTIN As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -399,6 +407,38 @@ Partial Public Class HRMSDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property SSSNoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSSSNo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property PhilHealthNoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPhilHealthNo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property PagibigNoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPagibigNo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property TINColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTIN
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -435,9 +475,9 @@ Partial Public Class HRMSDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddEmployeesInformationRow(ByVal EmployeeID As Integer, ByVal EmployeeName As String, ByVal Department As String, ByVal Age As Short, ByVal Address As String, ByVal ContactNumber As String, ByVal EmailAddress As String, ByVal Status As String) As EmployeesInformationRow
+        Public Overloads Function AddEmployeesInformationRow(ByVal EmployeeID As String, ByVal EmployeeName As String, ByVal Department As String, ByVal Age As Short, ByVal Address As String, ByVal ContactNumber As String, ByVal EmailAddress As String, ByVal Status As String, ByVal SSSNo As String, ByVal PhilHealthNo As String, ByVal PagibigNo As String, ByVal TIN As String) As EmployeesInformationRow
             Dim rowEmployeesInformationRow As EmployeesInformationRow = CType(Me.NewRow,EmployeesInformationRow)
-            Dim columnValuesArray() As Object = New Object() {EmployeeID, EmployeeName, Department, Age, Address, ContactNumber, EmailAddress, Status}
+            Dim columnValuesArray() As Object = New Object() {EmployeeID, EmployeeName, Department, Age, Address, ContactNumber, EmailAddress, Status, SSSNo, PhilHealthNo, PagibigNo, TIN}
             rowEmployeesInformationRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowEmployeesInformationRow)
             Return rowEmployeesInformationRow
@@ -445,7 +485,7 @@ Partial Public Class HRMSDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByEmployeeID(ByVal EmployeeID As Integer) As EmployeesInformationRow
+        Public Function FindByEmployeeID(ByVal EmployeeID As String) As EmployeesInformationRow
             Return CType(Me.Rows.Find(New Object() {EmployeeID}),EmployeesInformationRow)
         End Function
         
@@ -474,12 +514,16 @@ Partial Public Class HRMSDataSet
             Me.columnContactNumber = MyBase.Columns("ContactNumber")
             Me.columnEmailAddress = MyBase.Columns("EmailAddress")
             Me.columnStatus = MyBase.Columns("Status")
+            Me.columnSSSNo = MyBase.Columns("SSSNo")
+            Me.columnPhilHealthNo = MyBase.Columns("PhilHealthNo")
+            Me.columnPagibigNo = MyBase.Columns("PagibigNo")
+            Me.columnTIN = MyBase.Columns("TIN")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnEmployeeID = New Global.System.Data.DataColumn("EmployeeID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnEmployeeID = New Global.System.Data.DataColumn("EmployeeID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEmployeeID)
             Me.columnEmployeeName = New Global.System.Data.DataColumn("EmployeeName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEmployeeName)
@@ -495,6 +539,14 @@ Partial Public Class HRMSDataSet
             MyBase.Columns.Add(Me.columnEmailAddress)
             Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnStatus)
+            Me.columnSSSNo = New Global.System.Data.DataColumn("SSSNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSSSNo)
+            Me.columnPhilHealthNo = New Global.System.Data.DataColumn("PhilHealthNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPhilHealthNo)
+            Me.columnPagibigNo = New Global.System.Data.DataColumn("PagibigNo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPagibigNo)
+            Me.columnTIN = New Global.System.Data.DataColumn("TIN", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTIN)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnEmployeeID}, true))
             Me.columnEmployeeID.AllowDBNull = false
             Me.columnEmployeeID.Unique = true
@@ -504,6 +556,9 @@ Partial Public Class HRMSDataSet
             Me.columnContactNumber.MaxLength = 10
             Me.columnEmailAddress.MaxLength = 30
             Me.columnStatus.MaxLength = 15
+            Me.columnPhilHealthNo.MaxLength = 20
+            Me.columnPagibigNo.MaxLength = 20
+            Me.columnTIN.MaxLength = 20
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -650,9 +705,9 @@ Partial Public Class HRMSDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property EmployeeID() As Integer
+        Public Property EmployeeID() As String
             Get
-                Return CType(Me(Me.tableEmployeesInformation.EmployeeIDColumn),Integer)
+                Return CType(Me(Me.tableEmployeesInformation.EmployeeIDColumn),String)
             End Get
             Set
                 Me(Me.tableEmployeesInformation.EmployeeIDColumn) = value
@@ -766,6 +821,66 @@ Partial Public Class HRMSDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property SSSNo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmployeesInformation.SSSNoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SSSNo' in table 'EmployeesInformation' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmployeesInformation.SSSNoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property PhilHealthNo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmployeesInformation.PhilHealthNoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PhilHealthNo' in table 'EmployeesInformation' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmployeesInformation.PhilHealthNoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property PagibigNo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmployeesInformation.PagibigNoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PagibigNo' in table 'EmployeesInformation' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmployeesInformation.PagibigNoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property TIN() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEmployeesInformation.TINColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TIN' in table 'EmployeesInformation' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEmployeesInformation.TINColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsEmployeeNameNull() As Boolean
             Return Me.IsNull(Me.tableEmployeesInformation.EmployeeNameColumn)
         End Function
@@ -846,6 +961,54 @@ Partial Public Class HRMSDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetStatusNull()
             Me(Me.tableEmployeesInformation.StatusColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsSSSNoNull() As Boolean
+            Return Me.IsNull(Me.tableEmployeesInformation.SSSNoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetSSSNoNull()
+            Me(Me.tableEmployeesInformation.SSSNoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsPhilHealthNoNull() As Boolean
+            Return Me.IsNull(Me.tableEmployeesInformation.PhilHealthNoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetPhilHealthNoNull()
+            Me(Me.tableEmployeesInformation.PhilHealthNoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsPagibigNoNull() As Boolean
+            Return Me.IsNull(Me.tableEmployeesInformation.PagibigNoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetPagibigNoNull()
+            Me(Me.tableEmployeesInformation.PagibigNoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsTINNull() As Boolean
+            Return Me.IsNull(Me.tableEmployeesInformation.TINColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetTINNull()
+            Me(Me.tableEmployeesInformation.TINColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1023,21 +1186,29 @@ Namespace HRMSDataSetTableAdapters
             tableMapping.ColumnMappings.Add("ContactNumber", "ContactNumber")
             tableMapping.ColumnMappings.Add("EmailAddress", "EmailAddress")
             tableMapping.ColumnMappings.Add("Status", "Status")
+            tableMapping.ColumnMappings.Add("SSSNo", "SSSNo")
+            tableMapping.ColumnMappings.Add("PhilHealthNo", "PhilHealthNo")
+            tableMapping.ColumnMappings.Add("PagibigNo", "PagibigNo")
+            tableMapping.ColumnMappings.Add("TIN", "TIN")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[EmployeesInformation] WHERE (([EmployeeID] = @Original_Employe"& _ 
-                "eID) AND ((@IsNull_EmployeeName = 1 AND [EmployeeName] IS NULL) OR ([EmployeeNam"& _ 
-                "e] = @Original_EmployeeName)) AND ((@IsNull_Department = 1 AND [Department] IS N"& _ 
-                "ULL) OR ([Department] = @Original_Department)) AND ((@IsNull_Age = 1 AND [Age] I"& _ 
-                "S NULL) OR ([Age] = @Original_Age)) AND ((@IsNull_Address = 1 AND [Address] IS N"& _ 
-                "ULL) OR ([Address] = @Original_Address)) AND ((@IsNull_ContactNumber = 1 AND [Co"& _ 
-                "ntactNumber] IS NULL) OR ([ContactNumber] = @Original_ContactNumber)) AND ((@IsN"& _ 
-                "ull_EmailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_"& _ 
-                "EmailAddress)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Or"& _ 
-                "iginal_Status)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [EmployeesInformation] WHERE (([EmployeeID] = @Original_EmployeeID) A"& _ 
+                "ND ((@IsNull_EmployeeName = 1 AND [EmployeeName] IS NULL) OR ([EmployeeName] = @"& _ 
+                "Original_EmployeeName)) AND ((@IsNull_Department = 1 AND [Department] IS NULL) O"& _ 
+                "R ([Department] = @Original_Department)) AND ((@IsNull_Age = 1 AND [Age] IS NULL"& _ 
+                ") OR ([Age] = @Original_Age)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) O"& _ 
+                "R ([Address] = @Original_Address)) AND ((@IsNull_ContactNumber = 1 AND [ContactN"& _ 
+                "umber] IS NULL) OR ([ContactNumber] = @Original_ContactNumber)) AND ((@IsNull_Em"& _ 
+                "ailAddress = 1 AND [EmailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailA"& _ 
+                "ddress)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original"& _ 
+                "_Status)) AND ((@IsNull_PagibigNo = 1 AND [PagibigNo] IS NULL) OR ([PagibigNo] ="& _ 
+                " @Original_PagibigNo)) AND ((@IsNull_PhilHealthNo = 1 AND [PhilHealthNo] IS NULL"& _ 
+                ") OR ([PhilHealthNo] = @Original_PhilHealthNo)) AND ((@IsNull_SSSNo = 1 AND [SSS"& _ 
+                "No] IS NULL) OR ([SSSNo] = @Original_SSSNo)) AND ((@IsNull_TIN = 1 AND [TIN] IS "& _ 
+                "NULL) OR ([TIN] = @Original_TIN)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmployeeID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmployeeID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EmployeeName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmployeeName", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Department", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Department", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -1052,16 +1223,25 @@ Namespace HRMSDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmailAddress", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Status", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PagibigNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PagibigNo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PagibigNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PagibigNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PhilHealthNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PhilHealthNo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PhilHealthNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PhilHealthNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SSSNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSSNo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SSSNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSSNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TIN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIN", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TIN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIN", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[EmployeesInformation] ([EmployeeID], [EmployeeName], [Departme"& _ 
-                "nt], [Age], [Address], [ContactNumber], [EmailAddress], [Status]) VALUES (@Emplo"& _ 
-                "yeeID, @EmployeeName, @Department, @Age, @Address, @ContactNumber, @EmailAddress"& _ 
-                ", @Status);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT EmployeeID, EmployeeName, Department, Age, Address, ContactN"& _ 
-                "umber, EmailAddress, Status FROM EmployeesInformation WHERE (EmployeeID = @Emplo"& _ 
-                "yeeID)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EmployeesInformation] ([EmployeeID], [EmployeeName], [Department], ["& _ 
+                "Age], [Address], [ContactNumber], [EmailAddress], [Status], [PagibigNo], [PhilHe"& _ 
+                "althNo], [SSSNo], [TIN]) VALUES (@EmployeeID, @EmployeeName, @Department, @Age, "& _ 
+                "@Address, @ContactNumber, @EmailAddress, @Status, @PagibigNo, @PhilHealthNo, @SS"& _ 
+                "SNo, @TIN);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT EmployeeID, EmployeeName, Department, Age, Address, ContactN"& _ 
+                "umber, EmailAddress, Status, PagibigNo, PhilHealthNo, SSSNo, TIN FROM EmployeesI"& _ 
+                "nformation WHERE (EmployeeID = @EmployeeID)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmployeeID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmployeeID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmployeeName", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Department", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Department", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Age", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Age", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1069,24 +1249,34 @@ Namespace HRMSDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ContactNumber", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContactNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmailAddress", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PagibigNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PagibigNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PhilHealthNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PhilHealthNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SSSNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSSNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TIN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[EmployeesInformation] SET [EmployeeID] = @EmployeeID, [EmployeeName"& _ 
-                "] = @EmployeeName, [Department] = @Department, [Age] = @Age, [Address] = @Addres"& _ 
-                "s, [ContactNumber] = @ContactNumber, [EmailAddress] = @EmailAddress, [Status] = "& _ 
-                "@Status WHERE (([EmployeeID] = @Original_EmployeeID) AND ((@IsNull_EmployeeName "& _ 
-                "= 1 AND [EmployeeName] IS NULL) OR ([EmployeeName] = @Original_EmployeeName)) AN"& _ 
-                "D ((@IsNull_Department = 1 AND [Department] IS NULL) OR ([Department] = @Origina"& _ 
-                "l_Department)) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Original_Ag"& _ 
-                "e)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_A"& _ 
-                "ddress)) AND ((@IsNull_ContactNumber = 1 AND [ContactNumber] IS NULL) OR ([Conta"& _ 
-                "ctNumber] = @Original_ContactNumber)) AND ((@IsNull_EmailAddress = 1 AND [EmailA"& _ 
-                "ddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull_Sta"& _ 
-                "tus = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT Employ"& _ 
-                "eeID, EmployeeName, Department, Age, Address, ContactNumber, EmailAddress, Statu"& _ 
-                "s FROM EmployeesInformation WHERE (EmployeeID = @EmployeeID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [EmployeesInformation] SET [EmployeeID] = @EmployeeID, [EmployeeName] = @E"& _ 
+                "mployeeName, [Department] = @Department, [Age] = @Age, [Address] = @Address, [Co"& _ 
+                "ntactNumber] = @ContactNumber, [EmailAddress] = @EmailAddress, [Status] = @Statu"& _ 
+                "s, [PagibigNo] = @PagibigNo, [PhilHealthNo] = @PhilHealthNo, [SSSNo] = @SSSNo, ["& _ 
+                "TIN] = @TIN WHERE (([EmployeeID] = @Original_EmployeeID) AND ((@IsNull_EmployeeN"& _ 
+                "ame = 1 AND [EmployeeName] IS NULL) OR ([EmployeeName] = @Original_EmployeeName)"& _ 
+                ") AND ((@IsNull_Department = 1 AND [Department] IS NULL) OR ([Department] = @Ori"& _ 
+                "ginal_Department)) AND ((@IsNull_Age = 1 AND [Age] IS NULL) OR ([Age] = @Origina"& _ 
+                "l_Age)) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Origin"& _ 
+                "al_Address)) AND ((@IsNull_ContactNumber = 1 AND [ContactNumber] IS NULL) OR ([C"& _ 
+                "ontactNumber] = @Original_ContactNumber)) AND ((@IsNull_EmailAddress = 1 AND [Em"& _ 
+                "ailAddress] IS NULL) OR ([EmailAddress] = @Original_EmailAddress)) AND ((@IsNull"& _ 
+                "_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNul"& _ 
+                "l_PagibigNo = 1 AND [PagibigNo] IS NULL) OR ([PagibigNo] = @Original_PagibigNo))"& _ 
+                " AND ((@IsNull_PhilHealthNo = 1 AND [PhilHealthNo] IS NULL) OR ([PhilHealthNo] ="& _ 
+                " @Original_PhilHealthNo)) AND ((@IsNull_SSSNo = 1 AND [SSSNo] IS NULL) OR ([SSSN"& _ 
+                "o] = @Original_SSSNo)) AND ((@IsNull_TIN = 1 AND [TIN] IS NULL) OR ([TIN] = @Ori"& _ 
+                "ginal_TIN)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT EmployeeID, EmployeeName, Department, Age, Address, Contac"& _ 
+                "tNumber, EmailAddress, Status, PagibigNo, PhilHealthNo, SSSNo, TIN FROM Employee"& _ 
+                "sInformation WHERE (EmployeeID = @EmployeeID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmployeeID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmployeeID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmployeeName", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Department", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Department", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Age", Global.System.Data.SqlDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Age", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -1094,7 +1284,11 @@ Namespace HRMSDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ContactNumber", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ContactNumber", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EmailAddress", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmployeeID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PagibigNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PagibigNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PhilHealthNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PhilHealthNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SSSNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSSNo", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TIN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIN", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmployeeID", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EmployeeName", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmployeeName", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmployeeName", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Department", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Department", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -1109,6 +1303,14 @@ Namespace HRMSDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EmailAddress", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EmailAddress", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Status", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PagibigNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PagibigNo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PagibigNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PagibigNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PhilHealthNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PhilHealthNo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PhilHealthNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PhilHealthNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SSSNo", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSSNo", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SSSNo", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SSSNo", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_TIN", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIN", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_TIN", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TIN", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1125,7 +1327,7 @@ Namespace HRMSDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT EmployeeID, EmployeeName, Department, Age, Address, ContactNumber, EmailAd"& _ 
-                "dress, Status FROM dbo.EmployeesInformation"
+                "dress, Status, PagibigNo, PhilHealthNo, SSSNo, TIN FROM EmployeesInformation"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -1185,8 +1387,12 @@ Namespace HRMSDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_EmployeeID As Integer, ByVal Original_EmployeeName As String, ByVal Original_Department As String, ByVal Original_Age As Global.System.Nullable(Of Short), ByVal Original_Address As String, ByVal Original_ContactNumber As String, ByVal Original_EmailAddress As String, ByVal Original_Status As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_EmployeeID,Integer)
+        Public Overloads Overridable Function Delete(ByVal Original_EmployeeID As String, ByVal Original_EmployeeName As String, ByVal Original_Department As String, ByVal Original_Age As Global.System.Nullable(Of Short), ByVal Original_Address As String, ByVal Original_ContactNumber As String, ByVal Original_EmailAddress As String, ByVal Original_Status As String, ByVal Original_PagibigNo As String, ByVal Original_PhilHealthNo As String, ByVal Original_SSSNo As String, ByVal Original_TIN As String) As Integer
+            If (Original_EmployeeID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_EmployeeID")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_EmployeeID,String)
+            End If
             If (Original_EmployeeName Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
@@ -1236,6 +1442,34 @@ Namespace HRMSDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_Status,String)
             End If
+            If (Original_PagibigNo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_PagibigNo,String)
+            End If
+            If (Original_PhilHealthNo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_PhilHealthNo,String)
+            End If
+            If (Original_SSSNo Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_SSSNo,String)
+            End If
+            If (Original_TIN Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_TIN,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -1255,8 +1489,12 @@ Namespace HRMSDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal EmployeeID As Integer, ByVal EmployeeName As String, ByVal Department As String, ByVal Age As Global.System.Nullable(Of Short), ByVal Address As String, ByVal ContactNumber As String, ByVal EmailAddress As String, ByVal Status As String) As Integer
-            Me.Adapter.InsertCommand.Parameters(0).Value = CType(EmployeeID,Integer)
+        Public Overloads Overridable Function Insert(ByVal EmployeeID As String, ByVal EmployeeName As String, ByVal Department As String, ByVal Age As Global.System.Nullable(Of Short), ByVal Address As String, ByVal ContactNumber As String, ByVal EmailAddress As String, ByVal Status As String, ByVal PagibigNo As String, ByVal PhilHealthNo As String, ByVal SSSNo As String, ByVal TIN As String) As Integer
+            If (EmployeeID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("EmployeeID")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(EmployeeID,String)
+            End If
             If (EmployeeName Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
@@ -1292,6 +1530,26 @@ Namespace HRMSDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(Status,String)
             End If
+            If (PagibigNo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(PagibigNo,String)
+            End If
+            If (PhilHealthNo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(PhilHealthNo,String)
+            End If
+            If (SSSNo Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(SSSNo,String)
+            End If
+            If (TIN Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(TIN,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -1312,7 +1570,7 @@ Namespace HRMSDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
-                    ByVal EmployeeID As Integer,  _
+                    ByVal EmployeeID As String,  _
                     ByVal EmployeeName As String,  _
                     ByVal Department As String,  _
                     ByVal Age As Global.System.Nullable(Of Short),  _
@@ -1320,15 +1578,27 @@ Namespace HRMSDataSetTableAdapters
                     ByVal ContactNumber As String,  _
                     ByVal EmailAddress As String,  _
                     ByVal Status As String,  _
-                    ByVal Original_EmployeeID As Integer,  _
+                    ByVal PagibigNo As String,  _
+                    ByVal PhilHealthNo As String,  _
+                    ByVal SSSNo As String,  _
+                    ByVal TIN As String,  _
+                    ByVal Original_EmployeeID As String,  _
                     ByVal Original_EmployeeName As String,  _
                     ByVal Original_Department As String,  _
                     ByVal Original_Age As Global.System.Nullable(Of Short),  _
                     ByVal Original_Address As String,  _
                     ByVal Original_ContactNumber As String,  _
                     ByVal Original_EmailAddress As String,  _
-                    ByVal Original_Status As String) As Integer
-            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(EmployeeID,Integer)
+                    ByVal Original_Status As String,  _
+                    ByVal Original_PagibigNo As String,  _
+                    ByVal Original_PhilHealthNo As String,  _
+                    ByVal Original_SSSNo As String,  _
+                    ByVal Original_TIN As String) As Integer
+            If (EmployeeID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("EmployeeID")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(EmployeeID,String)
+            End If
             If (EmployeeName Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
@@ -1364,55 +1634,107 @@ Namespace HRMSDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Status,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_EmployeeID,Integer)
-            If (Original_EmployeeName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+            If (PagibigNo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(PagibigNo,String)
+            End If
+            If (PhilHealthNo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(PhilHealthNo,String)
+            End If
+            If (SSSNo Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_EmployeeName,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(SSSNo,String)
             End If
-            If (Original_Department Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            If (TIN Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Department,String)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(TIN,String)
             End If
-            If (Original_Age.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_Age.Value,Short)
+            If (Original_EmployeeID Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_EmployeeID")
             Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_EmployeeID,String)
+            End If
+            If (Original_EmployeeName Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_EmployeeName,String)
             End If
-            If (Original_Address Is Nothing) Then
+            If (Original_Department Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Address,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_Department,String)
             End If
-            If (Original_ContactNumber Is Nothing) Then
+            If (Original_Age.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Age.Value,Short)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_ContactNumber,String)
             End If
-            If (Original_EmailAddress Is Nothing) Then
+            If (Original_Address Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_EmailAddress,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_Address,String)
             End If
-            If (Original_Status Is Nothing) Then
+            If (Original_ContactNumber Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_Status,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_ContactNumber,String)
+            End If
+            If (Original_EmailAddress Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_EmailAddress,String)
+            End If
+            If (Original_Status Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_Status,String)
+            End If
+            If (Original_PagibigNo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_PagibigNo,String)
+            End If
+            If (Original_PhilHealthNo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_PhilHealthNo,String)
+            End If
+            If (Original_SSSNo Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_SSSNo,String)
+            End If
+            If (Original_TIN Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_TIN,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1433,8 +1755,31 @@ Namespace HRMSDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal EmployeeName As String, ByVal Department As String, ByVal Age As Global.System.Nullable(Of Short), ByVal Address As String, ByVal ContactNumber As String, ByVal EmailAddress As String, ByVal Status As String, ByVal Original_EmployeeID As Integer, ByVal Original_EmployeeName As String, ByVal Original_Department As String, ByVal Original_Age As Global.System.Nullable(Of Short), ByVal Original_Address As String, ByVal Original_ContactNumber As String, ByVal Original_EmailAddress As String, ByVal Original_Status As String) As Integer
-            Return Me.Update(Original_EmployeeID, EmployeeName, Department, Age, Address, ContactNumber, EmailAddress, Status, Original_EmployeeID, Original_EmployeeName, Original_Department, Original_Age, Original_Address, Original_ContactNumber, Original_EmailAddress, Original_Status)
+        Public Overloads Overridable Function Update( _
+                    ByVal EmployeeName As String,  _
+                    ByVal Department As String,  _
+                    ByVal Age As Global.System.Nullable(Of Short),  _
+                    ByVal Address As String,  _
+                    ByVal ContactNumber As String,  _
+                    ByVal EmailAddress As String,  _
+                    ByVal Status As String,  _
+                    ByVal PagibigNo As String,  _
+                    ByVal PhilHealthNo As String,  _
+                    ByVal SSSNo As String,  _
+                    ByVal TIN As String,  _
+                    ByVal Original_EmployeeID As String,  _
+                    ByVal Original_EmployeeName As String,  _
+                    ByVal Original_Department As String,  _
+                    ByVal Original_Age As Global.System.Nullable(Of Short),  _
+                    ByVal Original_Address As String,  _
+                    ByVal Original_ContactNumber As String,  _
+                    ByVal Original_EmailAddress As String,  _
+                    ByVal Original_Status As String,  _
+                    ByVal Original_PagibigNo As String,  _
+                    ByVal Original_PhilHealthNo As String,  _
+                    ByVal Original_SSSNo As String,  _
+                    ByVal Original_TIN As String) As Integer
+            Return Me.Update(Original_EmployeeID, EmployeeName, Department, Age, Address, ContactNumber, EmailAddress, Status, PagibigNo, PhilHealthNo, SSSNo, TIN, Original_EmployeeID, Original_EmployeeName, Original_Department, Original_Age, Original_Address, Original_ContactNumber, Original_EmailAddress, Original_Status, Original_PagibigNo, Original_PhilHealthNo, Original_SSSNo, Original_TIN)
         End Function
     End Class
     

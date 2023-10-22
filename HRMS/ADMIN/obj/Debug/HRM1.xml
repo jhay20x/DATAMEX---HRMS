@@ -132,5 +132,70 @@ HRM1
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="T:HRM1.HRMSDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSet.EmployeesInformationDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSet.EmployeesInformationRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSet.EmployeesInformationRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSetTableAdapters.EmployeesInformationTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(HRM1.HRMSDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(HRM1.HRMSDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(HRM1.HRMSDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateAll(HRM1.HRMSDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:HRM1.HRMSDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
 </members>
 </doc>

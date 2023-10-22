@@ -95,6 +95,12 @@
     <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EmployeeListAddForm.Designer.vb">
+      <DependentUpon>EmployeeListAddForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeListAddForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HRMSDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeListAddForm.resx">
+      <DependentUpon>EmployeeListAddForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

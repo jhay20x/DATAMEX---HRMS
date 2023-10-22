@@ -1,7 +1,9 @@
 ﻿Imports System.Runtime.CompilerServices
 
-Public Class DashBoard
+Public Class DashBoardForm
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'HRMSDataSet.EmployeesInformation' table. You can move, or remove it, as needed.
+        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
         PanelAtt.Visible = False
         PanelLeave.Visible = False
         PanelPayroll.Visible = False
@@ -223,19 +225,20 @@ Public Class DashBoard
         EmployeesSalaryPanel.Enabled = True
     End Sub
 
-    Private Sub Panel20_Paint(sender As Object, e As PaintEventArgs) Handles Panel20.Paint
+    Private Sub EmployeesInformationBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles EmployeesInformationBindingNavigatorSaveItem.Click
+        Me.Validate()
+        Me.EmployeesInformationBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.HRMSDataSet)
 
     End Sub
 
-    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
-
+    Private Sub EmployeeListAddButton_Click(sender As Object, e As EventArgs) Handles EmployeeListAddButton.Click
+        'Me.Hide()
+        Me.Enabled = False
+        EmployeeListAddForm.Show()
     End Sub
 
-    Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
-
-    End Sub
-
-    Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
-
+    Private Sub DashBoard_Shown(sender As Object, e As EventArgs) Handles Me.EnabledChanged
+        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
     End Sub
 End Class

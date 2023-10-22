@@ -50,7 +50,6 @@ C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.pdb
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.xml
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.AssemblyReference.cache
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.SuggestedBindingRedirects.cache
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.DashBoard.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Login.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Form2.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Resources.resources
@@ -76,3 +75,5 @@ C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMI
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.exe
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.xml
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.pdb
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeListAddForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.DashBoardForm.resources
