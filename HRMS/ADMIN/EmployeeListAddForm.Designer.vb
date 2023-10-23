@@ -83,6 +83,7 @@ Partial Class EmployeeListAddForm
         'ELABackButton
         '
         Me.ELABackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ELABackButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ELABackButton.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ELABackButton.Location = New System.Drawing.Point(11, 9)
         Me.ELABackButton.Name = "ELABackButton"
@@ -367,8 +368,10 @@ Partial Class EmployeeListAddForm
         '
         'EmployeeListAddForm
         '
+        Me.AcceptButton = Me.ELAAddButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.ELABackButton
         Me.ClientSize = New System.Drawing.Size(736, 545)
         Me.Controls.Add(Me.Panel2)
         Me.MaximizeBox = False

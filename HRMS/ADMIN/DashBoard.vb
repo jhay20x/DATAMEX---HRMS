@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.Data.SqlClient
+Imports System.Runtime.CompilerServices
 
 Public Class DashBoardForm
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -239,7 +240,35 @@ Public Class DashBoardForm
         EmployeeListAddForm.Show(Me)
     End Sub
 
-    Private Sub DashBoard_Shown(sender As Object, e As EventArgs) Handles Me.EnabledChanged
+    Private Sub DashBoard_Shown(sender As Object, e As EventArgs) Handles Me.EnabledChanged, Me.Load
+        Dim TotalEmp As Integer
+        Dim WorkingEmp As Integer
+        Dim NonWorkingEmp As Integer
+
         Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
+
+        Dim cmd1 As New SqlCommand("SELECT COUNT(*) as tablecount FROM EmployeesInformation;", con)
+        Dim cmd2 As New SqlCommand("SELECT COUNT(EmployeeStatus) as workingcount FROM EmployeesInformation WHERE EmployeeStatus LIKE 'Working%';", con)
+        Dim cmd3 As New SqlCommand("SELECT COUNT(EmployeeStatus) as nonworkcount FROM EmployeesInformation WHERE EmployeeStatus LIKE 'Non-Working%';", con)
+
+        Dim sdr1 As SqlDataReader = cmd1.ExecuteReader
+        Dim sdr2 As SqlDataReader = cmd2.ExecuteReader
+        Dim sdr3 As SqlDataReader = cmd3.ExecuteReader
+
+        While sdr1.Read
+            TotalEmp = sdr1("tablecount")
+        End While
+
+        While sdr2.Read
+            WorkingEmp = sdr2("workingcount")
+        End While
+
+        While sdr3.Read
+            NonWorkingEmp = sdr3("nonworkcount")
+        End While
+
+        ELTotalLabel.Text = TotalEmp
+        ELWorkingLabel.Text = WorkingEmp
+        ELNWorkingLabel.Text = NonWorkingEmp
     End Sub
 End Class

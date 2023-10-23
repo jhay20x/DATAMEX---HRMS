@@ -1,10 +1,11 @@
 ﻿Imports Microsoft.VisualBasic.Logging
 Imports System.Data.OleDb
 Imports System.Data.SqlClient
+Imports System.Text
 
 Public Class EmployeeListAddForm
     Private Sub EmployeeListAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        ELANameTextBox.Select()
     End Sub
 
     Private Sub EmployeeListAddForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed, Me.Closed
@@ -76,8 +77,11 @@ Public Class EmployeeListAddForm
                     End If
                 Next
 
+                DashBoardForm.Enabled = True
+                DashBoardForm.Enabled = False
+
                 MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-                ELANameTextBox.Focus()
+                ELANameTextBox.Select()
             Else
                 MsgBox("Employee not added. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
             End If
@@ -88,5 +92,27 @@ Public Class EmployeeListAddForm
 
     Private Sub ELADeptComboBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELADeptComboBox.KeyPress
         e.Handled = True
+    End Sub
+
+    Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELANameTextBox.KeyPress, ELAAddressTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress
+        If (Asc(e.KeyChar) > 32 And Asc(e.KeyChar) < 44 Or Asc(e.KeyChar) = 47) Then
+            e.Handled = True
+        ElseIf (Asc(e.KeyChar) > 57 And Asc(e.KeyChar) < 64) Then
+            e.Handled = True
+        ElseIf (Asc(e.KeyChar) > 90 And Asc(e.KeyChar) < 97) Then
+            e.Handled = True
+        ElseIf (Asc(e.KeyChar) > 122 And Asc(e.KeyChar) < 128) Then
+            e.Handled = True
+        Else
+            e.Handled = False
+        End If
+    End Sub
+
+    Private Sub ELAAgeTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELAAgeTextBox.KeyPress, ELATINTextBox.KeyPress, ELASSSTextBox.KeyPress, ELAPHTextBox.KeyPress, ELAPITextBox.KeyPress, ELAContTextBox.KeyPress
+        If (Asc(e.KeyChar) > 47 And Asc(e.KeyChar) < 58) Or Asc(e.KeyChar) < 32 Then
+            e.Handled = False
+        Else
+            e.Handled = True
+        End If
     End Sub
 End Class
