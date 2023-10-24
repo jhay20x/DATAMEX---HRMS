@@ -1,11 +1,19 @@
-﻿Imports System.Data.SqlClient
+﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
 Imports System.Runtime.CompilerServices
 
 Public Class DashBoardForm
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'HRMSDataSet.EmployeesInformation' table. You can move, or remove it, as needed.
         Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
-        con.Open()
+
+        If con.State = ConnectionState.Open Then
+            con.Close()
+            con.Open()
+        Else
+            con.Open()
+        End If
+
         PanelAtt.Visible = False
         PanelLeave.Visible = False
         PanelPayroll.Visible = False
@@ -156,6 +164,7 @@ Public Class DashBoardForm
         DashboardPanel.Visible = False
         DashboardPanel.Enabled = False
         EmployeeAllPanel.Visible = True
+        EmployeesInformationDataGridView.CurrentCell = Nothing
         EmployeeAllPanel.Enabled = True
     End Sub
 
@@ -245,8 +254,6 @@ Public Class DashBoardForm
         Dim WorkingEmp As Integer
         Dim NonWorkingEmp As Integer
 
-        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
-
         Dim cmd1 As New SqlCommand("SELECT COUNT(*) as tablecount FROM EmployeesInformation;", con)
         Dim cmd2 As New SqlCommand("SELECT COUNT(EmployeeStatus) as workingcount FROM EmployeesInformation WHERE EmployeeStatus LIKE 'Working%';", con)
         Dim cmd3 As New SqlCommand("SELECT COUNT(EmployeeStatus) as nonworkcount FROM EmployeesInformation WHERE EmployeeStatus LIKE 'Non-Working%';", con)
@@ -270,5 +277,41 @@ Public Class DashBoardForm
         ELTotalLabel.Text = TotalEmp
         ELWorkingLabel.Text = WorkingEmp
         ELNWorkingLabel.Text = NonWorkingEmp
+
+        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
+        Me.EmployeesInformationDataGridView.Sort(Me.EmployeesInformationDataGridView.Columns(5), ListSortDirection.Descending)
+        EmployeesInformationDataGridView.CurrentCell = Nothing
+        EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
+        EmployeeListEditButton.Enabled = False
+    End Sub
+
+    Private Sub EmployeesInformationDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles EmployeesInformationDataGridView.CellClick
+        If My.Computer.Keyboard.ShiftKeyDown Then
+            EmployeesInformationDataGridView.CurrentCell = Nothing
+            EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
+            EmployeeListEditButton.Enabled = False
+
+        Else
+            Try
+                EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit
+                EmployeeListEditButton.Enabled = True
+
+                Dim index As Integer
+
+                index = e.RowIndex
+
+                Dim selectedrow As DataGridViewRow
+                selectedrow = EmployeesInformationDataGridView.Rows(index)
+
+                EmpIdEdit = selectedrow.Cells(0).Value
+            Catch ex As Exception
+
+            End Try
+        End If
+    End Sub
+
+    Private Sub EmployeeListEditButton_Click(sender As Object, e As EventArgs) Handles EmployeeListEditButton.Click
+        Me.Enabled = False
+        EmployeeListEditForm.Show(Me)
     End Sub
 End Class
