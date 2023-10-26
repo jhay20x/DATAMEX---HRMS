@@ -15,9 +15,8 @@ Public Class EmployeeListAddForm
 
     Private Sub ELABackButton_Click(sender As Object, e As EventArgs) Handles ELABackButton.Click
         DashBoardForm.Enabled = True
-        Me.Hide()
-        Me.Close()
         DashBoardForm.Show()
+        Me.Close()
     End Sub
 
     Private Sub ELAAddButton_Click(sender As Object, e As EventArgs) Handles ELAAddButton.Click
@@ -45,6 +44,8 @@ Public Class EmployeeListAddForm
                 Dim cmd As New SqlCommand("SELECT EmployeeName,Age,Address FROM EmployeesInformation WHERE (EmployeeName LIKE '" _
                 & ELANameTextBox.Text & "%' AND Age LIKE '" & ELAAgeTextBox.Text & "%') OR (EmployeeName LIKE '" _
                 & ELANameTextBox.Text & "%' AND Address LIKE '" & ELAAddressTextBox.Text & "%');", con)
+
+                con.Open()
 
                 Dim sdr As SqlDataReader = cmd.ExecuteReader
 
@@ -100,6 +101,8 @@ Public Class EmployeeListAddForm
 
                     DashBoardForm.Enabled = True
                     DashBoardForm.Enabled = False
+
+                    con.Close()
 
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                     ELANameTextBox.Select()

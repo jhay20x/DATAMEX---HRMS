@@ -10,6 +10,8 @@ Public Class EmployeeListEditForm
 
         Dim cmd As New SqlCommand("SELECT * FROM EmployeesInformation WHERE EmployeeId = '" & EmpIdEdit & "';", con)
 
+        con.Open()
+
         Dim sdr As SqlDataReader = cmd.ExecuteReader
 
         While sdr.Read
@@ -39,19 +41,20 @@ Public Class EmployeeListEditForm
                 ELEEmployeeStatusComboBox.SelectedIndex = 1
             End If
         End While
+
+        con.Close()
     End Sub
 
     Private Sub EmployeeListEditForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed, Me.Closed
-        EmpIdEdit = ""
         DashBoardForm.Enabled = True
         DashBoardForm.Show()
+        EmpIdEdit = ""
     End Sub
 
     Private Sub ELEBackButton_Click(sender As Object, e As EventArgs) Handles ELEBackButton.Click
         DashBoardForm.Enabled = True
-        Me.Hide()
-        Me.Close()
         DashBoardForm.Show()
+        Me.Close()
     End Sub
 
     Private Sub ELEAddButton_Click(sender As Object, e As EventArgs) Handles ELEAddButton.Click
@@ -91,14 +94,18 @@ Public Class EmployeeListEditForm
                     EmpStat = "Non-Working"
                 End If
 
-                Dim cmd As New SqlCommand("UPDATE EmployeesInformation SET EmployeeName = '" & ELENameTextBox.Text & "' , Age = '" & ELEAgeTextBox.Text & "', Address = '" _
-                & ELEAddressTextBox.Text & "', SSSNo = '" & ELESSSTextBox.Text & "', PhilHealthNo = '" & ELEPHTextBox.Text & "', PagibigNo = '" & ELEPITextBox.Text & "', TIN = '" _
-                & ELEContTextBox.Text & "', EmailAddress = '" & ELEEmailTextBox.Text & "', Department = '" & EmpDept & "', EmployeeStatus = '" & EmpStat & "' WHERE EmployeeId = '" & EmpIdEdit & "';", con)
+                Dim cmd As New SqlCommand("UPDATE EmployeesInformation SET EmployeeName = '" & ELENameTextBox.Text & "',  Department = '" & EmpDept & "', Age = '" & ELEAgeTextBox.Text & "', Address = '" _
+                & ELEAddressTextBox.Text & "', SSSNo = '" & ELESSSTextBox.Text & "', PhilHealthNo = '" & ELEPHTextBox.Text & "', PagibigNo = '" & ELEPITextBox.Text & "', TIN = '" & ELETINTextBox.Text & "', ContactNumber = '" _
+                & ELEContTextBox.Text & "', EmailAddress = '" & ELEEmailTextBox.Text & "', EmployeeStatus = '" & EmpStat & "' WHERE EmployeeId = '" & EmpIdEdit & "';", con)
+
+                con.Open()
 
                 cmd.ExecuteNonQuery()
 
                 DashBoardForm.Enabled = True
                 DashBoardForm.Enabled = False
+
+                con.Close()
 
                 MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 ELENameTextBox.Select()

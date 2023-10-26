@@ -7,12 +7,12 @@ Public Class DashBoardForm
         'TODO: This line of code loads data into the 'HRMSDataSet.EmployeesInformation' table. You can move, or remove it, as needed.
         Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
 
-        If con.State = ConnectionState.Open Then
-            con.Close()
-            con.Open()
-        Else
-            con.Open()
-        End If
+        'If con.State = ConnectionState.Open Then
+        '    con.Close()
+        '    con.Open()
+        'Else
+        '    con.Open()
+        'End If
 
         PanelAtt.Visible = False
         PanelLeave.Visible = False
@@ -258,6 +258,13 @@ Public Class DashBoardForm
         Dim cmd2 As New SqlCommand("SELECT COUNT(EmployeeStatus) as workingcount FROM EmployeesInformation WHERE EmployeeStatus LIKE 'Working%';", con)
         Dim cmd3 As New SqlCommand("SELECT COUNT(EmployeeStatus) as nonworkcount FROM EmployeesInformation WHERE EmployeeStatus LIKE 'Non-Working%';", con)
 
+        If con.State = ConnectionState.Open Then
+            con.Close()
+            con.Open()
+        Else
+            con.Open()
+        End If
+
         Dim sdr1 As SqlDataReader = cmd1.ExecuteReader
         Dim sdr2 As SqlDataReader = cmd2.ExecuteReader
         Dim sdr3 As SqlDataReader = cmd3.ExecuteReader
@@ -283,6 +290,7 @@ Public Class DashBoardForm
         EmployeesInformationDataGridView.CurrentCell = Nothing
         EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
         EmployeeListEditButton.Enabled = False
+        con.Close()
     End Sub
 
     Private Sub EmployeesInformationDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles EmployeesInformationDataGridView.CellClick
@@ -313,5 +321,9 @@ Public Class DashBoardForm
     Private Sub EmployeeListEditButton_Click(sender As Object, e As EventArgs) Handles EmployeeListEditButton.Click
         Me.Enabled = False
         EmployeeListEditForm.Show(Me)
+    End Sub
+
+    Private Sub EmployeeListUpdateButton_Click(sender As Object, e As EventArgs) Handles EmployeeListUpdateButton.Click
+        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
     End Sub
 End Class
