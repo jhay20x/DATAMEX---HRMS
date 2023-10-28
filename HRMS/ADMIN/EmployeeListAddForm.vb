@@ -37,74 +37,45 @@ Public Class EmployeeListAddForm
 
         If TextCount = 0 Then
             If MsgBox("Add employee to the list?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
-                Dim Name As String
-                Dim Age As String
-                Dim Address As String
+                Dim Name As String = ELANameTextBox.Text
+                Dim query As String = "SELECT COUNT(*) FROM EmployeesInformation WHERE EmployeeName LIKE @Name + '%';"
 
-                Dim cmd As New SqlCommand("SELECT EmployeeName,Age,Address FROM EmployeesInformation WHERE (EmployeeName LIKE '" _
-                & ELANameTextBox.Text & "%' AND Age LIKE '" & ELAAgeTextBox.Text & "%') OR (EmployeeName LIKE '" _
-                & ELANameTextBox.Text & "%' AND Address LIKE '" & ELAAddressTextBox.Text & "%');", con)
+                CheckEmployee(Name, query)
 
-                con.Open()
-
-                Dim sdr As SqlDataReader = cmd.ExecuteReader
-
-                While sdr.Read
-                    Name = sdr("EmployeeName")
-                    Age = sdr("Age")
-                    Address = sdr("Address")
-                End While
-
-                MsgBox(Name & Age & Address)
-
-                If (ELANameTextBox.Text = Name And ELAAgeTextBox.Text = Age) Or (ELANameTextBox.Text = Name And ELAAddressTextBox.Text = Address) Then
+                If IsValid = False Then
                     MsgBox("Employee is already in the list.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
                 Else
-                    Dim EmpIdSfx As String
-                    Dim EmpId As String
-                    Dim EmpDept As String
+                    Dim datehired As Date = Now
+                    Dim query2 As String = "INSERT INTO EmployeesInformation VALUES (@EmployeeName, @Department, @DateHired, @Age, @Address, @SSSNo, @PhilHealthNo, @PagibigNo, @TIN, @ContactNumber, @EmailAddress, @EmployeeStatus);"
 
-                    If ELADeptComboBox.Text = "IT" Then
-                        EmpDept = "IT"
-                    ElseIf ELADeptComboBox.Text = "HM" Then
-                        EmpDept = "HM"
-                    ElseIf ELADeptComboBox.Text = "TM" Then
-                        EmpDept = "TM"
-                    ElseIf ELADeptComboBox.Text = "GP" Then
-                        EmpDept = "GP"
-                    End If
+                    Prepare(query2)
+                    AddParameters("@EmployeeName", ELANameTextBox.Text)
+                    AddParameters("@Department", ELADeptComboBox.Text)
+                    AddParameters("@DateHired", datehired)
+                    AddParameters("@Age", ELAAgeTextBox.Text)
+                    AddParameters("@Address", ELAAddressTextBox.Text)
+                    AddParameters("@SSSNo", ELASSSTextBox.Text)
+                    AddParameters("@PhilHealthNo", ELAPHTextBox.Text)
+                    AddParameters("@PagibigNo", ELAPITextBox.Text)
+                    AddParameters("@TIN", ELATINTextBox.Text)
+                    AddParameters("@ContactNumber", ELAContTextBox.Text)
+                    AddParameters("@EmailAddress", ELAEmailTextBox.Text)
+                    AddParameters("@EmployeeStatus", "Working")
+                    Execute()
+                    Params.Clear()
 
-                    Dim cmd1 As New SqlCommand("SELECT EmployeeID FROM EmployeesInformation WHERE EmployeeID LIKE 'DMX-VAL-%';", con)
-
-                    Dim sdr1 As SqlDataReader = cmd1.ExecuteReader
-
-                    While sdr1.Read
-                        EmpIdSfx = sdr1("EmployeeID")
-                    End While
-
-                    EmpId = "DMX-VAL-" & (EmpIdSfx.Substring(8, 1) + 1) & "-" & EmpDept
-
-                    Dim cmd2 As New SqlCommand("INSERT INTO EmployeesInformation VALUES ('" & EmpId & "','" & ELANameTextBox.Text & "','" _
-                    & EmpDept & "'," & ELAAgeTextBox.Text & ",'" & ELAAddressTextBox.Text & "','" & ELASSSTextBox.Text & "','" & ELAPHTextBox.Text & "','" _
-                    & ELAPITextBox.Text & "','" & ELATINTextBox.Text & "','" & ELAContTextBox.Text & "','" & ELAEmailTextBox.Text & "','Working');", con)
-
-                    cmd2.ExecuteNonQuery()
-
-                    Dim Ctrl As Control
                     For Each Ctrl In ELAFormPanel.Controls
                         If TypeOf Ctrl Is TextBox Then
                             Ctrl.Text = ""
                         ElseIf TypeOf Ctrl Is ComboBox Then
-                            ELADeptComboBox.SelectedIndex = -1
+                            Ctrl.SelectedIndex = -1
                         End If
                     Next
 
-                    DashBoardForm.Enabled = True
-                    DashBoardForm.Enabled = False
-
-                    con.Close()
+                    DashBoardForm.EmployeesInformationTableAdapter.Fill(DashBoardForm.HRMSDataSet.EmployeesInformation)
 
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+
                     ELANameTextBox.Select()
                 End If
             Else

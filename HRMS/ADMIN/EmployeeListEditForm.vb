@@ -8,9 +8,9 @@ Public Class EmployeeListEditForm
 
         Dim dept, status As String
 
-        Dim cmd As New SqlCommand("SELECT * FROM EmployeesInformation WHERE EmployeeId = '" & EmpIdEdit & "';", con)
+        Dim cmd As New SqlCommand("SELECT * FROM EmployeesInformation WHERE EmployeeId = '" & EmpIdEdit & "';", Connection)
 
-        con.Open()
+        Connection.Open()
 
         Dim sdr As SqlDataReader = cmd.ExecuteReader
 
@@ -42,7 +42,7 @@ Public Class EmployeeListEditForm
             End If
         End While
 
-        con.Close()
+        Connection.Close()
     End Sub
 
     Private Sub EmployeeListEditForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed, Me.Closed
@@ -75,42 +75,40 @@ Public Class EmployeeListEditForm
 
         If TextCount = 0 Then
             If MsgBox("Update the employee's information?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
-                Dim EmpDept As String
-                Dim EmpStat As String
+                Dim query As String = "UPDATE EmployeesInformation SET EmployeeName = @EmployeeName,  Department = @Department, Age = @Age, Address = @Address," _
+                & "SSSNo = @SSSNo, PhilHealthNo = @PhilHealthNo, PagibigNo = @PagibigNo, TIN = @TIN, ContactNumber = @ContactNumber, EmailAddress = @EmailAddress, EmployeeStatus = @EmployeeStatus " _
+                & "WHERE EmployeeId = @EmployeeID;"
 
-                If ELEDeptComboBox.Text = "IT" Then
-                    EmpDept = "IT"
-                ElseIf ELEDeptComboBox.Text = "HM" Then
-                    EmpDept = "HM"
-                ElseIf ELEDeptComboBox.Text = "TM" Then
-                    EmpDept = "TM"
-                ElseIf ELEDeptComboBox.Text = "GP" Then
-                    EmpDept = "GP"
-                End If
+                Prepare(query)
+                AddParameters("@EmployeeID", EmpIdEdit)
+                AddParameters("@EmployeeName", ELENameTextBox.Text)
+                AddParameters("@Department", ELEDeptComboBox.Text)
+                AddParameters("@Age", ELEAgeTextBox.Text)
+                AddParameters("@Address", ELEAddressTextBox.Text)
+                AddParameters("@SSSNo", ELESSSTextBox.Text)
+                AddParameters("@PhilHealthNo", ELEPHTextBox.Text)
+                AddParameters("@PagibigNo", ELEPITextBox.Text)
+                AddParameters("@TIN", ELETINTextBox.Text)
+                AddParameters("@ContactNumber", ELEContTextBox.Text)
+                AddParameters("@EmailAddress", ELEEmailTextBox.Text)
+                AddParameters("@EmployeeStatus", ELEEmployeeStatusComboBox.Text)
+                Execute()
+                Params.Clear()
 
-                If ELEEmployeeStatusComboBox.Text = "Working" Then
-                    EmpStat = "Working"
-                ElseIf ELEEmployeeStatusComboBox.Text = "Non-Working" Then
-                    EmpStat = "Non-Working"
-                End If
+                For Each Ctrl In ELEFormPanel.Controls
+                    If TypeOf Ctrl Is TextBox Then
+                        Ctrl.Text = ""
+                    ElseIf TypeOf Ctrl Is ComboBox Then
+                        Ctrl.SelectedIndex = -1
+                    End If
+                Next
 
-                Dim cmd As New SqlCommand("UPDATE EmployeesInformation SET EmployeeName = '" & ELENameTextBox.Text & "',  Department = '" & EmpDept & "', Age = '" & ELEAgeTextBox.Text & "', Address = '" _
-                & ELEAddressTextBox.Text & "', SSSNo = '" & ELESSSTextBox.Text & "', PhilHealthNo = '" & ELEPHTextBox.Text & "', PagibigNo = '" & ELEPITextBox.Text & "', TIN = '" & ELETINTextBox.Text & "', ContactNumber = '" _
-                & ELEContTextBox.Text & "', EmailAddress = '" & ELEEmailTextBox.Text & "', EmployeeStatus = '" & EmpStat & "' WHERE EmployeeId = '" & EmpIdEdit & "';", con)
+                DashBoardForm.EmployeesInformationTableAdapter.Fill(DashBoardForm.HRMSDataSet.EmployeesInformation)
 
-                con.Open()
-
-                cmd.ExecuteNonQuery()
-
-                DashBoardForm.Enabled = True
-                DashBoardForm.Enabled = False
-
-                con.Close()
-
-                MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                MsgBox("Employee information successfully updated.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 ELENameTextBox.Select()
             Else
-                MsgBox("Employee not added. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                MsgBox("Employee not Updated. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
 
             End If
         Else
