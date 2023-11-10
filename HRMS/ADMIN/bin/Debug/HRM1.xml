@@ -142,22 +142,22 @@ HRM1
 Represents a strongly typed in-memory cache of data.
 </summary>
 </member>
-<member name="T:HRM1.HRMSDataSet.EmployeesInformationDataTable">
+<member name="T:HRM1.HRMSDataSet.EmployeesDataTable">
 <summary>
 Represents the strongly named DataTable class.
 </summary>
 </member>
-<member name="T:HRM1.HRMSDataSet.EmployeesInformationRow">
+<member name="T:HRM1.HRMSDataSet.EmployeesRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
-<member name="T:HRM1.HRMSDataSet.EmployeesInformationRowChangeEvent">
+<member name="T:HRM1.HRMSDataSet.EmployeesRowChangeEvent">
 <summary>
 Row event argument class
 </summary>
 </member>
-<member name="T:HRM1.HRMSDataSetTableAdapters.EmployeesInformationTableAdapter">
+<member name="T:HRM1.HRMSDataSetTableAdapters.EmployeesTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

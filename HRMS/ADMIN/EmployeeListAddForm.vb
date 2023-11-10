@@ -5,7 +5,7 @@ Imports System.Text
 
 Public Class EmployeeListAddForm
     Private Sub EmployeeListAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ELANameTextBox.Select()
+        ELALastNameTextBox.Select()
     End Sub
 
     Private Sub EmployeeListAddForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed, Me.Closed
@@ -37,20 +37,27 @@ Public Class EmployeeListAddForm
 
         If TextCount = 0 Then
             If MsgBox("Add employee to the list?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
-                Dim Name As String = ELANameTextBox.Text
-                Dim query As String = "SELECT COUNT(*) FROM EmployeesInformation WHERE EmployeeName LIKE @Name + '%';"
+                Dim LName As String = ELALastNameTextBox.Text
+                Dim FName As String = ELAFirstNameTextBox.Text
+                Dim query1 As String = "SELECT COUNT(LastName) FROM Employees WHERE LastName LIKE '%' + @LastName + '%';"
+                Dim query2 As String = "SELECT COUNT(FirstName) FROM Employees WHERE FirstName LIKE '%' + @FirstName + '%';"
 
-                CheckEmployee(Name, query)
+                CheckEmployee(LName, FName, query1, query2)
 
                 If IsValid = False Then
                     MsgBox("Employee is already in the list.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
                 Else
                     Dim datehired As Date = Now
-                    Dim query2 As String = "INSERT INTO EmployeesInformation VALUES (@EmployeeName, @Department, @DateHired, @Age, @Address, @SSSNo, @PhilHealthNo, @PagibigNo, @TIN, @ContactNumber, @EmailAddress, @EmployeeStatus);"
+                    Dim status As Integer = 1
+                    Dim department As Integer = ELADeptComboBox.Text.Substring(0, 1)
+                    Dim query3 As String = "INSERT INTO Employees VALUES (@LastName, @FirstName, @MiddleName, @EmployeeStatus, @Department, @DateHired, @Age, @Address, @SSSNo, @PhilHealthNo, @PagibigNo, @TIN, @ContactNumber, @EmailAddress);"
 
-                    Prepare(query2)
-                    AddParameters("@EmployeeName", ELANameTextBox.Text)
-                    AddParameters("@Department", ELADeptComboBox.Text)
+                    Prepare(query3)
+                    AddParameters("@LastName", ELALastNameTextBox.Text)
+                    AddParameters("@FirstName", ELAFirstNameTextBox.Text)
+                    AddParameters("@MiddleName", ELAMiddleNameTextBox.Text)
+                    AddParameters("@EmployeeStatus", status)
+                    AddParameters("@Department", department)
                     AddParameters("@DateHired", datehired)
                     AddParameters("@Age", ELAAgeTextBox.Text)
                     AddParameters("@Address", ELAAddressTextBox.Text)
@@ -60,7 +67,6 @@ Public Class EmployeeListAddForm
                     AddParameters("@TIN", ELATINTextBox.Text)
                     AddParameters("@ContactNumber", ELAContTextBox.Text)
                     AddParameters("@EmailAddress", ELAEmailTextBox.Text)
-                    AddParameters("@EmployeeStatus", "Working")
                     Execute()
                     Params.Clear()
 
@@ -72,11 +78,11 @@ Public Class EmployeeListAddForm
                         End If
                     Next
 
-                    DashBoardForm.EmployeesInformationTableAdapter.Fill(DashBoardForm.HRMSDataSet.EmployeesInformation)
+                    DashBoardForm.EmployeesTableAdapter.Fill(DashBoardForm.HRMSDataSet.Employees)
 
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
 
-                    ELANameTextBox.Select()
+                    ELALastNameTextBox.Select()
                 End If
             Else
                 MsgBox("Employee not added. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
@@ -91,7 +97,7 @@ Public Class EmployeeListAddForm
         e.Handled = True
     End Sub
 
-    Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELANameTextBox.KeyPress, ELAAddressTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress
+    Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELALastNameTextBox.KeyPress, ELAFirstNameTextBox.KeyPress, ELAMiddleNameTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress
         If (Asc(e.KeyChar) > 32 And Asc(e.KeyChar) < 44 Or Asc(e.KeyChar) = 47) Then
             e.Handled = True
         ElseIf (Asc(e.KeyChar) > 57 And Asc(e.KeyChar) < 64) Then
@@ -105,11 +111,21 @@ Public Class EmployeeListAddForm
         End If
     End Sub
 
-    Private Sub ELAAgeTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELAAgeTextBox.KeyPress, ELATINTextBox.KeyPress, ELASSSTextBox.KeyPress, ELAPHTextBox.KeyPress, ELAPITextBox.KeyPress, ELAContTextBox.KeyPress
+    Private Sub ELAAgeTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELATINTextBox.KeyPress, ELASSSTextBox.KeyPress, ELAPHTextBox.KeyPress, ELAPITextBox.KeyPress, ELAContTextBox.KeyPress
         If (Asc(e.KeyChar) > 47 And Asc(e.KeyChar) < 58) Or Asc(e.KeyChar) < 32 Then
             e.Handled = False
         Else
             e.Handled = True
+        End If
+    End Sub
+
+    Private Sub MiddleNameCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles MiddleNameCheckBox.CheckedChanged
+        If MiddleNameCheckBox.CheckState = CheckState.Checked Then
+            ELAMiddleNameTextBox.Text = "N/A"
+            ELAMiddleNameTextBox.Enabled = False
+        Else
+            ELAMiddleNameTextBox.Text = ""
+            ELAMiddleNameTextBox.Enabled = True
         End If
     End Sub
 End Class

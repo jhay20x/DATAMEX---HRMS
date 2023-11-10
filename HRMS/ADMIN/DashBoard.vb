@@ -4,8 +4,8 @@ Imports System.Runtime.CompilerServices
 
 Public Class DashBoardForm
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'HRMSDataSet.EmployeesInformation' table. You can move, or remove it, as needed.
-        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
+        'TODO: This line of code loads data into the 'HRMSDataSet.Employees' table. You can move, or remove it, as needed.
+        Me.EmployeesTableAdapter.Fill(Me.HRMSDataSet.Employees)
 
         PanelAtt.Visible = False
         PanelLeave.Visible = False
@@ -157,7 +157,7 @@ Public Class DashBoardForm
         DashboardPanel.Visible = False
         DashboardPanel.Enabled = False
         EmployeeAllPanel.Visible = True
-        EmployeesInformationDataGridView.CurrentCell = Nothing
+        EmployeesDataGridView.CurrentCell = Nothing
         EmployeeAllPanel.Enabled = True
     End Sub
 
@@ -229,9 +229,9 @@ Public Class DashBoardForm
         EmployeesSalaryPanel.Enabled = True
     End Sub
 
-    Private Sub EmployeesInformationBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles EmployeesInformationBindingNavigatorSaveItem.Click
+    Private Sub EmployeesBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles EmployeesBindingNavigatorSaveItem.Click
         Me.Validate()
-        Me.EmployeesInformationBindingSource.EndEdit()
+        Me.EmployeesBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.HRMSDataSet)
 
     End Sub
@@ -247,7 +247,7 @@ Public Class DashBoardForm
         Dim WorkingEmp As Integer
         Dim NonWorkingEmp As Integer
 
-        Dim cmd As New SqlCommand("SELECT EmployeeStatus FROM EmployeesInformation;", Connection)
+        Dim cmd As New SqlCommand("SELECT EmployeeStatusID FROM Employees;", Connection)
 
         If Connection.State = ConnectionState.Open Then
             Connection.Close()
@@ -259,13 +259,13 @@ Public Class DashBoardForm
         Dim sdr As SqlDataReader = cmd.ExecuteReader
 
         While sdr.Read
-            If sdr("EmployeeStatus") = "Working" Or sdr("EmployeeStatus") = "Non-Working" Then
+            If sdr("EmployeeStatusID") = 1 Or sdr("EmployeeStatusID") = 2 Then
                 TotalEmp += 1
             End If
-            If sdr("EmployeeStatus") = "Working" Then
+            If sdr("EmployeeStatusID") = 1 Then
                 WorkingEmp += 1
             End If
-            If sdr("EmployeeStatus") = "Non-Working" Then
+            If sdr("EmployeeStatusID") = 2 Then
                 NonWorkingEmp += 1
             End If
         End While
@@ -275,9 +275,9 @@ Public Class DashBoardForm
         ELNWorkingLabel.Text = NonWorkingEmp
 
         Try
-            Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
-            Me.EmployeesInformationDataGridView.Sort(Me.EmployeesInformationDataGridView.Columns(6), ListSortDirection.Descending)
-            EmployeesInformationDataGridView.CurrentCell = Nothing
+            Me.EmployeesTableAdapter.Fill(Me.HRMSDataSet.Employees)
+            Me.EmployeesDataGridView.Sort(Me.EmployeesDataGridView.Columns(6), ListSortDirection.Descending)
+            EmployeesDataGridView.CurrentCell = Nothing
             EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
             EmployeeListEditButton.Enabled = False
         Catch ex As Exception
@@ -287,9 +287,9 @@ Public Class DashBoardForm
         Connection.Close()
     End Sub
 
-    Private Sub EmployeesInformationDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles EmployeesInformationDataGridView.CellClick
+    Private Sub EmployeesDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles EmployeesDataGridView.CellClick
         If My.Computer.Keyboard.ShiftKeyDown Then
-            EmployeesInformationDataGridView.CurrentCell = Nothing
+            EmployeesDataGridView.CurrentCell = Nothing
             EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
             EmployeeListEditButton.Enabled = False
 
@@ -303,7 +303,7 @@ Public Class DashBoardForm
                 index = e.RowIndex
 
                 Dim selectedrow As DataGridViewRow
-                selectedrow = EmployeesInformationDataGridView.Rows(index)
+                selectedrow = EmployeesDataGridView.Rows(index)
 
                 EmpIdEdit = selectedrow.Cells(0).Value
             Catch ex As Exception
@@ -318,8 +318,8 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub EmployeeListUpdateButton_Click(sender As Object, e As EventArgs) Handles EmployeeListUpdateButton.Click
-        Me.EmployeesInformationTableAdapter.Fill(Me.HRMSDataSet.EmployeesInformation)
-        EmployeesInformationDataGridView.CurrentCell = Nothing
+        Me.EmployeesTableAdapter.Fill(Me.HRMSDataSet.Employees)
+        EmployeesDataGridView.CurrentCell = Nothing
         EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
         EmployeeListEditButton.Enabled = False
     End Sub

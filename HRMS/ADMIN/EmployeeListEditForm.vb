@@ -95,15 +95,7 @@ Public Class EmployeeListEditForm
                 Execute()
                 Params.Clear()
 
-                For Each Ctrl In ELEFormPanel.Controls
-                    If TypeOf Ctrl Is TextBox Then
-                        Ctrl.Text = ""
-                    ElseIf TypeOf Ctrl Is ComboBox Then
-                        Ctrl.SelectedIndex = -1
-                    End If
-                Next
-
-                DashBoardForm.EmployeesInformationTableAdapter.Fill(DashBoardForm.HRMSDataSet.EmployeesInformation)
+                DashBoardForm.EmployeesTableAdapter.Fill(DashBoardForm.HRMSDataSet.Employees)
 
                 MsgBox("Employee information successfully updated.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 ELENameTextBox.Select()

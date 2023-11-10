@@ -27,6 +27,14 @@ Partial Class EmployeeListAddForm
         Me.ELABackButton = New System.Windows.Forms.Button()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.ELAFormPanel = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ELAAddressTextBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ELAAgeTextBox = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ELAMiddleNameTextBox = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.ELAFirstNameTextBox = New System.Windows.Forms.TextBox()
         Me.ELAContTextBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ELAEmailTextBox = New System.Windows.Forms.TextBox()
@@ -41,12 +49,9 @@ Partial Class EmployeeListAddForm
         Me.ELASSSTextBox = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.ELATINTextBox = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ELAAddressTextBox = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ELAAgeTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.ELANameTextBox = New System.Windows.Forms.TextBox()
+        Me.ELALastNameTextBox = New System.Windows.Forms.TextBox()
+        Me.MiddleNameCheckBox = New System.Windows.Forms.CheckBox()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -65,7 +70,7 @@ Partial Class EmployeeListAddForm
         Me.Panel11.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel11.Location = New System.Drawing.Point(0, 0)
         Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(736, 52)
+        Me.Panel11.Size = New System.Drawing.Size(765, 52)
         Me.Panel11.TabIndex = 0
         '
         'ELAAddButton
@@ -73,10 +78,10 @@ Partial Class EmployeeListAddForm
         Me.ELAAddButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ELAAddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ELAAddButton.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELAAddButton.Location = New System.Drawing.Point(626, 9)
+        Me.ELAAddButton.Location = New System.Drawing.Point(655, 9)
         Me.ELAAddButton.Name = "ELAAddButton"
         Me.ELAAddButton.Size = New System.Drawing.Size(98, 35)
-        Me.ELAAddButton.TabIndex = 27
+        Me.ELAAddButton.TabIndex = 0
         Me.ELAAddButton.Text = "ADD"
         Me.ELAAddButton.UseVisualStyleBackColor = True
         '
@@ -106,6 +111,14 @@ Partial Class EmployeeListAddForm
         '
         'ELAFormPanel
         '
+        Me.ELAFormPanel.Controls.Add(Me.Label3)
+        Me.ELAFormPanel.Controls.Add(Me.ELAAddressTextBox)
+        Me.ELAFormPanel.Controls.Add(Me.Label2)
+        Me.ELAFormPanel.Controls.Add(Me.ELAAgeTextBox)
+        Me.ELAFormPanel.Controls.Add(Me.Label7)
+        Me.ELAFormPanel.Controls.Add(Me.ELAMiddleNameTextBox)
+        Me.ELAFormPanel.Controls.Add(Me.Label12)
+        Me.ELAFormPanel.Controls.Add(Me.ELAFirstNameTextBox)
         Me.ELAFormPanel.Controls.Add(Me.ELAContTextBox)
         Me.ELAFormPanel.Controls.Add(Me.Label4)
         Me.ELAFormPanel.Controls.Add(Me.ELAEmailTextBox)
@@ -120,32 +133,109 @@ Partial Class EmployeeListAddForm
         Me.ELAFormPanel.Controls.Add(Me.ELASSSTextBox)
         Me.ELAFormPanel.Controls.Add(Me.Label10)
         Me.ELAFormPanel.Controls.Add(Me.ELATINTextBox)
-        Me.ELAFormPanel.Controls.Add(Me.Label3)
-        Me.ELAFormPanel.Controls.Add(Me.ELAAddressTextBox)
-        Me.ELAFormPanel.Controls.Add(Me.Label2)
-        Me.ELAFormPanel.Controls.Add(Me.ELAAgeTextBox)
         Me.ELAFormPanel.Controls.Add(Me.Label1)
-        Me.ELAFormPanel.Controls.Add(Me.ELANameTextBox)
+        Me.ELAFormPanel.Controls.Add(Me.ELALastNameTextBox)
+        Me.ELAFormPanel.Controls.Add(Me.MiddleNameCheckBox)
         Me.ELAFormPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ELAFormPanel.Location = New System.Drawing.Point(0, 132)
         Me.ELAFormPanel.Name = "ELAFormPanel"
-        Me.ELAFormPanel.Size = New System.Drawing.Size(736, 413)
+        Me.ELAFormPanel.Size = New System.Drawing.Size(765, 413)
         Me.ELAFormPanel.TabIndex = 8
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label3.Location = New System.Drawing.Point(457, 92)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(69, 21)
+        Me.Label3.TabIndex = 42
+        Me.Label3.Tag = ""
+        Me.Label3.Text = "Address:"
+        '
+        'ELAAddressTextBox
+        '
+        Me.ELAAddressTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ELAAddressTextBox.Location = New System.Drawing.Point(545, 88)
+        Me.ELAAddressTextBox.MaxLength = 100
+        Me.ELAAddressTextBox.Name = "ELAAddressTextBox"
+        Me.ELAAddressTextBox.Size = New System.Drawing.Size(181, 29)
+        Me.ELAAddressTextBox.TabIndex = 8
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label2.Location = New System.Drawing.Point(457, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(40, 21)
+        Me.Label2.TabIndex = 40
+        Me.Label2.Tag = ""
+        Me.Label2.Text = "Age:"
+        '
+        'ELAAgeTextBox
+        '
+        Me.ELAAgeTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ELAAgeTextBox.Location = New System.Drawing.Point(545, 37)
+        Me.ELAAgeTextBox.MaxLength = 3
+        Me.ELAAgeTextBox.Name = "ELAAgeTextBox"
+        Me.ELAAgeTextBox.Size = New System.Drawing.Size(181, 29)
+        Me.ELAAgeTextBox.TabIndex = 7
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label7.Location = New System.Drawing.Point(30, 143)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(107, 21)
+        Me.Label7.TabIndex = 38
+        Me.Label7.Tag = ""
+        Me.Label7.Text = "Middle Name:"
+        '
+        'ELAMiddleNameTextBox
+        '
+        Me.ELAMiddleNameTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ELAMiddleNameTextBox.Location = New System.Drawing.Point(141, 139)
+        Me.ELAMiddleNameTextBox.MaxLength = 50
+        Me.ELAMiddleNameTextBox.Name = "ELAMiddleNameTextBox"
+        Me.ELAMiddleNameTextBox.Size = New System.Drawing.Size(181, 29)
+        Me.ELAMiddleNameTextBox.TabIndex = 2
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label12.Location = New System.Drawing.Point(30, 92)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(89, 21)
+        Me.Label12.TabIndex = 36
+        Me.Label12.Tag = ""
+        Me.Label12.Text = "First Name:"
+        '
+        'ELAFirstNameTextBox
+        '
+        Me.ELAFirstNameTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ELAFirstNameTextBox.Location = New System.Drawing.Point(141, 88)
+        Me.ELAFirstNameTextBox.MaxLength = 50
+        Me.ELAFirstNameTextBox.Name = "ELAFirstNameTextBox"
+        Me.ELAFirstNameTextBox.Size = New System.Drawing.Size(181, 29)
+        Me.ELAFirstNameTextBox.TabIndex = 1
         '
         'ELAContTextBox
         '
         Me.ELAContTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELAContTextBox.Location = New System.Drawing.Point(492, 37)
+        Me.ELAContTextBox.Location = New System.Drawing.Point(545, 139)
         Me.ELAContTextBox.MaxLength = 10
         Me.ELAContTextBox.Name = "ELAContTextBox"
         Me.ELAContTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELAContTextBox.TabIndex = 27
+        Me.ELAContTextBox.TabIndex = 9
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label4.Location = New System.Drawing.Point(358, 41)
+        Me.Label4.Location = New System.Drawing.Point(411, 143)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(128, 21)
         Me.Label4.TabIndex = 28
@@ -155,17 +245,17 @@ Partial Class EmployeeListAddForm
         'ELAEmailTextBox
         '
         Me.ELAEmailTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELAEmailTextBox.Location = New System.Drawing.Point(492, 88)
+        Me.ELAEmailTextBox.Location = New System.Drawing.Point(545, 190)
         Me.ELAEmailTextBox.MaxLength = 30
         Me.ELAEmailTextBox.Name = "ELAEmailTextBox"
         Me.ELAEmailTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELAEmailTextBox.TabIndex = 29
+        Me.ELAEmailTextBox.TabIndex = 10
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label5.Location = New System.Drawing.Point(358, 92)
+        Me.Label5.Location = New System.Drawing.Point(411, 194)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(111, 21)
         Me.Label5.TabIndex = 30
@@ -176,7 +266,7 @@ Partial Class EmployeeListAddForm
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label6.Location = New System.Drawing.Point(358, 143)
+        Me.Label6.Location = New System.Drawing.Point(411, 245)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(96, 21)
         Me.Label6.TabIndex = 31
@@ -188,11 +278,11 @@ Partial Class EmployeeListAddForm
         Me.ELADeptComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ELADeptComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ELADeptComboBox.FormattingEnabled = True
-        Me.ELADeptComboBox.Items.AddRange(New Object() {"IT", "HM", "TM", "GP"})
-        Me.ELADeptComboBox.Location = New System.Drawing.Point(492, 139)
+        Me.ELADeptComboBox.Items.AddRange(New Object() {"1 - HM", "2 - IT", "3 - TM", "4 - History", "5 - English", "6 - Math", "7 - PE", "8 - Science", "9 - Values"})
+        Me.ELADeptComboBox.Location = New System.Drawing.Point(545, 241)
         Me.ELADeptComboBox.Name = "ELADeptComboBox"
         Me.ELADeptComboBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELADeptComboBox.TabIndex = 32
+        Me.ELADeptComboBox.TabIndex = 11
         '
         'Label11
         '
@@ -208,11 +298,11 @@ Partial Class EmployeeListAddForm
         'ELAPITextBox
         '
         Me.ELAPITextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELAPITextBox.Location = New System.Drawing.Point(118, 343)
+        Me.ELAPITextBox.Location = New System.Drawing.Point(141, 343)
         Me.ELAPITextBox.MaxLength = 20
         Me.ELAPITextBox.Name = "ELAPITextBox"
         Me.ELAPITextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELAPITextBox.TabIndex = 25
+        Me.ELAPITextBox.TabIndex = 6
         '
         'Label8
         '
@@ -228,11 +318,11 @@ Partial Class EmployeeListAddForm
         'ELAPHTextBox
         '
         Me.ELAPHTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELAPHTextBox.Location = New System.Drawing.Point(118, 292)
+        Me.ELAPHTextBox.Location = New System.Drawing.Point(141, 292)
         Me.ELAPHTextBox.MaxLength = 20
         Me.ELAPHTextBox.Name = "ELAPHTextBox"
         Me.ELAPHTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELAPHTextBox.TabIndex = 23
+        Me.ELAPHTextBox.TabIndex = 5
         '
         'Label9
         '
@@ -248,11 +338,11 @@ Partial Class EmployeeListAddForm
         'ELASSSTextBox
         '
         Me.ELASSSTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELASSSTextBox.Location = New System.Drawing.Point(118, 241)
+        Me.ELASSSTextBox.Location = New System.Drawing.Point(141, 241)
         Me.ELASSSTextBox.MaxLength = 20
         Me.ELASSSTextBox.Name = "ELASSSTextBox"
         Me.ELASSSTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELASSSTextBox.TabIndex = 21
+        Me.ELASSSTextBox.TabIndex = 4
         '
         'Label10
         '
@@ -268,51 +358,11 @@ Partial Class EmployeeListAddForm
         'ELATINTextBox
         '
         Me.ELATINTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELATINTextBox.Location = New System.Drawing.Point(118, 190)
+        Me.ELATINTextBox.Location = New System.Drawing.Point(141, 190)
         Me.ELATINTextBox.MaxLength = 20
         Me.ELATINTextBox.Name = "ELATINTextBox"
         Me.ELATINTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELATINTextBox.TabIndex = 19
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label3.Location = New System.Drawing.Point(30, 143)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 21)
-        Me.Label3.TabIndex = 9
-        Me.Label3.Tag = ""
-        Me.Label3.Text = "Address:"
-        '
-        'ELAAddressTextBox
-        '
-        Me.ELAAddressTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELAAddressTextBox.Location = New System.Drawing.Point(118, 139)
-        Me.ELAAddressTextBox.MaxLength = 100
-        Me.ELAAddressTextBox.Name = "ELAAddressTextBox"
-        Me.ELAAddressTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELAAddressTextBox.TabIndex = 8
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label2.Location = New System.Drawing.Point(30, 92)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(40, 21)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Tag = ""
-        Me.Label2.Text = "Age:"
-        '
-        'ELAAgeTextBox
-        '
-        Me.ELAAgeTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELAAgeTextBox.Location = New System.Drawing.Point(118, 88)
-        Me.ELAAgeTextBox.MaxLength = 3
-        Me.ELAAgeTextBox.Name = "ELAAgeTextBox"
-        Me.ELAAgeTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELAAgeTextBox.TabIndex = 6
+        Me.ELATINTextBox.TabIndex = 3
         '
         'Label1
         '
@@ -320,19 +370,30 @@ Partial Class EmployeeListAddForm
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.Label1.Location = New System.Drawing.Point(30, 41)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(55, 21)
+        Me.Label1.Size = New System.Drawing.Size(87, 21)
         Me.Label1.TabIndex = 5
         Me.Label1.Tag = ""
-        Me.Label1.Text = "Name:"
+        Me.Label1.Text = "Last Name:"
         '
-        'ELANameTextBox
+        'ELALastNameTextBox
         '
-        Me.ELANameTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELANameTextBox.Location = New System.Drawing.Point(118, 37)
-        Me.ELANameTextBox.MaxLength = 50
-        Me.ELANameTextBox.Name = "ELANameTextBox"
-        Me.ELANameTextBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELANameTextBox.TabIndex = 4
+        Me.ELALastNameTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.ELALastNameTextBox.Location = New System.Drawing.Point(141, 37)
+        Me.ELALastNameTextBox.MaxLength = 50
+        Me.ELALastNameTextBox.Name = "ELALastNameTextBox"
+        Me.ELALastNameTextBox.Size = New System.Drawing.Size(181, 29)
+        Me.ELALastNameTextBox.TabIndex = 0
+        '
+        'MiddleNameCheckBox
+        '
+        Me.MiddleNameCheckBox.AutoSize = True
+        Me.MiddleNameCheckBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MiddleNameCheckBox.Location = New System.Drawing.Point(328, 141)
+        Me.MiddleNameCheckBox.Name = "MiddleNameCheckBox"
+        Me.MiddleNameCheckBox.Size = New System.Drawing.Size(57, 25)
+        Me.MiddleNameCheckBox.TabIndex = 43
+        Me.MiddleNameCheckBox.Text = "N/A"
+        Me.MiddleNameCheckBox.UseVisualStyleBackColor = True
         '
         'Panel4
         '
@@ -340,7 +401,7 @@ Partial Class EmployeeListAddForm
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(0, 52)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(736, 80)
+        Me.Panel4.Size = New System.Drawing.Size(765, 80)
         Me.Panel4.TabIndex = 29
         '
         'Label31
@@ -363,7 +424,7 @@ Partial Class EmployeeListAddForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(736, 545)
+        Me.Panel2.Size = New System.Drawing.Size(765, 545)
         Me.Panel2.TabIndex = 11
         '
         'EmployeeListAddForm
@@ -372,10 +433,11 @@ Partial Class EmployeeListAddForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ELABackButton
-        Me.ClientSize = New System.Drawing.Size(736, 545)
+        Me.ClientSize = New System.Drawing.Size(765, 545)
         Me.Controls.Add(Me.Panel2)
         Me.MaximizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(752, 584)
+        Me.MaximumSize = New System.Drawing.Size(781, 584)
+        Me.MinimumSize = New System.Drawing.Size(781, 584)
         Me.Name = "EmployeeListAddForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DATAMEX - HRMS: Employee List Add"
@@ -395,13 +457,9 @@ Partial Class EmployeeListAddForm
     Friend WithEvents Label33 As Label
     Friend WithEvents ELAFormPanel As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents ELANameTextBox As TextBox
+    Friend WithEvents ELALastNameTextBox As TextBox
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label3 As Label
-    Friend WithEvents ELAAddressTextBox As TextBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ELAAgeTextBox As TextBox
     Friend WithEvents ELAAddButton As Button
     Friend WithEvents Label11 As Label
     Friend WithEvents ELAPITextBox As TextBox
@@ -418,4 +476,13 @@ Partial Class EmployeeListAddForm
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents ELADeptComboBox As ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents ELAAddressTextBox As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ELAAgeTextBox As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ELAMiddleNameTextBox As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents ELAFirstNameTextBox As TextBox
+    Friend WithEvents MiddleNameCheckBox As CheckBox
 End Class

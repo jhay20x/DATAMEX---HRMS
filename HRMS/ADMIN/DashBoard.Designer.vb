@@ -72,7 +72,7 @@ Partial Class DashBoardForm
         Me.MenuHide2Button = New System.Windows.Forms.Button()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.EmployeeAllPanel = New System.Windows.Forms.Panel()
-        Me.EmployeesInformationDataGridView = New System.Windows.Forms.DataGridView()
+        Me.EmployeesDataGridView = New System.Windows.Forms.DataGridView()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.EmployeeListAddButton = New System.Windows.Forms.Button()
@@ -180,7 +180,7 @@ Partial Class DashBoardForm
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.MenuHide7Button = New System.Windows.Forms.Button()
         Me.Label43 = New System.Windows.Forms.Label()
-        Me.EmployeesInformationBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.EmployeesBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
@@ -192,7 +192,7 @@ Partial Class DashBoardForm
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.EmployeesInformationBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.EmployeesBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.PanelPayroll = New System.Windows.Forms.Panel()
@@ -222,23 +222,25 @@ Partial Class DashBoardForm
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.EmployeesInformationBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EmployeesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.HRMSDataSet = New HRM1.HRMSDataSet()
-        Me.EmployeesInformationTableAdapter = New HRM1.HRMSDataSetTableAdapters.EmployeesInformationTableAdapter()
         Me.TableAdapterManager = New HRM1.HRMSDataSetTableAdapters.TableAdapterManager()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeesTableAdapter = New HRM1.HRMSDataSetTableAdapters.EmployeesTableAdapter()
+        Me.ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FirstName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MiddleName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeeStatusID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DepartmentID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DateHired = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmployeeStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SSSNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PhilHealthNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PagibigNo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TIN = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DashboardPanel.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.AttendanceTodayPanel.SuspendLayout()
@@ -247,7 +249,7 @@ Partial Class DashBoardForm
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.EmployeeAllPanel.SuspendLayout()
-        CType(Me.EmployeesInformationDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmployeesDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel9.SuspendLayout()
@@ -270,8 +272,8 @@ Partial Class DashBoardForm
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel20.SuspendLayout()
         Me.Panel13.SuspendLayout()
-        CType(Me.EmployeesInformationBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.EmployeesInformationBindingNavigator.SuspendLayout()
+        CType(Me.EmployeesBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.EmployeesBindingNavigator.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.PanelPayroll.SuspendLayout()
         Me.PanelProject.SuspendLayout()
@@ -279,7 +281,7 @@ Partial Class DashBoardForm
         Me.PanelLeave.SuspendLayout()
         Me.PanelAtt.SuspendLayout()
         Me.PanelEmployee.SuspendLayout()
-        CType(Me.EmployeesInformationBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmployeesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.HRMSDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -732,7 +734,7 @@ Partial Class DashBoardForm
         'EmployeeAllPanel
         '
         Me.EmployeeAllPanel.BackColor = System.Drawing.Color.White
-        Me.EmployeeAllPanel.Controls.Add(Me.EmployeesInformationDataGridView)
+        Me.EmployeeAllPanel.Controls.Add(Me.EmployeesDataGridView)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel7)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel8)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel9)
@@ -744,13 +746,13 @@ Partial Class DashBoardForm
         Me.EmployeeAllPanel.TabIndex = 8
         Me.EmployeeAllPanel.Visible = False
         '
-        'EmployeesInformationDataGridView
+        'EmployeesDataGridView
         '
-        Me.EmployeesInformationDataGridView.AllowUserToAddRows = False
-        Me.EmployeesInformationDataGridView.AllowUserToDeleteRows = False
-        Me.EmployeesInformationDataGridView.AutoGenerateColumns = False
-        Me.EmployeesInformationDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.EmployeesInformationDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        Me.EmployeesDataGridView.AllowUserToAddRows = False
+        Me.EmployeesDataGridView.AllowUserToDeleteRows = False
+        Me.EmployeesDataGridView.AutoGenerateColumns = False
+        Me.EmployeesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.EmployeesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -759,10 +761,10 @@ Partial Class DashBoardForm
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.EmployeesInformationDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.EmployeesInformationDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.EmployeesInformationDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DateHired, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn20, Me.EmployeeStatus, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.SSSNo, Me.PhilHealthNo, Me.PagibigNo, Me.TIN})
-        Me.EmployeesInformationDataGridView.DataSource = Me.EmployeesInformationBindingSource
+        Me.EmployeesDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.EmployeesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.EmployeesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.LastName, Me.FirstName, Me.MiddleName, Me.EmployeeStatusID, Me.DepartmentID, Me.DateHired, Me.SSSNo, Me.PhilHealthNo, Me.PagibigNo, Me.TIN, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22})
+        Me.EmployeesDataGridView.DataSource = Me.EmployeesBindingSource
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -770,16 +772,16 @@ Partial Class DashBoardForm
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.EmployeesInformationDataGridView.DefaultCellStyle = DataGridViewCellStyle3
-        Me.EmployeesInformationDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EmployeesInformationDataGridView.Location = New System.Drawing.Point(0, 248)
-        Me.EmployeesInformationDataGridView.Name = "EmployeesInformationDataGridView"
-        Me.EmployeesInformationDataGridView.ReadOnly = True
-        Me.EmployeesInformationDataGridView.RowHeadersVisible = False
-        Me.EmployeesInformationDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.EmployeesInformationDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.EmployeesInformationDataGridView.Size = New System.Drawing.Size(802, 428)
-        Me.EmployeesInformationDataGridView.TabIndex = 8
+        Me.EmployeesDataGridView.DefaultCellStyle = DataGridViewCellStyle3
+        Me.EmployeesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.EmployeesDataGridView.Location = New System.Drawing.Point(0, 248)
+        Me.EmployeesDataGridView.Name = "EmployeesDataGridView"
+        Me.EmployeesDataGridView.ReadOnly = True
+        Me.EmployeesDataGridView.RowHeadersVisible = False
+        Me.EmployeesDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.EmployeesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.EmployeesDataGridView.Size = New System.Drawing.Size(802, 428)
+        Me.EmployeesDataGridView.TabIndex = 8
         '
         'Panel7
         '
@@ -1951,25 +1953,25 @@ Partial Class DashBoardForm
         Me.Label43.TabIndex = 0
         Me.Label43.Text = "EMPLOYEES SALARY"
         '
-        'EmployeesInformationBindingNavigator
+        'EmployeesBindingNavigator
         '
-        Me.EmployeesInformationBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.EmployeesInformationBindingNavigator.BindingSource = Me.EmployeesInformationBindingSource
-        Me.EmployeesInformationBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.EmployeesInformationBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.EmployeesInformationBindingNavigator.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.EmployeesInformationBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.EmployeesInformationBindingNavigatorSaveItem})
-        Me.EmployeesInformationBindingNavigator.Location = New System.Drawing.Point(262, 0)
-        Me.EmployeesInformationBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.EmployeesInformationBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.EmployeesInformationBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.EmployeesInformationBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.EmployeesInformationBindingNavigator.Name = "EmployeesInformationBindingNavigator"
-        Me.EmployeesInformationBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.EmployeesInformationBindingNavigator.Size = New System.Drawing.Size(802, 25)
-        Me.EmployeesInformationBindingNavigator.TabIndex = 15
-        Me.EmployeesInformationBindingNavigator.Text = "BindingNavigator1"
-        Me.EmployeesInformationBindingNavigator.Visible = False
+        Me.EmployeesBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.EmployeesBindingNavigator.BindingSource = Me.EmployeesBindingSource
+        Me.EmployeesBindingNavigator.CountItem = Me.BindingNavigatorCountItem
+        Me.EmployeesBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.EmployeesBindingNavigator.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.EmployeesBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.EmployeesBindingNavigatorSaveItem})
+        Me.EmployeesBindingNavigator.Location = New System.Drawing.Point(262, 0)
+        Me.EmployeesBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+        Me.EmployeesBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
+        Me.EmployeesBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
+        Me.EmployeesBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+        Me.EmployeesBindingNavigator.Name = "EmployeesBindingNavigator"
+        Me.EmployeesBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
+        Me.EmployeesBindingNavigator.Size = New System.Drawing.Size(802, 25)
+        Me.EmployeesBindingNavigator.TabIndex = 15
+        Me.EmployeesBindingNavigator.Text = "BindingNavigator1"
+        Me.EmployeesBindingNavigator.Visible = False
         '
         'BindingNavigatorAddNewItem
         '
@@ -2023,6 +2025,7 @@ Partial Class DashBoardForm
         '
         Me.BindingNavigatorPositionItem.AccessibleName = "Position"
         Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
         Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
         Me.BindingNavigatorPositionItem.Text = "0"
@@ -2056,13 +2059,12 @@ Partial Class DashBoardForm
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'EmployeesInformationBindingNavigatorSaveItem
+        'EmployeesBindingNavigatorSaveItem
         '
-        Me.EmployeesInformationBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.EmployeesInformationBindingNavigatorSaveItem.Image = CType(resources.GetObject("EmployeesInformationBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.EmployeesInformationBindingNavigatorSaveItem.Name = "EmployeesInformationBindingNavigatorSaveItem"
-        Me.EmployeesInformationBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.EmployeesInformationBindingNavigatorSaveItem.Text = "Save Data"
+        Me.EmployeesBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.EmployeesBindingNavigatorSaveItem.Name = "EmployeesBindingNavigatorSaveItem"
+        Me.EmployeesBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
+        Me.EmployeesBindingNavigatorSaveItem.Text = "Save Data"
         '
         'Panel1
         '
@@ -2522,97 +2524,82 @@ Partial Class DashBoardForm
         Me.Panel2.Size = New System.Drawing.Size(245, 193)
         Me.Panel2.TabIndex = 0
         '
-        'EmployeesInformationBindingSource
+        'EmployeesBindingSource
         '
-        Me.EmployeesInformationBindingSource.DataMember = "EmployeesInformation"
-        Me.EmployeesInformationBindingSource.DataSource = Me.HRMSDataSet
+        Me.EmployeesBindingSource.DataMember = "Employees"
+        Me.EmployeesBindingSource.DataSource = Me.HRMSDataSet
         '
         'HRMSDataSet
         '
         Me.HRMSDataSet.DataSetName = "HRMSDataSet"
         Me.HRMSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'EmployeesInformationTableAdapter
-        '
-        Me.EmployeesInformationTableAdapter.ClearBeforeFill = True
-        '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.EmployeesInformationTableAdapter = Me.EmployeesInformationTableAdapter
+        Me.TableAdapterManager.Connection = Nothing
+        'Me.TableAdapterManager.EmployeesTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'DataGridViewTextBoxColumn1
+        'EmployeesTableAdapter
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "EmployeeID"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Employee ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 152
+        Me.EmployeesTableAdapter.ClearBeforeFill = True
         '
-        'DataGridViewTextBoxColumn2
+        'ID
         '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "EmployeeName"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Employee Name"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 167
+        Me.ID.DataPropertyName = "ID"
+        Me.ID.HeaderText = "ID"
+        Me.ID.Name = "ID"
+        Me.ID.ReadOnly = True
+        Me.ID.Width = 72
         '
-        'DataGridViewTextBoxColumn3
+        'LastName
         '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "Department"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Department"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 147
+        Me.LastName.DataPropertyName = "LastName"
+        Me.LastName.HeaderText = "Last Name"
+        Me.LastName.Name = "LastName"
+        Me.LastName.ReadOnly = True
+        Me.LastName.Width = 135
+        '
+        'FirstName
+        '
+        Me.FirstName.DataPropertyName = "FirstName"
+        Me.FirstName.HeaderText = "First Name"
+        Me.FirstName.Name = "FirstName"
+        Me.FirstName.ReadOnly = True
+        Me.FirstName.Width = 137
+        '
+        'MiddleName
+        '
+        Me.MiddleName.DataPropertyName = "MiddleName"
+        Me.MiddleName.HeaderText = "Middle Name"
+        Me.MiddleName.Name = "MiddleName"
+        Me.MiddleName.ReadOnly = True
+        Me.MiddleName.Width = 159
+        '
+        'EmployeeStatusID
+        '
+        Me.EmployeeStatusID.DataPropertyName = "EmployeeStatusID"
+        Me.EmployeeStatusID.HeaderText = "Employee Status"
+        Me.EmployeeStatusID.Name = "EmployeeStatusID"
+        Me.EmployeeStatusID.ReadOnly = True
+        Me.EmployeeStatusID.Width = 168
+        '
+        'DepartmentID
+        '
+        Me.DepartmentID.DataPropertyName = "DepartmentID"
+        Me.DepartmentID.HeaderText = "Department"
+        Me.DepartmentID.Name = "DepartmentID"
+        Me.DepartmentID.ReadOnly = True
+        Me.DepartmentID.Width = 147
         '
         'DateHired
         '
         Me.DateHired.DataPropertyName = "DateHired"
-        Me.DateHired.HeaderText = "DateHired"
+        Me.DateHired.HeaderText = "Date Hired"
         Me.DateHired.Name = "DateHired"
         Me.DateHired.ReadOnly = True
-        Me.DateHired.Width = 133
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Age"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Age"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 85
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "Address"
-        Me.DataGridViewTextBoxColumn20.HeaderText = "Address"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        Me.DataGridViewTextBoxColumn20.ReadOnly = True
-        Me.DataGridViewTextBoxColumn20.Width = 115
-        '
-        'EmployeeStatus
-        '
-        Me.EmployeeStatus.DataPropertyName = "EmployeeStatus"
-        Me.EmployeeStatus.HeaderText = "EmployeeStatus"
-        Me.EmployeeStatus.Name = "EmployeeStatus"
-        Me.EmployeeStatus.ReadOnly = True
-        Me.EmployeeStatus.Width = 178
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "ContactNumber"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "Contact Number"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        Me.DataGridViewTextBoxColumn21.ReadOnly = True
-        Me.DataGridViewTextBoxColumn21.Width = 167
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.DataPropertyName = "EmailAddress"
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Email Address"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        Me.DataGridViewTextBoxColumn22.ReadOnly = True
-        Me.DataGridViewTextBoxColumn22.Width = 150
+        Me.DateHired.Width = 127
         '
         'SSSNo
         '
@@ -2646,13 +2633,45 @@ Partial Class DashBoardForm
         Me.TIN.ReadOnly = True
         Me.TIN.Width = 82
         '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "Age"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Age"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 85
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "Address"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "Address"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.ReadOnly = True
+        Me.DataGridViewTextBoxColumn20.Width = 115
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "ContactNumber"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "Contact Number"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.ReadOnly = True
+        Me.DataGridViewTextBoxColumn21.Width = 167
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "EmailAddress"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Email Address"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.ReadOnly = True
+        Me.DataGridViewTextBoxColumn22.Width = 150
+        '
         'DashBoardForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1064, 676)
-        Me.Controls.Add(Me.EmployeesInformationBindingNavigator)
+        Me.Controls.Add(Me.EmployeesBindingNavigator)
         Me.Controls.Add(Me.EmployeeAllPanel)
         Me.Controls.Add(Me.ProjectsListPanel)
         Me.Controls.Add(Me.HolidayListPanel)
@@ -2679,7 +2698,7 @@ Partial Class DashBoardForm
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         Me.EmployeeAllPanel.ResumeLayout(False)
-        CType(Me.EmployeesInformationDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmployeesDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
@@ -2716,9 +2735,9 @@ Partial Class DashBoardForm
         Me.Panel20.PerformLayout()
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
-        CType(Me.EmployeesInformationBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.EmployeesInformationBindingNavigator.ResumeLayout(False)
-        Me.EmployeesInformationBindingNavigator.PerformLayout()
+        CType(Me.EmployeesBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.EmployeesBindingNavigator.ResumeLayout(False)
+        Me.EmployeesBindingNavigator.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.PanelPayroll.ResumeLayout(False)
         Me.PanelProject.ResumeLayout(False)
@@ -2726,7 +2745,7 @@ Partial Class DashBoardForm
         Me.PanelLeave.ResumeLayout(False)
         Me.PanelAtt.ResumeLayout(False)
         Me.PanelEmployee.ResumeLayout(False)
-        CType(Me.EmployeesInformationBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmployeesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HRMSDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -2905,10 +2924,8 @@ Partial Class DashBoardForm
     Friend WithEvents Button8 As Button
     Friend WithEvents Button11 As Button
     Friend WithEvents HRMSDataSet As HRMSDataSet
-    Friend WithEvents EmployeesInformationBindingSource As BindingSource
-    Friend WithEvents EmployeesInformationTableAdapter As HRMSDataSetTableAdapters.EmployeesInformationTableAdapter
-    Friend WithEvents TableAdapterManager As HRMSDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents EmployeesInformationBindingNavigator As BindingNavigator
+    Friend WithEvents EmployeesBindingSource As BindingSource
+    Friend WithEvents EmployeesBindingNavigator As BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
     Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
@@ -2920,25 +2937,32 @@ Partial Class DashBoardForm
     Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents EmployeesInformationBindingNavigatorSaveItem As ToolStripButton
-    Friend WithEvents EmployeesInformationDataGridView As DataGridView
+    Friend WithEvents EmployeesBindingNavigatorSaveItem As ToolStripButton
+    Friend WithEvents EmployeesDataGridView As DataGridView
     Friend WithEvents ELTotalLabel As Label
     Friend WithEvents ELNWorkingLabel As Label
     Friend WithEvents ELWorkingLabel As Label
     Friend WithEvents Label45 As Label
     Friend WithEvents Label44 As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TableAdapterManager As HRMSDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents EmployeesTableAdapter As HRMSDataSetTableAdapters.EmployeesTableAdapter
+    Friend WithEvents ID As DataGridViewTextBoxColumn
+    Friend WithEvents LastName As DataGridViewTextBoxColumn
+    Friend WithEvents FirstName As DataGridViewTextBoxColumn
+    Friend WithEvents MiddleName As DataGridViewTextBoxColumn
+    Friend WithEvents EmployeeStatusID As DataGridViewTextBoxColumn
+    Friend WithEvents DepartmentID As DataGridViewTextBoxColumn
     Friend WithEvents DateHired As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
-    Friend WithEvents EmployeeStatus As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
     Friend WithEvents SSSNo As DataGridViewTextBoxColumn
     Friend WithEvents PhilHealthNo As DataGridViewTextBoxColumn
     Friend WithEvents PagibigNo As DataGridViewTextBoxColumn
     Friend WithEvents TIN As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
 End Class
