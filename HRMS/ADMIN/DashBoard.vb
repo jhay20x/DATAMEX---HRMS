@@ -5,7 +5,8 @@ Imports System.Runtime.CompilerServices
 Public Class DashBoardForm
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'HRMSDataSet.Employees' table. You can move, or remove it, as needed.
-        Me.EmployeesTableAdapter.Fill(Me.HRMSDataSet.Employees)
+        'Me.EmployeesTableAdapter.FillBy(Me.HRMSDataSet.Employees)
+        RefreshTable()
 
         PanelAtt.Visible = False
         PanelLeave.Visible = False
@@ -229,7 +230,7 @@ Public Class DashBoardForm
         EmployeesSalaryPanel.Enabled = True
     End Sub
 
-    Private Sub EmployeesBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles EmployeesBindingNavigatorSaveItem.Click
+    Private Sub EmployeesBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.EmployeesBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.HRMSDataSet)
@@ -247,7 +248,7 @@ Public Class DashBoardForm
         Dim WorkingEmp As Integer
         Dim NonWorkingEmp As Integer
 
-        Dim cmd As New SqlCommand("SELECT EmployeeStatusID FROM Employees;", Connection)
+        Dim cmd As New SqlCommand("SELECT StatusID FROM Employees;", Connection)
 
         If Connection.State = ConnectionState.Open Then
             Connection.Close()
@@ -259,13 +260,13 @@ Public Class DashBoardForm
         Dim sdr As SqlDataReader = cmd.ExecuteReader
 
         While sdr.Read
-            If sdr("EmployeeStatusID") = 1 Or sdr("EmployeeStatusID") = 2 Then
+            If sdr("StatusID") = 1 Or sdr("StatusID") = 2 Then
                 TotalEmp += 1
             End If
-            If sdr("EmployeeStatusID") = 1 Then
+            If sdr("StatusID") = 1 Then
                 WorkingEmp += 1
             End If
-            If sdr("EmployeeStatusID") = 2 Then
+            If sdr("StatusID") = 2 Then
                 NonWorkingEmp += 1
             End If
         End While
@@ -275,8 +276,9 @@ Public Class DashBoardForm
         ELNWorkingLabel.Text = NonWorkingEmp
 
         Try
-            Me.EmployeesTableAdapter.Fill(Me.HRMSDataSet.Employees)
-            Me.EmployeesDataGridView.Sort(Me.EmployeesDataGridView.Columns(6), ListSortDirection.Descending)
+            'Me.EmployeesTableAdapter.FillBy(Me.HRMSDataSet.Employees)
+            RefreshTable()
+            Me.EmployeesDataGridView.Sort(Me.EmployeesDataGridView.Columns(5), ListSortDirection.Descending)
             EmployeesDataGridView.CurrentCell = Nothing
             EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
             EmployeeListEditButton.Enabled = False
@@ -305,7 +307,7 @@ Public Class DashBoardForm
                 Dim selectedrow As DataGridViewRow
                 selectedrow = EmployeesDataGridView.Rows(index)
 
-                EmpIdEdit = selectedrow.Cells(0).Value
+                EmpIdEdit = selectedrow.Cells(1).Value
             Catch ex As Exception
 
             End Try
@@ -318,9 +320,58 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub EmployeeListUpdateButton_Click(sender As Object, e As EventArgs) Handles EmployeeListUpdateButton.Click
-        Me.EmployeesTableAdapter.Fill(Me.HRMSDataSet.Employees)
+        'Me.EmployeesTableAdapter.FillBy(Me.HRMSDataSet.Employees)
+        RefreshTable()
         EmployeesDataGridView.CurrentCell = Nothing
         EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
         EmployeeListEditButton.Enabled = False
+    End Sub
+
+    Private Sub EmployeeNameSearchBoxTextBox_TextChanged(sender As Object, e As EventArgs) Handles EmployeeNameSearchBoxTextBox.TextChanged
+        Dim Name As String = EmployeeNameSearchBoxTextBox.Text
+
+        Dim query1 As New SqlDataAdapter("SELECT Employees.ID, Employees.EmployeeID, Employees.LastName, Employees.FirstName, Employees.MiddleName, Status.Status as 'StatusID', Department.Department AS 'DepartmentID',
+                Employees.DateHired, Employees.Age, Employees.Address, Employees.SSSNo, Employees.PhilHealthNo, Employees.PagibigNo, Employees.TIN, Employees.ContactNumber, Employees.EmailAddress
+                FROM Employees INNER JOIN
+                Department ON Employees.DepartmentID = Department.ID INNER JOIN
+                Status ON Employees.StatusID = Status.ID
+                WHERE FirstName LIKE @Name OR LastName LIKE @Name OR MiddleName LIKE @Name;", Connection)
+        query1.SelectCommand.Parameters.AddWithValue("@Name", "%" + Name + "%")
+
+        Dim newdataset As New DataSet
+
+        query1.Fill(newdataset, "Employees")
+        EmployeesDataGridView.DataSource = newdataset.Tables("Employees").DefaultView
+    End Sub
+
+    Private Sub EmployeeNameSearchBoxTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles EmployeeNameSearchBoxTextBox.KeyPress
+        If (Asc(e.KeyChar) > 32 And Asc(e.KeyChar) < 44 Or Asc(e.KeyChar) = 47) Then
+            e.Handled = True
+        ElseIf (Asc(e.KeyChar) > 57 And Asc(e.KeyChar) < 64) Then
+            e.Handled = True
+        ElseIf (Asc(e.KeyChar) > 90 And Asc(e.KeyChar) < 97) Then
+            e.Handled = True
+        ElseIf (Asc(e.KeyChar) > 122 And Asc(e.KeyChar) < 128) Then
+            e.Handled = True
+        Else
+            e.Handled = False
+        End If
+    End Sub
+    Public Sub RefreshTable()
+        EmployeesDataGridView.DataSource = Nothing
+        EmployeesDataGridView.Refresh()
+        Dim str As String = "SELECT Employees.ID, Employees.EmployeeID, Employees.LastName, Employees.FirstName, Employees.MiddleName, Status.Status as 'StatusID', Department.Department AS 'DepartmentID',
+                Employees.DateHired, Employees.Age, Employees.Address, Employees.SSSNo, Employees.PhilHealthNo, Employees.PagibigNo, Employees.TIN, Employees.ContactNumber, Employees.EmailAddress
+                FROM Employees INNER JOIN
+                Department ON Employees.DepartmentID = Department.ID INNER JOIN
+                Status ON Employees.StatusID = Status.ID"
+
+        Dim cmd As New SqlCommand(str, Connection)
+
+        Dim da As New SqlDataAdapter(cmd)
+        Dim newtable As New DataTable
+
+        da.Fill(newtable)
+        EmployeesDataGridView.DataSource = newtable
     End Sub
 End Class

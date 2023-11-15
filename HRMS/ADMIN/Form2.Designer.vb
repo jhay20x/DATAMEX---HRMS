@@ -1641,7 +1641,8 @@ Partial Class Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1250, 725)
+        Me.AutoScroll = True
+        Me.ClientSize = New System.Drawing.Size(1924, 1020)
         Me.Controls.Add(Me.Panel19)
         Me.Controls.Add(Me.Panel12)
         Me.Controls.Add(Me.LeaveRequestPanel)
@@ -1848,4 +1849,6 @@ Partial Class Form2
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents Salary As DataGridViewTextBoxColumn
     Friend WithEvents Button16 As Button
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
 End Class

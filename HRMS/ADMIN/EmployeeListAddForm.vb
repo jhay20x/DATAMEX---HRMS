@@ -35,50 +35,57 @@ Public Class EmployeeListAddForm
             End If
         Next
 
-        If TextCount = 0 Then
+        If TextCount <> 0 Then
             If MsgBox("Add employee to the list?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
                 Dim LName As String = ELALastNameTextBox.Text
                 Dim FName As String = ELAFirstNameTextBox.Text
-                Dim query1 As String = "SELECT COUNT(LastName) FROM Employees WHERE LastName LIKE '%' + @LastName + '%';"
-                Dim query2 As String = "SELECT COUNT(FirstName) FROM Employees WHERE FirstName LIKE '%' + @FirstName + '%';"
+                Dim query1 As String = "SELECT COUNT(LastName) FROM Employees WHERE LastName LIKE '%' + @LastName + '%' AND FirstName LIKE '%' + @FirstName + '%';"
 
-                CheckEmployee(LName, FName, query1, query2)
+                CheckEmployee(LName, FName, query1)
 
                 If IsValid = False Then
                     MsgBox("Employee is already in the list.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
                 Else
-                    Dim datehired As Date = Now
+                    Dim Year As Integer
+                    Year = Convert.ToInt32(Now.ToString("yyyy"))
+                    Dim Month As Integer
+                    Month = Convert.ToInt32(Now.ToString("MM"))
+                    Dim Day As Integer
+                    Day = Convert.ToInt32(Now.ToString("dd"))
+                    Dim datehired As String = Year & "/" & Month & "/" & Day
                     Dim status As Integer = 1
                     Dim department As Integer = ELADeptComboBox.Text.Substring(0, 1)
-                    Dim query3 As String = "INSERT INTO Employees VALUES (@LastName, @FirstName, @MiddleName, @EmployeeStatus, @Department, @DateHired, @Age, @Address, @SSSNo, @PhilHealthNo, @PagibigNo, @TIN, @ContactNumber, @EmailAddress);"
+                    Dim query3 As String = "INSERT INTO Employees VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @Status, @Department, @DateHired, @Age, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN, @ContactNumber, @EmailAddress);"
 
                     Prepare(query3)
+                    AddParameters("@EmployeeID", (Year & Month & Day) & (LastId + 1))
                     AddParameters("@LastName", ELALastNameTextBox.Text)
                     AddParameters("@FirstName", ELAFirstNameTextBox.Text)
                     AddParameters("@MiddleName", ELAMiddleNameTextBox.Text)
-                    AddParameters("@EmployeeStatus", status)
+                    AddParameters("@Status", status)
                     AddParameters("@Department", department)
                     AddParameters("@DateHired", datehired)
                     AddParameters("@Age", ELAAgeTextBox.Text)
                     AddParameters("@Address", ELAAddressTextBox.Text)
                     AddParameters("@SSSNo", ELASSSTextBox.Text)
                     AddParameters("@PhilHealthNo", ELAPHTextBox.Text)
-                    AddParameters("@PagibigNo", ELAPITextBox.Text)
+                    AddParameters("@PagIbigNo", ELAPITextBox.Text)
                     AddParameters("@TIN", ELATINTextBox.Text)
                     AddParameters("@ContactNumber", ELAContTextBox.Text)
                     AddParameters("@EmailAddress", ELAEmailTextBox.Text)
                     Execute()
                     Params.Clear()
 
-                    For Each Ctrl In ELAFormPanel.Controls
-                        If TypeOf Ctrl Is TextBox Then
-                            Ctrl.Text = ""
-                        ElseIf TypeOf Ctrl Is ComboBox Then
-                            Ctrl.SelectedIndex = -1
+                    For Each ctrl In ELAFormPanel.Controls
+                        If TypeOf ctrl Is TextBox Then
+                            ctrl.text = ""
+                        ElseIf TypeOf ctrl Is ComboBox Then
+                            ctrl.selectedindex = -1
                         End If
                     Next
 
-                    DashBoardForm.EmployeesTableAdapter.Fill(DashBoardForm.HRMSDataSet.Employees)
+                    'DashBoardForm.EmployeesTableAdapter.FillBy(DashBoardForm.HRMSDataSet.Employees)
+                    DashBoardForm.RefreshTable()
 
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
 
@@ -97,7 +104,7 @@ Public Class EmployeeListAddForm
         e.Handled = True
     End Sub
 
-    Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELALastNameTextBox.KeyPress, ELAFirstNameTextBox.KeyPress, ELAMiddleNameTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress
+    Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELALastNameTextBox.KeyPress, ELAFirstNameTextBox.KeyPress, ELAMiddleNameTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress, ELAAddressTextBox.KeyPress
         If (Asc(e.KeyChar) > 32 And Asc(e.KeyChar) < 44 Or Asc(e.KeyChar) = 47) Then
             e.Handled = True
         ElseIf (Asc(e.KeyChar) > 57 And Asc(e.KeyChar) < 64) Then
@@ -119,13 +126,19 @@ Public Class EmployeeListAddForm
         End If
     End Sub
 
-    Private Sub MiddleNameCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles MiddleNameCheckBox.CheckedChanged
-        If MiddleNameCheckBox.CheckState = CheckState.Checked Then
+    Private Sub MiddleNameCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ELAMiddleNameCheckBox.CheckedChanged
+        If ELAMiddleNameCheckBox.CheckState = CheckState.Checked Then
             ELAMiddleNameTextBox.Text = "N/A"
             ELAMiddleNameTextBox.Enabled = False
         Else
             ELAMiddleNameTextBox.Text = ""
             ELAMiddleNameTextBox.Enabled = True
+        End If
+    End Sub
+
+    Private Sub EmployeeListAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If MsgBox("Cancel adding employee?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+            e.Cancel = True
         End If
     End Sub
 End Class

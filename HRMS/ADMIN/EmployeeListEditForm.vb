@@ -4,18 +4,29 @@ Imports System.Net
 Public Class EmployeeListEditForm
     Private Sub EmployeeListEditForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ELEEmpIDLabel.Text = EmpIdEdit
-        ELENameTextBox.Select()
+        ELELastNameTextBox.Select()
 
-        Dim dept, status As String
+        Dim dept, status, mname As String
 
-        Dim cmd As New SqlCommand("SELECT * FROM EmployeesInformation WHERE EmployeeId = '" & EmpIdEdit & "';", Connection)
+        Dim cmd As New SqlCommand("SELECT * FROM Employees WHERE EmployeeID = '" & EmpIdEdit & "';", Connection)
 
         Connection.Open()
 
         Dim sdr As SqlDataReader = cmd.ExecuteReader
 
         While sdr.Read
-            ELENameTextBox.Text = sdr("EmployeeName")
+            ELELastNameTextBox.Text = sdr("LastName")
+            ELEFirstNameTextBox.Text = sdr("FirstName")
+            mname = sdr("MiddleName")
+            If mname = "N/A" Then
+                ELEMiddleNameCheckBox.CheckState = CheckState.Checked
+                ELEMiddleNameTextBox.Text = "N/A"
+                ELEMiddleNameTextBox.Enabled = False
+            Else
+                ELEMiddleNameCheckBox.CheckState = CheckState.Unchecked
+                ELEMiddleNameTextBox.Text = mname
+                ELEMiddleNameTextBox.Enabled = True
+            End If
             ELEAgeTextBox.Text = sdr("Age")
             ELEAddressTextBox.Text = sdr("Address")
             ELETINTextBox.Text = sdr("TIN")
@@ -24,20 +35,30 @@ Public Class EmployeeListEditForm
             ELEPITextBox.Text = sdr("PagibigNo")
             ELEContTextBox.Text = sdr("ContactNumber")
             ELEEmailTextBox.Text = sdr("EmailAddress")
-            dept = sdr("Department")
-            If dept = "IT" Then
+            dept = sdr("DepartmentID")
+            If dept = 1 Then
                 ELEDeptComboBox.SelectedIndex = 0
-            ElseIf dept = "HM" Then
+            ElseIf dept = 2 Then
                 ELEDeptComboBox.SelectedIndex = 1
-            ElseIf dept = "TM" Then
+            ElseIf dept = 3 Then
                 ELEDeptComboBox.SelectedIndex = 2
-            ElseIf dept = "GP" Then
+            ElseIf dept = 4 Then
                 ELEDeptComboBox.SelectedIndex = 3
+            ElseIf dept = 5 Then
+                ELEDeptComboBox.SelectedIndex = 4
+            ElseIf dept = 6 Then
+                ELEDeptComboBox.SelectedIndex = 5
+            ElseIf dept = 7 Then
+                ELEDeptComboBox.SelectedIndex = 6
+            ElseIf dept = 8 Then
+                ELEDeptComboBox.SelectedIndex = 7
+            ElseIf dept = 9 Then
+                ELEDeptComboBox.SelectedIndex = 8
             End If
-            status = sdr("EmployeeStatus")
-            If status = "Working" Then
+            status = sdr("StatusID")
+            If status = 1 Then
                 ELEEmployeeStatusComboBox.SelectedIndex = 0
-            ElseIf status = "Non-Working" Then
+            ElseIf status = 2 Then
                 ELEEmployeeStatusComboBox.SelectedIndex = 1
             End If
         End While
@@ -75,14 +96,19 @@ Public Class EmployeeListEditForm
 
         If TextCount = 0 Then
             If MsgBox("Update the employee's information?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
-                Dim query As String = "UPDATE EmployeesInformation SET EmployeeName = @EmployeeName,  Department = @Department, Age = @Age, Address = @Address," _
-                & "SSSNo = @SSSNo, PhilHealthNo = @PhilHealthNo, PagibigNo = @PagibigNo, TIN = @TIN, ContactNumber = @ContactNumber, EmailAddress = @EmailAddress, EmployeeStatus = @EmployeeStatus " _
+                Dim department As Integer = ELEDeptComboBox.Text.Substring(0, 1)
+                Dim status As Integer = ELEEmployeeStatusComboBox.Text.Substring(0, 1)
+
+                Dim query As String = "UPDATE Employees SET LastName = @LastName, FirstName = @FirstName, MiddleName = @MiddleName,  Department = @Department, Age = @Age, Address = @Address," _
+                & "SSSNo = @SSSNo, PhilHealthNo = @PhilHealthNo, PagibigNo = @PagibigNo, TIN = @TIN, ContactNumber = @ContactNumber, EmailAddress = @EmailAddress, StatusID = @StatusID " _
                 & "WHERE EmployeeId = @EmployeeID;"
 
                 Prepare(query)
                 AddParameters("@EmployeeID", EmpIdEdit)
-                AddParameters("@EmployeeName", ELENameTextBox.Text)
-                AddParameters("@Department", ELEDeptComboBox.Text)
+                AddParameters("@LastName", ELELastNameTextBox.Text)
+                AddParameters("@FirstName", ELEFirstNameTextBox.Text)
+                AddParameters("@MiddleName", ELEMiddleNameTextBox.Text)
+                AddParameters("@DepartmentID", department)
                 AddParameters("@Age", ELEAgeTextBox.Text)
                 AddParameters("@Address", ELEAddressTextBox.Text)
                 AddParameters("@SSSNo", ELESSSTextBox.Text)
@@ -91,20 +117,37 @@ Public Class EmployeeListEditForm
                 AddParameters("@TIN", ELETINTextBox.Text)
                 AddParameters("@ContactNumber", ELEContTextBox.Text)
                 AddParameters("@EmailAddress", ELEEmailTextBox.Text)
-                AddParameters("@EmployeeStatus", ELEEmployeeStatusComboBox.Text)
+                AddParameters("@StatusID", status)
                 Execute()
                 Params.Clear()
 
-                DashBoardForm.EmployeesTableAdapter.Fill(DashBoardForm.HRMSDataSet.Employees)
+                'DashBoardForm.EmployeesTableAdapter.FillBy(DashBoardForm.HRMSDataSet.Employees)
+                DashBoardForm.RefreshTable()
 
                 MsgBox("Employee information successfully updated.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-                ELENameTextBox.Select()
+                ELELastNameTextBox.Select()
             Else
                 MsgBox("Employee not Updated. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
 
             End If
         Else
             MsgBox("Please complete all the fields first!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+        End If
+    End Sub
+
+    Private Sub ELEMiddleNameCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ELEMiddleNameCheckBox.CheckedChanged
+        If ELEMiddleNameCheckBox.CheckState = CheckState.Checked Then
+            ELEMiddleNameTextBox.Text = "N/A"
+            ELEMiddleNameTextBox.Enabled = False
+        Else
+            ELEMiddleNameTextBox.Text = ""
+            ELEMiddleNameTextBox.Enabled = True
+        End If
+    End Sub
+
+    Private Sub EmployeeListEditForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If MsgBox("Cancel updating information?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+            e.Cancel = True
         End If
     End Sub
 End Class

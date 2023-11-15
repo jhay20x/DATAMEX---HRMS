@@ -18,7 +18,7 @@ Module Connections
 
     Public HasError As Boolean
 
-    Public StuId As Integer
+    Public LastId As Integer
 
     Public IsValid As Boolean
 
@@ -76,19 +76,30 @@ Module Connections
         Params.Add(New SqlParameter(key, value))
     End Sub
 
-    Public Sub CheckEmployee(LName As String, FName As String, query1 As String, query2 As String)
+    Public Sub CheckEmployee(LName As String, FName As String, query1 As String)
         Connection.Open()
 
-        Dim cmd1 As New SqlCommand(query1, Connection)
-        Dim cmd2 As New SqlCommand(query2, Connection)
-        cmd1.Parameters.AddWithValue("@LastName", LName)
-        cmd2.Parameters.AddWithValue("@FirstName", FName)
+        Dim cmd As New SqlCommand(query1, Connection)
 
-        If cmd1.ExecuteScalar <> 0 And cmd2.ExecuteScalar <> 0 Then
+        cmd.Parameters.AddWithValue("@LastName", LName)
+        cmd.Parameters.AddWithValue("@FirstName", FName)
+
+        If cmd.ExecuteScalar <> 0 Then
             IsValid = False
         Else
             IsValid = True
         End If
+
+        Dim query2 As String = "SELECT ID FROM Employees;"
+        Dim cmd2 As New SqlCommand(query2, Connection)
+
+        Dim sdr As SqlDataReader = cmd2.ExecuteReader
+
+        While sdr.Read
+            LastId = sdr("ID")
+        End While
+
+        MsgBox(LastId)
 
         Connection.Close()
     End Sub
