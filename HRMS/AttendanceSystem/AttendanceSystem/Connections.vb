@@ -46,6 +46,7 @@ Module Connections
         Catch ex As Exception
             HasError = True
             ErrorMessage = ex.Message
+            MsgBox(ErrorMessage)
         End Try
 
         If Connection.State = ConnectionState.Open Then

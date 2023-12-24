@@ -1,6 +1,7 @@
 ﻿Imports System.Reflection
 
 Module Functions
+    Public TimeInCheck As TimeSpan
     Public Function CheckEmployeeID(ByVal EmpID As Long)
         Dim query = "SELECT EmployeeID FROM HRMS.dbo.Employees WHERE EmployeeID = @EmployeeID"
 
@@ -61,17 +62,18 @@ Module Functions
 
             Return row("TimeIn")
         End If
+        Return Nothing
     End Function
 
     Public Sub CheckForTimeOut(ByVal EmpID As Long)
         Dim val As New Values
 
         Dim Curdate As TimeSpan = Date.Now.TimeOfDay
-        val.TimeInCheck = GetTimeIn(EmpID)
+        TimeInCheck = GetTimeIn(EmpID)
         Dim ts As TimeSpan
         Dim TimeDiff As Double
 
-        ts = Curdate - val.TimeInCheck
+        ts = Curdate - TimeInCheck
 
         TimeDiff = ts.TotalHours
 

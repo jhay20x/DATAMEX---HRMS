@@ -1,23 +1,47 @@
-﻿Imports Microsoft.VisualBasic.Logging
-Imports System.Data.OleDb
-Imports System.Data.SqlClient
-Imports System.Text
-
+﻿
 Public Class EmployeeListAddForm
+    Public LastEmpID As Integer
     Private Sub EmployeeListAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ELALastNameTextBox.Select()
-    End Sub
-
-    Private Sub EmployeeListAddForm_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed, Me.Closed
-        DashBoardForm.Enabled = True
-        DashBoardForm.Show()
     End Sub
 
     Private Sub ELABackButton_Click(sender As Object, e As EventArgs) Handles ELABackButton.Click
         DashBoardForm.Enabled = True
         DashBoardForm.Show()
+        DashBoardForm.RefreshDetails()
+        DashBoardForm.DisableButton()
         Me.Close()
     End Sub
+
+    Public Function CheckEmployee(LName As String, FName As String)
+        Dim query = "SELECT LastName, FirstName FROM Employees WHERE LastName LIKE @LastName AND FirstName LIKE @FirstName"
+
+        Prepare(query)
+        AddParam("@LastName", LName)
+        AddParam("@FirstName", FName)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
+
+    Public Function GetEmpID()
+        Dim query = "SELECT TOP 1 ID FROM Employees ORDER BY ID DESC"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
+
+            Return row("ID")
+        Else
+            Return Nothing
+        End If
+    End Function
 
     Private Sub ELAAddButton_Click(sender As Object, e As EventArgs) Handles ELAAddButton.Click
         Dim TextBoxCtrl As Control
@@ -35,15 +59,14 @@ Public Class EmployeeListAddForm
             End If
         Next
 
-        If TextCount <> 0 Then
+        If TextCount = 0 Then
             If MsgBox("Add employee to the list?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
                 Dim LName As String = ELALastNameTextBox.Text
                 Dim FName As String = ELAFirstNameTextBox.Text
-                Dim query1 As String = "SELECT COUNT(LastName) FROM Employees WHERE LastName LIKE '%' + @LastName + '%' AND FirstName LIKE '%' + @FirstName + '%';"
+                Dim isValid As Boolean = CheckEmployee(LName, FName)
+                LastEmpID = GetEmpID()
 
-                CheckEmployee(LName, FName, query1)
-
-                If IsValid = False Then
+                If Not isValid Then
                     MsgBox("Employee is already in the list.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
                 Else
                     Dim Year As Integer
@@ -52,43 +75,42 @@ Public Class EmployeeListAddForm
                     Month = Convert.ToInt32(Now.ToString("MM"))
                     Dim Day As Integer
                     Day = Convert.ToInt32(Now.ToString("dd"))
-                    Dim datehired As String = Year & "/" & Month & "/" & Day
-                    Dim status As Integer = 1
-                    Dim department As Integer = ELADeptComboBox.Text.Substring(0, 1)
-                    Dim query3 As String = "INSERT INTO Employees VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @Status, @Department, @DateHired, @Age, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN, @ContactNumber, @EmailAddress);"
 
-                    Prepare(query3)
-                    AddParameters("@EmployeeID", (Year & Month & Day) & (LastId + 1))
-                    AddParameters("@LastName", ELALastNameTextBox.Text)
-                    AddParameters("@FirstName", ELAFirstNameTextBox.Text)
-                    AddParameters("@MiddleName", ELAMiddleNameTextBox.Text)
-                    AddParameters("@Status", status)
-                    AddParameters("@Department", department)
-                    AddParameters("@DateHired", datehired)
-                    AddParameters("@Age", ELAAgeTextBox.Text)
-                    AddParameters("@Address", ELAAddressTextBox.Text)
-                    AddParameters("@SSSNo", ELASSSTextBox.Text)
-                    AddParameters("@PhilHealthNo", ELAPHTextBox.Text)
-                    AddParameters("@PagIbigNo", ELAPITextBox.Text)
-                    AddParameters("@TIN", ELATINTextBox.Text)
-                    AddParameters("@ContactNumber", ELAContTextBox.Text)
-                    AddParameters("@EmailAddress", ELAEmailTextBox.Text)
-                    Execute()
-                    Params.Clear()
+                    Dim Datehired As String = Year & "/" & Month & "/" & Day
+                    Dim Status As Integer = 1
+                    Dim Department As Integer = ELADeptComboBox.SelectedIndex + 1
+                    Dim query = "INSERT INTO Employees VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
+                    @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN);"
+
+                    Prepare(query)
+                    AddParam("@EmployeeID", (Year & Month & Day) & (LastEmpID + 1))
+                    AddParam("@LastName", ELALastNameTextBox.Text)
+                    AddParam("@FirstName", ELAFirstNameTextBox.Text)
+                    AddParam("@MiddleName", ELAMiddleNameTextBox.Text)
+                    AddParam("@StatusID", Status)
+                    AddParam("@Department", Department)
+                    AddParam("@DateHired", Datehired)
+                    AddParam("@Age", ELAAgeTextBox.Text)
+                    AddParam("@Address", ELAAddressTextBox.Text)
+                    AddParam("@SSSNo", ELASSSTextBox.Text)
+                    AddParam("@PhilHealthNo", ELAPHTextBox.Text)
+                    AddParam("@PagIbigNo", ELAPITextBox.Text)
+                    AddParam("@TIN", ELATINTextBox.Text)
+                    AddParam("@ContactNumber", ELAContTextBox.Text)
+                    AddParam("@EmailAddress", ELAEmailTextBox.Text)
+                    ExecutePrepare()
 
                     For Each ctrl In ELAFormPanel.Controls
                         If TypeOf ctrl Is TextBox Then
                             ctrl.text = ""
                         ElseIf TypeOf ctrl Is ComboBox Then
-                            ctrl.selectedindex = -1
+                            ctrl.selectedindex = 0
                         End If
                     Next
 
-                    'DashBoardForm.EmployeesTableAdapter.FillBy(DashBoardForm.HRMSDataSet.Employees)
-                    DashBoardForm.RefreshTable()
-
+                    DashBoardForm.RefreshDetails()
+                    DashBoardForm.DisableButton()
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-
                     ELALastNameTextBox.Select()
                 End If
             Else
@@ -98,10 +120,6 @@ Public Class EmployeeListAddForm
         Else
             MsgBox("Please complete all the fields first!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
         End If
-    End Sub
-
-    Private Sub ELADeptComboBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELADeptComboBox.KeyPress
-        e.Handled = True
     End Sub
 
     Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELALastNameTextBox.KeyPress, ELAFirstNameTextBox.KeyPress, ELAMiddleNameTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress, ELAAddressTextBox.KeyPress
@@ -137,8 +155,35 @@ Public Class EmployeeListAddForm
     End Sub
 
     Private Sub EmployeeListAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If MsgBox("Cancel adding employee?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
-            e.Cancel = True
+        Dim TextBoxCtrl As Control
+        Dim TextCount As Integer
+
+        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of TextBox)
+            If TextBoxCtrl.Text = "" Then
+                TextCount += 1
+            End If
+        Next
+
+        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of ComboBox)
+            If TextBoxCtrl.Text = "" Then
+                TextCount += 1
+            End If
+        Next
+
+        If TextCount <> 0 Then
+            DashBoardForm.Enabled = True
+            DashBoardForm.Show()
+            DashBoardForm.RefreshDetails()
+            DashBoardForm.DisableButton()
+        Else
+            If MsgBox("Cancel adding employee?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+                e.Cancel = True
+            Else
+                DashBoardForm.Enabled = True
+                DashBoardForm.Show()
+                DashBoardForm.RefreshDetails()
+                DashBoardForm.DisableButton()
+            End If
         End If
     End Sub
 End Class

@@ -1,62 +1,52 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Net
-Imports System.Security.Cryptography.X509Certificates
 
 Module Connections
-    Public EmpIdEdit As String
-
-    Public ConnectionStr As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true"
-    Public Connection As New SqlConnection(ConnectionStr)
+    Public ConnectionString As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true"
+    Public Connection As New SqlConnection(ConnectionString)
 
     Public Command As SqlCommand
-    Public Params As New List(Of SqlParameter)
     Public Adapter As SqlDataAdapter
-    Public Data As DataTable
+    Public Data As DataSet
+    Public DataAsTable As DataTable
+    Public Parameters As New List(Of SqlParameter)
 
-    Public Count As Integer
-    Public CommandStr As String
-
+    Public CommandString As String
+    Public ErrorMessage As String
     Public HasError As Boolean
+    Public Count As Integer
 
-    Public LastId As Integer
-
-    Public IsValid As Boolean
-
-    Public Sub ResetQueryValues()
-        CommandStr = ""
-        HasError = False
-        Count = 0
-        'Params = Nothing
-    End Sub
-
-    Public Sub RunQuery(q As String)
-        If q = "" Then
-            q = CommandStr
+    Public Sub RunQuery(ByVal query)
+        If String.IsNullOrEmpty(query) Then
+            query = CommandString
         End If
 
-        ResetQueryValues()
+        ResetValues()
 
         Try
             Connection.Open()
 
-            Command = New SqlCommand(q, Connection)
+            Command = New SqlCommand(query, Connection)
 
-            Params.ForEach(Sub(a) Command.Parameters.Add(a))
+            Parameters.ForEach(Sub(a) Command.Parameters.Add(a))
+
+            Parameters.Clear()
 
             Adapter = New SqlDataAdapter(Command)
+            Data = New DataSet
 
-            Data = New DataTable()
+            Count = Adapter.Fill(Data)
 
-            Adapter.Fill(Data)
-
-            Count = Data.Rows.Count
+            If Data.Tables.Count Then
+                DataAsTable = Data.Tables(0)
+            End If
 
             If Count > 0 Then
                 HasError = False
             End If
         Catch ex As Exception
             HasError = True
-            MsgBox(ex.Message)
+            ErrorMessage = ex.Message
+            MsgBox(ErrorMessage)
         End Try
 
         If Connection.State = ConnectionState.Open Then
@@ -64,43 +54,21 @@ Module Connections
         End If
     End Sub
 
-    Public Sub Prepare(q)
-        CommandStr = q
+    Public Sub Prepare(ByVal query)
+        CommandString = query
     End Sub
 
-    Public Sub Execute()
-        RunQuery(CommandStr)
+    Public Sub ExecutePrepare()
+        RunQuery(CommandString)
     End Sub
 
-    Public Sub AddParameters(key As String, value As Object)
-        Params.Add(New SqlParameter(key, value))
+    Public Sub AddParam(ByVal key As String, ByVal value As Object)
+        Parameters.Add(New SqlParameter(key, value))
     End Sub
 
-    Public Sub CheckEmployee(LName As String, FName As String, query1 As String)
-        Connection.Open()
-
-        Dim cmd As New SqlCommand(query1, Connection)
-
-        cmd.Parameters.AddWithValue("@LastName", LName)
-        cmd.Parameters.AddWithValue("@FirstName", FName)
-
-        If cmd.ExecuteScalar <> 0 Then
-            IsValid = False
-        Else
-            IsValid = True
-        End If
-
-        Dim query2 As String = "SELECT ID FROM Employees;"
-        Dim cmd2 As New SqlCommand(query2, Connection)
-
-        Dim sdr As SqlDataReader = cmd2.ExecuteReader
-
-        While sdr.Read
-            LastId = sdr("ID")
-        End While
-
-        MsgBox(LastId)
-
-        Connection.Close()
+    Public Sub ResetValues()
+        CommandString = ""
+        HasError = False
+        Count = 0
     End Sub
 End Module

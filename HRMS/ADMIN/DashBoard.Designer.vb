@@ -27,11 +27,11 @@ Partial Class DashBoardForm
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DashboardPanel = New System.Windows.Forms.Panel()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -68,6 +68,24 @@ Partial Class DashBoardForm
         Me.Label27 = New System.Windows.Forms.Label()
         Me.EmployeeAllPanel = New System.Windows.Forms.Panel()
         Me.EmployeesDataGridView = New System.Windows.Forms.DataGridView()
+        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeeIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MiddleNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StatusIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DepartmentIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DateHiredDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AgeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SSSNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhilHealthNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PagibigNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TINDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContactNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.HRMSDataSet = New HRM1.HRMSDataSet()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label44 = New System.Windows.Forms.Label()
         Me.EmployeeListAddButton = New System.Windows.Forms.Button()
@@ -176,6 +194,7 @@ Partial Class DashBoardForm
         Me.MenuHide7Button = New System.Windows.Forms.Button()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.SideBarPanel = New System.Windows.Forms.Panel()
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.PanelPayroll = New System.Windows.Forms.Panel()
         Me.btnPay2 = New System.Windows.Forms.Button()
@@ -204,26 +223,9 @@ Partial Class DashBoardForm
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.EmployeesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.HRMSDataSet = New HRM1.HRMSDataSet()
         Me.EmployeesTableAdapter = New HRM1.HRMSDataSetTableAdapters.EmployeesTableAdapter()
         Me.TableAdapterManager = New HRM1.HRMSDataSetTableAdapters.TableAdapterManager()
-        Me.IDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmployeeIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MiddleNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.StatusIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DepartmentIDDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DateHiredDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AgeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SSSNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PhilHealthNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PagibigNoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TINDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ContactNumberDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailAddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MainPanel = New System.Windows.Forms.Panel()
         Me.DashboardPanel.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.AttendanceTodayPanel.SuspendLayout()
@@ -233,6 +235,8 @@ Partial Class DashBoardForm
         Me.Panel5.SuspendLayout()
         Me.EmployeeAllPanel.SuspendLayout()
         CType(Me.EmployeesDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmployeesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HRMSDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel9.SuspendLayout()
@@ -256,14 +260,14 @@ Partial Class DashBoardForm
         Me.Panel20.SuspendLayout()
         Me.Panel13.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.SideBarPanel.SuspendLayout()
         Me.PanelPayroll.SuspendLayout()
         Me.PanelProject.SuspendLayout()
         Me.PanelHoliday.SuspendLayout()
         Me.PanelLeave.SuspendLayout()
         Me.PanelAtt.SuspendLayout()
         Me.PanelEmployee.SuspendLayout()
-        CType(Me.EmployeesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HRMSDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MainPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'DashboardPanel
@@ -282,8 +286,7 @@ Partial Class DashBoardForm
         Me.DashboardPanel.Controls.Add(Me.Label8)
         Me.DashboardPanel.Controls.Add(Me.Label9)
         Me.DashboardPanel.Controls.Add(Me.Panel6)
-        Me.DashboardPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DashboardPanel.Location = New System.Drawing.Point(262, 0)
+        Me.DashboardPanel.Location = New System.Drawing.Point(123, 273)
         Me.DashboardPanel.Name = "DashboardPanel"
         Me.DashboardPanel.Size = New System.Drawing.Size(802, 676)
         Me.DashboardPanel.TabIndex = 1
@@ -471,9 +474,8 @@ Partial Class DashBoardForm
         Me.AttendanceTodayPanel.Controls.Add(Me.Panel3)
         Me.AttendanceTodayPanel.Controls.Add(Me.Panel4)
         Me.AttendanceTodayPanel.Controls.Add(Me.Panel5)
-        Me.AttendanceTodayPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AttendanceTodayPanel.Enabled = False
-        Me.AttendanceTodayPanel.Location = New System.Drawing.Point(262, 0)
+        Me.AttendanceTodayPanel.Location = New System.Drawing.Point(359, 29)
         Me.AttendanceTodayPanel.Name = "AttendanceTodayPanel"
         Me.AttendanceTodayPanel.Size = New System.Drawing.Size(802, 676)
         Me.AttendanceTodayPanel.TabIndex = 6
@@ -688,9 +690,8 @@ Partial Class DashBoardForm
         Me.EmployeeAllPanel.Controls.Add(Me.Panel7)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel8)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel9)
-        Me.EmployeeAllPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.EmployeeAllPanel.Enabled = False
-        Me.EmployeeAllPanel.Location = New System.Drawing.Point(262, 0)
+        Me.EmployeeAllPanel.Location = New System.Drawing.Point(407, 0)
         Me.EmployeeAllPanel.Name = "EmployeeAllPanel"
         Me.EmployeeAllPanel.Size = New System.Drawing.Size(802, 676)
         Me.EmployeeAllPanel.TabIndex = 8
@@ -732,6 +733,146 @@ Partial Class DashBoardForm
         Me.EmployeesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.EmployeesDataGridView.Size = New System.Drawing.Size(802, 428)
         Me.EmployeesDataGridView.TabIndex = 8
+        '
+        'IDDataGridViewTextBoxColumn
+        '
+        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
+        Me.IDDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
+        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDDataGridViewTextBoxColumn.Width = 72
+        '
+        'EmployeeIDDataGridViewTextBoxColumn
+        '
+        Me.EmployeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID"
+        Me.EmployeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID"
+        Me.EmployeeIDDataGridViewTextBoxColumn.Name = "EmployeeIDDataGridViewTextBoxColumn"
+        Me.EmployeeIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmployeeIDDataGridViewTextBoxColumn.Width = 148
+        '
+        'LastNameDataGridViewTextBoxColumn
+        '
+        Me.LastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName"
+        Me.LastNameDataGridViewTextBoxColumn.HeaderText = "LastName"
+        Me.LastNameDataGridViewTextBoxColumn.Name = "LastNameDataGridViewTextBoxColumn"
+        Me.LastNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.LastNameDataGridViewTextBoxColumn.Width = 131
+        '
+        'FirstNameDataGridViewTextBoxColumn
+        '
+        Me.FirstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName"
+        Me.FirstNameDataGridViewTextBoxColumn.HeaderText = "FirstName"
+        Me.FirstNameDataGridViewTextBoxColumn.Name = "FirstNameDataGridViewTextBoxColumn"
+        Me.FirstNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FirstNameDataGridViewTextBoxColumn.Width = 133
+        '
+        'MiddleNameDataGridViewTextBoxColumn
+        '
+        Me.MiddleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName"
+        Me.MiddleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName"
+        Me.MiddleNameDataGridViewTextBoxColumn.Name = "MiddleNameDataGridViewTextBoxColumn"
+        Me.MiddleNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MiddleNameDataGridViewTextBoxColumn.Width = 155
+        '
+        'StatusIDDataGridViewTextBoxColumn
+        '
+        Me.StatusIDDataGridViewTextBoxColumn.DataPropertyName = "StatusID"
+        Me.StatusIDDataGridViewTextBoxColumn.HeaderText = "StatusID"
+        Me.StatusIDDataGridViewTextBoxColumn.Name = "StatusIDDataGridViewTextBoxColumn"
+        Me.StatusIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.StatusIDDataGridViewTextBoxColumn.Width = 119
+        '
+        'DepartmentIDDataGridViewTextBoxColumn
+        '
+        Me.DepartmentIDDataGridViewTextBoxColumn.DataPropertyName = "DepartmentID"
+        Me.DepartmentIDDataGridViewTextBoxColumn.HeaderText = "DepartmentID"
+        Me.DepartmentIDDataGridViewTextBoxColumn.Name = "DepartmentIDDataGridViewTextBoxColumn"
+        Me.DepartmentIDDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DepartmentIDDataGridViewTextBoxColumn.Width = 164
+        '
+        'DateHiredDataGridViewTextBoxColumn
+        '
+        Me.DateHiredDataGridViewTextBoxColumn.DataPropertyName = "DateHired"
+        DataGridViewCellStyle3.Format = "yyyy-MM-dd"
+        Me.DateHiredDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DateHiredDataGridViewTextBoxColumn.HeaderText = "DateHired"
+        Me.DateHiredDataGridViewTextBoxColumn.Name = "DateHiredDataGridViewTextBoxColumn"
+        Me.DateHiredDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DateHiredDataGridViewTextBoxColumn.Width = 133
+        '
+        'AgeDataGridViewTextBoxColumn
+        '
+        Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "Age"
+        Me.AgeDataGridViewTextBoxColumn.HeaderText = "Age"
+        Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
+        Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AgeDataGridViewTextBoxColumn.Width = 85
+        '
+        'AddressDataGridViewTextBoxColumn
+        '
+        Me.AddressDataGridViewTextBoxColumn.DataPropertyName = "Address"
+        Me.AddressDataGridViewTextBoxColumn.HeaderText = "Address"
+        Me.AddressDataGridViewTextBoxColumn.Name = "AddressDataGridViewTextBoxColumn"
+        Me.AddressDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AddressDataGridViewTextBoxColumn.Width = 115
+        '
+        'SSSNoDataGridViewTextBoxColumn
+        '
+        Me.SSSNoDataGridViewTextBoxColumn.DataPropertyName = "SSSNo"
+        Me.SSSNoDataGridViewTextBoxColumn.HeaderText = "SSSNo"
+        Me.SSSNoDataGridViewTextBoxColumn.Name = "SSSNoDataGridViewTextBoxColumn"
+        Me.SSSNoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SSSNoDataGridViewTextBoxColumn.Width = 105
+        '
+        'PhilHealthNoDataGridViewTextBoxColumn
+        '
+        Me.PhilHealthNoDataGridViewTextBoxColumn.DataPropertyName = "PhilHealthNo"
+        Me.PhilHealthNoDataGridViewTextBoxColumn.HeaderText = "PhilHealthNo"
+        Me.PhilHealthNoDataGridViewTextBoxColumn.Name = "PhilHealthNoDataGridViewTextBoxColumn"
+        Me.PhilHealthNoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PhilHealthNoDataGridViewTextBoxColumn.Width = 159
+        '
+        'PagibigNoDataGridViewTextBoxColumn
+        '
+        Me.PagibigNoDataGridViewTextBoxColumn.DataPropertyName = "PagibigNo"
+        Me.PagibigNoDataGridViewTextBoxColumn.HeaderText = "PagibigNo"
+        Me.PagibigNoDataGridViewTextBoxColumn.Name = "PagibigNoDataGridViewTextBoxColumn"
+        Me.PagibigNoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PagibigNoDataGridViewTextBoxColumn.Width = 137
+        '
+        'TINDataGridViewTextBoxColumn
+        '
+        Me.TINDataGridViewTextBoxColumn.DataPropertyName = "TIN"
+        Me.TINDataGridViewTextBoxColumn.HeaderText = "TIN"
+        Me.TINDataGridViewTextBoxColumn.Name = "TINDataGridViewTextBoxColumn"
+        Me.TINDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TINDataGridViewTextBoxColumn.Width = 82
+        '
+        'ContactNumberDataGridViewTextBoxColumn
+        '
+        Me.ContactNumberDataGridViewTextBoxColumn.DataPropertyName = "ContactNumber"
+        Me.ContactNumberDataGridViewTextBoxColumn.HeaderText = "ContactNumber"
+        Me.ContactNumberDataGridViewTextBoxColumn.Name = "ContactNumberDataGridViewTextBoxColumn"
+        Me.ContactNumberDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ContactNumberDataGridViewTextBoxColumn.Width = 177
+        '
+        'EmailAddressDataGridViewTextBoxColumn
+        '
+        Me.EmailAddressDataGridViewTextBoxColumn.DataPropertyName = "EmailAddress"
+        Me.EmailAddressDataGridViewTextBoxColumn.HeaderText = "EmailAddress"
+        Me.EmailAddressDataGridViewTextBoxColumn.Name = "EmailAddressDataGridViewTextBoxColumn"
+        Me.EmailAddressDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmailAddressDataGridViewTextBoxColumn.Width = 158
+        '
+        'EmployeesBindingSource
+        '
+        Me.EmployeesBindingSource.DataMember = "Employees"
+        Me.EmployeesBindingSource.DataSource = Me.HRMSDataSet
+        '
+        'HRMSDataSet
+        '
+        Me.HRMSDataSet.DataSetName = "HRMSDataSet"
+        Me.HRMSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Panel7
         '
@@ -972,9 +1113,8 @@ Partial Class DashBoardForm
         Me.LeaveRequestPanel.Controls.Add(Me.Panel10)
         Me.LeaveRequestPanel.Controls.Add(Me.Panel11)
         Me.LeaveRequestPanel.Controls.Add(Me.Panel12)
-        Me.LeaveRequestPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LeaveRequestPanel.Enabled = False
-        Me.LeaveRequestPanel.Location = New System.Drawing.Point(262, 0)
+        Me.LeaveRequestPanel.Location = New System.Drawing.Point(271, 122)
         Me.LeaveRequestPanel.Name = "LeaveRequestPanel"
         Me.LeaveRequestPanel.Size = New System.Drawing.Size(802, 676)
         Me.LeaveRequestPanel.TabIndex = 9
@@ -1211,9 +1351,8 @@ Partial Class DashBoardForm
         Me.HolidayListPanel.Controls.Add(Me.Panel14)
         Me.HolidayListPanel.Controls.Add(Me.Panel15)
         Me.HolidayListPanel.Controls.Add(Me.Panel16)
-        Me.HolidayListPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.HolidayListPanel.Enabled = False
-        Me.HolidayListPanel.Location = New System.Drawing.Point(262, 0)
+        Me.HolidayListPanel.Location = New System.Drawing.Point(171, 223)
         Me.HolidayListPanel.Name = "HolidayListPanel"
         Me.HolidayListPanel.Size = New System.Drawing.Size(802, 676)
         Me.HolidayListPanel.TabIndex = 10
@@ -1478,9 +1617,8 @@ Partial Class DashBoardForm
         Me.ProjectsListPanel.Controls.Add(Me.Panel21)
         Me.ProjectsListPanel.Controls.Add(Me.Panel22)
         Me.ProjectsListPanel.Controls.Add(Me.Panel23)
-        Me.ProjectsListPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ProjectsListPanel.Enabled = False
-        Me.ProjectsListPanel.Location = New System.Drawing.Point(262, 0)
+        Me.ProjectsListPanel.Location = New System.Drawing.Point(319, 70)
         Me.ProjectsListPanel.Name = "ProjectsListPanel"
         Me.ProjectsListPanel.Size = New System.Drawing.Size(802, 676)
         Me.ProjectsListPanel.TabIndex = 12
@@ -1735,9 +1873,8 @@ Partial Class DashBoardForm
         Me.EmployeesSalaryPanel.Controls.Add(Me.DataGridView5)
         Me.EmployeesSalaryPanel.Controls.Add(Me.Panel20)
         Me.EmployeesSalaryPanel.Controls.Add(Me.Panel13)
-        Me.EmployeesSalaryPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.EmployeesSalaryPanel.Enabled = False
-        Me.EmployeesSalaryPanel.Location = New System.Drawing.Point(262, 0)
+        Me.EmployeesSalaryPanel.Location = New System.Drawing.Point(219, 171)
         Me.EmployeesSalaryPanel.Name = "EmployeesSalaryPanel"
         Me.EmployeesSalaryPanel.Size = New System.Drawing.Size(802, 676)
         Me.EmployeesSalaryPanel.TabIndex = 14
@@ -1909,27 +2046,37 @@ Partial Class DashBoardForm
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel1.BackgroundImage = Global.HRM1.My.Resources.Resources.bg
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Panel1.Controls.Add(Me.btnLogOut)
-        Me.Panel1.Controls.Add(Me.PanelPayroll)
-        Me.Panel1.Controls.Add(Me.btnPayroll)
-        Me.Panel1.Controls.Add(Me.PanelProject)
-        Me.Panel1.Controls.Add(Me.brnProject)
-        Me.Panel1.Controls.Add(Me.PanelHoliday)
-        Me.Panel1.Controls.Add(Me.btnHoliday)
-        Me.Panel1.Controls.Add(Me.PanelLeave)
-        Me.Panel1.Controls.Add(Me.btnLeave)
-        Me.Panel1.Controls.Add(Me.PanelAtt)
-        Me.Panel1.Controls.Add(Me.btnAttendance)
-        Me.Panel1.Controls.Add(Me.PanelEmployee)
-        Me.Panel1.Controls.Add(Me.btnEmployee)
-        Me.Panel1.Controls.Add(Me.btnDashboard)
-        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.SideBarPanel)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(262, 676)
         Me.Panel1.TabIndex = 0
+        '
+        'SideBarPanel
+        '
+        Me.SideBarPanel.BackColor = System.Drawing.Color.Transparent
+        Me.SideBarPanel.Controls.Add(Me.btnLogOut)
+        Me.SideBarPanel.Controls.Add(Me.PanelPayroll)
+        Me.SideBarPanel.Controls.Add(Me.btnPayroll)
+        Me.SideBarPanel.Controls.Add(Me.PanelProject)
+        Me.SideBarPanel.Controls.Add(Me.brnProject)
+        Me.SideBarPanel.Controls.Add(Me.PanelHoliday)
+        Me.SideBarPanel.Controls.Add(Me.btnHoliday)
+        Me.SideBarPanel.Controls.Add(Me.PanelLeave)
+        Me.SideBarPanel.Controls.Add(Me.btnLeave)
+        Me.SideBarPanel.Controls.Add(Me.PanelAtt)
+        Me.SideBarPanel.Controls.Add(Me.btnAttendance)
+        Me.SideBarPanel.Controls.Add(Me.PanelEmployee)
+        Me.SideBarPanel.Controls.Add(Me.btnEmployee)
+        Me.SideBarPanel.Controls.Add(Me.btnDashboard)
+        Me.SideBarPanel.Controls.Add(Me.Label1)
+        Me.SideBarPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SideBarPanel.Location = New System.Drawing.Point(0, 193)
+        Me.SideBarPanel.Name = "SideBarPanel"
+        Me.SideBarPanel.Size = New System.Drawing.Size(262, 483)
+        Me.SideBarPanel.TabIndex = 15
         '
         'btnLogOut
         '
@@ -1941,10 +2088,10 @@ Partial Class DashBoardForm
         Me.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLogOut.ForeColor = System.Drawing.Color.White
-        Me.btnLogOut.Location = New System.Drawing.Point(0, 1207)
+        Me.btnLogOut.Location = New System.Drawing.Point(0, 1014)
         Me.btnLogOut.Name = "btnLogOut"
-        Me.btnLogOut.Size = New System.Drawing.Size(245, 50)
-        Me.btnLogOut.TabIndex = 15
+        Me.btnLogOut.Size = New System.Drawing.Size(262, 50)
+        Me.btnLogOut.TabIndex = 28
         Me.btnLogOut.Text = "LOG OUT"
         Me.btnLogOut.UseVisualStyleBackColor = False
         '
@@ -1954,10 +2101,11 @@ Partial Class DashBoardForm
         Me.PanelPayroll.Controls.Add(Me.btnPay2)
         Me.PanelPayroll.Controls.Add(Me.btnPay1)
         Me.PanelPayroll.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelPayroll.Location = New System.Drawing.Point(0, 1107)
+        Me.PanelPayroll.Location = New System.Drawing.Point(0, 914)
         Me.PanelPayroll.Name = "PanelPayroll"
-        Me.PanelPayroll.Size = New System.Drawing.Size(245, 100)
-        Me.PanelPayroll.TabIndex = 12
+        Me.PanelPayroll.Size = New System.Drawing.Size(262, 100)
+        Me.PanelPayroll.TabIndex = 27
+        Me.PanelPayroll.Visible = False
         '
         'btnPay2
         '
@@ -1971,7 +2119,7 @@ Partial Class DashBoardForm
         Me.btnPay2.ForeColor = System.Drawing.Color.White
         Me.btnPay2.Location = New System.Drawing.Point(0, 50)
         Me.btnPay2.Name = "btnPay2"
-        Me.btnPay2.Size = New System.Drawing.Size(245, 50)
+        Me.btnPay2.Size = New System.Drawing.Size(262, 50)
         Me.btnPay2.TabIndex = 3
         Me.btnPay2.Text = "PAYSLIP"
         Me.btnPay2.UseVisualStyleBackColor = False
@@ -1988,7 +2136,7 @@ Partial Class DashBoardForm
         Me.btnPay1.ForeColor = System.Drawing.Color.White
         Me.btnPay1.Location = New System.Drawing.Point(0, 0)
         Me.btnPay1.Name = "btnPay1"
-        Me.btnPay1.Size = New System.Drawing.Size(245, 50)
+        Me.btnPay1.Size = New System.Drawing.Size(262, 50)
         Me.btnPay1.TabIndex = 2
         Me.btnPay1.Text = "EMPLOYEES SALARY"
         Me.btnPay1.UseVisualStyleBackColor = False
@@ -2003,10 +2151,10 @@ Partial Class DashBoardForm
         Me.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPayroll.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPayroll.ForeColor = System.Drawing.Color.White
-        Me.btnPayroll.Location = New System.Drawing.Point(0, 1057)
+        Me.btnPayroll.Location = New System.Drawing.Point(0, 864)
         Me.btnPayroll.Name = "btnPayroll"
-        Me.btnPayroll.Size = New System.Drawing.Size(245, 50)
-        Me.btnPayroll.TabIndex = 11
+        Me.btnPayroll.Size = New System.Drawing.Size(262, 50)
+        Me.btnPayroll.TabIndex = 26
         Me.btnPayroll.Text = "PAYROLL"
         Me.btnPayroll.UseVisualStyleBackColor = False
         '
@@ -2015,10 +2163,11 @@ Partial Class DashBoardForm
         Me.PanelProject.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.PanelProject.Controls.Add(Me.btnPro1)
         Me.PanelProject.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelProject.Location = New System.Drawing.Point(0, 1007)
+        Me.PanelProject.Location = New System.Drawing.Point(0, 814)
         Me.PanelProject.Name = "PanelProject"
-        Me.PanelProject.Size = New System.Drawing.Size(245, 50)
-        Me.PanelProject.TabIndex = 10
+        Me.PanelProject.Size = New System.Drawing.Size(262, 50)
+        Me.PanelProject.TabIndex = 25
+        Me.PanelProject.Visible = False
         '
         'btnPro1
         '
@@ -2032,7 +2181,7 @@ Partial Class DashBoardForm
         Me.btnPro1.ForeColor = System.Drawing.Color.White
         Me.btnPro1.Location = New System.Drawing.Point(0, 0)
         Me.btnPro1.Name = "btnPro1"
-        Me.btnPro1.Size = New System.Drawing.Size(245, 50)
+        Me.btnPro1.Size = New System.Drawing.Size(262, 50)
         Me.btnPro1.TabIndex = 2
         Me.btnPro1.Text = "PROJECTS LIST"
         Me.btnPro1.UseVisualStyleBackColor = False
@@ -2047,10 +2196,10 @@ Partial Class DashBoardForm
         Me.brnProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.brnProject.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.brnProject.ForeColor = System.Drawing.Color.White
-        Me.brnProject.Location = New System.Drawing.Point(0, 957)
+        Me.brnProject.Location = New System.Drawing.Point(0, 764)
         Me.brnProject.Name = "brnProject"
-        Me.brnProject.Size = New System.Drawing.Size(245, 50)
-        Me.brnProject.TabIndex = 9
+        Me.brnProject.Size = New System.Drawing.Size(262, 50)
+        Me.brnProject.TabIndex = 24
         Me.brnProject.Text = "PROJECT"
         Me.brnProject.UseVisualStyleBackColor = False
         '
@@ -2059,10 +2208,11 @@ Partial Class DashBoardForm
         Me.PanelHoliday.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.PanelHoliday.Controls.Add(Me.btnHol1)
         Me.PanelHoliday.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelHoliday.Location = New System.Drawing.Point(0, 907)
+        Me.PanelHoliday.Location = New System.Drawing.Point(0, 714)
         Me.PanelHoliday.Name = "PanelHoliday"
-        Me.PanelHoliday.Size = New System.Drawing.Size(245, 50)
-        Me.PanelHoliday.TabIndex = 8
+        Me.PanelHoliday.Size = New System.Drawing.Size(262, 50)
+        Me.PanelHoliday.TabIndex = 23
+        Me.PanelHoliday.Visible = False
         '
         'btnHol1
         '
@@ -2076,7 +2226,7 @@ Partial Class DashBoardForm
         Me.btnHol1.ForeColor = System.Drawing.Color.White
         Me.btnHol1.Location = New System.Drawing.Point(0, 0)
         Me.btnHol1.Name = "btnHol1"
-        Me.btnHol1.Size = New System.Drawing.Size(245, 50)
+        Me.btnHol1.Size = New System.Drawing.Size(262, 50)
         Me.btnHol1.TabIndex = 2
         Me.btnHol1.Text = "HOLIDAYS LIST"
         Me.btnHol1.UseVisualStyleBackColor = False
@@ -2091,10 +2241,10 @@ Partial Class DashBoardForm
         Me.btnHoliday.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHoliday.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHoliday.ForeColor = System.Drawing.Color.White
-        Me.btnHoliday.Location = New System.Drawing.Point(0, 857)
+        Me.btnHoliday.Location = New System.Drawing.Point(0, 664)
         Me.btnHoliday.Name = "btnHoliday"
-        Me.btnHoliday.Size = New System.Drawing.Size(245, 50)
-        Me.btnHoliday.TabIndex = 7
+        Me.btnHoliday.Size = New System.Drawing.Size(262, 50)
+        Me.btnHoliday.TabIndex = 22
         Me.btnHoliday.Text = "HOLIDAY"
         Me.btnHoliday.UseVisualStyleBackColor = False
         '
@@ -2105,10 +2255,11 @@ Partial Class DashBoardForm
         Me.PanelLeave.Controls.Add(Me.btnLev2)
         Me.PanelLeave.Controls.Add(Me.btnLev1)
         Me.PanelLeave.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelLeave.Location = New System.Drawing.Point(0, 707)
+        Me.PanelLeave.Location = New System.Drawing.Point(0, 514)
         Me.PanelLeave.Name = "PanelLeave"
-        Me.PanelLeave.Size = New System.Drawing.Size(245, 150)
-        Me.PanelLeave.TabIndex = 6
+        Me.PanelLeave.Size = New System.Drawing.Size(262, 150)
+        Me.PanelLeave.TabIndex = 21
+        Me.PanelLeave.Visible = False
         '
         'btnLev3
         '
@@ -2122,7 +2273,7 @@ Partial Class DashBoardForm
         Me.btnLev3.ForeColor = System.Drawing.Color.White
         Me.btnLev3.Location = New System.Drawing.Point(0, 100)
         Me.btnLev3.Name = "btnLev3"
-        Me.btnLev3.Size = New System.Drawing.Size(245, 50)
+        Me.btnLev3.Size = New System.Drawing.Size(262, 50)
         Me.btnLev3.TabIndex = 4
         Me.btnLev3.Text = "LEAVE TYPE"
         Me.btnLev3.UseVisualStyleBackColor = False
@@ -2139,7 +2290,7 @@ Partial Class DashBoardForm
         Me.btnLev2.ForeColor = System.Drawing.Color.White
         Me.btnLev2.Location = New System.Drawing.Point(0, 50)
         Me.btnLev2.Name = "btnLev2"
-        Me.btnLev2.Size = New System.Drawing.Size(245, 50)
+        Me.btnLev2.Size = New System.Drawing.Size(262, 50)
         Me.btnLev2.TabIndex = 3
         Me.btnLev2.Text = "LEAVE BALANCE"
         Me.btnLev2.UseVisualStyleBackColor = False
@@ -2156,7 +2307,7 @@ Partial Class DashBoardForm
         Me.btnLev1.ForeColor = System.Drawing.Color.White
         Me.btnLev1.Location = New System.Drawing.Point(0, 0)
         Me.btnLev1.Name = "btnLev1"
-        Me.btnLev1.Size = New System.Drawing.Size(245, 50)
+        Me.btnLev1.Size = New System.Drawing.Size(262, 50)
         Me.btnLev1.TabIndex = 2
         Me.btnLev1.Text = "LEAVE REQUEST"
         Me.btnLev1.UseVisualStyleBackColor = False
@@ -2171,10 +2322,10 @@ Partial Class DashBoardForm
         Me.btnLeave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnLeave.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnLeave.ForeColor = System.Drawing.Color.White
-        Me.btnLeave.Location = New System.Drawing.Point(0, 657)
+        Me.btnLeave.Location = New System.Drawing.Point(0, 464)
         Me.btnLeave.Name = "btnLeave"
-        Me.btnLeave.Size = New System.Drawing.Size(245, 50)
-        Me.btnLeave.TabIndex = 5
+        Me.btnLeave.Size = New System.Drawing.Size(262, 50)
+        Me.btnLeave.TabIndex = 20
         Me.btnLeave.Text = "LEAVE MANAGEMENT"
         Me.btnLeave.UseVisualStyleBackColor = False
         '
@@ -2185,10 +2336,11 @@ Partial Class DashBoardForm
         Me.PanelAtt.Controls.Add(Me.btnAtt2)
         Me.PanelAtt.Controls.Add(Me.btnAtt1)
         Me.PanelAtt.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelAtt.Location = New System.Drawing.Point(0, 507)
+        Me.PanelAtt.Location = New System.Drawing.Point(0, 314)
         Me.PanelAtt.Name = "PanelAtt"
-        Me.PanelAtt.Size = New System.Drawing.Size(245, 150)
-        Me.PanelAtt.TabIndex = 4
+        Me.PanelAtt.Size = New System.Drawing.Size(262, 150)
+        Me.PanelAtt.TabIndex = 19
+        Me.PanelAtt.Visible = False
         '
         'btnAtt3
         '
@@ -2202,7 +2354,7 @@ Partial Class DashBoardForm
         Me.btnAtt3.ForeColor = System.Drawing.Color.White
         Me.btnAtt3.Location = New System.Drawing.Point(0, 100)
         Me.btnAtt3.Name = "btnAtt3"
-        Me.btnAtt3.Size = New System.Drawing.Size(245, 50)
+        Me.btnAtt3.Size = New System.Drawing.Size(262, 50)
         Me.btnAtt3.TabIndex = 4
         Me.btnAtt3.Text = "ATTENDANCE SHEET"
         Me.btnAtt3.UseVisualStyleBackColor = False
@@ -2219,7 +2371,7 @@ Partial Class DashBoardForm
         Me.btnAtt2.ForeColor = System.Drawing.Color.White
         Me.btnAtt2.Location = New System.Drawing.Point(0, 50)
         Me.btnAtt2.Name = "btnAtt2"
-        Me.btnAtt2.Size = New System.Drawing.Size(245, 50)
+        Me.btnAtt2.Size = New System.Drawing.Size(262, 50)
         Me.btnAtt2.TabIndex = 3
         Me.btnAtt2.Text = "EMPLOYEE ATTENDANCE"
         Me.btnAtt2.UseVisualStyleBackColor = False
@@ -2236,7 +2388,7 @@ Partial Class DashBoardForm
         Me.btnAtt1.ForeColor = System.Drawing.Color.White
         Me.btnAtt1.Location = New System.Drawing.Point(0, 0)
         Me.btnAtt1.Name = "btnAtt1"
-        Me.btnAtt1.Size = New System.Drawing.Size(245, 50)
+        Me.btnAtt1.Size = New System.Drawing.Size(262, 50)
         Me.btnAtt1.TabIndex = 2
         Me.btnAtt1.Text = "TODAY'S ATTENDANCE"
         Me.btnAtt1.UseVisualStyleBackColor = False
@@ -2251,10 +2403,10 @@ Partial Class DashBoardForm
         Me.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAttendance.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAttendance.ForeColor = System.Drawing.Color.White
-        Me.btnAttendance.Location = New System.Drawing.Point(0, 457)
+        Me.btnAttendance.Location = New System.Drawing.Point(0, 264)
         Me.btnAttendance.Name = "btnAttendance"
-        Me.btnAttendance.Size = New System.Drawing.Size(245, 50)
-        Me.btnAttendance.TabIndex = 3
+        Me.btnAttendance.Size = New System.Drawing.Size(262, 50)
+        Me.btnAttendance.TabIndex = 18
         Me.btnAttendance.Text = "ATTENDANCE"
         Me.btnAttendance.UseVisualStyleBackColor = False
         '
@@ -2264,10 +2416,11 @@ Partial Class DashBoardForm
         Me.PanelEmployee.Controls.Add(Me.Button1)
         Me.PanelEmployee.Controls.Add(Me.btnEm1)
         Me.PanelEmployee.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelEmployee.Location = New System.Drawing.Point(0, 357)
+        Me.PanelEmployee.Location = New System.Drawing.Point(0, 164)
         Me.PanelEmployee.Name = "PanelEmployee"
-        Me.PanelEmployee.Size = New System.Drawing.Size(245, 100)
-        Me.PanelEmployee.TabIndex = 14
+        Me.PanelEmployee.Size = New System.Drawing.Size(262, 100)
+        Me.PanelEmployee.TabIndex = 17
+        Me.PanelEmployee.Visible = False
         '
         'Button1
         '
@@ -2281,7 +2434,7 @@ Partial Class DashBoardForm
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(0, 50)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(245, 50)
+        Me.Button1.Size = New System.Drawing.Size(262, 50)
         Me.Button1.TabIndex = 3
         Me.Button1.Text = "EMPLOYEES SALARY INFORMATION"
         Me.Button1.UseVisualStyleBackColor = False
@@ -2298,7 +2451,7 @@ Partial Class DashBoardForm
         Me.btnEm1.ForeColor = System.Drawing.Color.White
         Me.btnEm1.Location = New System.Drawing.Point(0, 0)
         Me.btnEm1.Name = "btnEm1"
-        Me.btnEm1.Size = New System.Drawing.Size(245, 50)
+        Me.btnEm1.Size = New System.Drawing.Size(262, 50)
         Me.btnEm1.TabIndex = 2
         Me.btnEm1.Text = "EMPLOYEES LIST"
         Me.btnEm1.UseVisualStyleBackColor = False
@@ -2313,10 +2466,10 @@ Partial Class DashBoardForm
         Me.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEmployee.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEmployee.ForeColor = System.Drawing.Color.White
-        Me.btnEmployee.Location = New System.Drawing.Point(0, 307)
+        Me.btnEmployee.Location = New System.Drawing.Point(0, 114)
         Me.btnEmployee.Name = "btnEmployee"
-        Me.btnEmployee.Size = New System.Drawing.Size(245, 50)
-        Me.btnEmployee.TabIndex = 13
+        Me.btnEmployee.Size = New System.Drawing.Size(262, 50)
+        Me.btnEmployee.TabIndex = 16
         Me.btnEmployee.Text = "EMPLOYEE"
         Me.btnEmployee.UseVisualStyleBackColor = False
         '
@@ -2330,10 +2483,10 @@ Partial Class DashBoardForm
         Me.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDashboard.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnDashboard.ForeColor = System.Drawing.Color.White
-        Me.btnDashboard.Location = New System.Drawing.Point(0, 257)
+        Me.btnDashboard.Location = New System.Drawing.Point(0, 64)
         Me.btnDashboard.Name = "btnDashboard"
-        Me.btnDashboard.Size = New System.Drawing.Size(245, 50)
-        Me.btnDashboard.TabIndex = 1
+        Me.btnDashboard.Size = New System.Drawing.Size(262, 50)
+        Me.btnDashboard.TabIndex = 15
         Me.btnDashboard.Text = "DASHBOARD"
         Me.btnDashboard.UseVisualStyleBackColor = False
         '
@@ -2343,10 +2496,10 @@ Partial Class DashBoardForm
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(0, 193)
+        Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(245, 64)
-        Me.Label1.TabIndex = 0
+        Me.Label1.Size = New System.Drawing.Size(262, 64)
+        Me.Label1.TabIndex = 14
         Me.Label1.Text = "WELCOME! " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Mr. Admin Istrator"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -2358,18 +2511,8 @@ Partial Class DashBoardForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(245, 193)
+        Me.Panel2.Size = New System.Drawing.Size(262, 193)
         Me.Panel2.TabIndex = 0
-        '
-        'EmployeesBindingSource
-        '
-        Me.EmployeesBindingSource.DataMember = "Employees"
-        Me.EmployeesBindingSource.DataSource = Me.HRMSDataSet
-        '
-        'HRMSDataSet
-        '
-        Me.HRMSDataSet.DataSetName = "HRMSDataSet"
-        Me.HRMSDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'EmployeesTableAdapter
         '
@@ -2381,149 +2524,28 @@ Partial Class DashBoardForm
         Me.TableAdapterManager.EmployeesTableAdapter = Me.EmployeesTableAdapter
         Me.TableAdapterManager.UpdateOrder = HRM1.HRMSDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'IDDataGridViewTextBoxColumn
+        'MainPanel
         '
-        Me.IDDataGridViewTextBoxColumn.DataPropertyName = "ID"
-        Me.IDDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.IDDataGridViewTextBoxColumn.Name = "IDDataGridViewTextBoxColumn"
-        Me.IDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IDDataGridViewTextBoxColumn.Width = 72
-        '
-        'EmployeeIDDataGridViewTextBoxColumn
-        '
-        Me.EmployeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID"
-        Me.EmployeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID"
-        Me.EmployeeIDDataGridViewTextBoxColumn.Name = "EmployeeIDDataGridViewTextBoxColumn"
-        Me.EmployeeIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmployeeIDDataGridViewTextBoxColumn.Width = 148
-        '
-        'LastNameDataGridViewTextBoxColumn
-        '
-        Me.LastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName"
-        Me.LastNameDataGridViewTextBoxColumn.HeaderText = "LastName"
-        Me.LastNameDataGridViewTextBoxColumn.Name = "LastNameDataGridViewTextBoxColumn"
-        Me.LastNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LastNameDataGridViewTextBoxColumn.Width = 131
-        '
-        'FirstNameDataGridViewTextBoxColumn
-        '
-        Me.FirstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName"
-        Me.FirstNameDataGridViewTextBoxColumn.HeaderText = "FirstName"
-        Me.FirstNameDataGridViewTextBoxColumn.Name = "FirstNameDataGridViewTextBoxColumn"
-        Me.FirstNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FirstNameDataGridViewTextBoxColumn.Width = 133
-        '
-        'MiddleNameDataGridViewTextBoxColumn
-        '
-        Me.MiddleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName"
-        Me.MiddleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName"
-        Me.MiddleNameDataGridViewTextBoxColumn.Name = "MiddleNameDataGridViewTextBoxColumn"
-        Me.MiddleNameDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MiddleNameDataGridViewTextBoxColumn.Width = 155
-        '
-        'StatusIDDataGridViewTextBoxColumn
-        '
-        Me.StatusIDDataGridViewTextBoxColumn.DataPropertyName = "StatusID"
-        Me.StatusIDDataGridViewTextBoxColumn.HeaderText = "StatusID"
-        Me.StatusIDDataGridViewTextBoxColumn.Name = "StatusIDDataGridViewTextBoxColumn"
-        Me.StatusIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.StatusIDDataGridViewTextBoxColumn.Width = 119
-        '
-        'DepartmentIDDataGridViewTextBoxColumn
-        '
-        Me.DepartmentIDDataGridViewTextBoxColumn.DataPropertyName = "DepartmentID"
-        Me.DepartmentIDDataGridViewTextBoxColumn.HeaderText = "DepartmentID"
-        Me.DepartmentIDDataGridViewTextBoxColumn.Name = "DepartmentIDDataGridViewTextBoxColumn"
-        Me.DepartmentIDDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DepartmentIDDataGridViewTextBoxColumn.Width = 164
-        '
-        'DateHiredDataGridViewTextBoxColumn
-        '
-        Me.DateHiredDataGridViewTextBoxColumn.DataPropertyName = "DateHired"
-        DataGridViewCellStyle3.Format = "yyyy-MM-dd"
-        Me.DateHiredDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DateHiredDataGridViewTextBoxColumn.HeaderText = "DateHired"
-        Me.DateHiredDataGridViewTextBoxColumn.Name = "DateHiredDataGridViewTextBoxColumn"
-        Me.DateHiredDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DateHiredDataGridViewTextBoxColumn.Width = 133
-        '
-        'AgeDataGridViewTextBoxColumn
-        '
-        Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "Age"
-        Me.AgeDataGridViewTextBoxColumn.HeaderText = "Age"
-        Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
-        Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AgeDataGridViewTextBoxColumn.Width = 85
-        '
-        'AddressDataGridViewTextBoxColumn
-        '
-        Me.AddressDataGridViewTextBoxColumn.DataPropertyName = "Address"
-        Me.AddressDataGridViewTextBoxColumn.HeaderText = "Address"
-        Me.AddressDataGridViewTextBoxColumn.Name = "AddressDataGridViewTextBoxColumn"
-        Me.AddressDataGridViewTextBoxColumn.ReadOnly = True
-        Me.AddressDataGridViewTextBoxColumn.Width = 115
-        '
-        'SSSNoDataGridViewTextBoxColumn
-        '
-        Me.SSSNoDataGridViewTextBoxColumn.DataPropertyName = "SSSNo"
-        Me.SSSNoDataGridViewTextBoxColumn.HeaderText = "SSSNo"
-        Me.SSSNoDataGridViewTextBoxColumn.Name = "SSSNoDataGridViewTextBoxColumn"
-        Me.SSSNoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SSSNoDataGridViewTextBoxColumn.Width = 105
-        '
-        'PhilHealthNoDataGridViewTextBoxColumn
-        '
-        Me.PhilHealthNoDataGridViewTextBoxColumn.DataPropertyName = "PhilHealthNo"
-        Me.PhilHealthNoDataGridViewTextBoxColumn.HeaderText = "PhilHealthNo"
-        Me.PhilHealthNoDataGridViewTextBoxColumn.Name = "PhilHealthNoDataGridViewTextBoxColumn"
-        Me.PhilHealthNoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PhilHealthNoDataGridViewTextBoxColumn.Width = 159
-        '
-        'PagibigNoDataGridViewTextBoxColumn
-        '
-        Me.PagibigNoDataGridViewTextBoxColumn.DataPropertyName = "PagibigNo"
-        Me.PagibigNoDataGridViewTextBoxColumn.HeaderText = "PagibigNo"
-        Me.PagibigNoDataGridViewTextBoxColumn.Name = "PagibigNoDataGridViewTextBoxColumn"
-        Me.PagibigNoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PagibigNoDataGridViewTextBoxColumn.Width = 137
-        '
-        'TINDataGridViewTextBoxColumn
-        '
-        Me.TINDataGridViewTextBoxColumn.DataPropertyName = "TIN"
-        Me.TINDataGridViewTextBoxColumn.HeaderText = "TIN"
-        Me.TINDataGridViewTextBoxColumn.Name = "TINDataGridViewTextBoxColumn"
-        Me.TINDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TINDataGridViewTextBoxColumn.Width = 82
-        '
-        'ContactNumberDataGridViewTextBoxColumn
-        '
-        Me.ContactNumberDataGridViewTextBoxColumn.DataPropertyName = "ContactNumber"
-        Me.ContactNumberDataGridViewTextBoxColumn.HeaderText = "ContactNumber"
-        Me.ContactNumberDataGridViewTextBoxColumn.Name = "ContactNumberDataGridViewTextBoxColumn"
-        Me.ContactNumberDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ContactNumberDataGridViewTextBoxColumn.Width = 177
-        '
-        'EmailAddressDataGridViewTextBoxColumn
-        '
-        Me.EmailAddressDataGridViewTextBoxColumn.DataPropertyName = "EmailAddress"
-        Me.EmailAddressDataGridViewTextBoxColumn.HeaderText = "EmailAddress"
-        Me.EmailAddressDataGridViewTextBoxColumn.Name = "EmailAddressDataGridViewTextBoxColumn"
-        Me.EmailAddressDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmailAddressDataGridViewTextBoxColumn.Width = 158
+        Me.MainPanel.Controls.Add(Me.EmployeeAllPanel)
+        Me.MainPanel.Controls.Add(Me.AttendanceTodayPanel)
+        Me.MainPanel.Controls.Add(Me.ProjectsListPanel)
+        Me.MainPanel.Controls.Add(Me.LeaveRequestPanel)
+        Me.MainPanel.Controls.Add(Me.EmployeesSalaryPanel)
+        Me.MainPanel.Controls.Add(Me.HolidayListPanel)
+        Me.MainPanel.Controls.Add(Me.DashboardPanel)
+        Me.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MainPanel.Location = New System.Drawing.Point(262, 0)
+        Me.MainPanel.Name = "MainPanel"
+        Me.MainPanel.Size = New System.Drawing.Size(1255, 676)
+        Me.MainPanel.TabIndex = 15
         '
         'DashBoardForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1064, 676)
-        Me.Controls.Add(Me.EmployeeAllPanel)
-        Me.Controls.Add(Me.AttendanceTodayPanel)
-        Me.Controls.Add(Me.ProjectsListPanel)
-        Me.Controls.Add(Me.HolidayListPanel)
-        Me.Controls.Add(Me.LeaveRequestPanel)
-        Me.Controls.Add(Me.EmployeesSalaryPanel)
-        Me.Controls.Add(Me.DashboardPanel)
+        Me.ClientSize = New System.Drawing.Size(1517, 676)
+        Me.Controls.Add(Me.MainPanel)
         Me.Controls.Add(Me.Panel1)
         Me.MinimumSize = New System.Drawing.Size(1080, 715)
         Me.Name = "DashBoardForm"
@@ -2544,6 +2566,8 @@ Partial Class DashBoardForm
         Me.Panel5.PerformLayout()
         Me.EmployeeAllPanel.ResumeLayout(False)
         CType(Me.EmployeesDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmployeesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HRMSDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
@@ -2581,27 +2605,20 @@ Partial Class DashBoardForm
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.SideBarPanel.ResumeLayout(False)
         Me.PanelPayroll.ResumeLayout(False)
         Me.PanelProject.ResumeLayout(False)
         Me.PanelHoliday.ResumeLayout(False)
         Me.PanelLeave.ResumeLayout(False)
         Me.PanelAtt.ResumeLayout(False)
         Me.PanelEmployee.ResumeLayout(False)
-        CType(Me.EmployeesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HRMSDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MainPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents PanelAtt As Panel
-    Friend WithEvents PanelLeave As Panel
-    Friend WithEvents PanelProject As Panel
-    Friend WithEvents PanelHoliday As Panel
-    Friend WithEvents PanelPayroll As Panel
-    Friend WithEvents PanelEmployee As Panel
     Friend WithEvents DashboardPanel As Panel
     Friend WithEvents Panel6 As Panel
     Friend WithEvents Label2 As Label
@@ -2618,25 +2635,6 @@ Partial Class DashBoardForm
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label12 As Label
-    Friend WithEvents btnLogOut As Button
-    Friend WithEvents btnEm1 As Button
-    Friend WithEvents btnEmployee As Button
-    Friend WithEvents btnPay2 As Button
-    Friend WithEvents btnPay1 As Button
-    Friend WithEvents btnPayroll As Button
-    Friend WithEvents btnPro1 As Button
-    Friend WithEvents brnProject As Button
-    Friend WithEvents btnHol1 As Button
-    Friend WithEvents btnHoliday As Button
-    Friend WithEvents btnLev3 As Button
-    Friend WithEvents btnLev2 As Button
-    Friend WithEvents btnLev1 As Button
-    Friend WithEvents btnLeave As Button
-    Friend WithEvents btnAtt3 As Button
-    Friend WithEvents btnAtt2 As Button
-    Friend WithEvents btnAtt1 As Button
-    Friend WithEvents btnAttendance As Button
-    Friend WithEvents btnDashboard As Button
     Friend WithEvents AttendanceTodayPanel As Panel
     Friend WithEvents Label17 As Label
     Friend WithEvents Panel5 As Panel
@@ -2764,7 +2762,6 @@ Partial Class DashBoardForm
     Friend WithEvents ELWorkingLabel As Label
     Friend WithEvents Label45 As Label
     Friend WithEvents Label44 As Label
-    Friend WithEvents Button1 As Button
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -2788,4 +2785,33 @@ Partial Class DashBoardForm
     Friend WithEvents TINDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ContactNumberDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EmailAddressDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SideBarPanel As Panel
+    Friend WithEvents PanelEmployee As Panel
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btnEm1 As Button
+    Friend WithEvents btnEmployee As Button
+    Friend WithEvents btnDashboard As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents btnHoliday As Button
+    Friend WithEvents PanelLeave As Panel
+    Friend WithEvents btnLev3 As Button
+    Friend WithEvents btnLev2 As Button
+    Friend WithEvents btnLev1 As Button
+    Friend WithEvents btnLeave As Button
+    Friend WithEvents PanelAtt As Panel
+    Friend WithEvents btnAtt3 As Button
+    Friend WithEvents btnAtt2 As Button
+    Friend WithEvents btnAtt1 As Button
+    Friend WithEvents btnAttendance As Button
+    Friend WithEvents btnLogOut As Button
+    Friend WithEvents PanelPayroll As Panel
+    Friend WithEvents btnPay2 As Button
+    Friend WithEvents btnPay1 As Button
+    Friend WithEvents btnPayroll As Button
+    Friend WithEvents PanelProject As Panel
+    Friend WithEvents btnPro1 As Button
+    Friend WithEvents brnProject As Button
+    Friend WithEvents PanelHoliday As Panel
+    Friend WithEvents btnHol1 As Button
+    Friend WithEvents MainPanel As Panel
 End Class

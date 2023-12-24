@@ -18,10 +18,10 @@
         Else
             MsgBox("Employee ID is not Valid")
         End If
-        ResetText()
+        ResetTextFields()
     End Sub
 
-    Public Sub ResetText()
+    Public Sub ResetTextFields()
         TextBox1.Text = ""
         TextBox1.Select()
     End Sub

@@ -24,15 +24,6 @@ Partial Class EmployeeListEditForm
     Private Sub InitializeComponent()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ELEFormPanel = New System.Windows.Forms.Panel()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ELEEmployeeStatusComboBox = New System.Windows.Forms.ComboBox()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.ELEEmpIDLabel = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Panel11 = New System.Windows.Forms.Panel()
-        Me.ELEAddButton = New System.Windows.Forms.Button()
-        Me.ELEBackButton = New System.Windows.Forms.Button()
-        Me.Label33 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ELEAddressTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -58,6 +49,15 @@ Partial Class EmployeeListEditForm
         Me.Label13 = New System.Windows.Forms.Label()
         Me.ELELastNameTextBox = New System.Windows.Forms.TextBox()
         Me.ELEMiddleNameCheckBox = New System.Windows.Forms.CheckBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ELEEmployeeStatusComboBox = New System.Windows.Forms.ComboBox()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.ELEEmpIDLabel = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.ELEUpdateButton = New System.Windows.Forms.Button()
+        Me.ELEBackButton = New System.Windows.Forms.Button()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.ELEFormPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -110,108 +110,6 @@ Partial Class EmployeeListEditForm
         Me.ELEFormPanel.Name = "ELEFormPanel"
         Me.ELEFormPanel.Size = New System.Drawing.Size(765, 413)
         Me.ELEFormPanel.TabIndex = 8
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label7.Location = New System.Drawing.Point(489, 298)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(55, 21)
-        Me.Label7.TabIndex = 33
-        Me.Label7.Tag = ""
-        Me.Label7.Text = "Status:"
-        '
-        'ELEEmployeeStatusComboBox
-        '
-        Me.ELEEmployeeStatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ELEEmployeeStatusComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELEEmployeeStatusComboBox.FormattingEnabled = True
-        Me.ELEEmployeeStatusComboBox.Items.AddRange(New Object() {"1 - Working", "2- Non-Working"})
-        Me.ELEEmployeeStatusComboBox.Location = New System.Drawing.Point(550, 294)
-        Me.ELEEmployeeStatusComboBox.Name = "ELEEmployeeStatusComboBox"
-        Me.ELEEmployeeStatusComboBox.Size = New System.Drawing.Size(181, 29)
-        Me.ELEEmployeeStatusComboBox.TabIndex = 13
-        '
-        'Panel4
-        '
-        Me.Panel4.Controls.Add(Me.ELEEmpIDLabel)
-        Me.Panel4.Controls.Add(Me.Label31)
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 52)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(765, 80)
-        Me.Panel4.TabIndex = 29
-        '
-        'ELEEmpIDLabel
-        '
-        Me.ELEEmpIDLabel.AutoSize = True
-        Me.ELEEmpIDLabel.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELEEmpIDLabel.Location = New System.Drawing.Point(246, 18)
-        Me.ELEEmpIDLabel.Name = "ELEEmpIDLabel"
-        Me.ELEEmpIDLabel.Size = New System.Drawing.Size(102, 37)
-        Me.ELEEmpIDLabel.TabIndex = 4
-        Me.ELEEmpIDLabel.Tag = ""
-        Me.ELEEmpIDLabel.Text = "EmpID"
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(27, 18)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(223, 37)
-        Me.Label31.TabIndex = 3
-        Me.Label31.Tag = ""
-        Me.Label31.Text = "EDIT EMPLOYEE:"
-        '
-        'Panel11
-        '
-        Me.Panel11.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
-        Me.Panel11.Controls.Add(Me.ELEAddButton)
-        Me.Panel11.Controls.Add(Me.ELEBackButton)
-        Me.Panel11.Controls.Add(Me.Label33)
-        Me.Panel11.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel11.Location = New System.Drawing.Point(0, 0)
-        Me.Panel11.Name = "Panel11"
-        Me.Panel11.Size = New System.Drawing.Size(765, 52)
-        Me.Panel11.TabIndex = 0
-        '
-        'ELEAddButton
-        '
-        Me.ELEAddButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ELEAddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ELEAddButton.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELEAddButton.Location = New System.Drawing.Point(655, 9)
-        Me.ELEAddButton.Name = "ELEAddButton"
-        Me.ELEAddButton.Size = New System.Drawing.Size(98, 35)
-        Me.ELEAddButton.TabIndex = 0
-        Me.ELEAddButton.Text = "UPDATE"
-        Me.ELEAddButton.UseVisualStyleBackColor = True
-        '
-        'ELEBackButton
-        '
-        Me.ELEBackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ELEBackButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ELEBackButton.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELEBackButton.Location = New System.Drawing.Point(11, 9)
-        Me.ELEBackButton.Name = "ELEBackButton"
-        Me.ELEBackButton.Size = New System.Drawing.Size(98, 35)
-        Me.ELEBackButton.TabIndex = 1
-        Me.ELEBackButton.Text = "BACK"
-        Me.ELEBackButton.UseVisualStyleBackColor = True
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.BackColor = System.Drawing.Color.Transparent
-        Me.Label33.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.ForeColor = System.Drawing.Color.White
-        Me.Label33.Location = New System.Drawing.Point(111, 9)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(211, 37)
-        Me.Label33.TabIndex = 0
-        Me.Label33.Text = "EMPLOYEE LIST"
         '
         'Label3
         '
@@ -466,9 +364,111 @@ Partial Class EmployeeListEditForm
         Me.ELEMiddleNameCheckBox.Text = "N/A"
         Me.ELEMiddleNameCheckBox.UseVisualStyleBackColor = True
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label7.Location = New System.Drawing.Point(489, 298)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(55, 21)
+        Me.Label7.TabIndex = 33
+        Me.Label7.Tag = ""
+        Me.Label7.Text = "Status:"
+        '
+        'ELEEmployeeStatusComboBox
+        '
+        Me.ELEEmployeeStatusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ELEEmployeeStatusComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ELEEmployeeStatusComboBox.FormattingEnabled = True
+        Me.ELEEmployeeStatusComboBox.Items.AddRange(New Object() {"1 - Working", "2- Non-Working"})
+        Me.ELEEmployeeStatusComboBox.Location = New System.Drawing.Point(550, 294)
+        Me.ELEEmployeeStatusComboBox.Name = "ELEEmployeeStatusComboBox"
+        Me.ELEEmployeeStatusComboBox.Size = New System.Drawing.Size(181, 29)
+        Me.ELEEmployeeStatusComboBox.TabIndex = 13
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.ELEEmpIDLabel)
+        Me.Panel4.Controls.Add(Me.Label31)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(0, 52)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(765, 80)
+        Me.Panel4.TabIndex = 29
+        '
+        'ELEEmpIDLabel
+        '
+        Me.ELEEmpIDLabel.AutoSize = True
+        Me.ELEEmpIDLabel.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ELEEmpIDLabel.Location = New System.Drawing.Point(246, 18)
+        Me.ELEEmpIDLabel.Name = "ELEEmpIDLabel"
+        Me.ELEEmpIDLabel.Size = New System.Drawing.Size(102, 37)
+        Me.ELEEmpIDLabel.TabIndex = 4
+        Me.ELEEmpIDLabel.Tag = ""
+        Me.ELEEmpIDLabel.Text = "EmpID"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(27, 18)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(223, 37)
+        Me.Label31.TabIndex = 3
+        Me.Label31.Tag = ""
+        Me.Label31.Text = "EDIT EMPLOYEE:"
+        '
+        'Panel11
+        '
+        Me.Panel11.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel11.Controls.Add(Me.ELEUpdateButton)
+        Me.Panel11.Controls.Add(Me.ELEBackButton)
+        Me.Panel11.Controls.Add(Me.Label33)
+        Me.Panel11.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel11.Location = New System.Drawing.Point(0, 0)
+        Me.Panel11.Name = "Panel11"
+        Me.Panel11.Size = New System.Drawing.Size(765, 52)
+        Me.Panel11.TabIndex = 0
+        '
+        'ELEUpdateButton
+        '
+        Me.ELEUpdateButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ELEUpdateButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ELEUpdateButton.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ELEUpdateButton.Location = New System.Drawing.Point(655, 9)
+        Me.ELEUpdateButton.Name = "ELEUpdateButton"
+        Me.ELEUpdateButton.Size = New System.Drawing.Size(98, 35)
+        Me.ELEUpdateButton.TabIndex = 0
+        Me.ELEUpdateButton.Text = "UPDATE"
+        Me.ELEUpdateButton.UseVisualStyleBackColor = True
+        '
+        'ELEBackButton
+        '
+        Me.ELEBackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ELEBackButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.ELEBackButton.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ELEBackButton.Location = New System.Drawing.Point(11, 9)
+        Me.ELEBackButton.Name = "ELEBackButton"
+        Me.ELEBackButton.Size = New System.Drawing.Size(98, 35)
+        Me.ELEBackButton.TabIndex = 1
+        Me.ELEBackButton.Text = "BACK"
+        Me.ELEBackButton.UseVisualStyleBackColor = True
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.BackColor = System.Drawing.Color.Transparent
+        Me.Label33.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.ForeColor = System.Drawing.Color.White
+        Me.Label33.Location = New System.Drawing.Point(111, 9)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(211, 37)
+        Me.Label33.TabIndex = 0
+        Me.Label33.Text = "EMPLOYEE LIST"
+        '
         'EmployeeListEditForm
         '
-        Me.AcceptButton = Me.ELEAddButton
+        Me.AcceptButton = Me.ELEUpdateButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ELEBackButton
@@ -496,7 +496,7 @@ Partial Class EmployeeListEditForm
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel11 As Panel
-    Friend WithEvents ELEAddButton As Button
+    Friend WithEvents ELEUpdateButton As Button
     Friend WithEvents ELEBackButton As Button
     Friend WithEvents Label33 As Label
     Friend WithEvents Label7 As Label
