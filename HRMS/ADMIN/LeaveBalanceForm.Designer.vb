@@ -201,6 +201,7 @@ Partial Class LeaveBalanceForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.CancelButton = Me.LBBackButton
         Me.ClientSize = New System.Drawing.Size(655, 310)
         Me.Controls.Add(Me.LeaveBalanceDataGridView)

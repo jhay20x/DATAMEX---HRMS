@@ -107,6 +107,18 @@
     <Compile Include="EmployeeListAddForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HolidayAddForm.Designer.vb">
+      <DependentUpon>HolidayAddForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HolidayAddForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HolidayEditForm.Designer.vb">
+      <DependentUpon>HolidayEditForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HolidayEditForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HRMSDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +165,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ProjectAddForm.Designer.vb">
+      <DependentUpon>ProjectAddForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectAddForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectEditForm.Designer.vb">
+      <DependentUpon>ProjectEditForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectEditForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SplashScreen1.Designer.vb">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </Compile>
@@ -176,6 +200,12 @@
     <EmbeddedResource Include="EmployeeListAddForm.resx">
       <DependentUpon>EmployeeListAddForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HolidayAddForm.resx">
+      <DependentUpon>HolidayAddForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HolidayEditForm.resx">
+      <DependentUpon>HolidayEditForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LeaveBalanceForm.resx">
       <DependentUpon>LeaveBalanceForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +223,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectAddForm.resx">
+      <DependentUpon>ProjectAddForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectEditForm.resx">
+      <DependentUpon>ProjectEditForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
@@ -292,6 +328,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\delete-disabled.png" />
+    <None Include="Resources\dda-disabled.png" />
     <None Include="Resources\View-disabled.png" />
     <None Include="Resources\edit-disabled.png" />
     <None Include="Resources\View.png" />

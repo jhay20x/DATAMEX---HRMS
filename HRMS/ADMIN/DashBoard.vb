@@ -8,6 +8,9 @@ Imports System.Xml.Serialization.Configuration
 Public Class DashBoardForm
     Public EmpNames As New List(Of String)
     Public att As New List(Of String)
+
+    Public DeleteDate As Date
+    Public DeleteProjectID
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RefreshTable()
     End Sub
@@ -530,6 +533,8 @@ Public Class DashBoardForm
             If gb.Name = "HolidayListPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
+                HolidayDateTimePicker.Value = Date.Today
+                LoadHolidayDetails()
             Else
                 gb.Visible = False
                 gb.Enabled = False
@@ -537,16 +542,283 @@ Public Class DashBoardForm
         Next
     End Sub
 
+    Private Sub HolidayDeleteButton_Click(sender As Object, e As EventArgs) Handles HolidayDeleteButton.Click
+        If MsgBox("Are you sure to delete this record?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+            Dim query = "DELETE FROM Holidays WHERE HolidayDate = @HolidayDate"
+
+            Prepare(query)
+            AddParam("@HolidayDate", DeleteDate)
+            ExecutePrepare()
+
+            LoadHoliday(HolidayDateTimePicker.Value.Month)
+            MsgBox("Record successfully deleted.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
+            DisableButton()
+        End If
+    End Sub
+
+    Private Sub HolidayDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles HolidayDataGridView.CellClick
+        If My.Computer.Keyboard.ShiftKeyDown Then
+            HolidayDataGridView.CurrentCell = Nothing
+            HolidayEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
+            HolidayEditButton.Enabled = False
+            HolidayDeleteButton.BackgroundImage = HRM1.My.Resources.Resources.delete_disabled
+            HolidayDeleteButton.Enabled = False
+
+        Else
+            Try
+                HolidayEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit
+                HolidayEditButton.Enabled = True
+                HolidayDeleteButton.BackgroundImage = HRM1.My.Resources.Resources.delete
+                HolidayDeleteButton.Enabled = True
+
+                Dim index As Integer
+                index = e.RowIndex
+
+                Dim selectedrow As DataGridViewRow
+                selectedrow = HolidayDataGridView.Rows(index)
+                DeleteDate = selectedrow.Cells(0).Value
+                HolidayEditForm.CurDate = selectedrow.Cells(0).Value
+            Catch ex As Exception
+
+            End Try
+        End If
+    End Sub
+
+    Private Sub HolidayRefreshButton_Click(sender As Object, e As EventArgs) Handles HolidayRefreshButton.Click
+        LoadHoliday(HolidayDateTimePicker.Value.Month)
+        LoadHolidayDetails()
+    End Sub
+
+    Private Sub HolidaySearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles HolidaySearchTextBox.TextChanged
+        If HolidaySearchTextBox.Text = "" Then
+            HolidayDateTimePicker.Enabled = True
+            LoadHoliday(HolidayDateTimePicker.Value.Month)
+        Else
+            HolidayDateTimePicker.Enabled = False
+
+            Dim query = "SELECT HolidayDate, Description, Type FROM Holidays WHERE Description LIKE @Search ORDER BY HolidayDate"
+
+            Prepare(query)
+            AddParam("@Search", "%" & HolidaySearchTextBox.Text & "%")
+            ExecutePrepare()
+
+            HolidayDataGridView.DataSource = DataAsTable.DefaultView
+        End If
+    End Sub
+
+    Private Sub HolidayEditButton_Click(sender As Object, e As EventArgs) Handles HolidayEditButton.Click
+        Me.Enabled = False
+        HolidayEditForm.Show(Me)
+    End Sub
+
+    Private Sub HolidayDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles HolidayDateTimePicker.ValueChanged
+        Dim SelectedMonth As Integer = HolidayDateTimePicker.Value.Month
+
+        LoadHoliday(SelectedMonth)
+    End Sub
+
+    Public Sub LoadHoliday(SelectedMonth As Integer)
+        Dim query = "SELECT HolidayDate, Description, Type FROM Holidays WHERE MONTH(HolidayDate) = @Month ORDER BY HolidayDate"
+
+        Prepare(query)
+        AddParam("@Month", SelectedMonth)
+        ExecutePrepare()
+
+        HolidayDataGridView.DataSource = DataAsTable.DefaultView
+        Try
+            HolidayDataGridView.Sort(HolidayDataGridView.Columns(0), ListSortDirection.Ascending)
+        Catch ex As Exception
+
+        End Try
+        HolidayDataGridView.CurrentCell = Nothing
+    End Sub
+
+    Public Sub LoadHolidayDetails()
+        Dim dayOfWeek = CInt(Date.Today.DayOfWeek)
+        Dim startOfWeek = Date.Today.AddDays(-1 * dayOfWeek)
+        Dim endOfWeek = Date.Today.AddDays(7 - dayOfWeek)
+
+        Dim HolTom As Integer
+        Dim HolWeek As Integer
+        Dim HolMonth As Integer
+        Dim RegCount As Integer
+        Dim SPWCount As Integer
+
+        Dim query = "SELECT HolidayDate, Description, Type FROM Holidays WHERE MONTH(HolidayDate) = @Month ORDER BY HolidayDate"
+
+        Prepare(query)
+        AddParam("@Month", Date.Today.Month)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            For Each row As DataRow In DataAsTable.Rows
+                If row("HolidayDate") = Date.Today.AddDays(1) Then
+                    HolTom += 1
+                End If
+
+                If row("HolidayDate") >= startOfWeek And row("HolidayDate") <= endOfWeek Then
+                    HolWeek += 1
+                End If
+
+                If Convert.ToDateTime(row("HolidayDate")).ToString("MM") = Date.Today.Month Then
+                    HolMonth += 1
+                End If
+
+                If row("Type") = "Regular" Then
+                    RegCount += 1
+                End If
+
+                If row("Type") = "Special Non-Working" Then
+                    SPWCount += 1
+                End If
+            Next
+        End If
+
+        HolidayMonthNameLabel.Text = Date.Today.ToString("MMMM").ToUpper
+        HolidayTomLabel.Text = HolTom
+        HolidayWeekLabel.Text = HolWeek
+        HolidayMonthLabel.Text = HolMonth
+        HolidayRegularLabel.Text = RegCount
+        HolidaySpecialLabel.Text = SPWCount
+    End Sub
+
+    Private Sub HolidayAddButton_Click(sender As Object, e As EventArgs) Handles HolidayAddButton.Click
+        Me.Enabled = False
+        HolidayAddForm.Show(Me)
+    End Sub
+
     Private Sub btnPro1_Click(sender As Object, e As EventArgs) Handles btnPro1.Click
         For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
             If gb.Name = "ProjectsListPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
+                LoadProjects(ProjectNameSearchTextBox.Text)
+                LoadProjectDetails()
+                DisableButton()
             Else
                 gb.Visible = False
                 gb.Enabled = False
             End If
         Next
+    End Sub
+
+    Public Sub LoadProjectDetails()
+        Dim PJTotal As Integer
+        Dim PJOngoing As Integer
+        Dim PJCompleted As Integer
+
+        Dim query = "SELECT * FROM Projects"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            If row("ProjectStatusID") > 0 Then
+                PJTotal += 1
+            End If
+
+            If row("ProjectStatusID") = 1 Then
+                PJOngoing += 1
+            End If
+
+            If row("ProjectStatusID") = 2 Then
+                PJCompleted += 1
+            End If
+        Next
+
+        PJTotalLabel.Text = PJTotal
+        PJOngoingLabel.Text = PJOngoing
+        PJCompletedLabel.Text = PJCompleted
+    End Sub
+
+    Private Sub PJEditButton_Click(sender As Object, e As EventArgs) Handles PJEditButton.Click
+        Me.Enabled = False
+        ProjectEditForm.Show(Me)
+    End Sub
+
+    Private Sub PJAddButton_Click(sender As Object, e As EventArgs) Handles PJAddButton.Click
+        Me.Enabled = False
+        ProjectAddForm.Show(Me)
+    End Sub
+
+    Private Sub ProjectNameSearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles ProjectNameSearchTextBox.TextChanged
+        LoadProjects(ProjectNameSearchTextBox.Text)
+    End Sub
+
+    Private Sub ProjectsDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles ProjectsDataGridView.CellClick
+        If My.Computer.Keyboard.ShiftKeyDown Then
+            ProjectsDataGridView.CurrentCell = Nothing
+            PJEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
+            PJEditButton.Enabled = False
+            PJDeleteButton.BackgroundImage = HRM1.My.Resources.Resources.delete_disabled
+            PJDeleteButton.Enabled = False
+
+        Else
+            Try
+                PJEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit
+                PJEditButton.Enabled = True
+                PJDeleteButton.BackgroundImage = HRM1.My.Resources.Resources.delete
+                PJDeleteButton.Enabled = True
+
+                Dim index As Integer
+                index = e.RowIndex
+
+                Dim selectedrow As DataGridViewRow
+                selectedrow = ProjectsDataGridView.Rows(index)
+                DeleteProjectID = selectedrow.Cells(0).Value
+                ProjectEditForm.ProjectID = selectedrow.Cells(0).Value
+            Catch ex As Exception
+
+            End Try
+        End If
+    End Sub
+
+    Private Sub PJRefreshButton_Click(sender As Object, e As EventArgs) Handles PJRefreshButton.Click
+        LoadProjects(ProjectNameSearchTextBox.Text)
+        LoadProjectDetails()
+        DisableButton()
+    End Sub
+
+    Private Sub PJDeleteButton_Click(sender As Object, e As EventArgs) Handles PJDeleteButton.Click
+        If MsgBox("Are you sure to delete this record?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+            Dim query = "DELETE FROM Projects WHERE ID = @ID"
+
+            Prepare(query)
+            AddParam("@ID", DeleteProjectID)
+            ExecutePrepare()
+
+            LoadProjects(ProjectNameSearchTextBox.Text)
+            DisableButton()
+            MsgBox("Record successfully deleted.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
+        End If
+    End Sub
+
+    Public Sub LoadProjects(PJName As String)
+        Dim NameSearch As String
+
+        If ProjectNameSearchTextBox.Text = "" Then
+            NameSearch = ""
+        Else
+            NameSearch = " WHERE Projects.ProjectName LIKE @NameSearch"
+        End If
+
+        Dim query = "SELECT Projects.ID, Projects.ProjectName, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS ProjectHead,
+        Projects.ProjectDescription, Projects.ProjectDateCreation, Projects.ProjectDateStart, Projects.ProjectDateEnd, Projects.ProjectDuration, ProjectsStatus.Status
+        FROM Projects
+        LEFT OUTER JOIN Employees
+        ON Projects.ProjectHeadID = Employees.EmployeeID
+        LEFT OUTER JOIN ProjectsStatus
+        ON Projects.ProjectStatusID = ProjectsStatus.ID" & NameSearch
+
+        Prepare(query)
+        If ProjectNameSearchTextBox.Text <> "" Then
+            AddParam("@NameSearch", "%" & ProjectNameSearchTextBox.Text & "%")
+        End If
+        ExecutePrepare()
+
+        ProjectsDataGridView.DataSource = DataAsTable.DefaultView
+        ProjectsDataGridView.Sort(ProjectsDataGridView.Columns(8), ListSortDirection.Descending)
+        ProjectsDataGridView.CurrentCell = Nothing
     End Sub
 
     Private Sub btnPay1_Click(sender As Object, e As EventArgs) Handles btnPay1.Click
@@ -612,6 +884,18 @@ Public Class DashBoardForm
         LeaveRequestDataGridView.CurrentCell = Nothing
         LRViewRequestButton.BackgroundImage = HRM1.My.Resources.Resources.View_disabled
         LRViewRequestButton.Enabled = False
+
+        HolidayDataGridView.CurrentCell = Nothing
+        HolidayEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
+        HolidayEditButton.Enabled = False
+        HolidayDeleteButton.BackgroundImage = HRM1.My.Resources.Resources.delete_disabled
+        HolidayDeleteButton.Enabled = False
+
+        ProjectsDataGridView.CurrentCell = Nothing
+        PJEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
+        PJEditButton.Enabled = False
+        PJDeleteButton.BackgroundImage = HRM1.My.Resources.Resources.delete_disabled
+        PJDeleteButton.Enabled = False
     End Sub
 
     Private Sub EmployeesDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles EmployeesDataGridView.CellClick

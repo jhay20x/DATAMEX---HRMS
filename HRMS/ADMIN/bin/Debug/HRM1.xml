@@ -77,7 +77,17 @@ HRM1
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:HRM1.My.Resources.Resources.dda_disabled">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:HRM1.My.Resources.Resources.delete">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:HRM1.My.Resources.Resources.delete_disabled">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

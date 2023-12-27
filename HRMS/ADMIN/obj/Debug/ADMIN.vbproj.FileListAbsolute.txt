@@ -44,20 +44,6 @@ C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CoreCompi
 C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.exe
 C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.xml
 C:\Users\Gabrielle Tumbaga\Downloads\HRMS\ADMIN\obj\Debug\HRM1.pdb
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.exe.config
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.exe
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.pdb
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.xml
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.AssemblyReference.cache
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Login.resources
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Form2.resources
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Resources.resources
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.SplashScreen1.resources
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.GenerateResource.cache
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CoreCompileInputs.cache
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.exe
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.xml
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.pdb
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.exe.config
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.exe
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.pdb
@@ -74,10 +60,28 @@ C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMI
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.exe
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.xml
 C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.pdb
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeListAddForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.exe.config
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.exe
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.pdb
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\HRM1.xml
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.AssemblyReference.cache
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.DashBoardForm.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeListEditForm.resources
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveRequestViewForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Login.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Form2.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeListAddForm.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveBalanceForm.resources
-C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveTypeForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveRequestViewForm.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveTypeAddForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveTypeForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.Resources.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.SplashScreen1.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.GenerateResource.cache
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CoreCompileInputs.cache
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.exe
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.xml
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.pdb
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.HolidayAddForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.HolidayEditForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.ProjectAddForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.ProjectEditForm.resources
