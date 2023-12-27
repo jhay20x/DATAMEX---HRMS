@@ -137,6 +137,11 @@ HRM1
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:HRM1.My.Resources.Resources.View_disabled">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="T:HRM1.HRMSDataSet">
 <summary>
 Represents a strongly typed in-memory cache of data.

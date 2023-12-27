@@ -437,8 +437,10 @@ Partial Class EmployeeListAddForm
         Me.Controls.Add(Me.Panel2)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(781, 584)
+        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(781, 584)
         Me.Name = "EmployeeListAddForm"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DATAMEX - HRMS: Employee List Add"
         Me.Panel11.ResumeLayout(False)

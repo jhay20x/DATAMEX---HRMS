@@ -88,7 +88,7 @@ Public Class EmployeeListAddForm
                     AddParam("@FirstName", ELAFirstNameTextBox.Text)
                     AddParam("@MiddleName", ELAMiddleNameTextBox.Text)
                     AddParam("@StatusID", Status)
-                    AddParam("@Department", Department)
+                    AddParam("@DepartmentID", Department)
                     AddParam("@DateHired", Datehired)
                     AddParam("@Age", ELAAgeTextBox.Text)
                     AddParam("@Address", ELAAddressTextBox.Text)
@@ -99,6 +99,8 @@ Public Class EmployeeListAddForm
                     AddParam("@ContactNumber", ELAContTextBox.Text)
                     AddParam("@EmailAddress", ELAEmailTextBox.Text)
                     ExecutePrepare()
+
+                    InsertLeaveBalance((Year & Month & Day) & (LastEmpID + 1))
 
                     For Each ctrl In ELAFormPanel.Controls
                         If TypeOf ctrl Is TextBox Then
@@ -111,7 +113,7 @@ Public Class EmployeeListAddForm
                     DashBoardForm.RefreshDetails()
                     DashBoardForm.DisableButton()
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-                    ELALastNameTextBox.Select()
+                    Me.Close()
                 End If
             Else
                 MsgBox("Employee not added. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
@@ -120,6 +122,15 @@ Public Class EmployeeListAddForm
         Else
             MsgBox("Please complete all the fields first!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
         End If
+    End Sub
+
+    Public Sub InsertLeaveBalance(EmpID As String)
+        Dim query = "INSERT INTO LeaveBalance VALUES (@EmployeeID, @Balance)"
+
+        Prepare(query)
+        AddParam("@EmployeeID", EmpID)
+        AddParam("@Balance", 15)
+        ExecutePrepare()
     End Sub
 
     Private Sub ELANameTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles ELALastNameTextBox.KeyPress, ELAFirstNameTextBox.KeyPress, ELAMiddleNameTextBox.KeyPress, ELADeptComboBox.KeyPress, ELAEmailTextBox.KeyPress, ELAAddressTextBox.KeyPress

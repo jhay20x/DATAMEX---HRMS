@@ -77,3 +77,7 @@ C:\Users\Gabrielle Tumbaga\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeListAddForm.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.DashBoardForm.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeListEditForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveRequestViewForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveBalanceForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveTypeForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.LeaveTypeAddForm.resources

@@ -112,6 +112,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HRMSDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LeaveBalanceForm.Designer.vb">
+      <DependentUpon>LeaveBalanceForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveBalanceForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveRequestViewForm.Designer.vb">
+      <DependentUpon>LeaveRequestViewForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveRequestViewForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveTypeAddForm.Designer.vb">
+      <DependentUpon>LeaveTypeAddForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveTypeAddForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveTypeForm.Designer.vb">
+      <DependentUpon>LeaveTypeForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveTypeForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -151,6 +175,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeListAddForm.resx">
       <DependentUpon>EmployeeListAddForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveBalanceForm.resx">
+      <DependentUpon>LeaveBalanceForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveRequestViewForm.resx">
+      <DependentUpon>LeaveRequestViewForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveTypeAddForm.resx">
+      <DependentUpon>LeaveTypeAddForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveTypeForm.resx">
+      <DependentUpon>LeaveTypeForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -256,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\View-disabled.png" />
     <None Include="Resources\edit-disabled.png" />
     <None Include="Resources\View.png" />
     <None Include="Resources\delete.png" />
