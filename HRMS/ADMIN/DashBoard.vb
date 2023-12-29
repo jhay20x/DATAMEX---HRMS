@@ -7,12 +7,44 @@ Imports System.Xml.Serialization.Configuration
 
 Public Class DashBoardForm
     Public EmpNames As New List(Of String)
+    Public EmployeeID As New List(Of String)
     Public att As New List(Of String)
 
     Public DeleteDate As Date
     Public DeleteProjectID
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RefreshTable()
+        CheckLeave()
+        LoadAttendanceDetails()
+        LoadLeaveRequestDetails()
+        LoadHolidayDetails()
+    End Sub
+
+    Private Sub DashUpdateTimer_Tick(sender As Object, e As EventArgs) Handles DashUpdateTimer.Tick
+        LoadAttendanceDetails()
+        LoadLeaveRequestDetails()
+        LoadHolidayDetails()
+    End Sub
+
+    Public Sub CheckLeave()
+        Dim query = "SELECT EmployeeID, DateTo FROM LeaveRequest"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            If row("DateTo") < Date.Today Then
+                UpdateLeave(row("EmployeeID"))
+            End If
+        Next
+    End Sub
+
+    Public Sub UpdateLeave(EmpID As String)
+        Dim query = "UPDATE Employees SET OnLeaveID = NULL WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        ExecutePrepare()
     End Sub
 
     Private Sub btnAttendance_Click(sender As Object, e As EventArgs) Handles btnAttendance.Click
@@ -263,11 +295,30 @@ Public Class DashBoardForm
     Public Sub LoadAttendanceDetails()
         Dim Total As Integer = GetTotalEmployee()
         Dim Present As Integer = GetPresentEmployee()
+        Dim OnLeave As Integer = GetOnLeaveEmployee()
 
         ATTotalLabel.Text = Total
+        DashTotalLabel.Text = Total
         ATPresentLabel.Text = Present
-        ATAbsentLabel.Text = Total - Present
+        DashPresentLabel.Text = Present
+        ATAbsentLabel.Text = Total - (Present + OnLeave)
+        DashAbsentLabel.Text = Total - (Present + OnLeave)
+        ATLeaveLabel.Text = OnLeave
+        DashLeaveLabel.Text = OnLeave
     End Sub
+
+    Public Function GetOnLeaveEmployee()
+        Dim query = "SELECT COUNT(OnLeaveID) AS LeaveCount FROM Employees"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        If Not DataAsTable.Rows(0).IsNull(0) Then
+            Return DataAsTable.Rows(0).Item(0)
+        Else
+            Return Nothing
+        End If
+    End Function
 
     Public Function GetTotalEmployee()
         Dim query = "SELECT COUNT(EmployeeID) AS EmployeeCount FROM Employees"
@@ -361,6 +412,40 @@ Public Class DashBoardForm
                 gb.Enabled = False
             End If
         Next
+    End Sub
+
+    Private Sub btnEm2_Click(sender As Object, e As EventArgs) Handles btnEm2.Click
+        For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
+            If gb.Name = "EmployeesSalaryPanel" Then
+                gb.Visible = True
+                gb.Enabled = True
+                PopulateESIEmpNames()
+            Else
+                gb.Visible = False
+                gb.Enabled = False
+            End If
+        Next
+    End Sub
+
+    Public Sub PopulateESIEmpNames()
+        Dim query = "SELECT EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName
+        FROM Employees"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            EmployeeID.Add(row("EmployeeID"))
+        Next
+
+        ESIEmpNamesComboBox.DisplayMember = "EmployeeName"
+        ESIEmpNamesComboBox.DataSource = DataAsTable
+        ESIEmpNamesComboBox.SelectedIndex = 0
+        ESIEmpNamesComboBox.MaxDropDownItems = 5
+    End Sub
+
+    Private Sub ESIEmpNamesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ESIEmpNamesComboBox.SelectedIndexChanged
+        ESIEmpIDLabel.Text = EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex)
     End Sub
 
     Private Sub btnLev3_Click(sender As Object, e As EventArgs) Handles btnLev3.Click
@@ -524,8 +609,11 @@ Public Class DashBoardForm
         End If
 
         LRUnderReviewLabel.Text = URCount
+        DashURLabel.Text = URCount
         LRApprovedLabel.Text = ApprovedCount
+        DashApprovedLabel.Text = ApprovedCount
         LRRejectedLabel.Text = RejectedCount
+        DashRejectedLabel.Text = RejectedCount
     End Sub
 
     Private Sub btnHol1_Click(sender As Object, e As EventArgs) Handles btnHol1.Click
@@ -676,8 +764,11 @@ Public Class DashBoardForm
 
         HolidayMonthNameLabel.Text = Date.Today.ToString("MMMM").ToUpper
         HolidayTomLabel.Text = HolTom
+        DashTomLabel.Text = HolTom
         HolidayWeekLabel.Text = HolWeek
+        DashWeekLabel.Text = HolWeek
         HolidayMonthLabel.Text = HolMonth
+        DashMonthLabel.Text = HolMonth
         HolidayRegularLabel.Text = RegCount
         HolidaySpecialLabel.Text = SPWCount
     End Sub
@@ -984,5 +1075,20 @@ Public Class DashBoardForm
         LoadAttendanceToday()
         LoadAttendanceDetails()
         AttendanceTodayDataGridView.CurrentCell = Nothing
+    End Sub
+
+    Private Sub DashBoardForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If MsgBox("Are you sure to exit?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
+            e.Cancel = False
+            Login.Show()
+        Else
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub DateTimeTimer_Tick(sender As Object, e As EventArgs) Handles DateTimeTimer.Tick
+        Dim CurDateTime As Date = Date.Now
+        TimeLabel.Text = CurDateTime.ToString("hh:mm:ss tt")
+        DateLabel.Text = CurDateTime.ToLongDateString
     End Sub
 End Class

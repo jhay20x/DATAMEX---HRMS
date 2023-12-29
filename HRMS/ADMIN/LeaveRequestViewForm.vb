@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Reflection
 
 Public Class LeaveRequestViewForm
     Public EmpIdEdit As String
@@ -95,9 +96,18 @@ Public Class LeaveRequestViewForm
 
             MsgBox("Request successfully approved!", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
             UpdateLeaveBalance()
+            UpdateLeave(EmpIdEdit)
             isDone = True
             Me.Close()
         End If
+    End Sub
+
+    Public Sub UpdateLeave(EmpID As String)
+
+        Dim query = "UPDATE Employees SET OnLeaveID = 1 WHERE EmployeeID = @EmpID"
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        ExecutePrepare()
     End Sub
 
     Private Sub LRRejectButton_Click(sender As Object, e As EventArgs) Handles LRRejectButton.Click

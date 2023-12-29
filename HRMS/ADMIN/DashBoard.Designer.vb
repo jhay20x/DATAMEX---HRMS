@@ -24,46 +24,54 @@ Partial Class DashBoardForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DashBoardForm))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DashboardPanel = New System.Windows.Forms.Panel()
-        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.DashPresentLabel = New System.Windows.Forms.Label()
+        Me.DashAbsentLabel = New System.Windows.Forms.Label()
+        Me.DashLeaveLabel = New System.Windows.Forms.Label()
+        Me.DashTotalLabel = New System.Windows.Forms.Label()
+        Me.DashRejectedLabel = New System.Windows.Forms.Label()
+        Me.DashApprovedLabel = New System.Windows.Forms.Label()
+        Me.DashURLabel = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.DashWeekLabel = New System.Windows.Forms.Label()
+        Me.DashTomLabel = New System.Windows.Forms.Label()
+        Me.DashMonthLabel = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label64 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.MenuHide1Button = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -120,7 +128,6 @@ Partial Class DashBoardForm
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.ELNWorkingLabel = New System.Windows.Forms.Label()
         Me.ELWorkingLabel = New System.Windows.Forms.Label()
-        Me.Label45 = New System.Windows.Forms.Label()
         Me.ELTotalLabel = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -189,17 +196,13 @@ Partial Class DashBoardForm
         Me.MenuHide6Button = New System.Windows.Forms.Button()
         Me.Label54 = New System.Windows.Forms.Label()
         Me.EmployeesSalaryPanel = New System.Windows.Forms.Panel()
-        Me.DataGridView5 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Salary = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel20 = New System.Windows.Forms.Panel()
+        Me.ESIEmpNamesComboBox = New System.Windows.Forms.ComboBox()
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Button15 = New System.Windows.Forms.Button()
         Me.Button18 = New System.Windows.Forms.Button()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label46 = New System.Windows.Forms.Label()
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.MenuHide7Button = New System.Windows.Forms.Button()
@@ -207,24 +210,6 @@ Partial Class DashBoardForm
         Me.EmployeesTableAdapter = New HRM1.HRMSDataSetTableAdapters.EmployeesTableAdapter()
         Me.TableAdapterManager = New HRM1.HRMSDataSetTableAdapters.TableAdapterManager()
         Me.MainPanel = New System.Windows.Forms.Panel()
-        Me.AttendanceSheetPanel = New System.Windows.Forms.Panel()
-        Me.AttendanceSheetDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Panel18 = New System.Windows.Forms.Panel()
-        Me.ASEmployeeNamesComboBox = New System.Windows.Forms.ComboBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label47 = New System.Windows.Forms.Label()
-        Me.Panel24 = New System.Windows.Forms.Panel()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.Label63 = New System.Windows.Forms.Label()
-        Me.EmployeeAttendancePanel = New System.Windows.Forms.Panel()
-        Me.EmployeeAttendanceDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Panel19 = New System.Windows.Forms.Panel()
-        Me.EmployeeAttendanceDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.EARefreshButton = New System.Windows.Forms.Button()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.Panel25 = New System.Windows.Forms.Panel()
-        Me.Button13 = New System.Windows.Forms.Button()
-        Me.Label55 = New System.Windows.Forms.Label()
         Me.LeaveRequestPanel = New System.Windows.Forms.Panel()
         Me.LeaveRequestDataGridView = New System.Windows.Forms.DataGridView()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -252,8 +237,28 @@ Partial Class DashBoardForm
         Me.Panel27 = New System.Windows.Forms.Panel()
         Me.Button17 = New System.Windows.Forms.Button()
         Me.Label57 = New System.Windows.Forms.Label()
+        Me.EmployeeAttendancePanel = New System.Windows.Forms.Panel()
+        Me.EmployeeAttendanceDataGridView = New System.Windows.Forms.DataGridView()
+        Me.Panel19 = New System.Windows.Forms.Panel()
+        Me.EmployeeAttendanceDateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.EARefreshButton = New System.Windows.Forms.Button()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.Panel25 = New System.Windows.Forms.Panel()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.AttendanceSheetPanel = New System.Windows.Forms.Panel()
+        Me.AttendanceSheetDataGridView = New System.Windows.Forms.DataGridView()
+        Me.Panel18 = New System.Windows.Forms.Panel()
+        Me.ASEmployeeNamesComboBox = New System.Windows.Forms.ComboBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.Panel24 = New System.Windows.Forms.Panel()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Label63 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SideBarPanel = New System.Windows.Forms.Panel()
+        Me.TimeLabel = New System.Windows.Forms.Label()
+        Me.DateLabel = New System.Windows.Forms.Label()
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.PanelPayroll = New System.Windows.Forms.Panel()
         Me.btnPay2 = New System.Windows.Forms.Button()
@@ -276,12 +281,15 @@ Partial Class DashBoardForm
         Me.btnAtt1 = New System.Windows.Forms.Button()
         Me.btnAttendance = New System.Windows.Forms.Button()
         Me.PanelEmployee = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnEm2 = New System.Windows.Forms.Button()
         Me.btnEm1 = New System.Windows.Forms.Button()
         Me.btnEmployee = New System.Windows.Forms.Button()
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.DateTimeTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.DashUpdateTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.ESIEmpIDLabel = New System.Windows.Forms.Label()
         Me.DashboardPanel.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.AttendanceTodayPanel.SuspendLayout()
@@ -307,23 +315,23 @@ Partial Class DashBoardForm
         Me.Panel22.SuspendLayout()
         Me.Panel23.SuspendLayout()
         Me.EmployeesSalaryPanel.SuspendLayout()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel10.SuspendLayout()
         Me.Panel20.SuspendLayout()
         Me.Panel13.SuspendLayout()
         Me.MainPanel.SuspendLayout()
-        Me.AttendanceSheetPanel.SuspendLayout()
-        CType(Me.AttendanceSheetDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel18.SuspendLayout()
-        Me.Panel24.SuspendLayout()
-        Me.EmployeeAttendancePanel.SuspendLayout()
-        CType(Me.EmployeeAttendanceDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel19.SuspendLayout()
-        Me.Panel25.SuspendLayout()
         Me.LeaveRequestPanel.SuspendLayout()
         CType(Me.LeaveRequestDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel26.SuspendLayout()
         Me.Panel28.SuspendLayout()
         Me.Panel27.SuspendLayout()
+        Me.EmployeeAttendancePanel.SuspendLayout()
+        CType(Me.EmployeeAttendanceDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel19.SuspendLayout()
+        Me.Panel25.SuspendLayout()
+        Me.AttendanceSheetPanel.SuspendLayout()
+        CType(Me.AttendanceSheetDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel18.SuspendLayout()
+        Me.Panel24.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SideBarPanel.SuspendLayout()
         Me.PanelPayroll.SuspendLayout()
@@ -336,36 +344,254 @@ Partial Class DashBoardForm
         '
         'DashboardPanel
         '
-        Me.DashboardPanel.Controls.Add(Me.Label16)
+        Me.DashboardPanel.Controls.Add(Me.Label9)
+        Me.DashboardPanel.Controls.Add(Me.Label10)
+        Me.DashboardPanel.Controls.Add(Me.Label11)
+        Me.DashboardPanel.Controls.Add(Me.Label45)
+        Me.DashboardPanel.Controls.Add(Me.DashPresentLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashAbsentLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashLeaveLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashTotalLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashRejectedLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashApprovedLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashURLabel)
+        Me.DashboardPanel.Controls.Add(Me.Label34)
+        Me.DashboardPanel.Controls.Add(Me.Label36)
+        Me.DashboardPanel.Controls.Add(Me.Label37)
+        Me.DashboardPanel.Controls.Add(Me.Label30)
+        Me.DashboardPanel.Controls.Add(Me.DashWeekLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashTomLabel)
+        Me.DashboardPanel.Controls.Add(Me.DashMonthLabel)
+        Me.DashboardPanel.Controls.Add(Me.Label38)
+        Me.DashboardPanel.Controls.Add(Me.Label64)
         Me.DashboardPanel.Controls.Add(Me.Label14)
         Me.DashboardPanel.Controls.Add(Me.Label13)
         Me.DashboardPanel.Controls.Add(Me.Label12)
-        Me.DashboardPanel.Controls.Add(Me.Label5)
-        Me.DashboardPanel.Controls.Add(Me.Label6)
-        Me.DashboardPanel.Controls.Add(Me.Label4)
-        Me.DashboardPanel.Controls.Add(Me.Label11)
-        Me.DashboardPanel.Controls.Add(Me.Label3)
-        Me.DashboardPanel.Controls.Add(Me.Label7)
-        Me.DashboardPanel.Controls.Add(Me.Label10)
-        Me.DashboardPanel.Controls.Add(Me.Label8)
-        Me.DashboardPanel.Controls.Add(Me.Label9)
         Me.DashboardPanel.Controls.Add(Me.Panel6)
-        Me.DashboardPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DashboardPanel.Location = New System.Drawing.Point(0, 0)
+        Me.DashboardPanel.Location = New System.Drawing.Point(479, 21)
         Me.DashboardPanel.Name = "DashboardPanel"
         Me.DashboardPanel.Size = New System.Drawing.Size(802, 676)
         Me.DashboardPanel.TabIndex = 1
         '
-        'Label16
+        'Label9
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(215, 135)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(115, 30)
-        Me.Label16.TabIndex = 6
-        Me.Label16.Tag = ""
-        Me.Label16.Text = "Present: 51"
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(203, 136)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(87, 30)
+        Me.Label9.TabIndex = 34
+        Me.Label9.Tag = ""
+        Me.Label9.Text = "Present:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(585, 136)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(83, 30)
+        Me.Label10.TabIndex = 33
+        Me.Label10.Tag = ""
+        Me.Label10.Text = "Absent:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(402, 136)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(71, 30)
+        Me.Label11.TabIndex = 32
+        Me.Label11.Tag = ""
+        Me.Label11.Text = "Leave:"
+        '
+        'Label45
+        '
+        Me.Label45.AutoSize = True
+        Me.Label45.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label45.Location = New System.Drawing.Point(29, 136)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(62, 30)
+        Me.Label45.TabIndex = 31
+        Me.Label45.Tag = ""
+        Me.Label45.Text = "Total:"
+        '
+        'DashPresentLabel
+        '
+        Me.DashPresentLabel.AutoSize = True
+        Me.DashPresentLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashPresentLabel.Location = New System.Drawing.Point(296, 136)
+        Me.DashPresentLabel.Name = "DashPresentLabel"
+        Me.DashPresentLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashPresentLabel.TabIndex = 30
+        Me.DashPresentLabel.Tag = ""
+        Me.DashPresentLabel.Text = "0"
+        '
+        'DashAbsentLabel
+        '
+        Me.DashAbsentLabel.AutoSize = True
+        Me.DashAbsentLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashAbsentLabel.Location = New System.Drawing.Point(674, 136)
+        Me.DashAbsentLabel.Name = "DashAbsentLabel"
+        Me.DashAbsentLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashAbsentLabel.TabIndex = 29
+        Me.DashAbsentLabel.Tag = ""
+        Me.DashAbsentLabel.Text = "0"
+        '
+        'DashLeaveLabel
+        '
+        Me.DashLeaveLabel.AutoSize = True
+        Me.DashLeaveLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashLeaveLabel.Location = New System.Drawing.Point(479, 136)
+        Me.DashLeaveLabel.Name = "DashLeaveLabel"
+        Me.DashLeaveLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashLeaveLabel.TabIndex = 28
+        Me.DashLeaveLabel.Tag = ""
+        Me.DashLeaveLabel.Text = "0"
+        '
+        'DashTotalLabel
+        '
+        Me.DashTotalLabel.AutoSize = True
+        Me.DashTotalLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashTotalLabel.Location = New System.Drawing.Point(97, 136)
+        Me.DashTotalLabel.Name = "DashTotalLabel"
+        Me.DashTotalLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashTotalLabel.TabIndex = 27
+        Me.DashTotalLabel.Tag = ""
+        Me.DashTotalLabel.Text = "0"
+        '
+        'DashRejectedLabel
+        '
+        Me.DashRejectedLabel.AutoSize = True
+        Me.DashRejectedLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashRejectedLabel.Location = New System.Drawing.Point(560, 415)
+        Me.DashRejectedLabel.Name = "DashRejectedLabel"
+        Me.DashRejectedLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashRejectedLabel.TabIndex = 26
+        Me.DashRejectedLabel.Tag = ""
+        Me.DashRejectedLabel.Text = "0"
+        '
+        'DashApprovedLabel
+        '
+        Me.DashApprovedLabel.AutoSize = True
+        Me.DashApprovedLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashApprovedLabel.Location = New System.Drawing.Point(375, 415)
+        Me.DashApprovedLabel.Name = "DashApprovedLabel"
+        Me.DashApprovedLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashApprovedLabel.TabIndex = 25
+        Me.DashApprovedLabel.Tag = ""
+        Me.DashApprovedLabel.Text = "0"
+        '
+        'DashURLabel
+        '
+        Me.DashURLabel.AutoSize = True
+        Me.DashURLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashURLabel.Location = New System.Drawing.Point(179, 415)
+        Me.DashURLabel.Name = "DashURLabel"
+        Me.DashURLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashURLabel.TabIndex = 24
+        Me.DashURLabel.Tag = ""
+        Me.DashURLabel.Text = "0"
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.Location = New System.Drawing.Point(261, 415)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(108, 30)
+        Me.Label34.TabIndex = 23
+        Me.Label34.Tag = ""
+        Me.Label34.Text = "Approved:"
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.Location = New System.Drawing.Point(457, 415)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(97, 30)
+        Me.Label36.TabIndex = 22
+        Me.Label36.Tag = ""
+        Me.Label36.Text = "Rejected:"
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label37.Location = New System.Drawing.Point(29, 415)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(144, 30)
+        Me.Label37.TabIndex = 21
+        Me.Label37.Tag = ""
+        Me.Label37.Text = "Under Review:"
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(390, 275)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(123, 30)
+        Me.Label30.TabIndex = 20
+        Me.Label30.Tag = ""
+        Me.Label30.Text = "This Month:"
+        '
+        'DashWeekLabel
+        '
+        Me.DashWeekLabel.AutoSize = True
+        Me.DashWeekLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashWeekLabel.Location = New System.Drawing.Point(333, 275)
+        Me.DashWeekLabel.Name = "DashWeekLabel"
+        Me.DashWeekLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashWeekLabel.TabIndex = 19
+        Me.DashWeekLabel.Tag = ""
+        Me.DashWeekLabel.Text = "0"
+        '
+        'DashTomLabel
+        '
+        Me.DashTomLabel.AutoSize = True
+        Me.DashTomLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashTomLabel.Location = New System.Drawing.Point(145, 275)
+        Me.DashTomLabel.Name = "DashTomLabel"
+        Me.DashTomLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashTomLabel.TabIndex = 18
+        Me.DashTomLabel.Tag = ""
+        Me.DashTomLabel.Text = "0"
+        '
+        'DashMonthLabel
+        '
+        Me.DashMonthLabel.AutoSize = True
+        Me.DashMonthLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DashMonthLabel.Location = New System.Drawing.Point(519, 275)
+        Me.DashMonthLabel.Name = "DashMonthLabel"
+        Me.DashMonthLabel.Size = New System.Drawing.Size(24, 30)
+        Me.DashMonthLabel.TabIndex = 17
+        Me.DashMonthLabel.Tag = ""
+        Me.DashMonthLabel.Text = "0"
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label38.Location = New System.Drawing.Point(215, 275)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(112, 30)
+        Me.Label38.TabIndex = 16
+        Me.Label38.Tag = ""
+        Me.Label38.Text = "This Week:"
+        '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(29, 275)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(110, 30)
+        Me.Label64.TabIndex = 15
+        Me.Label64.Tag = ""
+        Me.Label64.Text = "Tomorrow:"
         '
         'Label14
         '
@@ -373,10 +599,10 @@ Partial Class DashBoardForm
         Me.Label14.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.Location = New System.Drawing.Point(27, 360)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(156, 37)
+        Me.Label14.Size = New System.Drawing.Size(226, 37)
         Me.Label14.TabIndex = 5
         Me.Label14.Tag = ""
-        Me.Label14.Text = "HOLIDAYS:"
+        Me.Label14.Text = "LEAVE REQUEST:"
         '
         'Label13
         '
@@ -399,105 +625,6 @@ Partial Class DashBoardForm
         Me.Label12.TabIndex = 3
         Me.Label12.Tag = ""
         Me.Label12.Text = "EMPLOYEES:"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(583, 135)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(100, 30)
-        Me.Label5.TabIndex = 2
-        Me.Label5.Tag = ""
-        Me.Label5.Text = "Absent: 2"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(399, 275)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(140, 30)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Tag = ""
-        Me.Label6.Text = "This Month: 2"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(399, 135)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(88, 30)
-        Me.Label4.TabIndex = 1
-        Me.Label4.Tag = ""
-        Me.Label4.Text = "Leave: 3"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(29, 415)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(71, 30)
-        Me.Label11.TabIndex = 0
-        Me.Label11.Tag = ""
-        Me.Label11.Text = "Sick: 1"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(29, 135)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 30)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Tag = ""
-        Me.Label3.Text = "Total: 56"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(215, 275)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(129, 30)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Tag = ""
-        Me.Label7.Text = "This Week: 1"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(215, 415)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(114, 30)
-        Me.Label10.TabIndex = 1
-        Me.Label10.Tag = ""
-        Me.Label10.Text = "Vacation: 1"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(29, 275)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(95, 30)
-        Me.Label8.TabIndex = 0
-        Me.Label8.Tag = ""
-        Me.Label8.Text = "Today: 0 "
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(399, 415)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(110, 30)
-        Me.Label9.TabIndex = 2
-        Me.Label9.Tag = ""
-        Me.Label9.Text = "Parental: 1"
         '
         'Panel6
         '
@@ -539,9 +666,8 @@ Partial Class DashBoardForm
         Me.AttendanceTodayPanel.Controls.Add(Me.Panel3)
         Me.AttendanceTodayPanel.Controls.Add(Me.Panel4)
         Me.AttendanceTodayPanel.Controls.Add(Me.Panel5)
-        Me.AttendanceTodayPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AttendanceTodayPanel.Enabled = False
-        Me.AttendanceTodayPanel.Location = New System.Drawing.Point(0, 0)
+        Me.AttendanceTodayPanel.Location = New System.Drawing.Point(333, 111)
         Me.AttendanceTodayPanel.Name = "AttendanceTodayPanel"
         Me.AttendanceTodayPanel.Size = New System.Drawing.Size(802, 676)
         Me.AttendanceTodayPanel.TabIndex = 6
@@ -555,24 +681,24 @@ Partial Class DashBoardForm
         Me.AttendanceTodayDataGridView.AllowUserToResizeRows = False
         Me.AttendanceTodayDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.AttendanceTodayDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AttendanceTodayDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle25.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AttendanceTodayDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle25
         Me.AttendanceTodayDataGridView.ColumnHeadersHeight = 29
         Me.AttendanceTodayDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.AttendanceTodayDataGridView.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle29.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        DataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.AttendanceTodayDataGridView.DefaultCellStyle = DataGridViewCellStyle29
         Me.AttendanceTodayDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AttendanceTodayDataGridView.Location = New System.Drawing.Point(0, 248)
         Me.AttendanceTodayDataGridView.Name = "AttendanceTodayDataGridView"
@@ -584,8 +710,8 @@ Partial Class DashBoardForm
         'Column1
         '
         Me.Column1.DataPropertyName = "ID"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle26
         Me.Column1.FillWeight = 30.0!
         Me.Column1.HeaderText = "ID"
         Me.Column1.Name = "Column1"
@@ -608,8 +734,8 @@ Partial Class DashBoardForm
         'Column4
         '
         Me.Column4.DataPropertyName = "TimeIn"
-        DataGridViewCellStyle3.NullValue = "-"
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle27.NullValue = "-"
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle27
         Me.Column4.HeaderText = "Time-In"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -617,8 +743,8 @@ Partial Class DashBoardForm
         'Column5
         '
         Me.Column5.DataPropertyName = "TimeOut"
-        DataGridViewCellStyle4.NullValue = "-"
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle28.NullValue = "-"
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle28
         Me.Column5.HeaderText = "Time-Out"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
@@ -765,7 +891,7 @@ Partial Class DashBoardForm
         '
         Me.ATLeaveLabel.AutoSize = True
         Me.ATLeaveLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ATLeaveLabel.Location = New System.Drawing.Point(473, 79)
+        Me.ATLeaveLabel.Location = New System.Drawing.Point(479, 79)
         Me.ATLeaveLabel.Name = "ATLeaveLabel"
         Me.ATLeaveLabel.Size = New System.Drawing.Size(24, 30)
         Me.ATLeaveLabel.TabIndex = 8
@@ -776,7 +902,7 @@ Partial Class DashBoardForm
         '
         Me.ATTotalLabel.AutoSize = True
         Me.ATTotalLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ATTotalLabel.Location = New System.Drawing.Point(91, 79)
+        Me.ATTotalLabel.Location = New System.Drawing.Point(97, 79)
         Me.ATTotalLabel.Name = "ATTotalLabel"
         Me.ATTotalLabel.Size = New System.Drawing.Size(24, 30)
         Me.ATTotalLabel.TabIndex = 7
@@ -834,9 +960,8 @@ Partial Class DashBoardForm
         Me.EmployeeAllPanel.Controls.Add(Me.Panel7)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel8)
         Me.EmployeeAllPanel.Controls.Add(Me.Panel9)
-        Me.EmployeeAllPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.EmployeeAllPanel.Enabled = False
-        Me.EmployeeAllPanel.Location = New System.Drawing.Point(0, 0)
+        Me.EmployeeAllPanel.Location = New System.Drawing.Point(529, 0)
         Me.EmployeeAllPanel.Name = "EmployeeAllPanel"
         Me.EmployeeAllPanel.Size = New System.Drawing.Size(802, 676)
         Me.EmployeeAllPanel.TabIndex = 8
@@ -851,26 +976,26 @@ Partial Class DashBoardForm
         Me.EmployeesDataGridView.AutoGenerateColumns = False
         Me.EmployeesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.EmployeesDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.EmployeesDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle30.Padding = New System.Windows.Forms.Padding(10, 0, 10, 0)
+        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.EmployeesDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle30
         Me.EmployeesDataGridView.ColumnHeadersHeight = 29
         Me.EmployeesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.EmployeeIDDataGridViewTextBoxColumn, Me.StatusIDDataGridViewTextBoxColumn, Me.DepartmentIDDataGridViewTextBoxColumn, Me.DateHiredDataGridViewTextBoxColumn, Me.AgeDataGridViewTextBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.SSSNoDataGridViewTextBoxColumn, Me.PhilHealthNoDataGridViewTextBoxColumn, Me.PagibigNoDataGridViewTextBoxColumn, Me.TINDataGridViewTextBoxColumn, Me.ContactNumberDataGridViewTextBoxColumn, Me.EmailAddressDataGridViewTextBoxColumn, Me.Column7})
         Me.EmployeesDataGridView.DataSource = Me.EmployeesBindingSource
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.EmployeesDataGridView.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle32.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        DataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.EmployeesDataGridView.DefaultCellStyle = DataGridViewCellStyle32
         Me.EmployeesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.EmployeesDataGridView.Location = New System.Drawing.Point(0, 248)
         Me.EmployeesDataGridView.Name = "EmployeesDataGridView"
@@ -916,8 +1041,8 @@ Partial Class DashBoardForm
         'DateHiredDataGridViewTextBoxColumn
         '
         Me.DateHiredDataGridViewTextBoxColumn.DataPropertyName = "DateHired"
-        DataGridViewCellStyle7.Format = "yyyy-MM-dd"
-        Me.DateHiredDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle31.Format = "yyyy-MM-dd"
+        Me.DateHiredDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle31
         Me.DateHiredDataGridViewTextBoxColumn.HeaderText = "Date Hired"
         Me.DateHiredDataGridViewTextBoxColumn.Name = "DateHiredDataGridViewTextBoxColumn"
         Me.DateHiredDataGridViewTextBoxColumn.ReadOnly = True
@@ -1105,7 +1230,6 @@ Partial Class DashBoardForm
         '
         Me.Panel8.Controls.Add(Me.ELNWorkingLabel)
         Me.Panel8.Controls.Add(Me.ELWorkingLabel)
-        Me.Panel8.Controls.Add(Me.Label45)
         Me.Panel8.Controls.Add(Me.ELTotalLabel)
         Me.Panel8.Controls.Add(Me.Label20)
         Me.Panel8.Controls.Add(Me.Label22)
@@ -1121,7 +1245,7 @@ Partial Class DashBoardForm
         '
         Me.ELNWorkingLabel.AutoSize = True
         Me.ELNWorkingLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELNWorkingLabel.Location = New System.Drawing.Point(536, 72)
+        Me.ELNWorkingLabel.Location = New System.Drawing.Point(546, 72)
         Me.ELNWorkingLabel.Name = "ELNWorkingLabel"
         Me.ELNWorkingLabel.Size = New System.Drawing.Size(24, 30)
         Me.ELNWorkingLabel.TabIndex = 9
@@ -1132,28 +1256,18 @@ Partial Class DashBoardForm
         '
         Me.ELWorkingLabel.AutoSize = True
         Me.ELWorkingLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELWorkingLabel.Location = New System.Drawing.Point(289, 72)
+        Me.ELWorkingLabel.Location = New System.Drawing.Point(301, 72)
         Me.ELWorkingLabel.Name = "ELWorkingLabel"
         Me.ELWorkingLabel.Size = New System.Drawing.Size(24, 30)
         Me.ELWorkingLabel.TabIndex = 8
         Me.ELWorkingLabel.Tag = ""
         Me.ELWorkingLabel.Text = "0"
         '
-        'Label45
-        '
-        Me.Label45.AutoSize = True
-        Me.Label45.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label45.Location = New System.Drawing.Point(401, 62)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(0, 30)
-        Me.Label45.TabIndex = 7
-        Me.Label45.Tag = ""
-        '
         'ELTotalLabel
         '
         Me.ELTotalLabel.AutoSize = True
         Me.ELTotalLabel.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ELTotalLabel.Location = New System.Drawing.Point(84, 73)
+        Me.ELTotalLabel.Location = New System.Drawing.Point(97, 73)
         Me.ELTotalLabel.Name = "ELTotalLabel"
         Me.ELTotalLabel.Size = New System.Drawing.Size(24, 30)
         Me.ELTotalLabel.TabIndex = 6
@@ -1244,9 +1358,8 @@ Partial Class DashBoardForm
         Me.HolidayListPanel.Controls.Add(Me.Panel14)
         Me.HolidayListPanel.Controls.Add(Me.Panel15)
         Me.HolidayListPanel.Controls.Add(Me.Panel16)
-        Me.HolidayListPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.HolidayListPanel.Enabled = False
-        Me.HolidayListPanel.Location = New System.Drawing.Point(0, 0)
+        Me.HolidayListPanel.Location = New System.Drawing.Point(383, 84)
         Me.HolidayListPanel.Name = "HolidayListPanel"
         Me.HolidayListPanel.Size = New System.Drawing.Size(802, 676)
         Me.HolidayListPanel.TabIndex = 10
@@ -1260,24 +1373,24 @@ Partial Class DashBoardForm
         Me.HolidayDataGridView.AllowUserToResizeRows = False
         Me.HolidayDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.HolidayDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.HolidayDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle33.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.HolidayDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle33
         Me.HolidayDataGridView.ColumnHeadersHeight = 29
         Me.HolidayDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column10, Me.Column15, Me.Column16})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.HolidayDataGridView.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle34.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        DataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.HolidayDataGridView.DefaultCellStyle = DataGridViewCellStyle34
         Me.HolidayDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.HolidayDataGridView.Location = New System.Drawing.Point(0, 248)
         Me.HolidayDataGridView.Name = "HolidayDataGridView"
@@ -1628,9 +1741,8 @@ Partial Class DashBoardForm
         Me.ProjectsListPanel.Controls.Add(Me.Panel21)
         Me.ProjectsListPanel.Controls.Add(Me.Panel22)
         Me.ProjectsListPanel.Controls.Add(Me.Panel23)
-        Me.ProjectsListPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ProjectsListPanel.Enabled = False
-        Me.ProjectsListPanel.Location = New System.Drawing.Point(0, 0)
+        Me.ProjectsListPanel.Location = New System.Drawing.Point(352, 98)
         Me.ProjectsListPanel.Name = "ProjectsListPanel"
         Me.ProjectsListPanel.Size = New System.Drawing.Size(802, 676)
         Me.ProjectsListPanel.TabIndex = 12
@@ -1644,24 +1756,24 @@ Partial Class DashBoardForm
         Me.ProjectsDataGridView.AllowUserToResizeRows = False
         Me.ProjectsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.ProjectsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ProjectsDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle35.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ProjectsDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle35
         Me.ProjectsDataGridView.ColumnHeadersHeight = 30
         Me.ProjectsDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column17, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.Column18, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ProjectsDataGridView.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle36.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ProjectsDataGridView.DefaultCellStyle = DataGridViewCellStyle36
         Me.ProjectsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ProjectsDataGridView.Location = New System.Drawing.Point(0, 248)
         Me.ProjectsDataGridView.Name = "ProjectsDataGridView"
@@ -1972,86 +2084,61 @@ Partial Class DashBoardForm
         'EmployeesSalaryPanel
         '
         Me.EmployeesSalaryPanel.BackColor = System.Drawing.Color.White
-        Me.EmployeesSalaryPanel.Controls.Add(Me.DataGridView5)
+        Me.EmployeesSalaryPanel.Controls.Add(Me.Panel10)
         Me.EmployeesSalaryPanel.Controls.Add(Me.Panel20)
         Me.EmployeesSalaryPanel.Controls.Add(Me.Panel13)
-        Me.EmployeesSalaryPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.EmployeesSalaryPanel.Enabled = False
-        Me.EmployeesSalaryPanel.Location = New System.Drawing.Point(0, 0)
+        Me.EmployeesSalaryPanel.Location = New System.Drawing.Point(397, 0)
         Me.EmployeesSalaryPanel.Name = "EmployeesSalaryPanel"
         Me.EmployeesSalaryPanel.Size = New System.Drawing.Size(802, 676)
         Me.EmployeesSalaryPanel.TabIndex = 14
         Me.EmployeesSalaryPanel.Visible = False
         '
-        'DataGridView5
+        'Panel10
         '
-        Me.DataGridView5.AllowUserToAddRows = False
-        Me.DataGridView5.AllowUserToDeleteRows = False
-        Me.DataGridView5.AllowUserToResizeColumns = False
-        Me.DataGridView5.AllowUserToResizeRows = False
-        Me.DataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView5.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridView5.ColumnHeadersHeight = 29
-        Me.DataGridView5.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.Salary})
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView5.DefaultCellStyle = DataGridViewCellStyle14
-        Me.DataGridView5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView5.Location = New System.Drawing.Point(0, 93)
-        Me.DataGridView5.Name = "DataGridView5"
-        Me.DataGridView5.RowHeadersVisible = False
-        Me.DataGridView5.Size = New System.Drawing.Size(802, 583)
-        Me.DataGridView5.TabIndex = 4
+        Me.Panel10.Controls.Add(Me.ESIEmpIDLabel)
+        Me.Panel10.Controls.Add(Me.Label3)
+        Me.Panel10.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel10.Location = New System.Drawing.Point(0, 93)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(802, 583)
+        Me.Panel10.TabIndex = 8
         '
-        'DataGridViewTextBoxColumn16
+        'Label3
         '
-        Me.DataGridViewTextBoxColumn16.HeaderText = "Employee Name"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.HeaderText = "Employee ID"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.HeaderText = "Email Address"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Department"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'Salary
-        '
-        Me.Salary.HeaderText = "Salary"
-        Me.Salary.Name = "Salary"
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(9, 11)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(193, 37)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Tag = ""
+        Me.Label3.Text = "EMPLOYEE ID:"
         '
         'Panel20
         '
+        Me.Panel20.Controls.Add(Me.ESIEmpNamesComboBox)
         Me.Panel20.Controls.Add(Me.Button16)
         Me.Panel20.Controls.Add(Me.Button15)
         Me.Panel20.Controls.Add(Me.Button18)
-        Me.Panel20.Controls.Add(Me.TextBox5)
         Me.Panel20.Controls.Add(Me.Label46)
         Me.Panel20.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel20.Location = New System.Drawing.Point(0, 52)
         Me.Panel20.Name = "Panel20"
         Me.Panel20.Size = New System.Drawing.Size(802, 41)
         Me.Panel20.TabIndex = 7
+        '
+        'ESIEmpNamesComboBox
+        '
+        Me.ESIEmpNamesComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.ESIEmpNamesComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.ESIEmpNamesComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ESIEmpNamesComboBox.FormattingEnabled = True
+        Me.ESIEmpNamesComboBox.Location = New System.Drawing.Point(115, 7)
+        Me.ESIEmpNamesComboBox.MaxDropDownItems = 5
+        Me.ESIEmpNamesComboBox.Name = "ESIEmpNamesComboBox"
+        Me.ESIEmpNamesComboBox.Size = New System.Drawing.Size(242, 29)
+        Me.ESIEmpNamesComboBox.TabIndex = 13
         '
         'Button16
         '
@@ -2101,15 +2188,6 @@ Partial Class DashBoardForm
         Me.Button18.TabIndex = 10
         Me.Button18.UseVisualStyleBackColor = False
         '
-        'TextBox5
-        '
-        Me.TextBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(61, 9)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(210, 26)
-        Me.TextBox5.TabIndex = 6
-        '
         'Label46
         '
         Me.Label46.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -2117,10 +2195,10 @@ Partial Class DashBoardForm
         Me.Label46.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label46.Location = New System.Drawing.Point(3, 11)
         Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(60, 21)
+        Me.Label46.Size = New System.Drawing.Size(106, 21)
         Me.Label46.TabIndex = 5
         Me.Label46.Tag = ""
-        Me.Label46.Text = "Search:"
+        Me.Label46.Text = "Search Name:"
         '
         'Panel13
         '
@@ -2151,9 +2229,9 @@ Partial Class DashBoardForm
         Me.Label43.ForeColor = System.Drawing.Color.White
         Me.Label43.Location = New System.Drawing.Point(54, 9)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(274, 37)
+        Me.Label43.Size = New System.Drawing.Size(472, 37)
         Me.Label43.TabIndex = 0
-        Me.Label43.Text = "EMPLOYEES SALARY"
+        Me.Label43.Text = "EMPLOYEES SALARY INFORMATION"
         '
         'EmployeesTableAdapter
         '
@@ -2167,283 +2245,20 @@ Partial Class DashBoardForm
         '
         'MainPanel
         '
-        Me.MainPanel.Controls.Add(Me.EmployeeAllPanel)
         Me.MainPanel.Controls.Add(Me.EmployeesSalaryPanel)
         Me.MainPanel.Controls.Add(Me.DashboardPanel)
-        Me.MainPanel.Controls.Add(Me.AttendanceTodayPanel)
-        Me.MainPanel.Controls.Add(Me.AttendanceSheetPanel)
-        Me.MainPanel.Controls.Add(Me.EmployeeAttendancePanel)
-        Me.MainPanel.Controls.Add(Me.LeaveRequestPanel)
         Me.MainPanel.Controls.Add(Me.HolidayListPanel)
+        Me.MainPanel.Controls.Add(Me.AttendanceTodayPanel)
         Me.MainPanel.Controls.Add(Me.ProjectsListPanel)
+        Me.MainPanel.Controls.Add(Me.LeaveRequestPanel)
+        Me.MainPanel.Controls.Add(Me.EmployeeAttendancePanel)
+        Me.MainPanel.Controls.Add(Me.EmployeeAllPanel)
+        Me.MainPanel.Controls.Add(Me.AttendanceSheetPanel)
         Me.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MainPanel.Location = New System.Drawing.Point(262, 0)
+        Me.MainPanel.Location = New System.Drawing.Point(0, 0)
         Me.MainPanel.Name = "MainPanel"
-        Me.MainPanel.Size = New System.Drawing.Size(802, 676)
+        Me.MainPanel.Size = New System.Drawing.Size(1424, 676)
         Me.MainPanel.TabIndex = 15
-        '
-        'AttendanceSheetPanel
-        '
-        Me.AttendanceSheetPanel.BackColor = System.Drawing.Color.White
-        Me.AttendanceSheetPanel.Controls.Add(Me.AttendanceSheetDataGridView)
-        Me.AttendanceSheetPanel.Controls.Add(Me.Panel18)
-        Me.AttendanceSheetPanel.Controls.Add(Me.Panel24)
-        Me.AttendanceSheetPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AttendanceSheetPanel.Enabled = False
-        Me.AttendanceSheetPanel.Location = New System.Drawing.Point(0, 0)
-        Me.AttendanceSheetPanel.Name = "AttendanceSheetPanel"
-        Me.AttendanceSheetPanel.Size = New System.Drawing.Size(802, 676)
-        Me.AttendanceSheetPanel.TabIndex = 15
-        Me.AttendanceSheetPanel.Visible = False
-        '
-        'AttendanceSheetDataGridView
-        '
-        Me.AttendanceSheetDataGridView.AllowUserToAddRows = False
-        Me.AttendanceSheetDataGridView.AllowUserToDeleteRows = False
-        Me.AttendanceSheetDataGridView.AllowUserToResizeColumns = False
-        Me.AttendanceSheetDataGridView.AllowUserToResizeRows = False
-        Me.AttendanceSheetDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.AttendanceSheetDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AttendanceSheetDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
-        Me.AttendanceSheetDataGridView.ColumnHeadersHeight = 29
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.AttendanceSheetDataGridView.DefaultCellStyle = DataGridViewCellStyle16
-        Me.AttendanceSheetDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AttendanceSheetDataGridView.Location = New System.Drawing.Point(0, 111)
-        Me.AttendanceSheetDataGridView.Name = "AttendanceSheetDataGridView"
-        Me.AttendanceSheetDataGridView.ReadOnly = True
-        Me.AttendanceSheetDataGridView.RowHeadersVisible = False
-        Me.AttendanceSheetDataGridView.Size = New System.Drawing.Size(802, 565)
-        Me.AttendanceSheetDataGridView.TabIndex = 4
-        '
-        'Panel18
-        '
-        Me.Panel18.Controls.Add(Me.ASEmployeeNamesComboBox)
-        Me.Panel18.Controls.Add(Me.Button2)
-        Me.Panel18.Controls.Add(Me.Label47)
-        Me.Panel18.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel18.Location = New System.Drawing.Point(0, 52)
-        Me.Panel18.Name = "Panel18"
-        Me.Panel18.Size = New System.Drawing.Size(802, 59)
-        Me.Panel18.TabIndex = 7
-        '
-        'ASEmployeeNamesComboBox
-        '
-        Me.ASEmployeeNamesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ASEmployeeNamesComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ASEmployeeNamesComboBox.FormattingEnabled = True
-        Me.ASEmployeeNamesComboBox.Location = New System.Drawing.Point(143, 15)
-        Me.ASEmployeeNamesComboBox.MaxDropDownItems = 5
-        Me.ASEmployeeNamesComboBox.Name = "ASEmployeeNamesComboBox"
-        Me.ASEmployeeNamesComboBox.Size = New System.Drawing.Size(214, 29)
-        Me.ASEmployeeNamesComboBox.TabIndex = 14
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackColor = System.Drawing.Color.Transparent
-        Me.Button2.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.Color.Transparent
-        Me.Button2.Location = New System.Drawing.Point(760, 14)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(30, 30)
-        Me.Button2.TabIndex = 13
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'Label47
-        '
-        Me.Label47.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label47.AutoSize = True
-        Me.Label47.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label47.Location = New System.Drawing.Point(3, 19)
-        Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(134, 21)
-        Me.Label47.TabIndex = 5
-        Me.Label47.Tag = ""
-        Me.Label47.Text = "Employee Names:"
-        '
-        'Panel24
-        '
-        Me.Panel24.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
-        Me.Panel24.Controls.Add(Me.Button9)
-        Me.Panel24.Controls.Add(Me.Label63)
-        Me.Panel24.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel24.Location = New System.Drawing.Point(0, 0)
-        Me.Panel24.Name = "Panel24"
-        Me.Panel24.Size = New System.Drawing.Size(802, 52)
-        Me.Panel24.TabIndex = 0
-        '
-        'Button9
-        '
-        Me.Button9.BackgroundImage = CType(resources.GetObject("Button9.BackgroundImage"), System.Drawing.Image)
-        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button9.Location = New System.Drawing.Point(7, 9)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(41, 35)
-        Me.Button9.TabIndex = 1
-        Me.Button9.UseVisualStyleBackColor = True
-        '
-        'Label63
-        '
-        Me.Label63.AutoSize = True
-        Me.Label63.BackColor = System.Drawing.Color.Transparent
-        Me.Label63.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label63.ForeColor = System.Drawing.Color.White
-        Me.Label63.Location = New System.Drawing.Point(54, 9)
-        Me.Label63.Name = "Label63"
-        Me.Label63.Size = New System.Drawing.Size(280, 37)
-        Me.Label63.TabIndex = 0
-        Me.Label63.Text = "ATTENDANCE SHEET"
-        '
-        'EmployeeAttendancePanel
-        '
-        Me.EmployeeAttendancePanel.BackColor = System.Drawing.Color.White
-        Me.EmployeeAttendancePanel.Controls.Add(Me.EmployeeAttendanceDataGridView)
-        Me.EmployeeAttendancePanel.Controls.Add(Me.Panel19)
-        Me.EmployeeAttendancePanel.Controls.Add(Me.Panel25)
-        Me.EmployeeAttendancePanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EmployeeAttendancePanel.Enabled = False
-        Me.EmployeeAttendancePanel.Location = New System.Drawing.Point(0, 0)
-        Me.EmployeeAttendancePanel.Name = "EmployeeAttendancePanel"
-        Me.EmployeeAttendancePanel.Size = New System.Drawing.Size(802, 676)
-        Me.EmployeeAttendancePanel.TabIndex = 16
-        Me.EmployeeAttendancePanel.Visible = False
-        '
-        'EmployeeAttendanceDataGridView
-        '
-        Me.EmployeeAttendanceDataGridView.AllowUserToAddRows = False
-        Me.EmployeeAttendanceDataGridView.AllowUserToDeleteRows = False
-        Me.EmployeeAttendanceDataGridView.AllowUserToResizeColumns = False
-        Me.EmployeeAttendanceDataGridView.AllowUserToResizeRows = False
-        Me.EmployeeAttendanceDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.EmployeeAttendanceDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.EmployeeAttendanceDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
-        Me.EmployeeAttendanceDataGridView.ColumnHeadersHeight = 29
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.EmployeeAttendanceDataGridView.DefaultCellStyle = DataGridViewCellStyle18
-        Me.EmployeeAttendanceDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.EmployeeAttendanceDataGridView.Location = New System.Drawing.Point(0, 111)
-        Me.EmployeeAttendanceDataGridView.Name = "EmployeeAttendanceDataGridView"
-        Me.EmployeeAttendanceDataGridView.ReadOnly = True
-        Me.EmployeeAttendanceDataGridView.RowHeadersVisible = False
-        Me.EmployeeAttendanceDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.EmployeeAttendanceDataGridView.Size = New System.Drawing.Size(802, 565)
-        Me.EmployeeAttendanceDataGridView.TabIndex = 4
-        '
-        'Panel19
-        '
-        Me.Panel19.Controls.Add(Me.EmployeeAttendanceDateTimePicker)
-        Me.Panel19.Controls.Add(Me.EARefreshButton)
-        Me.Panel19.Controls.Add(Me.Label48)
-        Me.Panel19.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel19.Location = New System.Drawing.Point(0, 52)
-        Me.Panel19.Name = "Panel19"
-        Me.Panel19.Size = New System.Drawing.Size(802, 59)
-        Me.Panel19.TabIndex = 7
-        '
-        'EmployeeAttendanceDateTimePicker
-        '
-        Me.EmployeeAttendanceDateTimePicker.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.EmployeeAttendanceDateTimePicker.CustomFormat = "M/yyyy"
-        Me.EmployeeAttendanceDateTimePicker.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.EmployeeAttendanceDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.EmployeeAttendanceDateTimePicker.Location = New System.Drawing.Point(68, 15)
-        Me.EmployeeAttendanceDateTimePicker.Name = "EmployeeAttendanceDateTimePicker"
-        Me.EmployeeAttendanceDateTimePicker.ShowUpDown = True
-        Me.EmployeeAttendanceDateTimePicker.Size = New System.Drawing.Size(98, 29)
-        Me.EmployeeAttendanceDateTimePicker.TabIndex = 14
-        Me.EmployeeAttendanceDateTimePicker.Value = New Date(2023, 12, 27, 3, 29, 0, 0)
-        '
-        'EARefreshButton
-        '
-        Me.EARefreshButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.EARefreshButton.BackColor = System.Drawing.Color.Transparent
-        Me.EARefreshButton.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
-        Me.EARefreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.EARefreshButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.EARefreshButton.FlatAppearance.BorderSize = 0
-        Me.EARefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.EARefreshButton.ForeColor = System.Drawing.Color.Transparent
-        Me.EARefreshButton.Location = New System.Drawing.Point(760, 14)
-        Me.EARefreshButton.Name = "EARefreshButton"
-        Me.EARefreshButton.Size = New System.Drawing.Size(30, 30)
-        Me.EARefreshButton.TabIndex = 13
-        Me.EARefreshButton.UseVisualStyleBackColor = False
-        '
-        'Label48
-        '
-        Me.Label48.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Label48.AutoSize = True
-        Me.Label48.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label48.Location = New System.Drawing.Point(3, 19)
-        Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(59, 21)
-        Me.Label48.TabIndex = 5
-        Me.Label48.Tag = ""
-        Me.Label48.Text = "Month:"
-        '
-        'Panel25
-        '
-        Me.Panel25.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
-        Me.Panel25.Controls.Add(Me.Button13)
-        Me.Panel25.Controls.Add(Me.Label55)
-        Me.Panel25.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel25.Location = New System.Drawing.Point(0, 0)
-        Me.Panel25.Name = "Panel25"
-        Me.Panel25.Size = New System.Drawing.Size(802, 52)
-        Me.Panel25.TabIndex = 0
-        '
-        'Button13
-        '
-        Me.Button13.BackgroundImage = CType(resources.GetObject("Button13.BackgroundImage"), System.Drawing.Image)
-        Me.Button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button13.Location = New System.Drawing.Point(7, 9)
-        Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(41, 35)
-        Me.Button13.TabIndex = 1
-        Me.Button13.UseVisualStyleBackColor = True
-        '
-        'Label55
-        '
-        Me.Label55.AutoSize = True
-        Me.Label55.BackColor = System.Drawing.Color.Transparent
-        Me.Label55.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label55.ForeColor = System.Drawing.Color.White
-        Me.Label55.Location = New System.Drawing.Point(54, 9)
-        Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(333, 37)
-        Me.Label55.TabIndex = 0
-        Me.Label55.Text = "EMPLOYEE ATTENDANCE"
         '
         'LeaveRequestPanel
         '
@@ -2452,9 +2267,8 @@ Partial Class DashBoardForm
         Me.LeaveRequestPanel.Controls.Add(Me.Panel26)
         Me.LeaveRequestPanel.Controls.Add(Me.Panel28)
         Me.LeaveRequestPanel.Controls.Add(Me.Panel27)
-        Me.LeaveRequestPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LeaveRequestPanel.Enabled = False
-        Me.LeaveRequestPanel.Location = New System.Drawing.Point(0, 0)
+        Me.LeaveRequestPanel.Location = New System.Drawing.Point(400, 75)
         Me.LeaveRequestPanel.Name = "LeaveRequestPanel"
         Me.LeaveRequestPanel.Size = New System.Drawing.Size(802, 676)
         Me.LeaveRequestPanel.TabIndex = 17
@@ -2468,24 +2282,24 @@ Partial Class DashBoardForm
         Me.LeaveRequestDataGridView.AllowUserToResizeRows = False
         Me.LeaveRequestDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.LeaveRequestDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle19.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.LeaveRequestDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle37.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle37.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.LeaveRequestDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle37
         Me.LeaveRequestDataGridView.ColumnHeadersHeight = 29
         Me.LeaveRequestDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column9, Me.Column8, Me.Column11, Me.Column12, Me.Column13, Me.Column14})
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.LeaveRequestDataGridView.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle44.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        DataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.LeaveRequestDataGridView.DefaultCellStyle = DataGridViewCellStyle44
         Me.LeaveRequestDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LeaveRequestDataGridView.Location = New System.Drawing.Point(0, 266)
         Me.LeaveRequestDataGridView.Name = "LeaveRequestDataGridView"
@@ -2498,8 +2312,8 @@ Partial Class DashBoardForm
         'Column9
         '
         Me.Column9.DataPropertyName = "EmployeeID"
-        DataGridViewCellStyle20.NullValue = "-"
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle38.NullValue = "-"
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle38
         Me.Column9.HeaderText = "Employee ID"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
@@ -2507,8 +2321,8 @@ Partial Class DashBoardForm
         'Column8
         '
         Me.Column8.DataPropertyName = "EmployeeName"
-        DataGridViewCellStyle21.NullValue = "-"
-        Me.Column8.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle39.NullValue = "-"
+        Me.Column8.DefaultCellStyle = DataGridViewCellStyle39
         Me.Column8.FillWeight = 150.0!
         Me.Column8.HeaderText = "Employee Name"
         Me.Column8.Name = "Column8"
@@ -2517,8 +2331,8 @@ Partial Class DashBoardForm
         'Column11
         '
         Me.Column11.DataPropertyName = "Type"
-        DataGridViewCellStyle22.NullValue = "-"
-        Me.Column11.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle40.NullValue = "-"
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle40
         Me.Column11.HeaderText = "Type"
         Me.Column11.Name = "Column11"
         Me.Column11.ReadOnly = True
@@ -2526,8 +2340,8 @@ Partial Class DashBoardForm
         'Column12
         '
         Me.Column12.DataPropertyName = "DateFiled"
-        DataGridViewCellStyle23.NullValue = "-"
-        Me.Column12.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle41.NullValue = "-"
+        Me.Column12.DefaultCellStyle = DataGridViewCellStyle41
         Me.Column12.HeaderText = "Date Filed"
         Me.Column12.Name = "Column12"
         Me.Column12.ReadOnly = True
@@ -2535,8 +2349,8 @@ Partial Class DashBoardForm
         'Column13
         '
         Me.Column13.DataPropertyName = "Status"
-        DataGridViewCellStyle24.NullValue = "-"
-        Me.Column13.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle42.NullValue = "-"
+        Me.Column13.DefaultCellStyle = DataGridViewCellStyle42
         Me.Column13.HeaderText = "Status"
         Me.Column13.Name = "Column13"
         Me.Column13.ReadOnly = True
@@ -2544,8 +2358,8 @@ Partial Class DashBoardForm
         'Column14
         '
         Me.Column14.DataPropertyName = "VerdictDate"
-        DataGridViewCellStyle25.NullValue = "-"
-        Me.Column14.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle43.NullValue = "-"
+        Me.Column14.DefaultCellStyle = DataGridViewCellStyle43
         Me.Column14.HeaderText = "Verdict Date"
         Me.Column14.Name = "Column14"
         Me.Column14.ReadOnly = True
@@ -2777,6 +2591,267 @@ Partial Class DashBoardForm
         Me.Label57.TabIndex = 0
         Me.Label57.Text = "LEAVE REQUEST"
         '
+        'EmployeeAttendancePanel
+        '
+        Me.EmployeeAttendancePanel.BackColor = System.Drawing.Color.White
+        Me.EmployeeAttendancePanel.Controls.Add(Me.EmployeeAttendanceDataGridView)
+        Me.EmployeeAttendancePanel.Controls.Add(Me.Panel19)
+        Me.EmployeeAttendancePanel.Controls.Add(Me.Panel25)
+        Me.EmployeeAttendancePanel.Enabled = False
+        Me.EmployeeAttendancePanel.Location = New System.Drawing.Point(419, 61)
+        Me.EmployeeAttendancePanel.Name = "EmployeeAttendancePanel"
+        Me.EmployeeAttendancePanel.Size = New System.Drawing.Size(802, 676)
+        Me.EmployeeAttendancePanel.TabIndex = 16
+        Me.EmployeeAttendancePanel.Visible = False
+        '
+        'EmployeeAttendanceDataGridView
+        '
+        Me.EmployeeAttendanceDataGridView.AllowUserToAddRows = False
+        Me.EmployeeAttendanceDataGridView.AllowUserToDeleteRows = False
+        Me.EmployeeAttendanceDataGridView.AllowUserToResizeColumns = False
+        Me.EmployeeAttendanceDataGridView.AllowUserToResizeRows = False
+        Me.EmployeeAttendanceDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.EmployeeAttendanceDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle45.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.EmployeeAttendanceDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle45
+        Me.EmployeeAttendanceDataGridView.ColumnHeadersHeight = 29
+        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle46.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        DataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.EmployeeAttendanceDataGridView.DefaultCellStyle = DataGridViewCellStyle46
+        Me.EmployeeAttendanceDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.EmployeeAttendanceDataGridView.Location = New System.Drawing.Point(0, 111)
+        Me.EmployeeAttendanceDataGridView.Name = "EmployeeAttendanceDataGridView"
+        Me.EmployeeAttendanceDataGridView.ReadOnly = True
+        Me.EmployeeAttendanceDataGridView.RowHeadersVisible = False
+        Me.EmployeeAttendanceDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.EmployeeAttendanceDataGridView.Size = New System.Drawing.Size(802, 565)
+        Me.EmployeeAttendanceDataGridView.TabIndex = 4
+        '
+        'Panel19
+        '
+        Me.Panel19.Controls.Add(Me.EmployeeAttendanceDateTimePicker)
+        Me.Panel19.Controls.Add(Me.EARefreshButton)
+        Me.Panel19.Controls.Add(Me.Label48)
+        Me.Panel19.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel19.Location = New System.Drawing.Point(0, 52)
+        Me.Panel19.Name = "Panel19"
+        Me.Panel19.Size = New System.Drawing.Size(802, 59)
+        Me.Panel19.TabIndex = 7
+        '
+        'EmployeeAttendanceDateTimePicker
+        '
+        Me.EmployeeAttendanceDateTimePicker.CalendarFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EmployeeAttendanceDateTimePicker.CustomFormat = "M/yyyy"
+        Me.EmployeeAttendanceDateTimePicker.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EmployeeAttendanceDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.EmployeeAttendanceDateTimePicker.Location = New System.Drawing.Point(68, 15)
+        Me.EmployeeAttendanceDateTimePicker.Name = "EmployeeAttendanceDateTimePicker"
+        Me.EmployeeAttendanceDateTimePicker.ShowUpDown = True
+        Me.EmployeeAttendanceDateTimePicker.Size = New System.Drawing.Size(98, 29)
+        Me.EmployeeAttendanceDateTimePicker.TabIndex = 14
+        Me.EmployeeAttendanceDateTimePicker.Value = New Date(2023, 12, 27, 3, 29, 0, 0)
+        '
+        'EARefreshButton
+        '
+        Me.EARefreshButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.EARefreshButton.BackColor = System.Drawing.Color.Transparent
+        Me.EARefreshButton.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.EARefreshButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.EARefreshButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.EARefreshButton.FlatAppearance.BorderSize = 0
+        Me.EARefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EARefreshButton.ForeColor = System.Drawing.Color.Transparent
+        Me.EARefreshButton.Location = New System.Drawing.Point(760, 14)
+        Me.EARefreshButton.Name = "EARefreshButton"
+        Me.EARefreshButton.Size = New System.Drawing.Size(30, 30)
+        Me.EARefreshButton.TabIndex = 13
+        Me.EARefreshButton.UseVisualStyleBackColor = False
+        '
+        'Label48
+        '
+        Me.Label48.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label48.AutoSize = True
+        Me.Label48.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label48.Location = New System.Drawing.Point(3, 19)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(59, 21)
+        Me.Label48.TabIndex = 5
+        Me.Label48.Tag = ""
+        Me.Label48.Text = "Month:"
+        '
+        'Panel25
+        '
+        Me.Panel25.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel25.Controls.Add(Me.Button13)
+        Me.Panel25.Controls.Add(Me.Label55)
+        Me.Panel25.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel25.Location = New System.Drawing.Point(0, 0)
+        Me.Panel25.Name = "Panel25"
+        Me.Panel25.Size = New System.Drawing.Size(802, 52)
+        Me.Panel25.TabIndex = 0
+        '
+        'Button13
+        '
+        Me.Button13.BackgroundImage = CType(resources.GetObject("Button13.BackgroundImage"), System.Drawing.Image)
+        Me.Button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button13.Location = New System.Drawing.Point(7, 9)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(41, 35)
+        Me.Button13.TabIndex = 1
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'Label55
+        '
+        Me.Label55.AutoSize = True
+        Me.Label55.BackColor = System.Drawing.Color.Transparent
+        Me.Label55.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label55.ForeColor = System.Drawing.Color.White
+        Me.Label55.Location = New System.Drawing.Point(54, 9)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(333, 37)
+        Me.Label55.TabIndex = 0
+        Me.Label55.Text = "EMPLOYEE ATTENDANCE"
+        '
+        'AttendanceSheetPanel
+        '
+        Me.AttendanceSheetPanel.BackColor = System.Drawing.Color.White
+        Me.AttendanceSheetPanel.Controls.Add(Me.AttendanceSheetDataGridView)
+        Me.AttendanceSheetPanel.Controls.Add(Me.Panel18)
+        Me.AttendanceSheetPanel.Controls.Add(Me.Panel24)
+        Me.AttendanceSheetPanel.Enabled = False
+        Me.AttendanceSheetPanel.Location = New System.Drawing.Point(448, 49)
+        Me.AttendanceSheetPanel.Name = "AttendanceSheetPanel"
+        Me.AttendanceSheetPanel.Size = New System.Drawing.Size(802, 676)
+        Me.AttendanceSheetPanel.TabIndex = 15
+        Me.AttendanceSheetPanel.Visible = False
+        '
+        'AttendanceSheetDataGridView
+        '
+        Me.AttendanceSheetDataGridView.AllowUserToAddRows = False
+        Me.AttendanceSheetDataGridView.AllowUserToDeleteRows = False
+        Me.AttendanceSheetDataGridView.AllowUserToResizeColumns = False
+        Me.AttendanceSheetDataGridView.AllowUserToResizeRows = False
+        Me.AttendanceSheetDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.AttendanceSheetDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle47.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AttendanceSheetDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle47
+        Me.AttendanceSheetDataGridView.ColumnHeadersHeight = 29
+        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle48.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.AttendanceSheetDataGridView.DefaultCellStyle = DataGridViewCellStyle48
+        Me.AttendanceSheetDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AttendanceSheetDataGridView.Location = New System.Drawing.Point(0, 111)
+        Me.AttendanceSheetDataGridView.Name = "AttendanceSheetDataGridView"
+        Me.AttendanceSheetDataGridView.ReadOnly = True
+        Me.AttendanceSheetDataGridView.RowHeadersVisible = False
+        Me.AttendanceSheetDataGridView.Size = New System.Drawing.Size(802, 565)
+        Me.AttendanceSheetDataGridView.TabIndex = 4
+        '
+        'Panel18
+        '
+        Me.Panel18.Controls.Add(Me.ASEmployeeNamesComboBox)
+        Me.Panel18.Controls.Add(Me.Button2)
+        Me.Panel18.Controls.Add(Me.Label47)
+        Me.Panel18.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel18.Location = New System.Drawing.Point(0, 52)
+        Me.Panel18.Name = "Panel18"
+        Me.Panel18.Size = New System.Drawing.Size(802, 59)
+        Me.Panel18.TabIndex = 7
+        '
+        'ASEmployeeNamesComboBox
+        '
+        Me.ASEmployeeNamesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ASEmployeeNamesComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ASEmployeeNamesComboBox.FormattingEnabled = True
+        Me.ASEmployeeNamesComboBox.Location = New System.Drawing.Point(143, 15)
+        Me.ASEmployeeNamesComboBox.MaxDropDownItems = 5
+        Me.ASEmployeeNamesComboBox.Name = "ASEmployeeNamesComboBox"
+        Me.ASEmployeeNamesComboBox.Size = New System.Drawing.Size(214, 29)
+        Me.ASEmployeeNamesComboBox.TabIndex = 14
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Button2.BackgroundImage = Global.HRM1.My.Resources.Resources.refresh
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.Color.Transparent
+        Me.Button2.Location = New System.Drawing.Point(760, 14)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(30, 30)
+        Me.Button2.TabIndex = 13
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Label47
+        '
+        Me.Label47.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label47.AutoSize = True
+        Me.Label47.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label47.Location = New System.Drawing.Point(3, 19)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(134, 21)
+        Me.Label47.TabIndex = 5
+        Me.Label47.Tag = ""
+        Me.Label47.Text = "Employee Names:"
+        '
+        'Panel24
+        '
+        Me.Panel24.BackgroundImage = Global.HRM1.My.Resources.Resources.blue
+        Me.Panel24.Controls.Add(Me.Button9)
+        Me.Panel24.Controls.Add(Me.Label63)
+        Me.Panel24.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel24.Location = New System.Drawing.Point(0, 0)
+        Me.Panel24.Name = "Panel24"
+        Me.Panel24.Size = New System.Drawing.Size(802, 52)
+        Me.Panel24.TabIndex = 0
+        '
+        'Button9
+        '
+        Me.Button9.BackgroundImage = CType(resources.GetObject("Button9.BackgroundImage"), System.Drawing.Image)
+        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button9.Location = New System.Drawing.Point(7, 9)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(41, 35)
+        Me.Button9.TabIndex = 1
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Label63
+        '
+        Me.Label63.AutoSize = True
+        Me.Label63.BackColor = System.Drawing.Color.Transparent
+        Me.Label63.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label63.ForeColor = System.Drawing.Color.White
+        Me.Label63.Location = New System.Drawing.Point(54, 9)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(280, 37)
+        Me.Label63.TabIndex = 0
+        Me.Label63.Text = "ATTENDANCE SHEET"
+        '
         'Panel1
         '
         Me.Panel1.AutoScroll = True
@@ -2795,6 +2870,8 @@ Partial Class DashBoardForm
         '
         Me.SideBarPanel.AutoScroll = True
         Me.SideBarPanel.BackColor = System.Drawing.Color.Transparent
+        Me.SideBarPanel.Controls.Add(Me.TimeLabel)
+        Me.SideBarPanel.Controls.Add(Me.DateLabel)
         Me.SideBarPanel.Controls.Add(Me.btnLogOut)
         Me.SideBarPanel.Controls.Add(Me.PanelPayroll)
         Me.SideBarPanel.Controls.Add(Me.btnPayroll)
@@ -2815,6 +2892,32 @@ Partial Class DashBoardForm
         Me.SideBarPanel.Name = "SideBarPanel"
         Me.SideBarPanel.Size = New System.Drawing.Size(262, 483)
         Me.SideBarPanel.TabIndex = 15
+        '
+        'TimeLabel
+        '
+        Me.TimeLabel.BackColor = System.Drawing.Color.Transparent
+        Me.TimeLabel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.TimeLabel.Font = New System.Drawing.Font("Segoe UI", 29.0!)
+        Me.TimeLabel.ForeColor = System.Drawing.Color.White
+        Me.TimeLabel.Location = New System.Drawing.Point(0, 1064)
+        Me.TimeLabel.Name = "TimeLabel"
+        Me.TimeLabel.Size = New System.Drawing.Size(245, 101)
+        Me.TimeLabel.TabIndex = 30
+        Me.TimeLabel.Text = "12:59:59 AM"
+        Me.TimeLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
+        'DateLabel
+        '
+        Me.DateLabel.BackColor = System.Drawing.Color.Transparent
+        Me.DateLabel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DateLabel.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateLabel.ForeColor = System.Drawing.Color.White
+        Me.DateLabel.Location = New System.Drawing.Point(0, 1165)
+        Me.DateLabel.Name = "DateLabel"
+        Me.DateLabel.Size = New System.Drawing.Size(245, 43)
+        Me.DateLabel.TabIndex = 29
+        Me.DateLabel.Text = "Friday, December 29, 2023"
+        Me.DateLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'btnLogOut
         '
@@ -3151,7 +3254,7 @@ Partial Class DashBoardForm
         'PanelEmployee
         '
         Me.PanelEmployee.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelEmployee.Controls.Add(Me.Button1)
+        Me.PanelEmployee.Controls.Add(Me.btnEm2)
         Me.PanelEmployee.Controls.Add(Me.btnEm1)
         Me.PanelEmployee.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelEmployee.Location = New System.Drawing.Point(0, 164)
@@ -3160,22 +3263,22 @@ Partial Class DashBoardForm
         Me.PanelEmployee.TabIndex = 17
         Me.PanelEmployee.Visible = False
         '
-        'Button1
+        'btnEm2
         '
-        Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(0, 50)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(245, 50)
-        Me.Button1.TabIndex = 3
-        Me.Button1.Text = "EMPLOYEES SALARY INFORMATION"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnEm2.BackColor = System.Drawing.Color.Transparent
+        Me.btnEm2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnEm2.FlatAppearance.BorderSize = 0
+        Me.btnEm2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.btnEm2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Navy
+        Me.btnEm2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnEm2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEm2.ForeColor = System.Drawing.Color.White
+        Me.btnEm2.Location = New System.Drawing.Point(0, 50)
+        Me.btnEm2.Name = "btnEm2"
+        Me.btnEm2.Size = New System.Drawing.Size(245, 50)
+        Me.btnEm2.TabIndex = 3
+        Me.btnEm2.Text = "EMPLOYEES SALARY INFORMATION"
+        Me.btnEm2.UseVisualStyleBackColor = False
         '
         'btnEm1
         '
@@ -3252,14 +3355,35 @@ Partial Class DashBoardForm
         Me.Panel2.Size = New System.Drawing.Size(262, 193)
         Me.Panel2.TabIndex = 0
         '
+        'DateTimeTimer
+        '
+        Me.DateTimeTimer.Enabled = True
+        '
+        'DashUpdateTimer
+        '
+        Me.DashUpdateTimer.Enabled = True
+        Me.DashUpdateTimer.Interval = 15000
+        '
+        'ESIEmpIDLabel
+        '
+        Me.ESIEmpIDLabel.AutoSize = True
+        Me.ESIEmpIDLabel.Font = New System.Drawing.Font("Segoe UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ESIEmpIDLabel.Location = New System.Drawing.Point(208, 11)
+        Me.ESIEmpIDLabel.Name = "ESIEmpIDLabel"
+        Me.ESIEmpIDLabel.Size = New System.Drawing.Size(49, 37)
+        Me.ESIEmpIDLabel.TabIndex = 5
+        Me.ESIEmpIDLabel.Tag = ""
+        Me.ESIEmpIDLabel.Text = "00"
+        '
         'DashBoardForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1064, 676)
-        Me.Controls.Add(Me.MainPanel)
+        Me.ClientSize = New System.Drawing.Size(1424, 676)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.MainPanel)
+        Me.DoubleBuffered = True
         Me.MinimumSize = New System.Drawing.Size(1080, 715)
         Me.Name = "DashBoardForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -3304,24 +3428,13 @@ Partial Class DashBoardForm
         Me.Panel23.ResumeLayout(False)
         Me.Panel23.PerformLayout()
         Me.EmployeesSalaryPanel.ResumeLayout(False)
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel10.ResumeLayout(False)
+        Me.Panel10.PerformLayout()
         Me.Panel20.ResumeLayout(False)
         Me.Panel20.PerformLayout()
         Me.Panel13.ResumeLayout(False)
         Me.Panel13.PerformLayout()
         Me.MainPanel.ResumeLayout(False)
-        Me.AttendanceSheetPanel.ResumeLayout(False)
-        CType(Me.AttendanceSheetDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel18.ResumeLayout(False)
-        Me.Panel18.PerformLayout()
-        Me.Panel24.ResumeLayout(False)
-        Me.Panel24.PerformLayout()
-        Me.EmployeeAttendancePanel.ResumeLayout(False)
-        CType(Me.EmployeeAttendanceDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel19.ResumeLayout(False)
-        Me.Panel19.PerformLayout()
-        Me.Panel25.ResumeLayout(False)
-        Me.Panel25.PerformLayout()
         Me.LeaveRequestPanel.ResumeLayout(False)
         CType(Me.LeaveRequestDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel26.ResumeLayout(False)
@@ -3330,6 +3443,18 @@ Partial Class DashBoardForm
         Me.Panel28.PerformLayout()
         Me.Panel27.ResumeLayout(False)
         Me.Panel27.PerformLayout()
+        Me.EmployeeAttendancePanel.ResumeLayout(False)
+        CType(Me.EmployeeAttendanceDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel19.ResumeLayout(False)
+        Me.Panel19.PerformLayout()
+        Me.Panel25.ResumeLayout(False)
+        Me.Panel25.PerformLayout()
+        Me.AttendanceSheetPanel.ResumeLayout(False)
+        CType(Me.AttendanceSheetDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel18.ResumeLayout(False)
+        Me.Panel18.PerformLayout()
+        Me.Panel24.ResumeLayout(False)
+        Me.Panel24.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.SideBarPanel.ResumeLayout(False)
         Me.PanelPayroll.ResumeLayout(False)
@@ -3347,15 +3472,6 @@ Partial Class DashBoardForm
     Friend WithEvents DashboardPanel As Panel
     Friend WithEvents Panel6 As Panel
     Friend WithEvents Label2 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label9 As Label
-    Friend WithEvents Label10 As Label
-    Friend WithEvents Label11 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
     Friend WithEvents MenuHide1Button As Button
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
@@ -3370,7 +3486,6 @@ Partial Class DashBoardForm
     Friend WithEvents AttendanceTodayDataGridView As DataGridView
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel3 As Panel
-    Friend WithEvents Label16 As Label
     Friend WithEvents ATPresentLabel As Label
     Friend WithEvents ATLeaveLabel As Label
     Friend WithEvents ATTotalLabel As Label
@@ -3413,14 +3528,7 @@ Partial Class DashBoardForm
     Friend WithEvents MenuHide6Button As Button
     Friend WithEvents Label54 As Label
     Friend WithEvents EmployeesSalaryPanel As Panel
-    Friend WithEvents DataGridView5 As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
-    Friend WithEvents Salary As DataGridViewTextBoxColumn
     Friend WithEvents Panel20 As Panel
-    Friend WithEvents TextBox5 As TextBox
     Friend WithEvents Label46 As Label
     Friend WithEvents Panel13 As Panel
     Friend WithEvents MenuHide7Button As Button
@@ -3444,7 +3552,6 @@ Partial Class DashBoardForm
     Friend WithEvents ELTotalLabel As Label
     Friend WithEvents ELNWorkingLabel As Label
     Friend WithEvents ELWorkingLabel As Label
-    Friend WithEvents Label45 As Label
     Friend WithEvents Label44 As Label
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -3455,7 +3562,7 @@ Partial Class DashBoardForm
     Friend WithEvents TableAdapterManager As HRMSDataSetTableAdapters.TableAdapterManager
     Friend WithEvents SideBarPanel As Panel
     Friend WithEvents PanelEmployee As Panel
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnEm2 As Button
     Friend WithEvents btnEm1 As Button
     Friend WithEvents btnEmployee As Button
     Friend WithEvents btnDashboard As Button
@@ -3577,4 +3684,32 @@ Partial Class DashBoardForm
     Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
+    Friend WithEvents Label30 As Label
+    Friend WithEvents DashWeekLabel As Label
+    Friend WithEvents DashTomLabel As Label
+    Friend WithEvents DashMonthLabel As Label
+    Friend WithEvents Label38 As Label
+    Friend WithEvents Label64 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label45 As Label
+    Friend WithEvents DashPresentLabel As Label
+    Friend WithEvents DashAbsentLabel As Label
+    Friend WithEvents DashLeaveLabel As Label
+    Friend WithEvents DashTotalLabel As Label
+    Friend WithEvents DashRejectedLabel As Label
+    Friend WithEvents DashApprovedLabel As Label
+    Friend WithEvents DashURLabel As Label
+    Friend WithEvents Label34 As Label
+    Friend WithEvents Label36 As Label
+    Friend WithEvents Label37 As Label
+    Friend WithEvents DateLabel As Label
+    Friend WithEvents DateTimeTimer As Timer
+    Friend WithEvents TimeLabel As Label
+    Friend WithEvents DashUpdateTimer As Timer
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents ESIEmpNamesComboBox As ComboBox
+    Friend WithEvents ESIEmpIDLabel As Label
 End Class
