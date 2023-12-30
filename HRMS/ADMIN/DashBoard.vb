@@ -1,13 +1,16 @@
 ﻿Imports System.CodeDom
 Imports System.ComponentModel
 Imports System.Data.SqlClient
+Imports System.Globalization
 Imports System.IO
+Imports System.Reflection
 Imports System.Xml.Schema
 Imports System.Xml.Serialization.Configuration
 
 Public Class DashBoardForm
     Public EmpNames As New List(Of String)
     Public EmployeeID As New List(Of String)
+    Public DepartmentID As New List(Of String)
     Public att As New List(Of String)
 
     Public DeleteDate As Date
@@ -406,6 +409,7 @@ Public Class DashBoardForm
             If gb.Name = "EmployeeAllPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
+                RefreshDetails()
                 EmployeesDataGridView.CurrentCell = Nothing
             Else
                 gb.Visible = False
@@ -419,7 +423,10 @@ Public Class DashBoardForm
             If gb.Name = "EmployeesSalaryPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
+                PopulateSalaryType()
                 PopulateESIEmpNames()
+                ESIBreakTextBox.Text = 1
+                UpdateValues()
             Else
                 gb.Visible = False
                 gb.Enabled = False
@@ -427,15 +434,223 @@ Public Class DashBoardForm
         Next
     End Sub
 
+    Private Sub ESIWorkFromDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles ESIWorkFromDateTimePicker.ValueChanged
+        UpdateValues()
+    End Sub
+
+    Private Sub ESIWorkToDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles ESIWorkToDateTimePicker.ValueChanged
+        UpdateValues()
+    End Sub
+
+    Private Sub ESIBreakTextBox_TextChanged(sender As Object, e As EventArgs) Handles ESIBreakTextBox.TextChanged
+        UpdateValues()
+    End Sub
+
+    Private Sub ESIRefreshButton_Click(sender As Object, e As EventArgs) Handles ESIRefreshButton.Click
+        Dim lastindex As Integer = ESIEmpNamesComboBox.SelectedIndex
+
+        PopulateSalaryType()
+        PopulateESIEmpNames()
+        ESIEmpIDLabel.Text = EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        ESIDepartmentLabel.Text = DepartmentID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        DisplayESI()
+        DisplayCreds()
+
+        ESIEmpNamesComboBox.SelectedIndex = lastindex
+    End Sub
+
+    Public Sub UpdateValues()
+        If ESIBreakTextBox.Text = "" Then
+
+        Else
+            Dim Total As Integer = DateDiff(DateInterval.Hour, ESIWorkFromDateTimePicker.Value, ESIWorkToDateTimePicker.Value) - ESIBreakTextBox.Text
+
+            If Total < 0 Then
+                MsgBox("Work hours must be a non-negative number.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+            End If
+
+            ESIWorkTotalTextBox.Text = Total
+        End If
+    End Sub
+
+    Private Sub ESISaveButton_Click(sender As Object, e As EventArgs) Handles ESISaveButton.Click
+        Dim TextBoxCtrl As Control
+        Dim TextCount As Integer
+
+        For Each TextBoxCtrl In Me.Controls.OfType(Of TextBox)
+            If TextBoxCtrl.Text = "" Then
+                TextCount += 1
+            End If
+        Next
+
+        For Each TextBoxCtrl In Me.Controls.OfType(Of ComboBox)
+            If TextBoxCtrl.Text = "" Then
+                TextCount += 1
+            End If
+        Next
+
+        If TextCount = 0 Then
+            If CheckESI() Then
+                If MsgBox("Are you sure to update the salary information of the employee?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+                    UpdateValues()
+                    UpdateESI()
+
+                    For Each ctrl In Panel11.Controls
+                        If TypeOf ctrl Is TextBox Then
+                            ctrl.text = 0
+                            If ctrl.tag = "Break" Then
+                                ctrl.text = 1
+                            End If
+                        ElseIf TypeOf ctrl Is DateTimePicker Then
+                            ctrl.value = Date.Today & " " & ctrl.tag
+                        ElseIf TypeOf ctrl Is ComboBox Then
+                            ctrl.selectedindex = 0
+                        End If
+                    Next
+
+                    Dim lastindex As Integer = ESIEmpNamesComboBox.SelectedIndex
+                    PopulateESIEmpNames()
+                    ESIEmpNamesComboBox.SelectedIndex = lastindex
+
+                    MsgBox("Employee salary information successfully updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+                End If
+            Else
+                If MsgBox("Are you sure to add the salary information of the employee?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+                    InsertESI()
+                    UpdateValues()
+
+                    For Each ctrl In Panel11.Controls
+                        If TypeOf ctrl Is TextBox Then
+                            ctrl.text = 0
+                            If ctrl.tag = "Break" Then
+                                ctrl.text = 1
+                            End If
+                        ElseIf TypeOf ctrl Is DateTimePicker Then
+                            ctrl.value = Date.Today & " " & ctrl.tag
+                        ElseIf TypeOf ctrl Is ComboBox Then
+                            ctrl.selectedindex = 0
+                        End If
+                    Next
+
+                    Dim lastindex As Integer = ESIEmpNamesComboBox.SelectedIndex
+                    PopulateESIEmpNames()
+                    ESIEmpNamesComboBox.SelectedIndex = lastindex
+
+                    MsgBox("Employee salary information successfully added.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+                End If
+            End If
+        End If
+    End Sub
+
+    Public Sub InsertESI()
+        Dim query = "INSERT INTO EmployeeSalaryInformation (EmployeeID, SalaryTypeID, WorkHoursFrom, WorkHoursTo, Total, [Break]) VALUES (@EmployeeID, @SalaryTypeID, @WorkHoursFrom, @WorkHoursTo, @Total, @Break)"
+
+        Prepare(query)
+        AddParam("@EmployeeID", EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex))
+        AddParam("@SalaryTypeID", ESISalaryTypeComboBox.SelectedIndex + 1)
+        AddParam("@WorkHoursFrom", ESIWorkFromDateTimePicker.Value)
+        AddParam("@WorkHoursTo", ESIWorkToDateTimePicker.Value)
+        AddParam("@Total", ESIWorkTotalTextBox.Text)
+        AddParam("@Break", ESIBreakTextBox.Text)
+        ExecutePrepare()
+    End Sub
+
+    Public Sub UpdateESI()
+        Dim query = "UPDATE EmployeeSalaryInformation SET SalaryTypeID=@SalaryTypeID, WorkHoursFrom=@WorkHoursFrom, WorkHoursTo=@WorkHoursTo, Total=@Total, [Break]=@Break WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@SalaryTypeID", ESISalaryTypeComboBox.SelectedIndex + 1)
+        AddParam("@WorkHoursFrom", ESIWorkFromDateTimePicker.Value)
+        AddParam("@WorkHoursTo", ESIWorkToDateTimePicker.Value)
+        AddParam("@Total", ESIWorkTotalTextBox.Text)
+        AddParam("@Break", ESIBreakTextBox.Text)
+        AddParam("@EmpID", EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex))
+        ExecutePrepare()
+    End Sub
+
+    Public Function CheckESI()
+        Dim query = "SELECT * FROM EmployeeSalaryInformation WHERE EmployeeID = @EmpID"
+        Prepare(query)
+        AddParam("@EmpID", EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex))
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Private Sub EDIAddCredentialsButton_Click(sender As Object, e As EventArgs) Handles EDIAddCredentialsButton.Click
+        Me.Enabled = False
+        EmployeeCredentialsForm.EmpID = EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        EmployeeCredentialsForm.Show(Me)
+    End Sub
+
+    Public Sub DisplayCreds()
+        Dim query = "SELECT Description, Increase, AuthorizedBy, Date, EffectiveDate FROM EmployeesCredentials WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex))
+        ExecutePrepare()
+
+        If Count > 0 Then
+            ESICredentialsDataGridView.DataSource = DataAsTable.DefaultView
+        Else
+            ESICredentialsDataGridView.DataSource = Nothing
+        End If
+    End Sub
+
+    Public Sub DisplayESI()
+        Dim query = "SELECT * FROM EmployeeSalaryInformation WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex))
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
+
+            Dim WorkFrom As String = Date.Today & " " & row("WorkHoursFrom").ToString
+            Dim WorkTo As String = Date.Today & " " & row("WorkHoursTo").ToString
+
+            ESIEmpIDLabel.ForeColor = Color.Green
+            ESISalaryTypeComboBox.SelectedIndex = row("SalaryTypeID") - 1
+            If IsDBNull(row("Rate")) Then
+                ESIRateTextBox.Text = 0
+            Else
+                ESIRateTextBox.Text = row("Rate")
+            End If
+            Date.TryParse(WorkFrom, ESIWorkFromDateTimePicker.Value)
+            Date.TryParse(WorkTo, ESIWorkToDateTimePicker.Value)
+            ESIWorkTotalTextBox.Text = row("Total")
+            ESIBreakTextBox.Text = row("Break")
+        Else
+            ESIEmpIDLabel.ForeColor = Color.Red
+            ESISalaryTypeComboBox.SelectedIndex = 0
+            ESIRateTextBox.Text = 0
+            ESIWorkFromDateTimePicker.Value = Date.Today & " 08:00:00 AM"
+            ESIWorkToDateTimePicker.Value = Date.Today & " 05:00:00 PM"
+            ESIBreakTextBox.Text = 1
+            ESIWorkTotalTextBox.Text = DateDiff(DateInterval.Hour, ESIWorkFromDateTimePicker.Value, ESIWorkToDateTimePicker.Value) - ESIBreakTextBox.Text
+        End If
+    End Sub
+
     Public Sub PopulateESIEmpNames()
-        Dim query = "SELECT EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName
-        FROM Employees"
+        EmployeeID.Clear()
+        DepartmentID.Clear()
+
+        Dim query = "SELECT Employees.EmployeeID, Department.Department, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName
+        FROM Employees
+		LEFT OUTER JOIN Department
+		ON Employees.DepartmentID = Department.ID"
 
         Prepare(query)
         ExecutePrepare()
 
         For Each row As DataRow In DataAsTable.Rows
             EmployeeID.Add(row("EmployeeID"))
+            DepartmentID.Add(row("Department"))
         Next
 
         ESIEmpNamesComboBox.DisplayMember = "EmployeeName"
@@ -446,6 +661,21 @@ Public Class DashBoardForm
 
     Private Sub ESIEmpNamesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ESIEmpNamesComboBox.SelectedIndexChanged
         ESIEmpIDLabel.Text = EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        ESIDepartmentLabel.Text = DepartmentID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        DisplayESI()
+        DisplayCreds()
+    End Sub
+
+    Public Sub PopulateSalaryType()
+        Dim query = "SELECT Type FROM SalaryType"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        ESISalaryTypeComboBox.DisplayMember = "Type"
+        ESISalaryTypeComboBox.DataSource = DataAsTable
+        ESISalaryTypeComboBox.SelectedIndex = 0
+        ESISalaryTypeComboBox.MaxDropDownItems = 5
     End Sub
 
     Private Sub btnLev3_Click(sender As Object, e As EventArgs) Handles btnLev3.Click

@@ -183,7 +183,7 @@ Partial Class Login
         Me.MinimumSize = New System.Drawing.Size(776, 625)
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "       "
+        Me.Text = "DATAMEX - HRMS "
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

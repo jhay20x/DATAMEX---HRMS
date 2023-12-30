@@ -1,7 +1,8 @@
 ﻿Imports System.Data.SqlClient
 
 Module Connections
-    Public ConnectionString As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true"
+    Public ConnectionString As String = "Data Source=JHAYJAYGONZALES\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true"
+    'Public ConnectionString As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true"
     Public Connection As New SqlConnection(ConnectionString)
 
     Public Command As SqlCommand
