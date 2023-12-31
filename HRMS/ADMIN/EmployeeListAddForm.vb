@@ -79,7 +79,8 @@ Public Class EmployeeListAddForm
                     Dim Datehired As String = Year & "/" & Month & "/" & Day
                     Dim Status As Integer = 1
                     Dim Department As Integer = ELADeptComboBox.SelectedIndex + 1
-                    Dim query = "INSERT INTO Employees VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
+                    Dim query = "INSERT INTO Employees (EmployeeID, LastName, FirstName, MiddleName, StatusID, DepartmentID, 
+                    DateHired, Age, ContactNumber, EmailAddress, Address, SSSNo, PhilHealthNo, PagIbigNo, TIN) VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
                     @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN);"
 
                     Prepare(query)

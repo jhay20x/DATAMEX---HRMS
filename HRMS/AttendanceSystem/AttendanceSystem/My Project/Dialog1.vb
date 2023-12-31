@@ -6,7 +6,8 @@ Public Class MessageDialog
     Private Sub ProgressBarTimer_Tick(sender As Object, e As EventArgs) Handles ProgressBarTimer.Tick
         AutoCloseProgressBar.PerformStep()
 
-        If AutoCloseProgressBar.Value = 1000 Then
+        If AutoCloseProgressBar.Value = 500 Then
+            MainForm.Enabled = True
             MainForm.Show()
             Me.Close()
         End If

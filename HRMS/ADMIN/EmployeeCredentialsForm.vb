@@ -115,12 +115,12 @@ Public Class EmployeeCredentialsForm
         If Count > 0 Then
             Dim row As DataRow = DataAsTable.Rows(0)
             If IsDBNull(row("Rate")) Then
-                Return ECIncreaseTextBox.Text
+                Return 0
             Else
                 Return row("Rate")
             End If
         Else
-            Return ECIncreaseTextBox.Text
+            Return 0
         End If
     End Function
 

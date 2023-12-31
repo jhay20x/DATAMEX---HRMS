@@ -96,10 +96,12 @@ Public Class LeaveRequestViewForm
 
             MsgBox("Request successfully approved!", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
             UpdateLeaveBalance()
-            UpdateLeave(EmpIdEdit)
+            If LRDateFromLabel.Text = curdate Then
+                UpdateLeave(EmpIdEdit)
+            End If
             isDone = True
             Me.Close()
-        End If
+            End If
     End Sub
 
     Public Sub UpdateLeave(EmpID As String)

@@ -17,35 +17,46 @@ Public Class DashBoardForm
     Public DeleteProjectID
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RefreshTable()
-        CheckLeave()
         LoadAttendanceDetails()
         LoadLeaveRequestDetails()
         LoadHolidayDetails()
+        GetUpcomingProject()
+        CheckLeave()
     End Sub
 
     Private Sub DashUpdateTimer_Tick(sender As Object, e As EventArgs) Handles DashUpdateTimer.Tick
         LoadAttendanceDetails()
         LoadLeaveRequestDetails()
         LoadHolidayDetails()
+        GetUpcomingProject()
     End Sub
 
     Public Sub CheckLeave()
-        Dim query = "SELECT EmployeeID, DateTo FROM LeaveRequest"
+        Dim query = "SELECT EmployeeID, DateFrom, DateTo FROM LeaveRequest WHERE StatusID = 2"
 
         Prepare(query)
         ExecutePrepare()
 
         For Each row As DataRow In DataAsTable.Rows
             If row("DateTo") < Date.Today Then
-                UpdateLeave(row("EmployeeID"))
+                UpdateLeave(row("EmployeeID"), Nothing)
+            End If
+
+            If row("DateFrom") >= Date.Today Then
+                UpdateLeave(row("EmployeeID"), 1)
             End If
         Next
     End Sub
 
-    Public Sub UpdateLeave(EmpID As String)
-        Dim query = "UPDATE Employees SET OnLeaveID = NULL WHERE EmployeeID = @EmpID"
+    Public Sub UpdateLeave(EmpID As String, val As String)
+        Dim query = "UPDATE Employees SET OnLeaveID = @Val WHERE EmployeeID = @EmpID"
 
         Prepare(query)
+        If val > 0 Then
+            AddParam("@Val", val)
+        Else
+            AddParam("@Val", DBNull.Value)
+        End If
         AddParam("@EmpID", EmpID)
         ExecutePrepare()
     End Sub
@@ -268,7 +279,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub ASEmployeeNamesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ASEmployeeNamesComboBox.SelectedIndexChanged
-        Dim query = "SELECT AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, TotalHours 
+        Dim query = "SELECT AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, TotalHours, Late, OT, Undertime, HalfDay 
         FROM AttendanceRecords
 		LEFT OUTER JOIN Employees
 		ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
@@ -279,7 +290,7 @@ Public Class DashBoardForm
         ExecutePrepare()
 
         AttendanceSheetDataGridView.DataSource = DataAsTable
-        AttendanceSheetDataGridView.Sort(AttendanceSheetDataGridView.Columns(2), ListSortDirection.Descending)
+        AttendanceSheetDataGridView.Sort(AttendanceSheetDataGridView.Columns(0), ListSortDirection.Descending)
     End Sub
 
     Public Sub PopulateEmployeeNames()
@@ -420,7 +431,7 @@ Public Class DashBoardForm
 
     Private Sub btnEm2_Click(sender As Object, e As EventArgs) Handles btnEm2.Click
         For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
-            If gb.Name = "EmployeesSalaryPanel" Then
+            If gb.Name = "EmployeesSalaryInformationPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
                 PopulateSalaryType()
@@ -463,9 +474,11 @@ Public Class DashBoardForm
         If ESIBreakTextBox.Text = "" Then
 
         Else
+            ESIWorkTotalTextBox.Text = 0
+
             Dim Total As Integer = DateDiff(DateInterval.Hour, ESIWorkFromDateTimePicker.Value, ESIWorkToDateTimePicker.Value) - ESIBreakTextBox.Text
 
-            If Total < 0 Then
+            If ESIWorkTotalTextBox.Text < 0 Then
                 MsgBox("Work hours must be a non-negative number.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
             End If
 
@@ -851,7 +864,7 @@ Public Class DashBoardForm
             If gb.Name = "HolidayListPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
-                HolidayDateTimePicker.Value = Date.Today
+                HolidayDateTimePicker.Value = Date.Today.Month & "/01/" & Date.Today.Year
                 LoadHolidayDetails()
             Else
                 gb.Visible = False
@@ -931,7 +944,6 @@ Public Class DashBoardForm
 
     Private Sub HolidayDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles HolidayDateTimePicker.ValueChanged
         Dim SelectedMonth As Integer = HolidayDateTimePicker.Value.Month
-
         LoadHoliday(SelectedMonth)
     End Sub
 
@@ -1033,7 +1045,9 @@ Public Class DashBoardForm
         Prepare(query)
         ExecutePrepare()
 
-        For Each row As DataRow In DataAsTable.Rows
+        Dim row As DataRow
+
+        For Each row In DataAsTable.Rows
             If row("ProjectStatusID") > 0 Then
                 PJTotal += 1
             End If
@@ -1046,10 +1060,24 @@ Public Class DashBoardForm
                 PJCompleted += 1
             End If
         Next
-
         PJTotalLabel.Text = PJTotal
         PJOngoingLabel.Text = PJOngoing
+        DashOngoingLabel.Text = PJOngoing
         PJCompletedLabel.Text = PJCompleted
+    End Sub
+
+    Public Sub GetUpcomingProject()
+        Dim query = "SELECT * FROM Projects WHERE ProjectDateStart >= @Date"
+
+        Prepare(query)
+        AddParam("@Date", Date.Today)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
+            DashProjNameLabel.Text = row("ProjectName")
+            DashProjDurationLabel.Text = row("ProjectDuration") & " days."
+        End If
     End Sub
 
     Private Sub PJEditButton_Click(sender As Object, e As EventArgs) Handles PJEditButton.Click
@@ -1144,14 +1172,291 @@ Public Class DashBoardForm
 
     Private Sub btnPay1_Click(sender As Object, e As EventArgs) Handles btnPay1.Click
         For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
-            If gb.Name = "EmployeesSalaryPanel" Then
+            If gb.Name = "EmployeeSalaryPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
+                ESPayrollTypeComboBox.SelectedIndex = 0
+                ESCutOffComboBox.SelectedIndex = 0
+                ESMonthComboBox.SelectedIndex = Date.Today.Month - 1
             Else
                 gb.Visible = False
                 gb.Enabled = False
             End If
         Next
+    End Sub
+
+    Private Sub ESGenerateButton_Click(sender As Object, e As EventArgs) Handles ESGenerateButton.Click
+        'CheckForNoTimeInAndOut(ESMonthComboBox.SelectedIndex + 1)
+
+        PopulateHolidays(ESMonthComboBox.SelectedIndex + 1)
+        GetAllAttendanceRecords()
+    End Sub
+
+    Public Sub CheckForNoTimeInAndOut(Month As Integer)
+        Dim query = "SELECT * FROM AttendanceRecords WHERE (TimeIn IS NOT NULL OR TimeOut IS NULL) AND MONTH(Attdate) = @Month"
+
+        Prepare(query)
+        AddParam("@Month", Month)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            SetHalfDay(row("EmployeeID"), row("ID"), Month)
+        Next
+    End Sub
+
+    Public Sub SetHalfDay(EmpID As String, ID As Integer, Month As Integer)
+        Dim query = "UPDATE AttendanceRecords SET HalfDay = 1 WHERE ID = @ID AND EmployeeID = @EmpID AND MONTH(Attdate) = @Month"
+
+        Prepare(query)
+        AddParam("@ID", ID)
+        AddParam("@EmpID", EmpID)
+        AddParam("@Month", Month)
+        ExecutePrepare()
+    End Sub
+
+    Public Sub GetAllAttendanceRecords()
+        Dim query = "SELECT EmployeeID FROM EmployeeSalaryInformation"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            CalculateWorkHours(row("EmployeeID"), ESMonthComboBox.SelectedIndex + 1, Date.Today.Year)
+        Next
+    End Sub
+
+    Public Sub CalculateWorkHours(EmployeeID As String, Month As Integer, Year As Integer)
+        Dim WorkHours As Double = GetWorkHours(EmployeeID)
+        Dim TotalHours As Double
+        Dim OT As Double
+        Dim Late As Double
+        Dim UnderTime As Double
+        Dim TotalWorkDays As Integer
+        Dim Rate As Integer = GetRate(EmployeeID)
+        Dim BasicPay, NetPay, OTPay, HolidayPay As Double
+        Dim SalaryType As Integer
+        Dim HolidayRate, HolidayInstance As Double
+
+        Dim query = "SELECT AttendanceRecords.ID, AttendanceRecords.EmployeeID, AttendanceRecords.AttDate, AttendanceRecords.TimeIn, AttendanceRecords.TimeOut, AttendanceRecords.TotalHours,
+        AttendanceRecords.OT, AttendanceRecords.Late, AttendanceRecords.Undertime, AttendanceRecords.HalfDay, EmployeeSalaryInformation.SalaryTypeID 
+        FROM AttendanceRecords 
+        LEFT OUTER JOIN EmployeeSalaryInformation
+        ON AttendanceRecords.EmployeeID = EmployeeSalaryInformation.EmployeeID
+        WHERE MONTH(AttendanceRecords.AttDate) = @Month AND YEAR(AttendanceRecords.AttDate) = @Year AND AttendanceRecords.EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@Month", Month)
+        AddParam("@Year", Year)
+        AddParam("@EmpID", EmployeeID)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            If HolidaysDates.Contains(Convert.ToDateTime(row("AttDate")).ToString("MM/dd")) Then
+                Dim index As Integer = HolidaysDates.IndexOf(Convert.ToDateTime(row("AttDate")).ToString("MM/dd"))
+
+                HolidayRate = HolidaysPercent.Item(index)
+                HolidayInstance += 1
+            End If
+
+            TotalWorkDays += 1
+
+            If row("SalaryTypeID") = 1 Then
+                SalaryType = 1
+                If Not IsDBNull(row("TotalHours")) Then
+                    If row("TotalHours") > WorkHours Then
+                        TotalHours += WorkHours
+                    Else
+                        TotalHours += row("TotalHours")
+                    End If
+                End If
+
+                If Not IsDBNull(row("OT")) Then
+                    OT += row("OT")
+                End If
+
+                If Not IsDBNull(row("HalfDay")) Then
+                    TotalHours += WorkHours / 2
+                End If
+
+                If Not IsDBNull(row("Late")) Then
+                    Late += row("Late")
+                    TotalHours -= Late
+                End If
+                If Not IsDBNull(row("Undertime")) Then
+                    UnderTime += row("Undertime")
+                    TotalHours -= UnderTime
+
+                    MsgBox(UnderTime)
+                End If
+            End If
+
+            If row("SalaryTypeID") = 2 Then
+                SalaryType = 2
+                If Not IsDBNull(row("TotalHours")) Then
+                    If row("TotalHours") > WorkHours Then
+                        TotalHours += WorkHours
+                    Else
+                        TotalHours += row("TotalHours")
+                    End If
+                End If
+
+                If Not IsDBNull(row("OT")) Then
+                    Dim OTHour = row("OT").ToString.Split(New Char() {"."c})
+                    Dim CurOt As Double
+
+                    If OTHour(0) > 0 Then
+                        CurOt = OTHour(0)
+                        If OTHour(1) >= 50 Then
+                            CurOt += "." & OTHour(1)
+                        End If
+                    Else
+                        If OTHour(1) >= 50 Then
+                            CurOt += "." & OTHour(1)
+                        End If
+                    End If
+
+                    OT += CurOt
+                End If
+
+                If Not IsDBNull(row("HalfDay")) Then
+                    TotalHours += WorkHours / 2
+                End If
+
+                If Not IsDBNull(row("Late")) Then
+                    Late += row("Late")
+                    TotalHours -= Late
+                End If
+
+                If Not IsDBNull(row("Undertime")) Then
+                    UnderTime += row("Undertime")
+                    TotalHours -= UnderTime
+                End If
+            End If
+
+            If row("SalaryTypeID") = 3 Then
+                SalaryType = 3
+                If Not IsDBNull(row("TotalHours")) Then
+                    If row("TotalHours") > WorkHours Then
+                        TotalHours += WorkHours
+                    Else
+                        TotalHours += row("TotalHours")
+                    End If
+                End If
+
+                If Not IsDBNull(row("OT")) Then
+                    Dim OTHour = row("OT").ToString.Split(New Char() {"."c})
+                    Dim CurOt As Double
+
+                    If OTHour(0) > 0 Then
+                        CurOt = OTHour(0)
+                        If OTHour(1) >= 50 Then
+                            CurOt += "." & OTHour(1)
+                        End If
+                    Else
+                        If OTHour(1) >= 50 Then
+                            CurOt += "." & OTHour(1)
+                        End If
+                    End If
+
+                    OT += CurOt
+                End If
+
+                If Not IsDBNull(row("HalfDay")) Then
+                    TotalHours += WorkHours / 2
+                End If
+
+                If Not IsDBNull(row("Late")) Then
+                    Late += row("Late")
+                    TotalHours -= Late
+                End If
+
+                If Not IsDBNull(row("Undertime")) Then
+                    UnderTime += row("Undertime")
+                    TotalHours -= UnderTime
+                End If
+            End If
+            HolidayRate = 1
+        Next
+        If SalaryType = 1 Then
+            BasicPay = WorkHours * TotalWorkDays * Rate
+            NetPay = TotalHours * Rate
+            ESSalaryDataGridView.Rows.Add(EmployeeID, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), Late + UnderTime, "-", "-", "-", NetPay.ToString("##,###.00"))
+        ElseIf SalaryType = 2 Then
+            BasicPay = WorkHours * TotalWorkDays * (Rate / 8)
+            OTPay = ((Rate / 8) * 1.25) * OT
+            NetPay = ((TotalHours) - Late + UnderTime) * (Rate / 8) + OTPay
+            ESSalaryDataGridView.Rows.Add(EmployeeID, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), Late + UnderTime, OT, OTPay.ToString("##,###.00"), HolidayPay.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+        Else
+            BasicPay = WorkHours * TotalWorkDays * (((Rate / 2) / 13) / 8)
+            OTPay = ((((Rate / 2) / 13) / 8) * 1.25) * OT
+            NetPay = (Rate / 2) + OTPay
+            ESSalaryDataGridView.Rows.Add(EmployeeID, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), Late + UnderTime, OT, OTPay.ToString("##,###.00"), HolidayPay.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+        End If
+    End Sub
+
+
+    Public HolidaysDates As New List(Of Date)
+    Public HolidaysPercent As New List(Of Double)
+
+    Public Sub PopulateHolidays(Month As Integer)
+        HolidaysDates.Clear()
+        HolidaysPercent.Clear()
+        Dim query = "SELECT * FROM Holidays WHERE MONTH(HolidayDate) = @Month"
+
+        Prepare(query)
+        AddParam("@Month", Month)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            HolidaysDates.Add(Convert.ToDateTime(row("HolidayDate")).ToString("MM/dd"))
+
+            If row("Type") = "Regular" Then
+                HolidaysPercent.Add(2)
+            Else
+                HolidaysPercent.Add(1.3)
+            End If
+        Next
+    End Sub
+
+    Public Function GetRate(EmpID As String)
+        Dim query = "SELECT Rate FROM EmployeeSalaryInformation WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
+
+            Return row("Rate")
+        End If
+
+        Return Nothing
+    End Function
+
+    Public Function GetWorkHours(EmpID As String)
+        Dim query = "SELECT Total FROM EmployeeSalaryInformation WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
+
+            Return row("Total")
+        End If
+
+        Return Nothing
+    End Function
+
+    Private Sub ESPayrollTypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ESPayrollTypeComboBox.SelectedIndexChanged
+        If ESPayrollTypeComboBox.Text = "Monthly" Then
+            ESCutOffComboBox.Enabled = False
+        Else
+            ESCutOffComboBox.Enabled = True
+            ESCutOffComboBox.SelectedIndex = 0
+        End If
     End Sub
 
     Private Sub EmployeeListAddButton_Click(sender As Object, e As EventArgs) Handles EmployeeListAddButton.Click
@@ -1320,5 +1625,9 @@ Public Class DashBoardForm
         Dim CurDateTime As Date = Date.Now
         TimeLabel.Text = CurDateTime.ToString("hh:mm:ss tt")
         DateLabel.Text = CurDateTime.ToLongDateString
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        ESSalaryDataGridView.Rows.Clear()
     End Sub
 End Class
