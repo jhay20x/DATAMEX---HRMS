@@ -1,11 +1,6 @@
-﻿Imports System.CodeDom
-Imports System.ComponentModel
-Imports System.Data.SqlClient
-Imports System.Globalization
+﻿Imports System.ComponentModel
 Imports System.IO
-Imports System.Reflection
-Imports System.Xml.Schema
-Imports System.Xml.Serialization.Configuration
+Imports System.Security.Cryptography.X509Certificates
 
 Public Class DashBoardForm
     Public EmpNames As New List(Of String)
@@ -201,9 +196,9 @@ Public Class DashBoardForm
         AttendanceRecords.AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, 
         AttendanceRecords.TotalHours 
         FROM AttendanceRecords
-		LEFT OUTER JOIN Employees
-		ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
-		WHERE MONTH(AttDate) = @Month AND YEAR(AttDate) = @Year"
+        LEFT OUTER JOIN Employees
+        ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
+        WHERE MONTH(AttDate) = @Month AND YEAR(AttDate) = @Year"
 
         Prepare(query)
         AddParam("@Month", EAMonth)
@@ -229,9 +224,9 @@ Public Class DashBoardForm
             AttendanceRecords.AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, 
             AttendanceRecords.TotalHours 
             FROM AttendanceRecords
-		    LEFT OUTER JOIN Employees
-		    ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
-		    WHERE MONTH(AttDate) = @Month AND YEAR(AttDate) = @Year AND CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @Search"
+            LEFT OUTER JOIN Employees
+            ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
+            WHERE MONTH(AttDate) = @Month AND YEAR(AttDate) = @Year AND CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @Search"
             Dim EmployeeName As String = EmpNames.Item(i)
 
 
@@ -281,8 +276,8 @@ Public Class DashBoardForm
     Private Sub ASEmployeeNamesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ASEmployeeNamesComboBox.SelectedIndexChanged
         Dim query = "SELECT AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, TotalHours, Late, OT, Undertime, HalfDay 
         FROM AttendanceRecords
-		LEFT OUTER JOIN Employees
-		ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
+        LEFT OUTER JOIN Employees
+        ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
         WHERE CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @Search"
 
         Prepare(query)
@@ -367,8 +362,8 @@ Public Class DashBoardForm
         AttendanceRecords.AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, 
         AttendanceRecords.TotalHours 
         FROM AttendanceRecords
-		LEFT OUTER JOIN Employees
-		ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
+        LEFT OUTER JOIN Employees
+        ON AttendanceRecords.EmployeeID = Employees.EmployeeID  
         WHERE AttDate = @AttDate"
         Dim Curdate As Date = Date.Today
 
@@ -389,9 +384,9 @@ Public Class DashBoardForm
             AttendanceRecords.AttDate, CONVERT(varchar, AttendanceRecords.TimeIn, 22) AS TimeIn, CONVERT(varchar, AttendanceRecords.TimeOut, 22) AS TimeOut, 
             AttendanceRecords.TotalHours 
             FROM AttendanceRecords 
-		    LEFT OUTER JOIN Employees
-		    ON AttendanceRecords.EmployeeID = Employees.EmployeeID
-		    WHERE AttDate = @AttDate AND (Employees.LastName LIKE @Search OR Employees.FirstName LIKE @Search OR Employees.MiddleName LIKE @Search)"
+            LEFT OUTER JOIN Employees
+            ON AttendanceRecords.EmployeeID = Employees.EmployeeID
+            WHERE AttDate = @AttDate AND (Employees.LastName LIKE @Search OR Employees.FirstName LIKE @Search OR Employees.MiddleName LIKE @Search)"
 
             Prepare(query)
             AddParam("@AttDate", Curdate)
@@ -655,8 +650,8 @@ Public Class DashBoardForm
 
         Dim query = "SELECT Employees.EmployeeID, Department.Department, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName
         FROM Employees
-		LEFT OUTER JOIN Department
-		ON Employees.DepartmentID = Department.ID"
+        LEFT OUTER JOIN Department
+        ON Employees.DepartmentID = Department.ID"
 
         Prepare(query)
         ExecutePrepare()
@@ -1177,7 +1172,11 @@ Public Class DashBoardForm
                 gb.Enabled = True
                 ESPayrollTypeComboBox.SelectedIndex = 0
                 ESCutOffComboBox.SelectedIndex = 0
-                ESMonthComboBox.SelectedIndex = Date.Today.Month - 1
+                ESYearDateTimePicker.Value = Date.Today.Month & "/01/" & Date.Today.Year
+                ESMonthDateTimePicker.Value = Date.Today.Month & "/01/" & Date.Today.Year
+                GetSSS()
+                GetPagIbig()
+                GetTax()
             Else
                 gb.Visible = False
                 gb.Enabled = False
@@ -1188,7 +1187,7 @@ Public Class DashBoardForm
     Private Sub ESGenerateButton_Click(sender As Object, e As EventArgs) Handles ESGenerateButton.Click
         'CheckForNoTimeInAndOut(ESMonthComboBox.SelectedIndex + 1)
 
-        PopulateHolidays(ESMonthComboBox.SelectedIndex + 1)
+        PopulateHolidays(ESMonthDateTimePicker.Value.Month)
         GetAllAttendanceRecords()
     End Sub
 
@@ -1215,38 +1214,117 @@ Public Class DashBoardForm
     End Sub
 
     Public Sub GetAllAttendanceRecords()
-        Dim query = "SELECT EmployeeID FROM EmployeeSalaryInformation"
+        Dim query = "SELECT EmployeeSalaryInformation.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName 
+        FROM EmployeeSalaryInformation
+        LEFT OUTER JOIN Employees
+        ON EmployeeSalaryInformation.EmployeeID = Employees.EmployeeID"
 
         Prepare(query)
         ExecutePrepare()
 
+        Dim PayrollType As String
+        Dim CutOff As String
+        Dim FixedRate As Double
+
+        Dim StartDate As Date
+        Dim EndDate As Date
+        Dim WorkDays As Integer
+        Dim DaysInAMonth As Integer = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+
+        If ESPayrollTypeComboBox.SelectedIndex = 0 Then
+            FixedRate = 2
+            If ESCutOffComboBox.SelectedIndex = 0 Then
+                PayrollType = ESPayrollTypeComboBox.Text
+                CutOff = ESCutOffComboBox.Text
+
+                StartDate = ESMonthDateTimePicker.Value.Month & "/01/" & ESYearDateTimePicker.Value.Year
+                EndDate = ESMonthDateTimePicker.Value.Month & "/15/" & ESYearDateTimePicker.Value.Year
+
+                For i = StartDate.Date.Day To EndDate.Date.Day
+                    Dim Day As String = ESMonthDateTimePicker.Value.Month & "/" & i & "/" & ESYearDateTimePicker.Value.Year
+                    Dim CheckDay As Date
+
+                    Date.TryParse(Day, CheckDay)
+
+                    If CheckDay.DayOfWeek <> DayOfWeek.Sunday Then
+                        WorkDays += 1
+                    End If
+                Next
+            Else
+                PayrollType = ESPayrollTypeComboBox.Text
+                CutOff = ESCutOffComboBox.Text
+
+                StartDate = ESMonthDateTimePicker.Value.Month & "/16/" & ESYearDateTimePicker.Value.Year
+                EndDate = ESMonthDateTimePicker.Value.Month & "/" & DaysInAMonth & "/" & ESYearDateTimePicker.Value.Year
+
+                For i = StartDate.Date.Day To EndDate.Date.Day
+                    Dim Day As String = ESMonthDateTimePicker.Value.Month & "/" & i & "/" & ESYearDateTimePicker.Value.Year
+                    Dim CheckDay As Date
+
+                    Date.TryParse(Day, CheckDay)
+
+                    If CheckDay.DayOfWeek <> DayOfWeek.Sunday Then
+                        WorkDays += 1
+                    End If
+                Next
+            End If
+        Else
+            FixedRate = 1
+            StartDate = ESMonthDateTimePicker.Value.Month & "/01/" & ESYearDateTimePicker.Value.Year
+            EndDate = ESMonthDateTimePicker.Value.Month & "/" & DaysInAMonth & "/" & ESYearDateTimePicker.Value.Year
+
+            PayrollType = ESPayrollTypeComboBox.Text
+            CutOff = StartDate.Day & "-" & EndDate.Day
+
+            For i = StartDate.Date.Day To EndDate.Date.Day
+                Dim Day As String = ESMonthDateTimePicker.Value.Month & "/" & i & "/" & ESYearDateTimePicker.Value.Year
+                Dim CheckDay As Date
+
+                Date.TryParse(Day, CheckDay)
+
+                If CheckDay.DayOfWeek <> DayOfWeek.Sunday Then
+                    WorkDays += 1
+                End If
+            Next
+        End If
+
         For Each row As DataRow In DataAsTable.Rows
-            CalculateWorkHours(row("EmployeeID"), ESMonthComboBox.SelectedIndex + 1, Date.Today.Year)
+            CalculateWorkHours(row("EmployeeID"), row("EmployeeName"), PayrollType, CutOff, FixedRate, StartDate, EndDate, ESMonthDateTimePicker.Value.Month, ESYearDateTimePicker.Value.Year, WorkDays)
         Next
     End Sub
 
-    Public Sub CalculateWorkHours(EmployeeID As String, Month As Integer, Year As Integer)
+    Public Sub CalculateWorkHours(EmployeeID As String, EmpName As String, PayrollType As String, CutOff As String, FixedRate As Double, StartDate As Date, EndDate As Date, Month As Integer, Year As Integer, WorkDays As Integer)
         Dim WorkHours As Double = GetWorkHours(EmployeeID)
         Dim TotalHours As Double
         Dim OT As Double
+        Dim OTRate As Double
         Dim Late As Double
         Dim UnderTime As Double
-        Dim TotalWorkDays As Integer
-        Dim Rate As Integer = GetRate(EmployeeID)
-        Dim BasicPay, NetPay, OTPay, HolidayPay As Double
+        Dim HalfDay As Double
+        Dim TotalWorkDays As Double
+        Dim Rate As Double = GetRate(EmployeeID)
+        Dim BasicPay, NetPay, OTPay, HolidayPay, GrossPay, TaxableIncome As Double
         Dim SalaryType As Integer
-        Dim HolidayRate, HolidayInstance As Double
+        Dim HolidayRate, HolidayInstance, HolidayHours As Double
+        Dim IsHoliday As Boolean
+        Dim TardinessAmount As Double
+        Dim SSS, PhilHealth, PagIbig, Tax As Double
 
-        Dim query = "SELECT AttendanceRecords.ID, AttendanceRecords.EmployeeID, AttendanceRecords.AttDate, AttendanceRecords.TimeIn, AttendanceRecords.TimeOut, AttendanceRecords.TotalHours,
+        Dim query = "SELECT AttendanceRecords.ID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
+        AttendanceRecords.AttDate, AttendanceRecords.TimeIn, AttendanceRecords.TimeOut, AttendanceRecords.TotalHours,
         AttendanceRecords.OT, AttendanceRecords.Late, AttendanceRecords.Undertime, AttendanceRecords.HalfDay, EmployeeSalaryInformation.SalaryTypeID 
         FROM AttendanceRecords 
         LEFT OUTER JOIN EmployeeSalaryInformation
         ON AttendanceRecords.EmployeeID = EmployeeSalaryInformation.EmployeeID
-        WHERE MONTH(AttendanceRecords.AttDate) = @Month AND YEAR(AttendanceRecords.AttDate) = @Year AND AttendanceRecords.EmployeeID = @EmpID"
+        LEFT OUTER JOIN Employees
+        ON AttendanceRecords.EmployeeID = Employees.EmployeeID
+        WHERE MONTH(AttendanceRecords.AttDate) = @Month AND YEAR(AttendanceRecords.AttDate) = @Year AND AttendanceRecords.EmployeeID = @EmpID AND (DAY(AttendanceRecords.AttDate) >= @DayFrom and DAY(AttendanceRecords.AttDate) <= @DayTo)"
 
         Prepare(query)
         AddParam("@Month", Month)
         AddParam("@Year", Year)
+        AddParam("@DayFrom", StartDate.Day)
+        AddParam("@DayTo", EndDate.Day)
         AddParam("@EmpID", EmployeeID)
         ExecutePrepare()
 
@@ -1254,149 +1332,372 @@ Public Class DashBoardForm
             If HolidaysDates.Contains(Convert.ToDateTime(row("AttDate")).ToString("MM/dd")) Then
                 Dim index As Integer = HolidaysDates.IndexOf(Convert.ToDateTime(row("AttDate")).ToString("MM/dd"))
 
-                HolidayRate = HolidaysPercent.Item(index)
                 HolidayInstance += 1
+                IsHoliday = True
+                HolidayRate = HolidaysPercent.Item(index)
+            Else
+                HolidayRate = 1
+                IsHoliday = False
             End If
 
-            TotalWorkDays += 1
+            If Not IsDBNull(row("HalfDay")) Then
+                TotalWorkDays += 0.5
+                HalfDay += WorkHours / 2
+            Else
+                TotalWorkDays += 1
+            End If
 
             If row("SalaryTypeID") = 1 Then
                 SalaryType = 1
-                If Not IsDBNull(row("TotalHours")) Then
-                    If row("TotalHours") > WorkHours Then
-                        TotalHours += WorkHours
-                    Else
-                        TotalHours += row("TotalHours")
-                    End If
-                End If
-
-                If Not IsDBNull(row("OT")) Then
-                    OT += row("OT")
-                End If
 
                 If Not IsDBNull(row("HalfDay")) Then
                     TotalHours += WorkHours / 2
-                End If
 
-                If Not IsDBNull(row("Late")) Then
-                    Late += row("Late")
-                    TotalHours -= Late
-                End If
-                If Not IsDBNull(row("Undertime")) Then
-                    UnderTime += row("Undertime")
-                    TotalHours -= UnderTime
+                    If IsHoliday Then
+                        HolidayPay += (WorkHours / 2 * (Rate * HolidayRate)) - (Rate * (WorkHours / 2))
+                        HolidayHours = WorkHours / 2 * (Rate * HolidayRate)
+                    End If
+                Else
+                    If Not IsDBNull(row("TotalHours")) Then
+                        If row("TotalHours") > WorkHours Then
+                            TotalHours += WorkHours
 
-                    MsgBox(UnderTime)
+                            If Not IsDBNull(row("Late")) Then
+                                Late += row("Late")
+                                TotalHours -= Late
+                            End If
+
+                            If Not IsDBNull(row("Undertime")) Then
+                                UnderTime += row("Undertime")
+                                TotalHours -= UnderTime
+                            End If
+                        Else
+                            TotalHours += row("TotalHours")
+
+                            If Not IsDBNull(row("Late")) Then
+                                Late += row("Late")
+                            End If
+
+                            If Not IsDBNull(row("Undertime")) Then
+                                UnderTime += row("Undertime")
+                            End If
+                        End If
+
+                        If IsHoliday Then
+                            HolidayPay += (WorkHours * (Rate * HolidayRate)) - (Rate * WorkHours)
+                            HolidayHours = WorkHours * (Rate * HolidayRate)
+                        End If
+                    End If
                 End If
             End If
 
             If row("SalaryTypeID") = 2 Then
                 SalaryType = 2
-                If Not IsDBNull(row("TotalHours")) Then
-                    If row("TotalHours") > WorkHours Then
-                        TotalHours += WorkHours
-                    Else
-                        TotalHours += row("TotalHours")
-                    End If
-                End If
-
-                If Not IsDBNull(row("OT")) Then
-                    Dim OTHour = row("OT").ToString.Split(New Char() {"."c})
-                    Dim CurOt As Double
-
-                    If OTHour(0) > 0 Then
-                        CurOt = OTHour(0)
-                        If OTHour(1) >= 50 Then
-                            CurOt += "." & OTHour(1)
-                        End If
-                    Else
-                        If OTHour(1) >= 50 Then
-                            CurOt += "." & OTHour(1)
-                        End If
-                    End If
-
-                    OT += CurOt
-                End If
 
                 If Not IsDBNull(row("HalfDay")) Then
                     TotalHours += WorkHours / 2
-                End If
 
-                If Not IsDBNull(row("Late")) Then
-                    Late += row("Late")
-                    TotalHours -= Late
-                End If
+                    If IsHoliday Then
+                        HolidayPay += (WorkHours * HolidayRate) * (Rate / WorkHours)
+                    End If
+                Else
+                    If Not IsDBNull(row("TotalHours")) Then
+                        If row("TotalHours") > WorkHours Then
+                            TotalHours += WorkHours
 
-                If Not IsDBNull(row("Undertime")) Then
-                    UnderTime += row("Undertime")
-                    TotalHours -= UnderTime
+                            If Not IsDBNull(row("Late")) Then
+                                Late += row("Late")
+                                TotalHours -= Late
+                            End If
+
+                            If Not IsDBNull(row("Undertime")) Then
+                                UnderTime += row("Undertime")
+                                TotalHours -= UnderTime
+                            End If
+                        Else
+                            TotalHours += row("TotalHours")
+
+                            If Not IsDBNull(row("Late")) Then
+                                Late += row("Late")
+                            End If
+
+                            If Not IsDBNull(row("Undertime")) Then
+                                UnderTime += row("Undertime")
+                            End If
+                        End If
+
+                        If Not IsDBNull(row("OT")) Then
+                            Dim OTHour = row("OT").ToString.Split(New Char() {"."c})
+                            Dim CurOt As Double
+
+                            If OTHour(0) > 0 Then
+                                CurOt = OTHour(0)
+                                If OTHour(1) >= 50 Then
+                                    CurOt += "." & OTHour(1)
+                                End If
+                            Else
+                                If OTHour(1) >= 50 Then
+                                    CurOt += "." & OTHour(1)
+                                End If
+                            End If
+
+                            If IsHoliday Then
+                                OTRate = 1.3
+                            Else
+                                OTRate = 1.25
+                            End If
+
+                            OT += CurOt
+                            OTPay = Rate / WorkHours * HolidayRate * OTRate * OT
+                        End If
+
+                        If IsHoliday Then
+                            HolidayPay += WorkHours * HolidayRate * (Rate / WorkHours)
+                        End If
+                    End If
                 End If
             End If
 
             If row("SalaryTypeID") = 3 Then
                 SalaryType = 3
-                If Not IsDBNull(row("TotalHours")) Then
-                    If row("TotalHours") > WorkHours Then
-                        TotalHours += WorkHours
-                    Else
-                        TotalHours += row("TotalHours")
-                    End If
-                End If
-
-                If Not IsDBNull(row("OT")) Then
-                    Dim OTHour = row("OT").ToString.Split(New Char() {"."c})
-                    Dim CurOt As Double
-
-                    If OTHour(0) > 0 Then
-                        CurOt = OTHour(0)
-                        If OTHour(1) >= 50 Then
-                            CurOt += "." & OTHour(1)
-                        End If
-                    Else
-                        If OTHour(1) >= 50 Then
-                            CurOt += "." & OTHour(1)
-                        End If
-                    End If
-
-                    OT += CurOt
-                End If
 
                 If Not IsDBNull(row("HalfDay")) Then
                     TotalHours += WorkHours / 2
-                End If
 
-                If Not IsDBNull(row("Late")) Then
-                    Late += row("Late")
-                    TotalHours -= Late
-                End If
+                    If IsHoliday Then
+                        HolidayPay += WorkHours * HolidayRate * (Rate / 2 / WorkDays / WorkHours * HolidayRate) / 2
+                    End If
+                Else
+                    If Not IsDBNull(row("TotalHours")) Then
+                        If row("TotalHours") > WorkHours Then
+                            TotalHours += WorkHours
 
-                If Not IsDBNull(row("Undertime")) Then
-                    UnderTime += row("Undertime")
-                    TotalHours -= UnderTime
+                            If Not IsDBNull(row("Late")) Then
+                                Late += row("Late")
+                                TotalHours -= Late
+                            End If
+
+                            If Not IsDBNull(row("Undertime")) Then
+                                UnderTime += row("Undertime")
+                                TotalHours -= UnderTime
+                            End If
+                        Else
+                            TotalHours += row("TotalHours")
+
+                            If Not IsDBNull(row("Late")) Then
+                                Late += row("Late")
+                            End If
+
+                            If Not IsDBNull(row("Undertime")) Then
+                                UnderTime += row("Undertime")
+                            End If
+                        End If
+
+                        If Not IsDBNull(row("OT")) Then
+                            Dim OTHour = row("OT").ToString.Split(New Char() {"."c})
+                            Dim CurOt As Double
+
+                            If OTHour(0) > 0 Then
+                                CurOt = OTHour(0)
+                                If OTHour(1) >= 50 Then
+                                    CurOt += "." & OTHour(1)
+                                End If
+                            Else
+                                If OTHour(1) >= 50 Then
+                                    CurOt += "." & OTHour(1)
+                                End If
+                            End If
+
+                            If IsHoliday Then
+                                OTRate = 1.3
+                            Else
+                                OTRate = 1.25
+                            End If
+
+                            OT = CurOt
+                            OTPay += Rate / FixedRate / WorkDays / WorkHours * HolidayRate * OTRate * OT
+                        End If
+
+                        If IsHoliday Then
+                            HolidayPay += (Rate / 2 / WorkDays * HolidayRate) - (Rate / 2 / WorkDays)
+                        End If
+                    End If
                 End If
             End If
-            HolidayRate = 1
         Next
         If SalaryType = 1 Then
-            BasicPay = WorkHours * TotalWorkDays * Rate
-            NetPay = TotalHours * Rate
-            ESSalaryDataGridView.Rows.Add(EmployeeID, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), Late + UnderTime, "-", "-", "-", NetPay.ToString("##,###.00"))
+            BasicPay = WorkHours * WorkDays * Rate
+            GrossPay = BasicPay + HolidayPay
+
+            TardinessAmount = (HalfDay + Late + UnderTime) * Rate
+            SSS = GetSSSDeduction(GrossPay, FixedRate)
+            PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
+            PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
+            TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
+            Tax = GetTaxDeduction(TaxableIncome, FixedRate)
+
+            NetPay = TaxableIncome - Tax
+
+            ESSalaryDataGridView.Rows.Add(EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, DBNull.Value, DBNull.Value, HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,###.##"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,###.##"), NetPay.ToString("##,###.00"))
         ElseIf SalaryType = 2 Then
-            BasicPay = WorkHours * TotalWorkDays * (Rate / 8)
-            OTPay = ((Rate / 8) * 1.25) * OT
-            NetPay = ((TotalHours) - Late + UnderTime) * (Rate / 8) + OTPay
-            ESSalaryDataGridView.Rows.Add(EmployeeID, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), Late + UnderTime, OT, OTPay.ToString("##,###.00"), HolidayPay.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+            BasicPay = WorkDays * Rate
+            GrossPay = BasicPay + OTPay + HolidayPay
+            NetPay = (TotalHours - Late + UnderTime) * (Rate / WorkHours) + OTPay + HolidayPay
+
+            TardinessAmount = (HalfDay + Late + UnderTime) * (Rate / WorkHours)
+            SSS = GetSSSDeduction(GrossPay, FixedRate)
+            PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
+            PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
+            TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
+            Tax = GetTaxDeduction(TaxableIncome, FixedRate)
+
+            NetPay = TaxableIncome - Tax
+
+            ESSalaryDataGridView.Rows.Add(EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT, OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,###.##"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,###.##"), NetPay.ToString("##,###.00"))
         Else
-            BasicPay = WorkHours * TotalWorkDays * (((Rate / 2) / 13) / 8)
-            OTPay = ((((Rate / 2) / 13) / 8) * 1.25) * OT
-            NetPay = (Rate / 2) + OTPay
-            ESSalaryDataGridView.Rows.Add(EmployeeID, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), Late + UnderTime, OT, OTPay.ToString("##,###.00"), HolidayPay.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+            BasicPay = Rate / FixedRate
+            GrossPay = BasicPay + OTPay + HolidayPay
+            NetPay = Rate / FixedRate / WorkDays / WorkHours * TotalHours + OTPay + HolidayPay
+
+            TardinessAmount = (HalfDay + Late + UnderTime) * Rate / FixedRate
+            SSS = GetSSSDeduction(GrossPay, FixedRate)
+            PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
+            PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
+            TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
+            Tax = GetTaxDeduction(TaxableIncome, FixedRate)
+
+            NetPay = TaxableIncome - Tax
+
+            ESSalaryDataGridView.Rows.Add(EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT, OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,###.##"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,###.##"), NetPay.ToString("##,###.00"))
         End If
     End Sub
 
 
     Public HolidaysDates As New List(Of Date)
     Public HolidaysPercent As New List(Of Double)
+
+    Public SSSRangeFrom As New List(Of Double)
+    Public SSSRangeTo As New List(Of Double)
+    Public SSSDeductions As New List(Of Double)
+
+    Public PagIbigRangeFrom As New List(Of Double)
+    Public PagIbigRangeTo As New List(Of Double)
+    Public PagIbigDeductions As New List(Of Double)
+
+    Public TaxRangeFrom As New List(Of Double)
+    Public TaxRangeTo As New List(Of Double)
+    Public TaxDeductionValue As New List(Of Double)
+    Public TaxDeductionPercentage As New List(Of Double)
+    Public TaxDeductionOver As New List(Of Double)
+
+    Public Function GetTaxDeduction(TaxableIncome As Double, FixedRate As Double) As Double
+        For i = 0 To TaxDeductionValue.Count - 1
+            If TaxableIncome >= TaxRangeFrom.Item(i) And TaxableIncome <= TaxRangeTo.Item(i) Then
+                Return ((TaxableIncome - TaxDeductionOver.Item(i)) * TaxDeductionPercentage(i)) + TaxDeductionValue(i)
+            End If
+        Next
+
+        Return Nothing
+    End Function
+
+    Public Function GetPagIbigDeduction(GrossPay As Double, FixedRate As Double) As Double
+        For i = 0 To PagIbigDeductions.Count - 1
+            If GrossPay * FixedRate >= PagIbigRangeFrom.Item(i) And GrossPay * FixedRate <= PagIbigRangeTo.Item(i) Then
+                Return GrossPay * PagIbigDeductions.Item(i) / FixedRate
+            Else
+                Return PagIbigDeductions.Last / FixedRate
+            End If
+        Next
+
+        Return Nothing
+    End Function
+
+    Public Function GetPhilHealthDeduction(GrossPay As Double, FixedRate As Double) As Double
+        Dim PH As Double = GetPhilHealth()
+
+        Return GrossPay * PH / FixedRate
+    End Function
+
+    Public Function GetSSSDeduction(GrossPay As Double, FixedRate As Double) As Double
+        If GrossPay * FixedRate >= SSSRangeFrom.Item(0) And GrossPay * FixedRate <= SSSRangeTo.Item(0) Then
+            Return SSSDeductions.Item(0) / FixedRate
+        ElseIf GrossPay * FixedRate >= SSSRangeFrom.Last Then
+            Return SSSDeductions.Last / FixedRate
+        Else
+            For i = 1 To SSSDeductions.Count - 1
+                If GrossPay * FixedRate >= SSSRangeFrom.Item(i) And GrossPay * FixedRate <= SSSRangeTo.Item(i) Then
+                    Return SSSDeductions.Item(i) / FixedRate
+                End If
+            Next
+        End If
+        Return Nothing
+    End Function
+
+    Public Sub GetTax()
+        TaxRangeFrom.Clear()
+        TaxRangeTo.Clear()
+        TaxDeductionValue.Clear()
+        TaxDeductionPercentage.Clear()
+        TaxDeductionOver.Clear()
+
+        Dim query = "SELECT * FROM WithholdingTaxDeductions"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            TaxRangeFrom.Add(row("RangeFrom"))
+            TaxRangeTo.Add(row("RangeTo"))
+            TaxDeductionValue.Add(row("DeductionValue"))
+            TaxDeductionPercentage.Add(row("DeductionPercentage"))
+            TaxDeductionOver.Add(row("DeductionOver"))
+        Next
+    End Sub
+
+    Public Sub GetPagIbig()
+        PagIbigRangeFrom.Clear()
+        PagIbigRangeTo.Clear()
+        PagIbigDeductions.Clear()
+
+        Dim query = "SELECT * FROM PagIbigDeductions"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            PagIbigRangeFrom.Add(row("RangeFrom"))
+            PagIbigRangeTo.Add(row("RangeTo"))
+            PagIbigDeductions.Add(row("Deduction"))
+        Next
+    End Sub
+
+    Public Function GetPhilHealth() As Double
+        Dim query = "SELECT * FROM PhilHealthDeductions"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        Dim row As DataRow = DataAsTable.Rows(0)
+
+        Return row("Deduction")
+    End Function
+
+    Public Sub GetSSS()
+        SSSRangeFrom.Clear()
+        SSSRangeTo.Clear()
+        SSSDeductions.Clear()
+
+        Dim query = "SELECT * FROM SSSDeductions"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            SSSRangeFrom.Add(row("RangeFrom"))
+            SSSRangeTo.Add(row("RangeTo"))
+            SSSDeductions.Add(row("Deduction"))
+        Next
+    End Sub
 
     Public Sub PopulateHolidays(Month As Integer)
         HolidaysDates.Clear()
@@ -1627,7 +1928,7 @@ Public Class DashBoardForm
         DateLabel.Text = CurDateTime.ToLongDateString
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub ESClearButton_Click(sender As Object, e As EventArgs) Handles ESClearButton.Click
         ESSalaryDataGridView.Rows.Clear()
     End Sub
 End Class
