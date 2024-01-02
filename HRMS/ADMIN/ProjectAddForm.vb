@@ -1,4 +1,7 @@
-﻿Public Class ProjectAddForm
+﻿Imports System.Runtime.CompilerServices
+
+Public Class ProjectAddForm
+    Public isDone As Boolean
     Private Sub ProjectAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateEmployeeNames()
         PJDateStartDateTimePicker.Value = Date.Today
@@ -100,8 +103,18 @@
     End Function
 
     Private Sub ProjectAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        DashBoardForm.Enabled = True
-        DashBoardForm.Show()
+        If isDone Then
+            e.Cancel = False
+            DashBoardForm.Enabled = True
+            DashBoardForm.Show()
+        Else
+            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+                e.Cancel = True
+            Else
+                DashBoardForm.Enabled = True
+                DashBoardForm.Show()
+            End If
+        End If
     End Sub
 
     Private Sub PJBackButton_Click(sender As Object, e As EventArgs) Handles PJBackButton.Click

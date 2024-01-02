@@ -1,6 +1,9 @@
-﻿Public Class HolidayEditForm
+﻿Imports System.Runtime.CompilerServices
+
+Public Class HolidayEditForm
     Public CurDate As Date
     Public HolidayDate As Date
+    Public isDone As Boolean
     Private Sub HolidayEditForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         HolidayDateTimePicker.Value = Date.Today
         HolidayTypeComboBox.SelectedIndex = 0
@@ -13,9 +16,20 @@
     End Sub
 
     Private Sub HolidayEditForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        DashBoardForm.Enabled = True
-        DashBoardForm.DisableButton()
-        DashBoardForm.Show()
+        If isDone Then
+            e.Cancel = False
+            DashBoardForm.Enabled = True
+            DashBoardForm.DisableButton()
+            DashBoardForm.Show()
+        Else
+            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+                e.Cancel = True
+            Else
+                DashBoardForm.Enabled = True
+                DashBoardForm.DisableButton()
+                DashBoardForm.Show()
+            End If
+        End If
     End Sub
 
     Private Sub HEAddButton_Click(sender As Object, e As EventArgs) Handles HEAddButton.Click
