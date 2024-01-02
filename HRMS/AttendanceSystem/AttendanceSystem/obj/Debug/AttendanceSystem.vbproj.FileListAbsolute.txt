@@ -16,7 +16,6 @@ C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\Atte
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\bin\Debug\AttendanceSystem.pdb
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\bin\Debug\AttendanceSystem.xml
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.vbproj.AssemblyReference.cache
-C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.vbproj.SuggestedBindingRedirects.cache
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.MainForm.resources
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.MessageDialog.resources
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.Resources.resources
