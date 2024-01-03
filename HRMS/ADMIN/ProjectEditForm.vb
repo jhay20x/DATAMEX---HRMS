@@ -1,9 +1,6 @@
-﻿Imports System.Runtime.CompilerServices
-
-Public Class ProjectEditForm
+﻿Public Class ProjectEditForm
     Public ProjectID As Integer
     Public EmpID As String
-    Public isDone As Boolean
     Private Sub ProjectAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateEmployeeNames()
         PopulateStatus()
@@ -145,24 +142,11 @@ Public Class ProjectEditForm
     End Sub
 
     Private Sub ProjectAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If isDone Then
-            e.Cancel = False
-            DashBoardForm.Enabled = True
-            DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
-            DashBoardForm.LoadProjectDetails()
-            DashBoardForm.DisableButton()
-            DashBoardForm.Show()
-        Else
-            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
-                e.Cancel = True
-            Else
-                DashBoardForm.Enabled = True
-                DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
-                DashBoardForm.LoadProjectDetails()
-                DashBoardForm.DisableButton()
-                DashBoardForm.Show()
-            End If
-        End If
+        DashBoardForm.Enabled = True
+        DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
+        DashBoardForm.LoadProjectDetails()
+        DashBoardForm.DisableButton()
+        DashBoardForm.Show()
     End Sub
 
     Private Sub PJBackButton_Click(sender As Object, e As EventArgs) Handles PJBackButton.Click

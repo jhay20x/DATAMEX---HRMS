@@ -1,8 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
-
-Public Class LeaveBalanceForm
+﻿Public Class LeaveBalanceForm
     Public EmpID As String
-    Public isDone As Boolean
     Private Sub LeaveBalanceForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisplayData()
     End Sub
@@ -26,20 +23,8 @@ Public Class LeaveBalanceForm
     End Sub
 
     Private Sub LeaveBalanceForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If isDone Then
-            e.Cancel = False
-            DashBoardForm.Enabled = True
-            DashBoardForm.DisableButton()
-            DashBoardForm.Show()
-        Else
-            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
-                e.Cancel = True
-            Else
-                DashBoardForm.Enabled = True
-                DashBoardForm.DisableButton()
-                DashBoardForm.Show()
-            End If
-        End If
+        DashBoardForm.Enabled = True
+        DashBoardForm.Show()
     End Sub
 
     Private Sub LeaveBalanceDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles LeaveBalanceDataGridView.CellClick

@@ -1,8 +1,5 @@
-﻿Imports System.Runtime.CompilerServices
-
-Public Class LeaveTypeAddForm
+﻿Public Class LeaveTypeAddForm
     Public LeaveTypes As New List(Of String)
-    Public isDone As Boolean
     Private Sub LTSaveButton_Click(sender As Object, e As EventArgs) Handles LTSaveButton.Click
         If LeaveTypes.Contains(LTTypeTextBox.Text) Then
             MsgBox(LTTypeTextBox.Text & " is already on the lists of leave types. Please try again.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
@@ -39,19 +36,8 @@ Public Class LeaveTypeAddForm
     End Sub
 
     Private Sub LeaveTypeAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If isDone Then
-            e.Cancel = False
-            LeaveTypeForm.Enabled = True
-            LeaveTypeForm.DisplayData()
-            LeaveTypeForm.Show()
-        Else
-            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
-                e.Cancel = True
-            Else
-                LeaveTypeForm.Enabled = True
-                LeaveTypeForm.DisplayData()
-                LeaveTypeForm.Show()
-            End If
-        End If
+        LeaveTypeForm.Enabled = True
+        LeaveTypeForm.DisplayData()
+        LeaveTypeForm.Show()
     End Sub
 End Class

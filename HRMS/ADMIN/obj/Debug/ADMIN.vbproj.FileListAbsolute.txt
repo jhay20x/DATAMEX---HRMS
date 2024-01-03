@@ -111,4 +111,3 @@ C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.exe
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.xml
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.pdb
-C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.UsersForm.resources

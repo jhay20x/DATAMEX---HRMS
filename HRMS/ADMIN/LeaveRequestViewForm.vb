@@ -20,10 +20,12 @@ Public Class LeaveRequestViewForm
     End Sub
 
     Private Sub LeaveRequestViewForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If isDone Or (LRApproveButton.Enabled = False And LRRejectButton.Enabled = False) Then
+        If isDone Then
             e.Cancel = False
             DashBoardForm.Enabled = True
             DashBoardForm.DisableButton()
+            DashBoardForm.RefreshDetails()
+            DashBoardForm.LRRefreshButton.PerformClick()
             DashBoardForm.Show()
         Else
             If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
@@ -31,6 +33,8 @@ Public Class LeaveRequestViewForm
             Else
                 DashBoardForm.Enabled = True
                 DashBoardForm.DisableButton()
+                DashBoardForm.RefreshDetails()
+                DashBoardForm.LRRefreshButton.PerformClick()
                 DashBoardForm.Show()
             End If
         End If
@@ -47,7 +51,7 @@ Public Class LeaveRequestViewForm
         End If
 
         Dim query = "SELECT CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' 
-        THEN '' ELSE Employees.MiddleName END) AS EmployeeName,  Department.Department, LeaveType.Type, LeaveRequest.DateFiled, LeaveRequest.DateFrom,
+        THEN '' ELSE Employees.MiddleName END) AS EmployeeName, LeaveType.Type, LeaveRequest.DateFiled, LeaveRequest.DateFrom,
 		LeaveRequest.DateTo, LeaveRequest.Duration, LeaveRequest.Reason, LeaveStatus.Status
         FROM LeaveRequest
         LEFT OUTER JOIN Employees
@@ -70,7 +74,6 @@ Public Class LeaveRequestViewForm
         Dim row As DataRow = DataAsTable.Rows(0)
 
         LREmployeeNameLabel.Text = row("EmployeeName")
-        LRDepartmentLabel.Text = row("Department")
         LRLeaveTypeLabel.Text = row("Type")
         LRDateFiledLabel.Text = row("DateFiled")
         LRDateFromLabel.Text = row("DateFrom")

@@ -1,12 +1,10 @@
 ﻿
 Public Class EmployeeListEditForm
     Public EmpIdEdit As String
-    Public IsDone As Boolean
     Private Sub EmployeeListEditForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateDept()
         PopulateStatus()
         LoadData()
-        IsDone = False
     End Sub
 
     Public Sub PopulateDept()
@@ -118,7 +116,6 @@ Public Class EmployeeListEditForm
                 DashBoardForm.DisableButton()
                 MsgBox("Employee information successfully updated.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 ELELastNameTextBox.Select()
-                IsDone = True
             Else
                 MsgBox("Employee not Updated. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
 
@@ -139,7 +136,7 @@ Public Class EmployeeListEditForm
     End Sub
 
     Private Sub EmployeeListEditForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If IsDone Then
+        If MsgBox("Cancel updating information?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
             e.Cancel = False
             DashBoardForm.Enabled = True
             DashBoardForm.Show()
@@ -147,31 +144,15 @@ Public Class EmployeeListEditForm
             DashBoardForm.DisableButton()
             EmpIdEdit = ""
         Else
-            If MsgBox("Cancel updating information?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
-                e.Cancel = False
-                DashBoardForm.Enabled = True
-                DashBoardForm.Show()
-                DashBoardForm.RefreshDetails()
-                DashBoardForm.DisableButton()
-                EmpIdEdit = ""
-            Else
-                e.Cancel = True
-            End If
+            e.Cancel = True
         End If
-
-        'If MsgBox("Cancel updating information?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
-        '    e.Cancel = False
-        '    DashBoardForm.Enabled = True
-        '    DashBoardForm.Show()
-        '    DashBoardForm.RefreshDetails()
-        '    DashBoardForm.DisableButton()
-        '    EmpIdEdit = ""
-        'Else
-        '    e.Cancel = True
-        'End If
     End Sub
 
     Private Sub ELEBackButton_Click(sender As Object, e As EventArgs) Handles ELEBackButton.Click
+        DashBoardForm.Enabled = True
+        DashBoardForm.Show()
+        DashBoardForm.RefreshDetails()
+        DashBoardForm.DisableButton()
         Me.Close()
     End Sub
 

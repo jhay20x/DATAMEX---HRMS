@@ -1,14 +1,15 @@
 ﻿
-Imports System.Runtime.CompilerServices
-
 Public Class EmployeeListAddForm
     Public LastEmpID As Integer
-    Public isDone As Boolean
     Private Sub EmployeeListAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ELALastNameTextBox.Select()
     End Sub
 
     Private Sub ELABackButton_Click(sender As Object, e As EventArgs) Handles ELABackButton.Click
+        DashBoardForm.Enabled = True
+        DashBoardForm.Show()
+        DashBoardForm.RefreshDetails()
+        DashBoardForm.DisableButton()
         Me.Close()
     End Sub
 
@@ -166,20 +167,34 @@ Public Class EmployeeListAddForm
     End Sub
 
     Private Sub EmployeeListAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If isDone Then
-            e.Cancel = False
+        Dim TextBoxCtrl As Control
+        Dim TextCount As Integer
+
+        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of TextBox)
+            If TextBoxCtrl.Text = "" Then
+                TextCount += 1
+            End If
+        Next
+
+        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of ComboBox)
+            If TextBoxCtrl.Text = "" Then
+                TextCount += 1
+            End If
+        Next
+
+        If TextCount <> 0 Then
             DashBoardForm.Enabled = True
-            DashBoardForm.DisableButton()
-            DashBoardForm.RefreshDetails()
             DashBoardForm.Show()
+            DashBoardForm.RefreshDetails()
+            DashBoardForm.DisableButton()
         Else
-            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+            If MsgBox("Cancel adding employee?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
                 e.Cancel = True
             Else
                 DashBoardForm.Enabled = True
-                DashBoardForm.DisableButton()
-                DashBoardForm.RefreshDetails()
                 DashBoardForm.Show()
+                DashBoardForm.RefreshDetails()
+                DashBoardForm.DisableButton()
             End If
         End If
     End Sub
