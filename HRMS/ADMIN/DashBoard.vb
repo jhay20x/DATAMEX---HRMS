@@ -1,8 +1,8 @@
 ﻿Imports System.ComponentModel
-Imports System.IO
-Imports System.Security.Cryptography.X509Certificates
 
 Public Class DashBoardForm
+    Public WelcomeText As String
+
     Public EmpNames As New List(Of String)
     Public EmployeeID As New List(Of String)
     Public DepartmentID As New List(Of String)
@@ -11,6 +11,7 @@ Public Class DashBoardForm
     Public DeleteDate As Date
     Public DeleteProjectID
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        WelcomeLabel.Text = WelcomeText
         RefreshTable()
         LoadAttendanceDetails()
         LoadLeaveRequestDetails()
@@ -34,7 +35,7 @@ Public Class DashBoardForm
 
         For Each row As DataRow In DataAsTable.Rows
             If row("DateTo") < Date.Today Then
-                UpdateLeave(row("EmployeeID"), Nothing)
+                UpdateLeave(row("EmployeeID"), DBNull.Value)
             End If
 
             If row("DateFrom") >= Date.Today Then
@@ -43,7 +44,7 @@ Public Class DashBoardForm
         Next
     End Sub
 
-    Public Sub UpdateLeave(EmpID As String, val As String)
+    Public Sub UpdateLeave(EmpID As String, val As Object)
         Dim query = "UPDATE Employees SET OnLeaveID = @Val WHERE EmployeeID = @EmpID"
 
         Prepare(query)
@@ -1062,14 +1063,17 @@ Public Class DashBoardForm
     End Sub
 
     Public Sub GetUpcomingProject()
-        Dim query = "SELECT * FROM Projects WHERE ProjectDateStart >= @Date"
+        Dim query = "SELECT * FROM [Projects] WHERE MONTH(ProjectDateStart) >= @Day AND YEAR(ProjectDateStart) = @Year AND ProjectStatusID = @Status"
 
         Prepare(query)
-        AddParam("@Date", Date.Today)
+        AddParam("@Day", 1)
+        AddParam("@Year", Date.Today.Year)
+        AddParam("@Status", 1)
         ExecutePrepare()
 
         If Count > 0 Then
             Dim row As DataRow = DataAsTable.Rows(0)
+            DashOngoingLabel.Text = DataAsTable.Rows.Count
             DashProjNameLabel.Text = row("ProjectName")
             DashProjDurationLabel.Text = row("ProjectDuration") & " days."
         End If
@@ -1185,43 +1189,41 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub ESGenerateButton_Click(sender As Object, e As EventArgs) Handles ESGenerateButton.Click
-        'CheckForNoTimeInAndOut(ESMonthComboBox.SelectedIndex + 1)
+        If ESSalaryDataGridView.Rows.Count > 0 Then
+            ESSalaryDataGridView.Rows.Clear()
+        End If
 
         PopulateHolidays(ESMonthDateTimePicker.Value.Month)
         GetAllAttendanceRecords()
+        ESSaveButton.Enabled = True
     End Sub
 
-    Public Sub CheckForNoTimeInAndOut(Month As Integer)
-        Dim query = "SELECT * FROM AttendanceRecords WHERE (TimeIn IS NOT NULL OR TimeOut IS NULL) AND MONTH(Attdate) = @Month"
+    Public Sub CheckForNoTimeInAndOut(Month As Integer, Year As Integer, Day As Integer)
+        Dim query = "SELECT * FROM AttendanceRecords WHERE (TimeIn IS NULL OR TimeOut IS NULL) AND MONTH(Attdate) = @Month AND YEAR(Attdate) = @Year AND DAY(AttDate) <= @Day"
 
         Prepare(query)
         AddParam("@Month", Month)
+        AddParam("@Year", Year)
+        AddParam("@Day", Day)
         ExecutePrepare()
 
         For Each row As DataRow In DataAsTable.Rows
-            SetHalfDay(row("EmployeeID"), row("ID"), Month)
+            SetHalfDay(row("EmployeeID"), row("ID"), Month, Year)
         Next
     End Sub
 
-    Public Sub SetHalfDay(EmpID As String, ID As Integer, Month As Integer)
-        Dim query = "UPDATE AttendanceRecords SET HalfDay = 1 WHERE ID = @ID AND EmployeeID = @EmpID AND MONTH(Attdate) = @Month"
+    Public Sub SetHalfDay(EmpID As String, ID As Integer, Month As Integer, Year As Integer)
+        Dim query = "UPDATE AttendanceRecords SET HalfDay = 1 WHERE ID = @ID AND EmployeeID = @EmpID AND MONTH(Attdate) = @Month AND YEAR(Attdate) = @Year"
 
         Prepare(query)
         AddParam("@ID", ID)
         AddParam("@EmpID", EmpID)
         AddParam("@Month", Month)
+        AddParam("@Year", Year)
         ExecutePrepare()
     End Sub
 
     Public Sub GetAllAttendanceRecords()
-        Dim query = "SELECT EmployeeSalaryInformation.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName 
-        FROM EmployeeSalaryInformation
-        LEFT OUTER JOIN Employees
-        ON EmployeeSalaryInformation.EmployeeID = Employees.EmployeeID"
-
-        Prepare(query)
-        ExecutePrepare()
-
         Dim PayrollType As String
         Dim CutOff As String
         Dim FixedRate As Double
@@ -1288,6 +1290,16 @@ Public Class DashBoardForm
             Next
         End If
 
+        CheckForNoTimeInAndOut(ESMonthDateTimePicker.Value.Month, ESYearDateTimePicker.Value.Year, EndDate.Day)
+
+        Dim query = "SELECT EmployeeSalaryInformation.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName 
+        FROM EmployeeSalaryInformation
+        LEFT OUTER JOIN Employees
+        ON EmployeeSalaryInformation.EmployeeID = Employees.EmployeeID"
+
+        Prepare(query)
+        ExecutePrepare()
+
         For Each row As DataRow In DataAsTable.Rows
             CalculateWorkHours(row("EmployeeID"), row("EmployeeName"), PayrollType, CutOff, FixedRate, StartDate, EndDate, ESMonthDateTimePicker.Value.Month, ESYearDateTimePicker.Value.Year, WorkDays)
         Next
@@ -1307,8 +1319,8 @@ Public Class DashBoardForm
         Dim SalaryType As Integer
         Dim HolidayRate, HolidayInstance, HolidayHours As Double
         Dim IsHoliday As Boolean
-        Dim TardinessAmount As Double
-        Dim SSS, PhilHealth, PagIbig, Tax As Double
+        Dim TotalDeductions As Double
+        Dim TardinessAmount, SSS, PhilHealth, PagIbig, Tax As Double
 
         Dim query = "SELECT AttendanceRecords.ID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
         AttendanceRecords.AttDate, AttendanceRecords.TimeIn, AttendanceRecords.TimeOut, AttendanceRecords.TotalHours,
@@ -1535,14 +1547,15 @@ Public Class DashBoardForm
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
             TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
             Tax = GetTaxDeduction(TaxableIncome, FixedRate)
+            TotalDeductions = TardinessAmount + SSS + PhilHealth + PagIbig + Tax
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, DBNull.Value, DBNull.Value, HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,###.##"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,###.##"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("+##,###.00"), OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,##0.00"), SSS.ToString("-##,###.00"), PhilHealth.ToString("-##,###.00"), PagIbig.ToString("-##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("-##,##0.00"), TotalDeductions.ToString("-##,###.00"), NetPay.ToString("##,###.00"))
         ElseIf SalaryType = 2 Then
             BasicPay = WorkDays * Rate
             GrossPay = BasicPay + OTPay + HolidayPay
-            NetPay = (TotalHours - Late + UnderTime) * (Rate / WorkHours) + OTPay + HolidayPay
+            'NetPay = (TotalHours - Late + UnderTime) * (Rate / WorkHours) + OTPay + HolidayPay
 
             TardinessAmount = (HalfDay + Late + UnderTime) * (Rate / WorkHours)
             SSS = GetSSSDeduction(GrossPay, FixedRate)
@@ -1550,14 +1563,15 @@ Public Class DashBoardForm
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
             TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
             Tax = GetTaxDeduction(TaxableIncome, FixedRate)
+            TotalDeductions = TardinessAmount + SSS + PhilHealth + PagIbig + Tax
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT, OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,###.##"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,###.##"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("+##,###.00"), OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,##0.00"), SSS.ToString("-##,###.00"), PhilHealth.ToString("-##,###.00"), PagIbig.ToString("-##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("-##,##0.00"), TotalDeductions.ToString("-##,###.00"), NetPay.ToString("##,###.00"))
         Else
             BasicPay = Rate / FixedRate
             GrossPay = BasicPay + OTPay + HolidayPay
-            NetPay = Rate / FixedRate / WorkDays / WorkHours * TotalHours + OTPay + HolidayPay
+            'NetPay = Rate / FixedRate / WorkDays / WorkHours * TotalHours + OTPay + HolidayPay
 
             TardinessAmount = (HalfDay + Late + UnderTime) * Rate / FixedRate
             SSS = GetSSSDeduction(GrossPay, FixedRate)
@@ -1565,10 +1579,11 @@ Public Class DashBoardForm
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
             TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
             Tax = GetTaxDeduction(TaxableIncome, FixedRate)
+            TotalDeductions = TardinessAmount + SSS + PhilHealth + PagIbig + Tax
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT, OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,###.##"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,###.##"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("+##,###.00"), OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,##0.00"), SSS.ToString("-##,###.00"), PhilHealth.ToString("-##,###.00"), PagIbig.ToString("-##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("-##,##0.00"), TotalDeductions.ToString("-##,###.00"), NetPay.ToString("##,###.00"))
         End If
     End Sub
 
@@ -1914,7 +1929,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub DashBoardForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If MsgBox("Are you sure to exit?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
+        If MsgBox("Are you sure to log-out/exit?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
             e.Cancel = False
             Login.Show()
         Else
@@ -1930,5 +1945,83 @@ Public Class DashBoardForm
 
     Private Sub ESClearButton_Click(sender As Object, e As EventArgs) Handles ESClearButton.Click
         ESSalaryDataGridView.Rows.Clear()
+        ESSaveButton.Enabled = False
+    End Sub
+
+    Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
+        Me.Close()
+    End Sub
+
+    Private Sub ESSaveButton_Click(sender As Object, e As EventArgs) Handles ESSaveButton.Click
+        Try
+            Command.CommandText = "INSERT INTO EmployeeSalary (EmployeeID, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay, Tardiness, OTHours, OTPay, 
+            Holiday, HolidayPay, GrossPay, Deduction_Tardiness, SSS, PHIC, HDMF, TaxableIncome, Tax, TotalDeductions, NetPay)
+            VALUES (@EmployeeID, @CutOff, @WorkDays, @TotalWorkDays, @TotalHours, @BasicPay, @Tardiness, @OTHours, @OTPay, 
+            @Holiday, @HolidayPay, @GrossPay, @Deduction_Tardiness, @SSS, @PHIC, @HDMF, @TaxableIncome, @Tax, @TotalDeductions, @NetPay)"
+
+            Command.Parameters.Add("@EmployeeID", SqlDbType.BigInt)
+            Command.Parameters.Add("@CutOff", SqlDbType.VarChar)
+            Command.Parameters.Add("@WorkDays", SqlDbType.Float)
+            Command.Parameters.Add("@TotalWorkDays", SqlDbType.Float)
+            Command.Parameters.Add("@TotalHours", SqlDbType.Float)
+            Command.Parameters.Add("@BasicPay", SqlDbType.Float)
+            Command.Parameters.Add("@Tardiness", SqlDbType.Float)
+            Command.Parameters.Add("@OTHours", SqlDbType.Float)
+            Command.Parameters.Add("@OTPay", SqlDbType.Float)
+            Command.Parameters.Add("@Holiday", SqlDbType.Float)
+            Command.Parameters.Add("@HolidayPay", SqlDbType.Float)
+            Command.Parameters.Add("@GrossPay", SqlDbType.Float)
+            Command.Parameters.Add("@Deduction_Tardiness", SqlDbType.Float)
+            Command.Parameters.Add("@SSS", SqlDbType.Float)
+            Command.Parameters.Add("@PHIC", SqlDbType.Float)
+            Command.Parameters.Add("@HDMF", SqlDbType.Float)
+            Command.Parameters.Add("@TaxableIncome", SqlDbType.Float)
+            Command.Parameters.Add("@Tax", SqlDbType.Float)
+            Command.Parameters.Add("@TotalDeductions", SqlDbType.Float)
+            Command.Parameters.Add("@NetPay", SqlDbType.Float)
+            Connection.Open()
+            Command.Connection = Connection
+
+            For i = 0 To ESSalaryDataGridView.Rows.Count - 1
+                Command.Parameters(0).Value = ESSalaryDataGridView.Rows(i).Cells(0).Value
+                Command.Parameters(1).Value = ESSalaryDataGridView.Rows(i).Cells(3).Value
+                Command.Parameters(2).Value = ESSalaryDataGridView.Rows(i).Cells(4).Value
+                Command.Parameters(3).Value = ESSalaryDataGridView.Rows(i).Cells(5).Value
+                Command.Parameters(4).Value = ESSalaryDataGridView.Rows(i).Cells(6).Value
+                Command.Parameters(5).Value = ESSalaryDataGridView.Rows(i).Cells(7).Value
+                Command.Parameters(6).Value = ESSalaryDataGridView.Rows(i).Cells(8).Value
+                Command.Parameters(7).Value = ESSalaryDataGridView.Rows(i).Cells(9).Value
+                Command.Parameters(8).Value = ESSalaryDataGridView.Rows(i).Cells(10).Value
+                Command.Parameters(9).Value = ESSalaryDataGridView.Rows(i).Cells(11).Value
+                Command.Parameters(10).Value = ESSalaryDataGridView.Rows(i).Cells(12).Value
+                Command.Parameters(11).Value = ESSalaryDataGridView.Rows(i).Cells(13).Value
+                Command.Parameters(12).Value = ESSalaryDataGridView.Rows(i).Cells(14).Value
+                Command.Parameters(13).Value = ESSalaryDataGridView.Rows(i).Cells(15).Value
+                Command.Parameters(14).Value = ESSalaryDataGridView.Rows(i).Cells(16).Value
+                Command.Parameters(15).Value = ESSalaryDataGridView.Rows(i).Cells(17).Value
+                Command.Parameters(16).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
+                Command.Parameters(17).Value = ESSalaryDataGridView.Rows(i).Cells(19).Value
+                Command.Parameters(18).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
+                Command.Parameters(19).Value = ESSalaryDataGridView.Rows(i).Cells(20).Value
+                Command.ExecuteNonQuery()
+            Next
+
+            Connection.Close()
+            MsgBox("Saved successfully.")
+        Catch ex As Exception
+            MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+        End Try
+    End Sub
+
+    Private Sub ManageUsersButton_Click(sender As Object, e As EventArgs) Handles ManageUsersButton.Click
+        Me.Enabled = False
+        UsersForm.Show(Me)
+    End Sub
+
+    Private Sub DashRefreshButton_Click(sender As Object, e As EventArgs) Handles DashRefreshButton.Click
+        LoadAttendanceDetails()
+        LoadLeaveRequestDetails()
+        LoadHolidayDetails()
+        GetUpcomingProject()
     End Sub
 End Class
