@@ -96,7 +96,7 @@ Partial Class UsersForm
         Me.MUEmpNamesComboBox.Location = New System.Drawing.Point(146, 71)
         Me.MUEmpNamesComboBox.Name = "MUEmpNamesComboBox"
         Me.MUEmpNamesComboBox.Size = New System.Drawing.Size(220, 29)
-        Me.MUEmpNamesComboBox.TabIndex = 29
+        Me.MUEmpNamesComboBox.TabIndex = 0
         '
         'Label78
         '
@@ -116,7 +116,7 @@ Partial Class UsersForm
         Me.MUUsernameTextBox.Name = "MUUsernameTextBox"
         Me.MUUsernameTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.MUUsernameTextBox.Size = New System.Drawing.Size(168, 29)
-        Me.MUUsernameTextBox.TabIndex = 31
+        Me.MUUsernameTextBox.TabIndex = 1
         Me.MUUsernameTextBox.Tag = "Break"
         '
         'Label16
@@ -137,7 +137,7 @@ Partial Class UsersForm
         Me.MUPasswordTextBox.Name = "MUPasswordTextBox"
         Me.MUPasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.MUPasswordTextBox.Size = New System.Drawing.Size(168, 29)
-        Me.MUPasswordTextBox.TabIndex = 33
+        Me.MUPasswordTextBox.TabIndex = 3
         Me.MUPasswordTextBox.Tag = "Break"
         '
         'Label1
@@ -157,7 +157,7 @@ Partial Class UsersForm
         Me.MUUserEyeButton.Location = New System.Drawing.Point(320, 106)
         Me.MUUserEyeButton.Name = "MUUserEyeButton"
         Me.MUUserEyeButton.Size = New System.Drawing.Size(33, 29)
-        Me.MUUserEyeButton.TabIndex = 34
+        Me.MUUserEyeButton.TabIndex = 2
         Me.MUUserEyeButton.Text = "👁"
         Me.MUUserEyeButton.UseVisualStyleBackColor = True
         '
@@ -167,7 +167,7 @@ Partial Class UsersForm
         Me.MUPasswordEyeButton.Location = New System.Drawing.Point(320, 141)
         Me.MUPasswordEyeButton.Name = "MUPasswordEyeButton"
         Me.MUPasswordEyeButton.Size = New System.Drawing.Size(33, 29)
-        Me.MUPasswordEyeButton.TabIndex = 35
+        Me.MUPasswordEyeButton.TabIndex = 4
         Me.MUPasswordEyeButton.Text = "👁"
         Me.MUPasswordEyeButton.UseVisualStyleBackColor = True
         '
@@ -180,7 +180,7 @@ Partial Class UsersForm
         Me.MUIsAdminComboBox.Location = New System.Drawing.Point(146, 176)
         Me.MUIsAdminComboBox.Name = "MUIsAdminComboBox"
         Me.MUIsAdminComboBox.Size = New System.Drawing.Size(168, 29)
-        Me.MUIsAdminComboBox.TabIndex = 37
+        Me.MUIsAdminComboBox.TabIndex = 5
         '
         'Label2
         '

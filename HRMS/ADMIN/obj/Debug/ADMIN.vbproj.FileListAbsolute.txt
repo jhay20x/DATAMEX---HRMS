@@ -112,3 +112,5 @@ C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.xml
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.pdb
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.UsersForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeCredentialsForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.UsersForm.resources
