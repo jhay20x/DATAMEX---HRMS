@@ -11,3 +11,16 @@ C:\Users\Jhay2\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSyste
 C:\Users\Jhay2\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.pdb
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.MainForm.resources
 C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.MessageDialog.resources
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\bin\Debug\AttendanceSystem.exe.config
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\bin\Debug\AttendanceSystem.exe
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\bin\Debug\AttendanceSystem.pdb
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\bin\Debug\AttendanceSystem.xml
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.vbproj.AssemblyReference.cache
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.MainForm.resources
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.MessageDialog.resources
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.Resources.resources
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.vbproj.GenerateResource.cache
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.vbproj.CoreCompileInputs.cache
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.exe
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.xml
+C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\AttendanceSystem\AttendanceSystem\obj\Debug\AttendanceSystem.pdb

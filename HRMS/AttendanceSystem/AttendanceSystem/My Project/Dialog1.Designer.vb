@@ -41,7 +41,7 @@ Partial Class MessageDialog
         'AutoCloseProgressBar
         '
         Me.AutoCloseProgressBar.Location = New System.Drawing.Point(33, 139)
-        Me.AutoCloseProgressBar.Maximum = 1000
+        Me.AutoCloseProgressBar.Maximum = 500
         Me.AutoCloseProgressBar.Name = "AutoCloseProgressBar"
         Me.AutoCloseProgressBar.Size = New System.Drawing.Size(451, 36)
         Me.AutoCloseProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous

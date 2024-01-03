@@ -1,15 +1,14 @@
 ﻿
+Imports System.Runtime.CompilerServices
+
 Public Class EmployeeListAddForm
     Public LastEmpID As Integer
+    Public isDone As Boolean
     Private Sub EmployeeListAddForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ELALastNameTextBox.Select()
     End Sub
 
     Private Sub ELABackButton_Click(sender As Object, e As EventArgs) Handles ELABackButton.Click
-        DashBoardForm.Enabled = True
-        DashBoardForm.Show()
-        DashBoardForm.RefreshDetails()
-        DashBoardForm.DisableButton()
         Me.Close()
     End Sub
 
@@ -79,7 +78,8 @@ Public Class EmployeeListAddForm
                     Dim Datehired As String = Year & "/" & Month & "/" & Day
                     Dim Status As Integer = 1
                     Dim Department As Integer = ELADeptComboBox.SelectedIndex + 1
-                    Dim query = "INSERT INTO Employees VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
+                    Dim query = "INSERT INTO Employees (EmployeeID, LastName, FirstName, MiddleName, StatusID, DepartmentID, 
+                    DateHired, Age, ContactNumber, EmailAddress, Address, SSSNo, PhilHealthNo, PagIbigNo, TIN) VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
                     @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN);"
 
                     Prepare(query)
@@ -166,34 +166,20 @@ Public Class EmployeeListAddForm
     End Sub
 
     Private Sub EmployeeListAddForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        Dim TextBoxCtrl As Control
-        Dim TextCount As Integer
-
-        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of TextBox)
-            If TextBoxCtrl.Text = "" Then
-                TextCount += 1
-            End If
-        Next
-
-        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of ComboBox)
-            If TextBoxCtrl.Text = "" Then
-                TextCount += 1
-            End If
-        Next
-
-        If TextCount <> 0 Then
+        If isDone Then
+            e.Cancel = False
             DashBoardForm.Enabled = True
-            DashBoardForm.Show()
-            DashBoardForm.RefreshDetails()
             DashBoardForm.DisableButton()
+            DashBoardForm.RefreshDetails()
+            DashBoardForm.Show()
         Else
-            If MsgBox("Cancel adding employee?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
+            If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
                 e.Cancel = True
             Else
                 DashBoardForm.Enabled = True
-                DashBoardForm.Show()
-                DashBoardForm.RefreshDetails()
                 DashBoardForm.DisableButton()
+                DashBoardForm.RefreshDetails()
+                DashBoardForm.Show()
             End If
         End If
     End Sub
