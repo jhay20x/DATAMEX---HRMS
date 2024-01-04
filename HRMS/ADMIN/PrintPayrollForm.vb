@@ -4,8 +4,6 @@ Imports Microsoft
 Imports System.Security.Policy
 
 Public Class PrintPayrollForm
-    Public isDone As Boolean
-
     Public CutOffPeriod As String
     Public EmpName As String
     Public EmployeeID As String

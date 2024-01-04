@@ -1,5 +1,4 @@
 ﻿Public Class Login
-
     Private Sub EyeButton_Click(sender As Object, e As EventArgs) Handles EyeButton.Click
         If PasswordTextBox.UseSystemPasswordChar = False Then
             PasswordTextBox.UseSystemPasswordChar = True
@@ -13,7 +12,7 @@
     End Sub
 
     Private Sub LoginButton_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
-        Dim query = "SELECT CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, Username, Password, IsAdmin FROM Employees WHERE Username = @Username AND Password = @Password"
+        Dim query = "SELECT Employees.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, Username, Password, IsAdmin FROM Employees WHERE Username = @Username AND Password = @Password"
 
         Prepare(query)
         AddParam("@Username", UsernameTextBox.Text)
@@ -29,10 +28,16 @@
                 DashBoardForm.Show()
                 Me.Close()
             Else
-                MsgBox("Employee accounts are prohibited in accessing the system. Please use the employee portal instead.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-                UsernameTextBox.Text = ""
-                PasswordTextBox.Text = ""
-                UsernameTextBox.Select()
+                MsgBox("Welcome " & row("EmployeeName") & "!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                EmployeeDashBoard.WelcomeText = "WELCOME!" & Environment.NewLine & row("EmployeeName")
+                EmployeeDashBoard.EmpName = row("EmployeeName")
+                EmployeeDashBoard.EmpID = row("EmployeeID")
+                EmployeeDashBoard.Show()
+                Me.Close()
+                'MsgBox("Employee accounts are prohibited in accessing the system. Please use the employee portal instead.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                'UsernameTextBox.Text = ""
+                'PasswordTextBox.Text = ""
+                'UsernameTextBox.Select()
             End If
         Else
             MsgBox("Username or Password is incorrect. Please try again.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")

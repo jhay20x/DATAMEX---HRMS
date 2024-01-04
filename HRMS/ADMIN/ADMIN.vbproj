@@ -93,6 +93,12 @@
     <Compile Include="EmployeeCredentialsForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EmployeeDashBoard.Designer.vb">
+      <DependentUpon>EmployeeDashBoard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeDashBoard.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EmployeeListEditForm.Designer.vb">
       <DependentUpon>EmployeeListEditForm.vb</DependentUpon>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCredentialsForm.resx">
       <DependentUpon>EmployeeCredentialsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeDashBoard.resx">
+      <DependentUpon>EmployeeDashBoard.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeListEditForm.resx">
       <DependentUpon>EmployeeListEditForm.vb</DependentUpon>

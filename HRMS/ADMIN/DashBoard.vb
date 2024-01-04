@@ -149,6 +149,20 @@ Public Class DashBoardForm
         Next
     End Sub
 
+    Public Sub HidePanel(PanelName As String)
+        For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
+            If gb.Name = PanelName Then
+                LoadAttendanceToday()
+                LoadAttendanceDetails()
+                gb.Visible = True
+                gb.Enabled = True
+            Else
+                gb.Visible = False
+                gb.Enabled = False
+            End If
+        Next
+    End Sub
+
     Private Sub btnAtt2_Click(sender As Object, e As EventArgs) Handles btnAtt2.Click
         For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
             If gb.Name = "EmployeeAttendancePanel" Then

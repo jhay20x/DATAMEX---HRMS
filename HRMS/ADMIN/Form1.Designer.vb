@@ -22,7 +22,6 @@ Partial Class Login
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.EyeButton = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -33,19 +32,10 @@ Partial Class Login
         Me.LoginButton = New System.Windows.Forms.Button()
         Me.UsernameTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.HRM1.My.Resources.Resources.bg4
-        Me.PictureBox1.Location = New System.Drawing.Point(0, -2)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(760, 597)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
         '
         'Panel1
         '
@@ -129,7 +119,7 @@ Partial Class Login
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.Size = New System.Drawing.Size(196, 39)
         Me.PasswordTextBox.TabIndex = 1
-        Me.PasswordTextBox.Text = "Jhayjay"
+        Me.PasswordTextBox.Text = "ShairaMae"
         Me.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.PasswordTextBox.UseSystemPasswordChar = True
         '
@@ -155,7 +145,7 @@ Partial Class Login
         Me.UsernameTextBox.Name = "UsernameTextBox"
         Me.UsernameTextBox.Size = New System.Drawing.Size(196, 39)
         Me.UsernameTextBox.TabIndex = 0
-        Me.UsernameTextBox.Text = "Jhayjay"
+        Me.UsernameTextBox.Text = "20231225114"
         Me.UsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
@@ -167,6 +157,16 @@ Partial Class Login
         Me.Label1.Size = New System.Drawing.Size(263, 65)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "WELCOME"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.HRM1.My.Resources.Resources.bg4
+        Me.PictureBox1.Location = New System.Drawing.Point(0, -2)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(760, 597)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
         '
         'Login
         '
@@ -186,9 +186,9 @@ Partial Class Login
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DATAMEX - HRMS "
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
