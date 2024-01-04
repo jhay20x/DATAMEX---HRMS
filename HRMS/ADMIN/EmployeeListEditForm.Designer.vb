@@ -58,10 +58,15 @@ Partial Class EmployeeListEditForm
         Me.ELEUpdateButton = New System.Windows.Forms.Button()
         Me.ELEBackButton = New System.Windows.Forms.Button()
         Me.Label33 = New System.Windows.Forms.Label()
+        Me.ClearPhotoButton = New System.Windows.Forms.Button()
+        Me.IDPhotoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.OpenPhotoButton = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.ELEFormPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel11.SuspendLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -73,11 +78,15 @@ Partial Class EmployeeListEditForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(765, 545)
+        Me.Panel2.Size = New System.Drawing.Size(765, 604)
         Me.Panel2.TabIndex = 12
         '
         'ELEFormPanel
         '
+        Me.ELEFormPanel.Controls.Add(Me.ClearPhotoButton)
+        Me.ELEFormPanel.Controls.Add(Me.IDPhotoPictureBox)
+        Me.ELEFormPanel.Controls.Add(Me.OpenPhotoButton)
+        Me.ELEFormPanel.Controls.Add(Me.Label14)
         Me.ELEFormPanel.Controls.Add(Me.Label3)
         Me.ELEFormPanel.Controls.Add(Me.ELEAddressTextBox)
         Me.ELEFormPanel.Controls.Add(Me.Label2)
@@ -108,14 +117,14 @@ Partial Class EmployeeListEditForm
         Me.ELEFormPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ELEFormPanel.Location = New System.Drawing.Point(0, 132)
         Me.ELEFormPanel.Name = "ELEFormPanel"
-        Me.ELEFormPanel.Size = New System.Drawing.Size(765, 413)
+        Me.ELEFormPanel.Size = New System.Drawing.Size(765, 472)
         Me.ELEFormPanel.TabIndex = 8
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label3.Location = New System.Drawing.Point(475, 94)
+        Me.Label3.Location = New System.Drawing.Point(475, 114)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(69, 21)
         Me.Label3.TabIndex = 67
@@ -125,7 +134,7 @@ Partial Class EmployeeListEditForm
         'ELEAddressTextBox
         '
         Me.ELEAddressTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELEAddressTextBox.Location = New System.Drawing.Point(550, 90)
+        Me.ELEAddressTextBox.Location = New System.Drawing.Point(550, 110)
         Me.ELEAddressTextBox.MaxLength = 100
         Me.ELEAddressTextBox.Name = "ELEAddressTextBox"
         Me.ELEAddressTextBox.Size = New System.Drawing.Size(181, 29)
@@ -135,7 +144,7 @@ Partial Class EmployeeListEditForm
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label2.Location = New System.Drawing.Point(504, 43)
+        Me.Label2.Location = New System.Drawing.Point(504, 63)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(40, 21)
         Me.Label2.TabIndex = 66
@@ -145,7 +154,7 @@ Partial Class EmployeeListEditForm
         'ELEAgeTextBox
         '
         Me.ELEAgeTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELEAgeTextBox.Location = New System.Drawing.Point(550, 39)
+        Me.ELEAgeTextBox.Location = New System.Drawing.Point(550, 59)
         Me.ELEAgeTextBox.MaxLength = 3
         Me.ELEAgeTextBox.Name = "ELEAgeTextBox"
         Me.ELEAgeTextBox.Size = New System.Drawing.Size(181, 29)
@@ -194,7 +203,7 @@ Partial Class EmployeeListEditForm
         'ELEContTextBox
         '
         Me.ELEContTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELEContTextBox.Location = New System.Drawing.Point(550, 141)
+        Me.ELEContTextBox.Location = New System.Drawing.Point(550, 161)
         Me.ELEContTextBox.MaxLength = 11
         Me.ELEContTextBox.Name = "ELEContTextBox"
         Me.ELEContTextBox.Size = New System.Drawing.Size(181, 29)
@@ -204,7 +213,7 @@ Partial Class EmployeeListEditForm
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label4.Location = New System.Drawing.Point(416, 145)
+        Me.Label4.Location = New System.Drawing.Point(416, 165)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(128, 21)
         Me.Label4.TabIndex = 61
@@ -214,7 +223,7 @@ Partial Class EmployeeListEditForm
         'ELEEmailTextBox
         '
         Me.ELEEmailTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.ELEEmailTextBox.Location = New System.Drawing.Point(550, 192)
+        Me.ELEEmailTextBox.Location = New System.Drawing.Point(550, 212)
         Me.ELEEmailTextBox.MaxLength = 30
         Me.ELEEmailTextBox.Name = "ELEEmailTextBox"
         Me.ELEEmailTextBox.Size = New System.Drawing.Size(181, 29)
@@ -224,7 +233,7 @@ Partial Class EmployeeListEditForm
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label5.Location = New System.Drawing.Point(433, 196)
+        Me.Label5.Location = New System.Drawing.Point(433, 216)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(111, 21)
         Me.Label5.TabIndex = 62
@@ -235,7 +244,7 @@ Partial Class EmployeeListEditForm
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label6.Location = New System.Drawing.Point(448, 247)
+        Me.Label6.Location = New System.Drawing.Point(448, 267)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(96, 21)
         Me.Label6.TabIndex = 63
@@ -248,7 +257,7 @@ Partial Class EmployeeListEditForm
         Me.ELEDeptComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ELEDeptComboBox.FormattingEnabled = True
         Me.ELEDeptComboBox.Items.AddRange(New Object() {"1 - HM", "2 - IT", "3 - TM", "4 - History", "5 - English", "6 - Math", "7 - PE", "8 - Science", "9 - Values"})
-        Me.ELEDeptComboBox.Location = New System.Drawing.Point(550, 243)
+        Me.ELEDeptComboBox.Location = New System.Drawing.Point(550, 263)
         Me.ELEDeptComboBox.Name = "ELEDeptComboBox"
         Me.ELEDeptComboBox.Size = New System.Drawing.Size(181, 29)
         Me.ELEDeptComboBox.TabIndex = 12
@@ -368,7 +377,7 @@ Partial Class EmployeeListEditForm
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label7.Location = New System.Drawing.Point(489, 298)
+        Me.Label7.Location = New System.Drawing.Point(85, 400)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(55, 21)
         Me.Label7.TabIndex = 33
@@ -381,7 +390,7 @@ Partial Class EmployeeListEditForm
         Me.ELEEmployeeStatusComboBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ELEEmployeeStatusComboBox.FormattingEnabled = True
         Me.ELEEmployeeStatusComboBox.Items.AddRange(New Object() {"1 - Working", "2- Non-Working"})
-        Me.ELEEmployeeStatusComboBox.Location = New System.Drawing.Point(550, 294)
+        Me.ELEEmployeeStatusComboBox.Location = New System.Drawing.Point(146, 396)
         Me.ELEEmployeeStatusComboBox.Name = "ELEEmployeeStatusComboBox"
         Me.ELEEmployeeStatusComboBox.Size = New System.Drawing.Size(181, 29)
         Me.ELEEmployeeStatusComboBox.TabIndex = 13
@@ -466,18 +475,60 @@ Partial Class EmployeeListEditForm
         Me.Label33.TabIndex = 0
         Me.Label33.Text = "EMPLOYEE LIST"
         '
+        'ClearPhotoButton
+        '
+        Me.ClearPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ClearPhotoButton.Location = New System.Drawing.Point(660, 344)
+        Me.ClearPhotoButton.Name = "ClearPhotoButton"
+        Me.ClearPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.ClearPhotoButton.TabIndex = 109
+        Me.ClearPhotoButton.Text = "Clear"
+        Me.ClearPhotoButton.UseVisualStyleBackColor = True
+        '
+        'IDPhotoPictureBox
+        '
+        Me.IDPhotoPictureBox.BackColor = System.Drawing.Color.Gray
+        Me.IDPhotoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.IDPhotoPictureBox.Location = New System.Drawing.Point(550, 314)
+        Me.IDPhotoPictureBox.Name = "IDPhotoPictureBox"
+        Me.IDPhotoPictureBox.Size = New System.Drawing.Size(100, 100)
+        Me.IDPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.IDPhotoPictureBox.TabIndex = 108
+        Me.IDPhotoPictureBox.TabStop = False
+        '
+        'OpenPhotoButton
+        '
+        Me.OpenPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OpenPhotoButton.Location = New System.Drawing.Point(660, 314)
+        Me.OpenPhotoButton.Name = "OpenPhotoButton"
+        Me.OpenPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.OpenPhotoButton.TabIndex = 107
+        Me.OpenPhotoButton.Text = "Open"
+        Me.OpenPhotoButton.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label14.Location = New System.Drawing.Point(483, 318)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(61, 21)
+        Me.Label14.TabIndex = 106
+        Me.Label14.Tag = ""
+        Me.Label14.Text = "Picture:"
+        '
         'EmployeeListEditForm
         '
         Me.AcceptButton = Me.ELEUpdateButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ELEBackButton
-        Me.ClientSize = New System.Drawing.Size(765, 545)
+        Me.ClientSize = New System.Drawing.Size(765, 604)
         Me.Controls.Add(Me.Panel2)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(781, 584)
+        Me.MaximumSize = New System.Drawing.Size(781, 643)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(781, 584)
+        Me.MinimumSize = New System.Drawing.Size(781, 643)
         Me.Name = "EmployeeListEditForm"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -489,6 +540,7 @@ Partial Class EmployeeListEditForm
         Me.Panel4.PerformLayout()
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -529,4 +581,8 @@ Partial Class EmployeeListEditForm
     Friend WithEvents Label13 As Label
     Friend WithEvents ELELastNameTextBox As TextBox
     Friend WithEvents ELEMiddleNameCheckBox As CheckBox
+    Friend WithEvents ClearPhotoButton As Button
+    Friend WithEvents IDPhotoPictureBox As PictureBox
+    Friend WithEvents OpenPhotoButton As Button
+    Friend WithEvents Label14 As Label
 End Class

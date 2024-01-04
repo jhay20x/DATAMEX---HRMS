@@ -45,18 +45,18 @@ Public Class UsersForm
     End Sub
 
     Private Sub MUUserEyeButton_Click(sender As Object, e As EventArgs) Handles MUUserEyeButton.Click
-        If MUUsernameTextBox.PasswordChar = Nothing Then
-            MUUsernameTextBox.PasswordChar = "*"
+        If MUUsernameTextBox.UseSystemPasswordChar = False Then
+            MUUsernameTextBox.UseSystemPasswordChar = True
         Else
-            MUUsernameTextBox.PasswordChar = ""
+            MUUsernameTextBox.UseSystemPasswordChar = False
         End If
     End Sub
 
     Private Sub MUPasswordEyeButton_Click(sender As Object, e As EventArgs) Handles MUPasswordEyeButton.Click
-        If MUPasswordTextBox.PasswordChar = Nothing Then
-            MUPasswordTextBox.PasswordChar = "*"
+        If MUPasswordTextBox.UseSystemPasswordChar = False Then
+            MUPasswordTextBox.UseSystemPasswordChar = True
         Else
-            MUPasswordTextBox.PasswordChar = ""
+            MUPasswordTextBox.UseSystemPasswordChar = False
         End If
     End Sub
 

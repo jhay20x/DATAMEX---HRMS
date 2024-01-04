@@ -1,4 +1,9 @@
 ﻿Imports System.ComponentModel
+Imports System.Data.SqlClient
+Imports System.Drawing.Drawing2D
+Imports System.Drawing.Printing
+Imports System.IO
+Imports MessagingToolkit.QRCode.Codec
 
 Public Class DashBoardForm
     Public WelcomeText As String
@@ -117,7 +122,8 @@ Public Class DashBoardForm
         Next
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles MenuHide1Button.Click, MenuHide2Button.Click, MenuHide3Button.Click, MenuHide5Button.Click, MenuHide6Button.Click, MenuHide7Button.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles MenuHide1Button.Click, MenuHide2Button.Click, MenuHide3Button.Click, MenuHide5Button.Click, MenuHide6Button.Click, MenuHide7Button.Click,
+    MenuHide8Button.Click, MenuHide9Button.Click, MenuHide10Button.Click, MenuHide11Button.Click, MenuHide12Button.Click
         Try
             If Panel1.AutoSize = True Then
                 Panel1.AutoSize = False
@@ -148,6 +154,7 @@ Public Class DashBoardForm
             If gb.Name = "EmployeeAttendancePanel" Then
                 gb.Visible = True
                 gb.Enabled = True
+                EmployeeAttendanceDateTimePicker.Value = Date.Today.Month & "/01/" & Date.Today.Year
                 LoadEmployeeAttendace()
             Else
                 gb.Visible = False
@@ -1063,9 +1070,10 @@ Public Class DashBoardForm
     End Sub
 
     Public Sub GetUpcomingProject()
-        Dim query = "SELECT * FROM [Projects] WHERE MONTH(ProjectDateStart) >= @Day AND YEAR(ProjectDateStart) = @Year AND ProjectStatusID = @Status"
+        Dim query = "SELECT * FROM [Projects] WHERE MONTH(ProjectDateStart) >= @Month  AND DAY(ProjectDateStart) >= @Day AND YEAR(ProjectDateStart) = @Year AND ProjectStatusID = @Status"
 
         Prepare(query)
+        AddParam("@Month", Date.Today.Month)
         AddParam("@Day", 1)
         AddParam("@Year", Date.Today.Year)
         AddParam("@Status", 1)
@@ -1551,7 +1559,7 @@ Public Class DashBoardForm
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("+##,###.00"), OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,##0.00"), SSS.ToString("-##,###.00"), PhilHealth.ToString("-##,###.00"), PagIbig.ToString("-##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("-##,##0.00"), TotalDeductions.ToString("-##,###.00"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
         ElseIf SalaryType = 2 Then
             BasicPay = WorkDays * Rate
             GrossPay = BasicPay + OTPay + HolidayPay
@@ -1567,7 +1575,7 @@ Public Class DashBoardForm
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("+##,###.00"), OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,##0.00"), SSS.ToString("-##,###.00"), PhilHealth.ToString("-##,###.00"), PagIbig.ToString("-##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("-##,##0.00"), TotalDeductions.ToString("-##,###.00"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
         Else
             BasicPay = Rate / FixedRate
             GrossPay = BasicPay + OTPay + HolidayPay
@@ -1583,7 +1591,7 @@ Public Class DashBoardForm
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("+##,###.00"), OTPay.ToString("+##,###.00"), HolidayInstance, HolidayPay.ToString("+##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("-##,##0.00"), SSS.ToString("-##,###.00"), PhilHealth.ToString("-##,###.00"), PagIbig.ToString("-##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("-##,##0.00"), TotalDeductions.ToString("-##,###.00"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
         End If
     End Sub
 
@@ -1773,6 +1781,7 @@ Public Class DashBoardForm
             ESCutOffComboBox.Enabled = True
             ESCutOffComboBox.SelectedIndex = 0
         End If
+        ESSaveButton.Enabled = False
     End Sub
 
     Private Sub EmployeeListAddButton_Click(sender As Object, e As EventArgs) Handles EmployeeListAddButton.Click
@@ -1907,8 +1916,8 @@ Public Class DashBoardForm
     End Sub
     Public Sub RefreshTable()
         Dim query = "SELECT Employees.ID, Employees.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
-        Status.Status as 'StatusID', Department.Department AS 'DepartmentID', Employees.DateHired, Employees.Age, Employees.Address, Employees.SSSNo, Employees.PhilHealthNo, Employees.PagibigNo, 
-        Employees.TIN, Employees.ContactNumber, Employees.EmailAddress FROM Employees 
+        Status.Status as 'StatusID', Department.Department AS 'DepartmentID', Employees.DateHired, Employees.Age, Employees.Address, Employees.ContactNumber, Employees.EmailAddress, Employees.SSSNo, Employees.PhilHealthNo, Employees.PagibigNo, 
+        Employees.TIN, Employees.Photo FROM Employees 
         INNER JOIN Department 
         ON Employees.DepartmentID = Department.ID 
         INNER JOIN Status  
@@ -1952,65 +1961,140 @@ Public Class DashBoardForm
         Me.Close()
     End Sub
 
+    Public Function CheckIfGenerated() As Boolean
+        Dim query = "SELECT * FROM EmployeeSalary WHERE (MONTH(DateFrom) = @MonthFrom AND DAY(DateFrom) = @DayFrom  AND YEAR(DateFrom) = @YearFrom) AND (MONTH(DateTo) = @MonthTo AND DAY(DateTo) = @DayTo  AND YEAR(DateTo) = @YearTo)"
+        Dim DayFrom, DayTo As Integer
+
+        If ESPayrollTypeComboBox.SelectedIndex = 0 Then
+            If ESCutOffComboBox.SelectedIndex = 0 Then
+                DayFrom = "1"
+                DayTo = "15"
+            Else
+                DayFrom = "16"
+                DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+            End If
+        Else
+            DayFrom = "1"
+            DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+        End If
+
+        Prepare(query)
+        AddParam("@MonthFrom", ESMonthDateTimePicker.Value.Month)
+        AddParam("@DayFrom", DayFrom)
+        AddParam("@YearFrom", ESYearDateTimePicker.Value.Year)
+        AddParam("@MonthTo", ESMonthDateTimePicker.Value.Month)
+        AddParam("@DayTo", DayTo)
+        AddParam("@YearTo", ESYearDateTimePicker.Value.Year)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
     Private Sub ESSaveButton_Click(sender As Object, e As EventArgs) Handles ESSaveButton.Click
-        Try
-            Command.CommandText = "INSERT INTO EmployeeSalary (EmployeeID, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay, Tardiness, OTHours, OTPay, 
-            Holiday, HolidayPay, GrossPay, Deduction_Tardiness, SSS, PHIC, HDMF, TaxableIncome, Tax, TotalDeductions, NetPay)
-            VALUES (@EmployeeID, @CutOff, @WorkDays, @TotalWorkDays, @TotalHours, @BasicPay, @Tardiness, @OTHours, @OTPay, 
-            @Holiday, @HolidayPay, @GrossPay, @Deduction_Tardiness, @SSS, @PHIC, @HDMF, @TaxableIncome, @Tax, @TotalDeductions, @NetPay)"
+        If Not CheckIfGenerated() Then
+            Try
+                ResetValues()
 
-            Command.Parameters.Add("@EmployeeID", SqlDbType.BigInt)
-            Command.Parameters.Add("@CutOff", SqlDbType.VarChar)
-            Command.Parameters.Add("@WorkDays", SqlDbType.Float)
-            Command.Parameters.Add("@TotalWorkDays", SqlDbType.Float)
-            Command.Parameters.Add("@TotalHours", SqlDbType.Float)
-            Command.Parameters.Add("@BasicPay", SqlDbType.Float)
-            Command.Parameters.Add("@Tardiness", SqlDbType.Float)
-            Command.Parameters.Add("@OTHours", SqlDbType.Float)
-            Command.Parameters.Add("@OTPay", SqlDbType.Float)
-            Command.Parameters.Add("@Holiday", SqlDbType.Float)
-            Command.Parameters.Add("@HolidayPay", SqlDbType.Float)
-            Command.Parameters.Add("@GrossPay", SqlDbType.Float)
-            Command.Parameters.Add("@Deduction_Tardiness", SqlDbType.Float)
-            Command.Parameters.Add("@SSS", SqlDbType.Float)
-            Command.Parameters.Add("@PHIC", SqlDbType.Float)
-            Command.Parameters.Add("@HDMF", SqlDbType.Float)
-            Command.Parameters.Add("@TaxableIncome", SqlDbType.Float)
-            Command.Parameters.Add("@Tax", SqlDbType.Float)
-            Command.Parameters.Add("@TotalDeductions", SqlDbType.Float)
-            Command.Parameters.Add("@NetPay", SqlDbType.Float)
-            Connection.Open()
-            Command.Connection = Connection
+                Dim DayFrom As String
+                Dim DayTo As String
 
-            For i = 0 To ESSalaryDataGridView.Rows.Count - 1
-                Command.Parameters(0).Value = ESSalaryDataGridView.Rows(i).Cells(0).Value
-                Command.Parameters(1).Value = ESSalaryDataGridView.Rows(i).Cells(3).Value
-                Command.Parameters(2).Value = ESSalaryDataGridView.Rows(i).Cells(4).Value
-                Command.Parameters(3).Value = ESSalaryDataGridView.Rows(i).Cells(5).Value
-                Command.Parameters(4).Value = ESSalaryDataGridView.Rows(i).Cells(6).Value
-                Command.Parameters(5).Value = ESSalaryDataGridView.Rows(i).Cells(7).Value
-                Command.Parameters(6).Value = ESSalaryDataGridView.Rows(i).Cells(8).Value
-                Command.Parameters(7).Value = ESSalaryDataGridView.Rows(i).Cells(9).Value
-                Command.Parameters(8).Value = ESSalaryDataGridView.Rows(i).Cells(10).Value
-                Command.Parameters(9).Value = ESSalaryDataGridView.Rows(i).Cells(11).Value
-                Command.Parameters(10).Value = ESSalaryDataGridView.Rows(i).Cells(12).Value
-                Command.Parameters(11).Value = ESSalaryDataGridView.Rows(i).Cells(13).Value
-                Command.Parameters(12).Value = ESSalaryDataGridView.Rows(i).Cells(14).Value
-                Command.Parameters(13).Value = ESSalaryDataGridView.Rows(i).Cells(15).Value
-                Command.Parameters(14).Value = ESSalaryDataGridView.Rows(i).Cells(16).Value
-                Command.Parameters(15).Value = ESSalaryDataGridView.Rows(i).Cells(17).Value
-                Command.Parameters(16).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
-                Command.Parameters(17).Value = ESSalaryDataGridView.Rows(i).Cells(19).Value
-                Command.Parameters(18).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
-                Command.Parameters(19).Value = ESSalaryDataGridView.Rows(i).Cells(20).Value
-                Command.ExecuteNonQuery()
-            Next
+                If ESPayrollTypeComboBox.SelectedIndex = 0 Then
+                    If ESCutOffComboBox.SelectedIndex = 0 Then
+                        DayFrom = "1"
+                        DayTo = "15"
+                    Else
+                        DayFrom = "16"
+                        DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+                    End If
+                Else
+                    DayFrom = "1"
+                    DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+                End If
 
-            Connection.Close()
-            MsgBox("Saved successfully.")
-        Catch ex As Exception
+                Dim DateFrom As Date
+                Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom & "  00:00:00", DateFrom)
+                Dim DateTo As Date
+                Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo & "  00:00:00", DateTo)
+
+                Connection.Open()
+
+                Dim query = "INSERT INTO EmployeeSalary (EmployeeID, DateFrom, DateTo, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay, Tardiness, OTHours, OTPay, 
+                Holiday, HolidayPay, GrossPay, Deduction_Tardiness, SSS, PHIC, HDMF, TaxableIncome, Tax, TotalDeductions, NetPay)
+                VALUES (@EmployeeID, @DateFrom, @DateTo, @PayrollType, @CutOff, @WorkDays, @TotalWorkDays, @TotalHours, @BasicPay, @Tardiness, @OTHours, @OTPay, 
+                @Holiday, @HolidayPay, @GrossPay, @Deduction_Tardiness, @SSS, @PHIC, @HDMF, @TaxableIncome, @Tax, @TotalDeductions, @NetPay)"
+
+                Command = New SqlCommand(query, Connection)
+
+                Command.Parameters.Add("@EmployeeID", SqlDbType.BigInt)
+                Command.Parameters.Add("@DateFrom", SqlDbType.Date)
+                Command.Parameters.Add("@DateTo", SqlDbType.Date)
+                Command.Parameters.Add("@PayrollType", SqlDbType.VarChar)
+                Command.Parameters.Add("@CutOff", SqlDbType.VarChar)
+                Command.Parameters.Add("@WorkDays", SqlDbType.Float)
+                Command.Parameters.Add("@TotalWorkDays", SqlDbType.Float)
+                Command.Parameters.Add("@TotalHours", SqlDbType.Float)
+                Command.Parameters.Add("@BasicPay", SqlDbType.Float)
+                Command.Parameters.Add("@Tardiness", SqlDbType.Float)
+                Command.Parameters.Add("@OTHours", SqlDbType.Float)
+                Command.Parameters.Add("@OTPay", SqlDbType.Float)
+                Command.Parameters.Add("@Holiday", SqlDbType.Float)
+                Command.Parameters.Add("@HolidayPay", SqlDbType.Float)
+                Command.Parameters.Add("@GrossPay", SqlDbType.Float)
+                Command.Parameters.Add("@Deduction_Tardiness", SqlDbType.Float)
+                Command.Parameters.Add("@SSS", SqlDbType.Float)
+                Command.Parameters.Add("@PHIC", SqlDbType.Float)
+                Command.Parameters.Add("@HDMF", SqlDbType.Float)
+                Command.Parameters.Add("@TaxableIncome", SqlDbType.Float)
+                Command.Parameters.Add("@Tax", SqlDbType.Float)
+                Command.Parameters.Add("@TotalDeductions", SqlDbType.Float)
+                Command.Parameters.Add("@NetPay", SqlDbType.Float)
+
+                For i = 0 To ESSalaryDataGridView.Rows.Count - 1
+                    Command.Parameters(0).Value = ESSalaryDataGridView.Rows(i).Cells(0).Value
+                    Command.Parameters(1).Value = DateFrom
+                    Command.Parameters(2).Value = DateTo
+                    Command.Parameters(3).Value = ESSalaryDataGridView.Rows(i).Cells(2).Value
+                    Command.Parameters(4).Value = ESSalaryDataGridView.Rows(i).Cells(3).Value
+                    Command.Parameters(5).Value = ESSalaryDataGridView.Rows(i).Cells(4).Value
+                    Command.Parameters(6).Value = ESSalaryDataGridView.Rows(i).Cells(5).Value
+                    Command.Parameters(7).Value = ESSalaryDataGridView.Rows(i).Cells(6).Value
+                    Command.Parameters(8).Value = ESSalaryDataGridView.Rows(i).Cells(7).Value
+                    Command.Parameters(9).Value = ESSalaryDataGridView.Rows(i).Cells(8).Value
+                    Command.Parameters(10).Value = ESSalaryDataGridView.Rows(i).Cells(9).Value
+                    Command.Parameters(11).Value = ESSalaryDataGridView.Rows(i).Cells(10).Value
+                    Command.Parameters(12).Value = ESSalaryDataGridView.Rows(i).Cells(11).Value
+                    Command.Parameters(13).Value = ESSalaryDataGridView.Rows(i).Cells(12).Value
+                    Command.Parameters(14).Value = ESSalaryDataGridView.Rows(i).Cells(13).Value
+                    Command.Parameters(15).Value = ESSalaryDataGridView.Rows(i).Cells(14).Value
+                    Command.Parameters(16).Value = ESSalaryDataGridView.Rows(i).Cells(15).Value
+                    Command.Parameters(17).Value = ESSalaryDataGridView.Rows(i).Cells(16).Value
+                    Command.Parameters(18).Value = ESSalaryDataGridView.Rows(i).Cells(17).Value
+                    Command.Parameters(19).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
+                    Command.Parameters(20).Value = ESSalaryDataGridView.Rows(i).Cells(19).Value
+                    Command.Parameters(21).Value = ESSalaryDataGridView.Rows(i).Cells(20).Value
+                    Command.Parameters(22).Value = ESSalaryDataGridView.Rows(i).Cells(21).Value
+                    Command.ExecuteNonQuery()
+                Next
+
+                Parameters.Clear()
+
+                Adapter = New SqlDataAdapter(Command)
+                Data = New DataSet
+
+                Connection.Close()
+                MsgBox("Saved successfully.")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                Connection.Close()
+            End Try
+        Else
             MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-        End Try
+        End If
     End Sub
 
     Private Sub ManageUsersButton_Click(sender As Object, e As EventArgs) Handles ManageUsersButton.Click
@@ -2023,5 +2107,215 @@ Public Class DashBoardForm
         LoadLeaveRequestDetails()
         LoadHolidayDetails()
         GetUpcomingProject()
+    End Sub
+
+    Private Sub btnEm3_Click(sender As Object, e As EventArgs) Handles btnEm3.Click
+        For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
+            If gb.Name = "EmployeeIDGenPanel" Then
+                gb.Visible = True
+                gb.Enabled = True
+                GetNames()
+            Else
+                gb.Visible = False
+                gb.Enabled = False
+            End If
+        Next
+    End Sub
+
+    Public Sub GetNames()
+        Dim query = "SELECT CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName
+        FROM Employees
+        LEFT OUTER JOIN Department
+        ON Employees.DepartmentID = Department.ID"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        IDEmpNamesComboBox.DisplayMember = "EmployeeName"
+        IDEmpNamesComboBox.DataSource = DataAsTable
+        IDEmpNamesComboBox.SelectedIndex = 0
+        IDEmpNamesComboBox.MaxDropDownItems = 5
+    End Sub
+
+    Public Sub LoadID()
+        Try
+            Dim query = "SELECT EmployeeID, Photo FROM Employees 
+            WHERE CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @Name"
+
+            Prepare(query)
+            AddParam("@Name", "%" & IDEmpNamesComboBox.Text & "%")
+            ExecutePrepare()
+
+            If Count > 0 Then
+                Dim row As DataRow = DataAsTable.Rows(0)
+
+                IDNameLabel.Text = "Name: " & IDEmpNamesComboBox.Text
+                If Not IsDBNull(row("Photo")) Then
+                    GetPhoto(row("Photo"))
+                End If
+                GenQR(row("EmployeeID"))
+            End If
+        Catch ex As Exception
+            MsgBox("ID is Loading...", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+        End Try
+    End Sub
+
+    Public Sub GetPhoto(Photo As Byte())
+        Try
+            Dim imageData As Byte() = Photo
+
+            Using ms As New MemoryStream(imageData, 0, imageData.Length)
+                ms.Write(imageData, 0, imageData.Length)
+                IDPhotoPictureBox.Image = Image.FromStream(ms, True)
+            End Using
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Public Sub GenQR(EmpID As String)
+        Dim encode As New QRCodeEncoder With {
+            .QRCodeVersion = 1,
+            .QRCodeScale = 150
+        }
+        Dim qrImage As Bitmap = encode.Encode(EmpID)
+        IDQRPictureBox.Image = qrImage
+    End Sub
+
+    Public Sub GenID()
+        Dim originalImage = IDPhotoPictureBox.Image
+
+        Dim croppedImage As New Bitmap(originalImage.Width, originalImage.Height)
+
+        Using g = Graphics.FromImage(croppedImage)
+            Dim path As New GraphicsPath
+
+            path.AddEllipse(0, 0, croppedImage.Width, croppedImage.Height)
+
+            Dim reg As New Region(path)
+
+            g.Clip = reg
+            g.DrawImage(originalImage, Point.Empty)
+        End Using
+
+        IDPhotoPictureBox.Image = croppedImage
+    End Sub
+
+    Private Sub IDEmpNamesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles IDEmpNamesComboBox.SelectedIndexChanged
+        LoadID()
+        GenID()
+    End Sub
+
+    Private Sub GuardianTextBox_MouseClick(sender As Object, e As MouseEventArgs) Handles IDGuardianTextBox.MouseClick
+        IDGuardianTextBox.SelectAll()
+    End Sub
+
+    Private Sub IDAddressTextBox_MouseClick(sender As Object, e As MouseEventArgs) Handles IDAddressTextBox.MouseClick
+        IDAddressTextBox.SelectAll()
+    End Sub
+
+    Private Sub IDContactTextBox_MouseClick(sender As Object, e As MouseEventArgs) Handles IDContactTextBox.MouseClick
+        IDContactTextBox.SelectAll()
+    End Sub
+
+    Private ppd As New PrintPreviewDialog
+    Private bitmap As Bitmap
+
+    Private Sub IDPrintButton_Click(sender As Object, e As EventArgs) Handles IDPrintButton.Click
+        Try
+            Dim bmp As New Bitmap(CInt(IDPanel.Width), CInt(IDPanel.Height))
+            IDPanel.DrawToBitmap(bmp, New Rectangle(0, 0, bmp.Width, bmp.Height))
+
+            Dim bmp2 As New Bitmap(bmp.Width, bmp.Height)
+            bmp2.SetResolution(180, 180)
+            Dim gr As Graphics = Graphics.FromImage(bmp2)
+            gr.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy
+            gr.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed
+            gr.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic
+            gr.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias
+            gr.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
+            gr.PixelOffsetMode = PixelOffsetMode.HighQuality
+            gr.DrawImage(bmp, New Rectangle(0, 0, bmp2.Width, bmp2.Height))
+
+            bitmap = bmp2
+            ppd.Document = IDPrintDocument
+            ppd.Document.DocumentName = IDEmpNamesComboBox.Text
+            ppd.PrintPreviewControl.Zoom = 1
+            ppd.Width = 1280
+            ppd.Height = 720
+            ppd.StartPosition = FormStartPosition.CenterScreen
+            ppd.ShowDialog()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub IDPrintDocument_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles IDPrintDocument.PrintPage
+        e.Graphics.DrawImage(bitmap, 50, 50)
+        e.Graphics.PageUnit = GraphicsUnit.Pixel
+    End Sub
+
+    Private Sub ESViewPayrollsButton_Click(sender As Object, e As EventArgs)
+        Me.Enabled = False
+        PrintPayrollForm.Show(Me)
+    End Sub
+
+    Private Sub btnPay2_Click(sender As Object, e As EventArgs) Handles btnPay2.Click
+        Me.Enabled = False
+        PrintPayrollForm.Show(Me)
+    End Sub
+
+    Private Sub ESRemovePayrollButton_Click(sender As Object, e As EventArgs) Handles ESRemovePayrollButton.Click
+        If CheckIfGenerated() Then
+            If MsgBox("Are you sure to remove this payroll record?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+                Dim query = "DELETE FROM EmployeeSalary WHERE PayrollType = @PayrollType AND CutOff = @CutOff AND (MONTH(DateFrom) = @MonthFrom AND DAY(DateFrom) = @DayFrom  AND YEAR(DateFrom) = @YearFrom) AND (MONTH(DateTo) = @MonthTo AND DAY(DateTo) = @DayTo  AND YEAR(DateTo) = @YearTo)"
+                Dim DayFrom, DayTo As Integer
+                Dim CutOff As String
+
+                If ESPayrollTypeComboBox.SelectedIndex = 0 Then
+                    If ESCutOffComboBox.SelectedIndex = 0 Then
+                        DayFrom = "1"
+                        DayTo = "15"
+                        CutOff = ESCutOffComboBox.Text
+                    Else
+                        DayFrom = "16"
+                        DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+                        CutOff = ESCutOffComboBox.Text
+                    End If
+                Else
+                    DayFrom = "1"
+                    DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+                    CutOff = "1-" & DayTo
+                End If
+
+                Prepare(query)
+                AddParam("@PayrollType", ESPayrollTypeComboBox.Text)
+                AddParam("@CutOff", CutOff)
+                AddParam("@MonthFrom", ESMonthDateTimePicker.Value.Month)
+                AddParam("@DayFrom", DayFrom)
+                AddParam("@YearFrom", ESYearDateTimePicker.Value.Year)
+                AddParam("@MonthTo", ESMonthDateTimePicker.Value.Month)
+                AddParam("@DayTo", DayTo)
+                AddParam("@YearTo", ESYearDateTimePicker.Value.Year)
+                ExecutePrepare()
+
+                ESClearButton.PerformClick()
+                MsgBox("Payroll record successfully removed", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+            End If
+        Else
+            MsgBox("Remove failed. There's no payroll record.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+        End If
+    End Sub
+
+    Private Sub ESCutOffComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ESCutOffComboBox.SelectedIndexChanged
+        ESSaveButton.Enabled = False
+    End Sub
+
+    Private Sub ESMonthDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles ESMonthDateTimePicker.ValueChanged
+        ESSaveButton.Enabled = False
+    End Sub
+
+    Private Sub ESYearDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles ESYearDateTimePicker.ValueChanged
+        ESSaveButton.Enabled = False
     End Sub
 End Class

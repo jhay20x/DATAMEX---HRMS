@@ -50,7 +50,11 @@
   <PropertyGroup>
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MessagingToolkit.QRCode" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -172,6 +176,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PrintPayrollForm.Designer.vb">
+      <DependentUpon>PrintPayrollForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PrintPayrollForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProjectAddForm.Designer.vb">
       <DependentUpon>ProjectAddForm.vb</DependentUpon>
     </Compile>
@@ -194,6 +204,12 @@
       <DependentUpon>UsersForm.vb</DependentUpon>
     </Compile>
     <Compile Include="UsersForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewPayrollsForm.Designer.vb">
+      <DependentUpon>ViewPayrollsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewPayrollsForm.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -240,6 +256,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintPayrollForm.resx">
+      <DependentUpon>PrintPayrollForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectAddForm.resx">
       <DependentUpon>ProjectAddForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UsersForm.resx">
       <DependentUpon>UsersForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewPayrollsForm.resx">
+      <DependentUpon>ViewPayrollsForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +287,7 @@
     <None Include="HRMSDataSet.xss">
       <DependentUpon>HRMSDataSet.xsd</DependentUpon>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -347,6 +370,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />
+    <None Include="Resources\IDBackground-Back.png" />
+    <None Include="Resources\IDBackground1.png" />
+    <None Include="Resources\IDBackground.png" />
     <None Include="Resources\delete-disabled.png" />
     <None Include="Resources\dda-disabled.png" />
     <None Include="Resources\View-disabled.png" />

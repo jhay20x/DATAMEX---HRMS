@@ -1,10 +1,10 @@
 ﻿Public Class Login
 
     Private Sub EyeButton_Click(sender As Object, e As EventArgs) Handles EyeButton.Click
-        If PasswordTextBox.PasswordChar = Nothing Then
-            PasswordTextBox.PasswordChar = "*"
+        If PasswordTextBox.UseSystemPasswordChar = False Then
+            PasswordTextBox.UseSystemPasswordChar = True
         Else
-            PasswordTextBox.PasswordChar = ""
+            PasswordTextBox.UseSystemPasswordChar = False
         End If
     End Sub
 
@@ -23,7 +23,7 @@
         If Count > 0 Then
             Dim row As DataRow = DataAsTable.Rows(0)
 
-            If row("IsAdmin") = 1 Then
+            If Not IsDBNull(row("IsAdmin")) Then
                 MsgBox("Welcome " & row("EmployeeName") & "!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 DashBoardForm.WelcomeText = "WELCOME!" & Environment.NewLine & row("EmployeeName")
                 DashBoardForm.Show()
@@ -46,5 +46,9 @@
         UsernameTextBox.Text = ""
         PasswordTextBox.Text = ""
         UsernameTextBox.Select()
+    End Sub
+
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

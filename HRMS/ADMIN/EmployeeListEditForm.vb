@@ -1,4 +1,6 @@
 ﻿
+Imports System.IO
+
 Public Class EmployeeListEditForm
     Public EmpIdEdit As String
     Public IsDone As Boolean
@@ -69,7 +71,21 @@ Public Class EmployeeListEditForm
             ELEEmailTextBox.Text = row("EmailAddress")
             ELEDeptComboBox.SelectedIndex = row("DepartmentID") - 1
             ELEEmployeeStatusComboBox.SelectedIndex = row("StatusID") - 1
+            If Not IsDBNull(row("Photo")) Then
+                GetPhoto(row("Photo"))
+            End If
         End If
+    End Sub
+
+    Public Sub GetPhoto(imageData As Byte())
+        Try
+            Using ms As New MemoryStream(imageData, 0, imageData.Length)
+                ms.Write(imageData, 0, imageData.Length)
+                IDPhotoPictureBox.BackgroundImage = Image.FromStream(ms, True)
+            End Using
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub ELEUpdateButton_Click(sender As Object, e As EventArgs) Handles ELEUpdateButton.Click
@@ -88,6 +104,12 @@ Public Class EmployeeListEditForm
             End If
         Next
 
+        For Each TextBoxCtrl In ELEFormPanel.Controls.OfType(Of PictureBox)
+            If IsNothing(TextBoxCtrl.BackgroundImage) Then
+                TextCount += 1
+            End If
+        Next
+
         If TextCount = 0 Then
             If MsgBox("Update the employee's information?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
                 Dim Department As Integer = ELEDeptComboBox.SelectedIndex + 1
@@ -95,7 +117,7 @@ Public Class EmployeeListEditForm
 
                 Dim query As String = "UPDATE Employees SET LastName = @LastName, FirstName = @FirstName, MiddleName = @MiddleName,  
                 DepartmentID = @DepartmentID, Age = @Age, Address = @Address, SSSNo = @SSSNo, PhilHealthNo = @PhilHealthNo, PagibigNo = @PagibigNo, 
-                TIN = @TIN, ContactNumber = @ContactNumber, EmailAddress = @EmailAddress, StatusID = @StatusID WHERE EmployeeId = @EmployeeID;"
+                TIN = @TIN, ContactNumber = @ContactNumber, EmailAddress = @EmailAddress, StatusID = @StatusID, Photo=@Photo WHERE EmployeeId = @EmployeeID;"
 
                 Prepare(query)
                 AddParam("@EmployeeID", EmpIdEdit)
@@ -112,6 +134,7 @@ Public Class EmployeeListEditForm
                 AddParam("@TIN", ELETINTextBox.Text)
                 AddParam("@ContactNumber", ELEContTextBox.Text)
                 AddParam("@EmailAddress", ELEEmailTextBox.Text)
+                AddParam("@Photo", GetPhotoByte())
                 ExecutePrepare()
 
                 DashBoardForm.RefreshDetails()
@@ -119,6 +142,7 @@ Public Class EmployeeListEditForm
                 MsgBox("Employee information successfully updated.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 ELELastNameTextBox.Select()
                 IsDone = True
+                Me.Close()
             Else
                 MsgBox("Employee not Updated. No changes made.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
 
@@ -127,6 +151,18 @@ Public Class EmployeeListEditForm
             MsgBox("Please complete all the fields first!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
         End If
     End Sub
+
+    Public Function GetPhotoByte()
+        Dim ms As New MemoryStream()
+        Dim img As Bitmap = ResizeImage(ResizeImage(IDPhotoPictureBox.BackgroundImage))
+        img.Save(ms, IDPhotoPictureBox.BackgroundImage.RawFormat)
+        Dim data As Byte() = ms.GetBuffer()
+        Return data
+    End Function
+
+    Public Shared Function ResizeImage(ByVal InputImage As Image) As Image
+        Return New Bitmap(InputImage, New Size(300, 300))
+    End Function
 
     Private Sub ELEMiddleNameCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ELEMiddleNameCheckBox.CheckedChanged
         If ELEMiddleNameCheckBox.CheckState = CheckState.Checked Then
@@ -195,5 +231,16 @@ Public Class EmployeeListEditForm
         Else
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub OpenPhotoButton_Click(sender As Object, e As EventArgs) Handles OpenPhotoButton.Click
+        Dim ofd As New OpenFileDialog
+        If ofd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            IDPhotoPictureBox.BackgroundImage = Image.FromFile(ofd.FileName)
+        End If
+    End Sub
+
+    Private Sub ClearPhotoButton_Click(sender As Object, e As EventArgs) Handles ClearPhotoButton.Click
+        IDPhotoPictureBox.BackgroundImage = Nothing
     End Sub
 End Class

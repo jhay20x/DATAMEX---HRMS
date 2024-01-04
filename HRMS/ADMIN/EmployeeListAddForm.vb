@@ -1,4 +1,5 @@
 ﻿
+Imports System.IO
 Imports System.Runtime.CompilerServices
 
 Public Class EmployeeListAddForm
@@ -58,6 +59,12 @@ Public Class EmployeeListAddForm
             End If
         Next
 
+        For Each TextBoxCtrl In ELAFormPanel.Controls.OfType(Of PictureBox)
+            If IsNothing(TextBoxCtrl.BackgroundImage) Then
+                TextCount += 1
+            End If
+        Next
+
         If TextCount = 0 Then
             If MsgBox("Add employee to the list?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Alert") = vbYes Then
                 Dim LName As String = ELALastNameTextBox.Text
@@ -68,19 +75,16 @@ Public Class EmployeeListAddForm
                 If Not isValid Then
                     MsgBox("Employee is already in the list.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
                 Else
-                    Dim Year As Integer
-                    Year = Convert.ToInt32(Now.ToString("yyyy"))
-                    Dim Month As Integer
-                    Month = Convert.ToInt32(Now.ToString("MM"))
-                    Dim Day As Integer
-                    Day = Convert.ToInt32(Now.ToString("dd"))
+                    Dim Year As String = Date.Now.ToString("yyyy")
+                    Dim Month As String = Date.Now.ToString("MM")
+                    Dim Day As String = Date.Now.ToString("dd")
 
                     Dim Datehired As String = Year & "/" & Month & "/" & Day
                     Dim Status As Integer = 1
                     Dim Department As Integer = ELADeptComboBox.SelectedIndex + 1
                     Dim query = "INSERT INTO Employees (EmployeeID, LastName, FirstName, MiddleName, StatusID, DepartmentID, 
-                    DateHired, Age, ContactNumber, EmailAddress, Address, SSSNo, PhilHealthNo, PagIbigNo, TIN) VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
-                    @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN);"
+                    DateHired, Age, ContactNumber, EmailAddress, Address, SSSNo, PhilHealthNo, PagIbigNo, TIN, Photo) VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
+                    @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN, @Photo);"
 
                     Prepare(query)
                     AddParam("@EmployeeID", (Year & Month & Day) & (LastEmpID + 1))
@@ -92,12 +96,13 @@ Public Class EmployeeListAddForm
                     AddParam("@DateHired", Datehired)
                     AddParam("@Age", ELAAgeTextBox.Text)
                     AddParam("@Address", ELAAddressTextBox.Text)
+                    AddParam("@ContactNumber", ELAContTextBox.Text)
+                    AddParam("@EmailAddress", ELAEmailTextBox.Text)
                     AddParam("@SSSNo", ELASSSTextBox.Text)
                     AddParam("@PhilHealthNo", ELAPHTextBox.Text)
                     AddParam("@PagIbigNo", ELAPITextBox.Text)
                     AddParam("@TIN", ELATINTextBox.Text)
-                    AddParam("@ContactNumber", ELAContTextBox.Text)
-                    AddParam("@EmailAddress", ELAEmailTextBox.Text)
+                    AddParam("@Photo", GetPhotoByte())
                     ExecutePrepare()
 
                     InsertLeaveBalance((Year & Month & Day) & (LastEmpID + 1))
@@ -113,6 +118,7 @@ Public Class EmployeeListAddForm
                     DashBoardForm.RefreshDetails()
                     DashBoardForm.DisableButton()
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                    isDone = True
                     Me.Close()
                 End If
             Else
@@ -123,6 +129,18 @@ Public Class EmployeeListAddForm
             MsgBox("Please complete all the fields first!", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
         End If
     End Sub
+
+    Public Function GetPhotoByte()
+        Dim ms As New MemoryStream()
+        Dim img As Bitmap = ResizeImage(ResizeImage(IDPhotoPictureBox.BackgroundImage))
+        img.Save(ms, IDPhotoPictureBox.BackgroundImage.RawFormat)
+        Dim data As Byte() = ms.GetBuffer()
+        Return data
+    End Function
+
+    Public Shared Function ResizeImage(ByVal InputImage As Image) As Image
+        Return New Bitmap(InputImage, New Size(300, 300))
+    End Function
 
     Public Sub InsertLeaveBalance(EmpID As String)
         Dim query = "INSERT INTO LeaveBalance VALUES (@EmployeeID, @Balance)"
@@ -182,5 +200,16 @@ Public Class EmployeeListAddForm
                 DashBoardForm.Show()
             End If
         End If
+    End Sub
+
+    Private Sub OpenPhotoButton_Click(sender As Object, e As EventArgs) Handles OpenPhotoButton.Click
+        Dim ofd As New OpenFileDialog
+        If ofd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            IDPhotoPictureBox.BackgroundImage = Image.FromFile(ofd.FileName)
+        End If
+    End Sub
+
+    Private Sub ClearPhotoButton_Click(sender As Object, e As EventArgs) Handles ClearPhotoButton.Click
+        IDPhotoPictureBox.BackgroundImage = Nothing
     End Sub
 End Class

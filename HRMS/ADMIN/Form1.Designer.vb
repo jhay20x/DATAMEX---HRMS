@@ -125,13 +125,13 @@ Partial Class Login
         'PasswordTextBox
         '
         Me.PasswordTextBox.Font = New System.Drawing.Font("Segoe UI Semilight", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PasswordTextBox.Location = New System.Drawing.Point(72, 277)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(57, 277)
         Me.PasswordTextBox.Name = "PasswordTextBox"
-        Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(196, 39)
         Me.PasswordTextBox.TabIndex = 1
         Me.PasswordTextBox.Text = "Jhayjay"
         Me.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.PasswordTextBox.UseSystemPasswordChar = True
         '
         'LoginButton
         '

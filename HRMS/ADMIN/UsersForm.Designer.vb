@@ -114,10 +114,10 @@ Partial Class UsersForm
         Me.MUUsernameTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MUUsernameTextBox.Location = New System.Drawing.Point(146, 106)
         Me.MUUsernameTextBox.Name = "MUUsernameTextBox"
-        Me.MUUsernameTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.MUUsernameTextBox.Size = New System.Drawing.Size(168, 29)
         Me.MUUsernameTextBox.TabIndex = 1
         Me.MUUsernameTextBox.Tag = "Break"
+        Me.MUUsernameTextBox.UseSystemPasswordChar = True
         '
         'Label16
         '
@@ -135,10 +135,10 @@ Partial Class UsersForm
         Me.MUPasswordTextBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MUPasswordTextBox.Location = New System.Drawing.Point(146, 141)
         Me.MUPasswordTextBox.Name = "MUPasswordTextBox"
-        Me.MUPasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.MUPasswordTextBox.Size = New System.Drawing.Size(168, 29)
         Me.MUPasswordTextBox.TabIndex = 3
         Me.MUPasswordTextBox.Tag = "Break"
+        Me.MUPasswordTextBox.UseSystemPasswordChar = True
         '
         'Label1
         '

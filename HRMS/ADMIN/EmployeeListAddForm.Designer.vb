@@ -55,10 +55,15 @@ Partial Class EmployeeListAddForm
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.OpenPhotoButton = New System.Windows.Forms.Button()
+        Me.IDPhotoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.ClearPhotoButton = New System.Windows.Forms.Button()
         Me.Panel11.SuspendLayout()
         Me.ELAFormPanel.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel11
@@ -111,6 +116,10 @@ Partial Class EmployeeListAddForm
         '
         'ELAFormPanel
         '
+        Me.ELAFormPanel.Controls.Add(Me.ClearPhotoButton)
+        Me.ELAFormPanel.Controls.Add(Me.IDPhotoPictureBox)
+        Me.ELAFormPanel.Controls.Add(Me.OpenPhotoButton)
+        Me.ELAFormPanel.Controls.Add(Me.Label13)
         Me.ELAFormPanel.Controls.Add(Me.Label3)
         Me.ELAFormPanel.Controls.Add(Me.ELAAddressTextBox)
         Me.ELAFormPanel.Controls.Add(Me.Label2)
@@ -427,6 +436,48 @@ Partial Class EmployeeListAddForm
         Me.Panel2.Size = New System.Drawing.Size(765, 545)
         Me.Panel2.TabIndex = 11
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label13.Location = New System.Drawing.Point(478, 296)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(61, 21)
+        Me.Label13.TabIndex = 43
+        Me.Label13.Tag = ""
+        Me.Label13.Text = "Picture:"
+        '
+        'OpenPhotoButton
+        '
+        Me.OpenPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OpenPhotoButton.Location = New System.Drawing.Point(655, 292)
+        Me.OpenPhotoButton.Name = "OpenPhotoButton"
+        Me.OpenPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.OpenPhotoButton.TabIndex = 103
+        Me.OpenPhotoButton.Text = "Open"
+        Me.OpenPhotoButton.UseVisualStyleBackColor = True
+        '
+        'IDPhotoPictureBox
+        '
+        Me.IDPhotoPictureBox.BackColor = System.Drawing.Color.Gray
+        Me.IDPhotoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.IDPhotoPictureBox.Location = New System.Drawing.Point(545, 292)
+        Me.IDPhotoPictureBox.Name = "IDPhotoPictureBox"
+        Me.IDPhotoPictureBox.Size = New System.Drawing.Size(100, 100)
+        Me.IDPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.IDPhotoPictureBox.TabIndex = 104
+        Me.IDPhotoPictureBox.TabStop = False
+        '
+        'ClearPhotoButton
+        '
+        Me.ClearPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ClearPhotoButton.Location = New System.Drawing.Point(655, 322)
+        Me.ClearPhotoButton.Name = "ClearPhotoButton"
+        Me.ClearPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.ClearPhotoButton.TabIndex = 105
+        Me.ClearPhotoButton.Text = "Clear"
+        Me.ClearPhotoButton.UseVisualStyleBackColor = True
+        '
         'EmployeeListAddForm
         '
         Me.AcceptButton = Me.ELAAddButton
@@ -450,6 +501,7 @@ Partial Class EmployeeListAddForm
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -487,4 +539,8 @@ Partial Class EmployeeListAddForm
     Friend WithEvents Label12 As Label
     Friend WithEvents ELAFirstNameTextBox As TextBox
     Friend WithEvents ELAMiddleNameCheckBox As CheckBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents OpenPhotoButton As Button
+    Friend WithEvents IDPhotoPictureBox As PictureBox
+    Friend WithEvents ClearPhotoButton As Button
 End Class
