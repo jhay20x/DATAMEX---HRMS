@@ -117,3 +117,7 @@ C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.UsersForm.r
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.PrintPayrollForm.resources
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.ViewPayrollsForm.resources
 C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeDashBoard.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.EmployeeDashBoard.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.PrintPayrollForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\HRM1.ViewPayrollsForm.resources
+C:\Users\Jhay2\Source\Repos\DATAMEX---HRMS\HRMS\ADMIN\obj\Debug\ADMIN.vbproj.CopyComplete
