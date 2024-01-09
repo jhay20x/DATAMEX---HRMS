@@ -1042,7 +1042,7 @@ Public Class DashBoardForm
             If gb.Name = "ProjectsListPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
-                LoadProjects(ProjectNameSearchTextBox.Text)
+                'LoadProjects(ProjectNameSearchTextBox.Text)
                 LoadProjectDetails()
                 DisableButton()
             Else
@@ -1112,7 +1112,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub ProjectNameSearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles ProjectNameSearchTextBox.TextChanged
-        LoadProjects(ProjectNameSearchTextBox.Text)
+        'LoadProjects(ProjectNameSearchTextBox.Text)
     End Sub
 
     Private Sub ProjectsDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles ProjectsDataGridView.CellClick
@@ -1144,7 +1144,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub PJRefreshButton_Click(sender As Object, e As EventArgs) Handles PJRefreshButton.Click
-        LoadProjects(ProjectNameSearchTextBox.Text)
+        'LoadProjects(ProjectNameSearchTextBox.Text)
         LoadProjectDetails()
         DisableButton()
     End Sub
@@ -1157,13 +1157,23 @@ Public Class DashBoardForm
             AddParam("@ID", DeleteProjectID)
             ExecutePrepare()
 
-            LoadProjects(ProjectNameSearchTextBox.Text)
+            'LoadProjects(ProjectNameSearchTextBox.Text)
             DisableButton()
             MsgBox("Record successfully deleted.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
         End If
     End Sub
 
-    Public Sub LoadProjects(PJName As String)
+    Private Sub ProjectsAllCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ProjectsAllCheckBox.CheckedChanged
+        If ProjectsAllCheckBox.CheckState = CheckState.Checked Then
+            ProjectsFilterComboBox.Enabled = False
+            LoadProjects(ProjectNameSearchTextBox.Text, Nothing)
+        Else
+            ProjectsFilterComboBox.Enabled = True
+            LoadProjects(ProjectNameSearchTextBox.Text, ProjectsFilterComboBox.SelectedIndex + 1)
+        End If
+    End Sub
+
+    Public Sub LoadProjects(PJName As String, Dept As String)
         Dim NameSearch As String
 
         If ProjectNameSearchTextBox.Text = "" Then
