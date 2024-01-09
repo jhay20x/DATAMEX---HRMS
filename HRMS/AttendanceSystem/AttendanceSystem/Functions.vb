@@ -48,21 +48,21 @@ Module Functions
         End If
     End Function
 
-    'Public Function GetTimeIn(ByVal EmpID As Long)
-    '    Dim Curdate As Date = Today
-    '    Dim query = "SELECT * FROM AttendanceRecords WHERE EmployeeID = @EmployeeID AND AttDate = @AttDate"
+    Public Function GetTimeIn(ByVal EmpID As Long)
+        Dim Curdate As Date = Today
+        Dim query = "SELECT * FROM AttendanceRecords WHERE EmployeeID = @EmployeeID AND AttDate = @AttDate"
 
-    '    Prepare(query)
-    '    AddParam("@EmployeeID", EmpID)
-    '    AddParam("@AttDate", Curdate)
-    '    ExecutePrepare()
+        Prepare(query)
+        AddParam("@EmployeeID", EmpID)
+        AddParam("@AttDate", Curdate)
+        ExecutePrepare()
 
-    '    If Count > 0 Then
-    '        Dim row As DataRow = DataAsTable.Rows(0)
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
 
-    '        Return row("TimeIn")
-    '    End If
-    '    Return Nothing
-    'End Function
+            Return row("TimeIn")
+        End If
+        Return Nothing
+    End Function
 
 End Module

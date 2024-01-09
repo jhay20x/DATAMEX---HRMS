@@ -115,7 +115,7 @@ Public Class EmployeeListAddForm
                         End If
                     Next
 
-                    DashBoardForm.RefreshDetails()
+                    DashBoardForm.LoadEmployees()
                     DashBoardForm.DisableButton()
                     MsgBox("Employee successfully added.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                     isDone = True
@@ -188,7 +188,7 @@ Public Class EmployeeListAddForm
             e.Cancel = False
             DashBoardForm.Enabled = True
             DashBoardForm.DisableButton()
-            DashBoardForm.RefreshDetails()
+            DashBoardForm.LoadEmployees()
             DashBoardForm.Show()
         Else
             If MsgBox("Are you sure to leave?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.No Then
@@ -196,7 +196,7 @@ Public Class EmployeeListAddForm
             Else
                 DashBoardForm.Enabled = True
                 DashBoardForm.DisableButton()
-                DashBoardForm.RefreshDetails()
+                DashBoardForm.LoadEmployees()
                 DashBoardForm.Show()
             End If
         End If

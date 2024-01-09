@@ -132,10 +132,12 @@ Public Class ProjectEditForm
                         AddParam("@ID", ProjectID)
                         ExecutePrepare()
 
-                        DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
+                        DashBoardForm.LoadProjects()
                         DashBoardForm.LoadProjectDetails()
                         DashBoardForm.DisableButton()
-                        MsgBox("A new project has been successfully added.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
+                        isDone = True
+
+                        MsgBox("A new project has been successfully updated.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
                     End If
                 End If
             End If
@@ -148,7 +150,7 @@ Public Class ProjectEditForm
         If isDone Then
             e.Cancel = False
             DashBoardForm.Enabled = True
-            DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
+            DashBoardForm.LoadProjects()
             DashBoardForm.LoadProjectDetails()
             DashBoardForm.DisableButton()
             DashBoardForm.Show()
@@ -157,7 +159,7 @@ Public Class ProjectEditForm
                 e.Cancel = True
             Else
                 DashBoardForm.Enabled = True
-                DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
+                DashBoardForm.LoadProjects()
                 DashBoardForm.LoadProjectDetails()
                 DashBoardForm.DisableButton()
                 DashBoardForm.Show()

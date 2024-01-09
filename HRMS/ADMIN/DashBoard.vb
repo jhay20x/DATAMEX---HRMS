@@ -17,10 +17,13 @@ Public Class DashBoardForm
     Public DeleteProjectID
     Private Sub DashBoard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         WelcomeLabel.Text = WelcomeText
-        RefreshTable()
+        PopulateEmployeeDept()
+        PopulateEmployeeStatus()
+        LoadEmployees()
         LoadAttendanceDetails()
         LoadLeaveRequestDetails()
         LoadHolidayDetails()
+        CompleteProjects()
         GetUpcomingProject()
         CheckLeave()
     End Sub
@@ -423,6 +426,13 @@ Public Class DashBoardForm
     Private Sub btnDashboard_Click(sender As Object, e As EventArgs) Handles btnDashboard.Click
         For Each gb As Panel In MainPanel.Controls.OfType(Of Panel)
             If gb.Name = "DashboardPanel" Then
+                LoadEmployees()
+                LoadAttendanceDetails()
+                LoadLeaveRequestDetails()
+                LoadHolidayDetails()
+                CompleteProjects()
+                GetUpcomingProject()
+                CheckLeave()
                 gb.Visible = True
                 gb.Enabled = True
             Else
@@ -437,7 +447,7 @@ Public Class DashBoardForm
             If gb.Name = "EmployeeAllPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
-                RefreshDetails()
+                LoadEmployees()
                 EmployeesDataGridView.CurrentCell = Nothing
             Else
                 gb.Visible = False
@@ -480,6 +490,7 @@ Public Class DashBoardForm
         PopulateSalaryType()
         PopulateESIEmpNames()
         ESIEmpIDLabel.Text = EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        ESIEmpNameLabel.Text = ESIEmpNamesComboBox.Text
         ESIDepartmentLabel.Text = DepartmentID.Item(ESIEmpNamesComboBox.SelectedIndex)
         DisplayESI()
         DisplayCreds()
@@ -691,6 +702,7 @@ Public Class DashBoardForm
 
     Private Sub ESIEmpNamesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ESIEmpNamesComboBox.SelectedIndexChanged
         ESIEmpIDLabel.Text = EmployeeID.Item(ESIEmpNamesComboBox.SelectedIndex)
+        ESIEmpNameLabel.Text = ESIEmpNamesComboBox.Text
         ESIDepartmentLabel.Text = DepartmentID.Item(ESIEmpNamesComboBox.SelectedIndex)
         DisplayESI()
         DisplayCreds()
@@ -1042,7 +1054,9 @@ Public Class DashBoardForm
             If gb.Name = "ProjectsListPanel" Then
                 gb.Visible = True
                 gb.Enabled = True
-                'LoadProjects(ProjectNameSearchTextBox.Text)
+                LoadProjects()
+                PopulateProjectStatus()
+                PopulateProjectDept()
                 LoadProjectDetails()
                 DisableButton()
             Else
@@ -1084,11 +1098,11 @@ Public Class DashBoardForm
     End Sub
 
     Public Sub GetUpcomingProject()
-        Dim query = "SELECT * FROM [Projects] WHERE MONTH(ProjectDateStart) >= @Month  AND DAY(ProjectDateStart) >= @Day AND YEAR(ProjectDateStart) = @Year AND ProjectStatusID = @Status"
+        Dim query = "SELECT * FROM [Projects] WHERE MONTH(ProjectDateEnd) >= @Month  AND DAY(ProjectDateEnd) >= @Day AND YEAR(ProjectDateEnd) = @Year AND ProjectStatusID = @Status  ORDER BY ProjectDateEnd"
 
         Prepare(query)
         AddParam("@Month", Date.Today.Month)
-        AddParam("@Day", 1)
+        AddParam("@Day", Date.Today.Day)
         AddParam("@Year", Date.Today.Year)
         AddParam("@Status", 1)
         ExecutePrepare()
@@ -1099,6 +1113,17 @@ Public Class DashBoardForm
             DashProjNameLabel.Text = row("ProjectName")
             DashProjDurationLabel.Text = row("ProjectDuration") & " days."
         End If
+    End Sub
+
+    Public Sub CompleteProjects()
+        Dim query = "UPDATE Projects SET ProjectStatusID = 2 WHERE MONTH(ProjectDateEnd) <= @Month AND DAY(ProjectDateEnd) < @Day AND YEAR(ProjectDateEnd) <= @Year AND ProjectStatusID = @Status"
+
+        Prepare(query)
+        AddParam("@Month", Date.Today.Month)
+        AddParam("@Day", Date.Today.Day)
+        AddParam("@Year", Date.Today.Year)
+        AddParam("@Status", 1)
+        ExecutePrepare()
     End Sub
 
     Private Sub PJEditButton_Click(sender As Object, e As EventArgs) Handles PJEditButton.Click
@@ -1112,7 +1137,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub ProjectNameSearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles ProjectNameSearchTextBox.TextChanged
-        'LoadProjects(ProjectNameSearchTextBox.Text)
+        LoadProjects()
     End Sub
 
     Private Sub ProjectsDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles ProjectsDataGridView.CellClick
@@ -1144,7 +1169,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub PJRefreshButton_Click(sender As Object, e As EventArgs) Handles PJRefreshButton.Click
-        'LoadProjects(ProjectNameSearchTextBox.Text)
+        LoadProjects()
         LoadProjectDetails()
         DisableButton()
     End Sub
@@ -1157,7 +1182,7 @@ Public Class DashBoardForm
             AddParam("@ID", DeleteProjectID)
             ExecutePrepare()
 
-            'LoadProjects(ProjectNameSearchTextBox.Text)
+            LoadProjects()
             DisableButton()
             MsgBox("Record successfully deleted.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
         End If
@@ -1165,39 +1190,101 @@ Public Class DashBoardForm
 
     Private Sub ProjectsAllCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ProjectsAllCheckBox.CheckedChanged
         If ProjectsAllCheckBox.CheckState = CheckState.Checked Then
-            ProjectsFilterComboBox.Enabled = False
-            LoadProjects(ProjectNameSearchTextBox.Text, Nothing)
+            ProjectsDepartmentComboBox.Enabled = False
+            ProjectsStatusComboBox.Enabled = False
+            LoadProjects()
         Else
-            ProjectsFilterComboBox.Enabled = True
-            LoadProjects(ProjectNameSearchTextBox.Text, ProjectsFilterComboBox.SelectedIndex + 1)
+            ProjectsDepartmentComboBox.Enabled = True
+            ProjectsStatusComboBox.Enabled = True
+            LoadProjects()
         End If
     End Sub
 
-    Public Sub LoadProjects(PJName As String, Dept As String)
-        Dim NameSearch As String
+    Private Sub ProjectsStatusComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ProjectsStatusComboBox.SelectedIndexChanged
+        LoadProjects()
+    End Sub
 
-        If ProjectNameSearchTextBox.Text = "" Then
-            NameSearch = ""
+    Private Sub ProjectsFilterComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ProjectsDepartmentComboBox.SelectedIndexChanged
+        LoadProjects()
+    End Sub
+
+    Public Sub PopulateProjectDept()
+        Dim query = "SELECT * FROM Department"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            ProjectsDepartmentComboBox.DisplayMember = "Department"
+            ProjectsDepartmentComboBox.DataSource = DataAsTable
+            ProjectsDepartmentComboBox.SelectedIndex = 0
+            ProjectsDepartmentComboBox.MaxDropDownItems = 5
+        End If
+    End Sub
+
+    Public Sub PopulateProjectStatus()
+        Dim query = "SELECT * FROM ProjectsStatus"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            ProjectsStatusComboBox.DisplayMember = "Status"
+            ProjectsStatusComboBox.DataSource = DataAsTable
+            ProjectsStatusComboBox.SelectedIndex = 0
+            ProjectsStatusComboBox.MaxDropDownItems = 5
+        End If
+    End Sub
+
+    Public Sub LoadProjects()
+        Dim NameSearch As String
+        Dim Filterquery As String
+        Dim Statusquery As String
+
+        If ProjectNameSearchTextBox.Text <> "" Then
+            If ProjectsDepartmentComboBox.Enabled = True Then
+                NameSearch = " AND CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @ProjectHead"
+            Else
+                NameSearch = " WHERE CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @ProjectHead"
+            End If
         Else
-            NameSearch = " WHERE Projects.ProjectName LIKE @NameSearch"
+            NameSearch = ""
+        End If
+
+        If ProjectsDepartmentComboBox.Enabled = True Then
+            Filterquery = " WHERE Department.Department LIKE @Department"
+        Else
+            Filterquery = ""
+        End If
+
+        If ProjectsStatusComboBox.Enabled = True Then
+            Statusquery = " AND ProjectsStatus.Status LIKE @Status"
+        Else
+            Statusquery = ""
         End If
 
         Dim query = "SELECT Projects.ID, Projects.ProjectName, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS ProjectHead,
-        Projects.ProjectDescription, Projects.ProjectDateCreation, Projects.ProjectDateStart, Projects.ProjectDateEnd, Projects.ProjectDuration, ProjectsStatus.Status
+        Department.Department, Projects.ProjectDescription, Projects.ProjectDateCreation, Projects.ProjectDateStart, Projects.ProjectDateEnd, Projects.ProjectDuration, ProjectsStatus.Status
         FROM Projects
         LEFT OUTER JOIN Employees
         ON Projects.ProjectHeadID = Employees.EmployeeID
+		LEFT OUTER JOIN Department
+		ON Employees.DepartmentID = Department.ID
         LEFT OUTER JOIN ProjectsStatus
-        ON Projects.ProjectStatusID = ProjectsStatus.ID" & NameSearch
+        ON Projects.ProjectStatusID = ProjectsStatus.ID" & NameSearch & Filterquery & Statusquery
 
         Prepare(query)
         If ProjectNameSearchTextBox.Text <> "" Then
-            AddParam("@NameSearch", "%" & ProjectNameSearchTextBox.Text & "%")
+            AddParam("@ProjectHead", "%" & ProjectNameSearchTextBox.Text & "%")
         End If
+
+        If ProjectsDepartmentComboBox.Enabled = True Then
+            AddParam("@Department", ProjectsDepartmentComboBox.Text)
+        End If
+        AddParam("@Status", ProjectsStatusComboBox.Text)
         ExecutePrepare()
 
-        ProjectsDataGridView.DataSource = DataAsTable.DefaultView
-        ProjectsDataGridView.Sort(ProjectsDataGridView.Columns(8), ListSortDirection.Descending)
+        ProjectsDataGridView.DataSource = DataAsTable
         ProjectsDataGridView.CurrentCell = Nothing
     End Sub
 
@@ -1212,6 +1299,7 @@ Public Class DashBoardForm
                 ESMonthDateTimePicker.Value = Date.Today.Month & "/01/" & Date.Today.Year
                 GetSSS()
                 GetPagIbig()
+                GetPhilHealth()
                 GetTax()
             Else
                 gb.Visible = False
@@ -1344,6 +1432,7 @@ Public Class DashBoardForm
         Dim OTRate As Double
         Dim Late As Double
         Dim UnderTime As Double
+        Dim Absence As Integer
         Dim HalfDay As Double
         Dim TotalWorkDays As Double
         Dim Rate As Double = GetRate(EmployeeID)
@@ -1354,7 +1443,7 @@ Public Class DashBoardForm
         Dim TotalDeductions As Double
         Dim TardinessAmount, SSS, PhilHealth, PagIbig, Tax As Double
 
-        Dim query = "SELECT AttendanceRecords.ID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
+        Dim query = "SELECT CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, AttendanceRecords.ID, 
         AttendanceRecords.AttDate, AttendanceRecords.TimeIn, AttendanceRecords.TimeOut, AttendanceRecords.TotalHours,
         AttendanceRecords.OT, AttendanceRecords.Late, AttendanceRecords.Undertime, AttendanceRecords.HalfDay, EmployeeSalaryInformation.SalaryTypeID 
         FROM AttendanceRecords 
@@ -1569,53 +1658,57 @@ Public Class DashBoardForm
                 End If
             End If
         Next
+
         If SalaryType = 1 Then
             BasicPay = WorkHours * WorkDays * Rate
-            GrossPay = BasicPay + HolidayPay
+            GrossPay = TotalHours * Rate + HolidayPay
 
-            TardinessAmount = (HalfDay + Late + UnderTime) * Rate
+            Absence = WorkDays - TotalWorkDays
+            TardinessAmount = (HalfDay + Late + UnderTime + Absence * WorkHours) * Rate
             SSS = GetSSSDeduction(GrossPay, FixedRate)
             PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
-            TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
+            TaxableIncome = GrossPay - (SSS + PhilHealth + PagIbig)
             Tax = GetTaxDeduction(TaxableIncome, FixedRate)
             TotalDeductions = TardinessAmount + SSS + PhilHealth + PagIbig + Tax
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime + (Absence * WorkHours), OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
         ElseIf SalaryType = 2 Then
             BasicPay = WorkDays * Rate
-            GrossPay = BasicPay + OTPay + HolidayPay
+            GrossPay = TotalHours * (Rate / WorkHours) + OTPay + HolidayPay
             'NetPay = (TotalHours - Late + UnderTime) * (Rate / WorkHours) + OTPay + HolidayPay
 
-            TardinessAmount = (HalfDay + Late + UnderTime) * (Rate / WorkHours)
+            Absence = WorkDays - TotalWorkDays
+            TardinessAmount = (HalfDay + Late + UnderTime + Absence * WorkHours) * (Rate / WorkHours)
             SSS = GetSSSDeduction(GrossPay, FixedRate)
             PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
-            TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
+            TaxableIncome = GrossPay - (SSS + PhilHealth + PagIbig)
             Tax = GetTaxDeduction(TaxableIncome, FixedRate)
             TotalDeductions = TardinessAmount + SSS + PhilHealth + PagIbig + Tax
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
-        Else
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime + (Absence * WorkHours), OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+        ElseIf SalaryType = 3 Then
             BasicPay = Rate / FixedRate
-            GrossPay = BasicPay + OTPay + HolidayPay
+            GrossPay = TotalHours * (Rate / WorkDays / WorkHours / FixedRate) + OTPay + HolidayPay
             'NetPay = Rate / FixedRate / WorkDays / WorkHours * TotalHours + OTPay + HolidayPay
 
-            TardinessAmount = (HalfDay + Late + UnderTime) * Rate / FixedRate
+            Absence = WorkDays - TotalWorkDays
+            TardinessAmount = (HalfDay + Late + UnderTime + Absence * WorkHours) * Rate / WorkDays / WorkHours / FixedRate
             SSS = GetSSSDeduction(GrossPay, FixedRate)
             PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
-            TaxableIncome = GrossPay - (TardinessAmount + SSS + PhilHealth + PagIbig)
+            TaxableIncome = GrossPay - (SSS + PhilHealth + PagIbig)
             Tax = GetTaxDeduction(TaxableIncome, FixedRate)
             TotalDeductions = TardinessAmount + SSS + PhilHealth + PagIbig + Tax
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime, OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,###.00"), HalfDay + Late + UnderTime + (Absence * WorkHours), OT.ToString("##,###.00"), OTPay.ToString("##,###.00"), HolidayInstance, HolidayPay.ToString("##,###.00"), GrossPay.ToString("##,###.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,###.00"), PhilHealth.ToString("##,###.00"), PagIbig.ToString("##,###.00"), TaxableIncome.ToString("##,###.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,###.00"), NetPay.ToString("##,###.00"))
         End If
     End Sub
 
@@ -1630,6 +1723,10 @@ Public Class DashBoardForm
     Public PagIbigRangeFrom As New List(Of Double)
     Public PagIbigRangeTo As New List(Of Double)
     Public PagIbigDeductions As New List(Of Double)
+
+    Public PhilHealthRangeFrom As New List(Of Double)
+    Public PhilHealthRangeTo As New List(Of Double)
+    Public PhilHealthDeductions As New List(Of Double)
 
     Public TaxRangeFrom As New List(Of Double)
     Public TaxRangeTo As New List(Of Double)
@@ -1650,7 +1747,7 @@ Public Class DashBoardForm
     Public Function GetPagIbigDeduction(GrossPay As Double, FixedRate As Double) As Double
         For i = 0 To PagIbigDeductions.Count - 1
             If GrossPay * FixedRate >= PagIbigRangeFrom.Item(i) And GrossPay * FixedRate <= PagIbigRangeTo.Item(i) Then
-                Return GrossPay * PagIbigDeductions.Item(i) / FixedRate
+                Return GrossPay * PagIbigDeductions.Item(i) / FixedRate * 2
             Else
                 Return PagIbigDeductions.Last / FixedRate
             End If
@@ -1660,9 +1757,17 @@ Public Class DashBoardForm
     End Function
 
     Public Function GetPhilHealthDeduction(GrossPay As Double, FixedRate As Double) As Double
-        Dim PH As Double = GetPhilHealth()
+        If GrossPay * FixedRate >= PhilHealthRangeFrom.Item(0) And GrossPay * FixedRate <= PhilHealthRangeTo.Item(0) Then
+            Return PhilHealthDeductions.Item(0) / FixedRate / 2
+        ElseIf GrossPay * FixedRate >= PhilHealthRangeFrom.Last Then
+            Return PhilHealthDeductions.Last / FixedRate / 2
+        ElseIf GrossPay * FixedRate >= PhilHealthRangeFrom.Item(1) And GrossPay * FixedRate <= PhilHealthRangeTo.Item(1) Then
+            Return GrossPay * PhilHealthDeductions.Item(1) / FixedRate
+        End If
 
-        Return GrossPay * PH / FixedRate
+        Return Nothing
+
+        'Return GrossPay * PH / FixedRate
     End Function
 
     Public Function GetSSSDeduction(GrossPay As Double, FixedRate As Double) As Double
@@ -1718,16 +1823,22 @@ Public Class DashBoardForm
         Next
     End Sub
 
-    Public Function GetPhilHealth() As Double
+    Public Sub GetPhilHealth()
+        PhilHealthRangeFrom.Clear()
+        PhilHealthRangeTo.Clear()
+        PhilHealthDeductions.Clear()
+
         Dim query = "SELECT * FROM PhilHealthDeductions"
 
         Prepare(query)
         ExecutePrepare()
 
-        Dim row As DataRow = DataAsTable.Rows(0)
-
-        Return row("Deduction")
-    End Function
+        For Each row As DataRow In DataAsTable.Rows
+            PhilHealthRangeFrom.Add(row("RangeFrom"))
+            PhilHealthRangeTo.Add(row("RangeTo"))
+            PhilHealthDeductions.Add(row("Deduction"))
+        Next
+    End Sub
 
     Public Sub GetSSS()
         SSSRangeFrom.Clear()
@@ -1813,44 +1924,6 @@ Public Class DashBoardForm
         EmployeeListAddForm.Show(Me)
     End Sub
 
-    Public Sub RefreshDetails()
-        Dim TotalEmp As Integer
-        Dim WorkingEmp As Integer
-        Dim NonWorkingEmp As Integer
-
-        Dim query = "SELECT StatusID FROM Employees"
-
-        Prepare(query)
-        ExecutePrepare()
-
-        If Count > 0 Then
-            For Each row As DataRow In DataAsTable.Rows
-                If row("StatusID") > 0 Then
-                    TotalEmp += 1
-                End If
-
-                If row("StatusID") = 1 Then
-                    WorkingEmp += 1
-                End If
-
-                If row("StatusID") = 2 Then
-                    NonWorkingEmp += 1
-                End If
-            Next
-        End If
-
-        ELTotalLabel.Text = TotalEmp
-        ELWorkingLabel.Text = WorkingEmp
-        ELNWorkingLabel.Text = NonWorkingEmp
-
-        Try
-            RefreshTable()
-            Me.EmployeesDataGridView.Sort(Me.EmployeesDataGridView.Columns(3), ListSortDirection.Descending)
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
     Public Sub DisableButton()
         EmployeesDataGridView.CurrentCell = Nothing
         EmployeeListEditButton.BackgroundImage = HRM1.My.Resources.Resources.edit_disabled
@@ -1902,27 +1975,109 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub EmployeeListUpdateButton_Click(sender As Object, e As EventArgs) Handles EmployeeListUpdateButton.Click
-        RefreshDetails()
+        LoadEmployees()
         DisableButton()
     End Sub
 
     Private Sub EmployeeNameSearchBoxTextBox_TextChanged(sender As Object, e As EventArgs) Handles EmployeeNameSearchBoxTextBox.TextChanged
-        Dim Name As String = EmployeeNameSearchBoxTextBox.Text
+        LoadEmployees()
+    End Sub
 
-        Dim query = "SELECT Employees.ID, Employees.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
-        Status.Status as 'StatusID', Department.Department AS 'DepartmentID', Employees.DateHired, Employees.Age, Employees.Address, Employees.SSSNo, Employees.PhilHealthNo, 
-        Employees.PagibigNo, Employees.TIN, Employees.ContactNumber, Employees.EmailAddress FROM Employees 
-        INNER JOIN Department 
-        ON Employees.DepartmentID = Department.ID 
-        INNER JOIN Status 
-        ON Employees.StatusID = Status.ID
-        WHERE FirstName LIKE @Name OR LastName LIKE @Name OR MiddleName LIKE @Name;"
+    Public Sub PopulateEmployeeDept()
+        Dim query = "SELECT * FROM Department"
 
         Prepare(query)
-        AddParam("@Name", "%" + Name + "%")
+        ExecutePrepare()
+
+        If Count > 0 Then
+            EmployeeDepartmentComboBox.DisplayMember = "Department"
+            EmployeeDepartmentComboBox.DataSource = DataAsTable
+            EmployeeDepartmentComboBox.SelectedIndex = 0
+            EmployeeDepartmentComboBox.MaxDropDownItems = 5
+        End If
+    End Sub
+
+    Public Sub PopulateEmployeeStatus()
+        Dim query = "SELECT * FROM Status"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            EmployeeStatusComboBox.DisplayMember = "Status"
+            EmployeeStatusComboBox.DataSource = DataAsTable
+            EmployeeStatusComboBox.SelectedIndex = 0
+            EmployeeStatusComboBox.MaxDropDownItems = 5
+        End If
+    End Sub
+
+    Public Sub LoadEmployees()
+        Dim NameSearch As String
+        Dim Filterquery As String
+        Dim Statusquery As String
+
+        If EmployeeNameSearchBoxTextBox.Text <> "" Then
+            If EmployeeDepartmentComboBox.Enabled = True Then
+                NameSearch = " AND CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @EmployeeName"
+            Else
+                NameSearch = " WHERE CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) LIKE @EmployeeName"
+            End If
+        Else
+            NameSearch = ""
+        End If
+
+        If EmployeeDepartmentComboBox.Enabled = True Then
+            Filterquery = " WHERE Department.Department LIKE @Department"
+        Else
+            Filterquery = ""
+        End If
+
+        If EmployeeStatusComboBox.Enabled = True Then
+            Statusquery = " AND Status.Status LIKE @Status"
+        Else
+            Statusquery = ""
+        End If
+
+        Dim query = "SELECT Employees.ID, Employees.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
+        Status.Status as 'StatusID', Department.Department AS 'DepartmentID', Employees.DateHired, Employees.Age, Employees.Address, Employees.ContactNumber, Employees.EmailAddress, Employees.SSSNo, Employees.PhilHealthNo, Employees.PagibigNo, 
+        Employees.TIN, Employees.Photo FROM Employees 
+        INNER JOIN Department 
+        ON Employees.DepartmentID = Department.ID 
+        INNER JOIN Status  
+        ON Employees.StatusID = Status.ID" & NameSearch & Filterquery & Statusquery
+
+        Prepare(query)
+        If EmployeeNameSearchBoxTextBox.Text <> "" Then
+            AddParam("@EmployeeName", "%" + EmployeeNameSearchBoxTextBox.Text + "%")
+        End If
+
+        If EmployeeDepartmentComboBox.Enabled = True Then
+            AddParam("@Department", EmployeeDepartmentComboBox.Text)
+        End If
+        AddParam("@Status", EmployeeStatusComboBox.Text)
         ExecutePrepare()
 
         EmployeesDataGridView.DataSource = DataAsTable.DefaultView
+    End Sub
+
+    Private Sub EmployeeStatusComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles EmployeeStatusComboBox.SelectedIndexChanged
+        LoadEmployees()
+    End Sub
+
+    Private Sub EmployeeDepartmentComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles EmployeeDepartmentComboBox.SelectedIndexChanged
+        LoadEmployees()
+    End Sub
+
+    Private Sub EmployeeAllCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles EmployeeAllCheckBox.CheckedChanged
+        If EmployeeAllCheckBox.CheckState = CheckState.Checked Then
+            EmployeeDepartmentComboBox.Enabled = False
+            EmployeeStatusComboBox.Enabled = False
+            LoadEmployees()
+        Else
+            EmployeeDepartmentComboBox.Enabled = True
+            EmployeeStatusComboBox.Enabled = True
+            LoadEmployees()
+        End If
     End Sub
 
     Private Sub EmployeeNameSearchBoxTextBox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles EmployeeNameSearchBoxTextBox.KeyPress
@@ -1937,21 +2092,6 @@ Public Class DashBoardForm
         Else
             e.Handled = False
         End If
-    End Sub
-    Public Sub RefreshTable()
-        Dim query = "SELECT Employees.ID, Employees.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
-        Status.Status as 'StatusID', Department.Department AS 'DepartmentID', Employees.DateHired, Employees.Age, Employees.Address, Employees.ContactNumber, Employees.EmailAddress, Employees.SSSNo, Employees.PhilHealthNo, Employees.PagibigNo, 
-        Employees.TIN, Employees.Photo FROM Employees 
-        INNER JOIN Department 
-        ON Employees.DepartmentID = Department.ID 
-        INNER JOIN Status  
-        ON Employees.StatusID = Status.ID"
-
-        Prepare(query)
-        ExecutePrepare()
-
-        EmployeesDataGridView.DataSource = DataAsTable.DefaultView
-        Me.EmployeesDataGridView.Sort(Me.EmployeesDataGridView.Columns(3), ListSortDirection.Descending)
     End Sub
 
     Private Sub AttendanceTodayRefreshButton_Click(sender As Object, e As EventArgs) Handles AttendanceTodayRefreshButton.Click
@@ -2020,102 +2160,106 @@ Public Class DashBoardForm
 
     Private Sub ESSaveButton_Click(sender As Object, e As EventArgs) Handles ESSaveButton.Click
         If Not CheckIfGenerated() Then
-            Try
-                ResetValues()
+            If ESSalaryDataGridView.Rows.Count > 0 Then
+                Try
+                    ResetValues()
 
-                Dim DayFrom As String
-                Dim DayTo As String
+                    Dim DayFrom As String
+                    Dim DayTo As String
 
-                If ESPayrollTypeComboBox.SelectedIndex = 0 Then
-                    If ESCutOffComboBox.SelectedIndex = 0 Then
-                        DayFrom = "1"
-                        DayTo = "15"
+                    If ESPayrollTypeComboBox.SelectedIndex = 0 Then
+                        If ESCutOffComboBox.SelectedIndex = 0 Then
+                            DayFrom = "1"
+                            DayTo = "15"
+                        Else
+                            DayFrom = "16"
+                            DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
+                        End If
                     Else
-                        DayFrom = "16"
+                        DayFrom = "1"
                         DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
                     End If
-                Else
-                    DayFrom = "1"
-                    DayTo = Date.DaysInMonth(ESYearDateTimePicker.Value.Year, ESMonthDateTimePicker.Value.Month)
-                End If
 
-                Dim DateFrom As Date
-                Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom & "  00:00:00", DateFrom)
-                Dim DateTo As Date
-                Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo & "  00:00:00", DateTo)
+                    Dim DateFrom As Date
+                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom & "  00:00:00", DateFrom)
+                    Dim DateTo As Date
+                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo & "  00:00:00", DateTo)
 
-                Connection.Open()
+                    Connection.Open()
 
-                Dim query = "INSERT INTO EmployeeSalary (EmployeeID, DateFrom, DateTo, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay, Tardiness, OTHours, OTPay, 
+                    Dim query = "INSERT INTO EmployeeSalary (EmployeeID, DateFrom, DateTo, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay, Tardiness, OTHours, OTPay, 
                 Holiday, HolidayPay, GrossPay, Deduction_Tardiness, SSS, PHIC, HDMF, TaxableIncome, Tax, TotalDeductions, NetPay)
                 VALUES (@EmployeeID, @DateFrom, @DateTo, @PayrollType, @CutOff, @WorkDays, @TotalWorkDays, @TotalHours, @BasicPay, @Tardiness, @OTHours, @OTPay, 
                 @Holiday, @HolidayPay, @GrossPay, @Deduction_Tardiness, @SSS, @PHIC, @HDMF, @TaxableIncome, @Tax, @TotalDeductions, @NetPay)"
 
-                Command = New SqlCommand(query, Connection)
+                    Command = New SqlCommand(query, Connection)
 
-                Command.Parameters.Add("@EmployeeID", SqlDbType.BigInt)
-                Command.Parameters.Add("@DateFrom", SqlDbType.Date)
-                Command.Parameters.Add("@DateTo", SqlDbType.Date)
-                Command.Parameters.Add("@PayrollType", SqlDbType.VarChar)
-                Command.Parameters.Add("@CutOff", SqlDbType.VarChar)
-                Command.Parameters.Add("@WorkDays", SqlDbType.Float)
-                Command.Parameters.Add("@TotalWorkDays", SqlDbType.Float)
-                Command.Parameters.Add("@TotalHours", SqlDbType.Float)
-                Command.Parameters.Add("@BasicPay", SqlDbType.Float)
-                Command.Parameters.Add("@Tardiness", SqlDbType.Float)
-                Command.Parameters.Add("@OTHours", SqlDbType.Float)
-                Command.Parameters.Add("@OTPay", SqlDbType.Float)
-                Command.Parameters.Add("@Holiday", SqlDbType.Float)
-                Command.Parameters.Add("@HolidayPay", SqlDbType.Float)
-                Command.Parameters.Add("@GrossPay", SqlDbType.Float)
-                Command.Parameters.Add("@Deduction_Tardiness", SqlDbType.Float)
-                Command.Parameters.Add("@SSS", SqlDbType.Float)
-                Command.Parameters.Add("@PHIC", SqlDbType.Float)
-                Command.Parameters.Add("@HDMF", SqlDbType.Float)
-                Command.Parameters.Add("@TaxableIncome", SqlDbType.Float)
-                Command.Parameters.Add("@Tax", SqlDbType.Float)
-                Command.Parameters.Add("@TotalDeductions", SqlDbType.Float)
-                Command.Parameters.Add("@NetPay", SqlDbType.Float)
+                    Command.Parameters.Add("@EmployeeID", SqlDbType.BigInt)
+                    Command.Parameters.Add("@DateFrom", SqlDbType.Date)
+                    Command.Parameters.Add("@DateTo", SqlDbType.Date)
+                    Command.Parameters.Add("@PayrollType", SqlDbType.VarChar)
+                    Command.Parameters.Add("@CutOff", SqlDbType.VarChar)
+                    Command.Parameters.Add("@WorkDays", SqlDbType.Float)
+                    Command.Parameters.Add("@TotalWorkDays", SqlDbType.Float)
+                    Command.Parameters.Add("@TotalHours", SqlDbType.Float)
+                    Command.Parameters.Add("@BasicPay", SqlDbType.Float)
+                    Command.Parameters.Add("@Tardiness", SqlDbType.Float)
+                    Command.Parameters.Add("@OTHours", SqlDbType.Float)
+                    Command.Parameters.Add("@OTPay", SqlDbType.Float)
+                    Command.Parameters.Add("@Holiday", SqlDbType.Float)
+                    Command.Parameters.Add("@HolidayPay", SqlDbType.Float)
+                    Command.Parameters.Add("@GrossPay", SqlDbType.Float)
+                    Command.Parameters.Add("@Deduction_Tardiness", SqlDbType.Float)
+                    Command.Parameters.Add("@SSS", SqlDbType.Float)
+                    Command.Parameters.Add("@PHIC", SqlDbType.Float)
+                    Command.Parameters.Add("@HDMF", SqlDbType.Float)
+                    Command.Parameters.Add("@TaxableIncome", SqlDbType.Float)
+                    Command.Parameters.Add("@Tax", SqlDbType.Float)
+                    Command.Parameters.Add("@TotalDeductions", SqlDbType.Float)
+                    Command.Parameters.Add("@NetPay", SqlDbType.Float)
 
-                For i = 0 To ESSalaryDataGridView.Rows.Count - 1
-                    Command.Parameters(0).Value = ESSalaryDataGridView.Rows(i).Cells(0).Value
-                    Command.Parameters(1).Value = DateFrom
-                    Command.Parameters(2).Value = DateTo
-                    Command.Parameters(3).Value = ESSalaryDataGridView.Rows(i).Cells(2).Value
-                    Command.Parameters(4).Value = ESSalaryDataGridView.Rows(i).Cells(3).Value
-                    Command.Parameters(5).Value = ESSalaryDataGridView.Rows(i).Cells(4).Value
-                    Command.Parameters(6).Value = ESSalaryDataGridView.Rows(i).Cells(5).Value
-                    Command.Parameters(7).Value = ESSalaryDataGridView.Rows(i).Cells(6).Value
-                    Command.Parameters(8).Value = ESSalaryDataGridView.Rows(i).Cells(7).Value
-                    Command.Parameters(9).Value = ESSalaryDataGridView.Rows(i).Cells(8).Value
-                    Command.Parameters(10).Value = ESSalaryDataGridView.Rows(i).Cells(9).Value
-                    Command.Parameters(11).Value = ESSalaryDataGridView.Rows(i).Cells(10).Value
-                    Command.Parameters(12).Value = ESSalaryDataGridView.Rows(i).Cells(11).Value
-                    Command.Parameters(13).Value = ESSalaryDataGridView.Rows(i).Cells(12).Value
-                    Command.Parameters(14).Value = ESSalaryDataGridView.Rows(i).Cells(13).Value
-                    Command.Parameters(15).Value = ESSalaryDataGridView.Rows(i).Cells(14).Value
-                    Command.Parameters(16).Value = ESSalaryDataGridView.Rows(i).Cells(15).Value
-                    Command.Parameters(17).Value = ESSalaryDataGridView.Rows(i).Cells(16).Value
-                    Command.Parameters(18).Value = ESSalaryDataGridView.Rows(i).Cells(17).Value
-                    Command.Parameters(19).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
-                    Command.Parameters(20).Value = ESSalaryDataGridView.Rows(i).Cells(19).Value
-                    Command.Parameters(21).Value = ESSalaryDataGridView.Rows(i).Cells(20).Value
-                    Command.Parameters(22).Value = ESSalaryDataGridView.Rows(i).Cells(21).Value
-                    Command.ExecuteNonQuery()
-                Next
+                    For i = 0 To ESSalaryDataGridView.Rows.Count - 1
+                        Command.Parameters(0).Value = ESSalaryDataGridView.Rows(i).Cells(0).Value
+                        Command.Parameters(1).Value = DateFrom
+                        Command.Parameters(2).Value = DateTo
+                        Command.Parameters(3).Value = ESSalaryDataGridView.Rows(i).Cells(2).Value
+                        Command.Parameters(4).Value = ESSalaryDataGridView.Rows(i).Cells(3).Value
+                        Command.Parameters(5).Value = ESSalaryDataGridView.Rows(i).Cells(4).Value
+                        Command.Parameters(6).Value = ESSalaryDataGridView.Rows(i).Cells(5).Value
+                        Command.Parameters(7).Value = ESSalaryDataGridView.Rows(i).Cells(6).Value
+                        Command.Parameters(8).Value = ESSalaryDataGridView.Rows(i).Cells(7).Value
+                        Command.Parameters(9).Value = ESSalaryDataGridView.Rows(i).Cells(8).Value
+                        Command.Parameters(10).Value = ESSalaryDataGridView.Rows(i).Cells(9).Value
+                        Command.Parameters(11).Value = ESSalaryDataGridView.Rows(i).Cells(10).Value
+                        Command.Parameters(12).Value = ESSalaryDataGridView.Rows(i).Cells(11).Value
+                        Command.Parameters(13).Value = ESSalaryDataGridView.Rows(i).Cells(12).Value
+                        Command.Parameters(14).Value = ESSalaryDataGridView.Rows(i).Cells(13).Value
+                        Command.Parameters(15).Value = ESSalaryDataGridView.Rows(i).Cells(14).Value
+                        Command.Parameters(16).Value = ESSalaryDataGridView.Rows(i).Cells(15).Value
+                        Command.Parameters(17).Value = ESSalaryDataGridView.Rows(i).Cells(16).Value
+                        Command.Parameters(18).Value = ESSalaryDataGridView.Rows(i).Cells(17).Value
+                        Command.Parameters(19).Value = ESSalaryDataGridView.Rows(i).Cells(18).Value
+                        Command.Parameters(20).Value = ESSalaryDataGridView.Rows(i).Cells(19).Value
+                        Command.Parameters(21).Value = ESSalaryDataGridView.Rows(i).Cells(20).Value
+                        Command.Parameters(22).Value = ESSalaryDataGridView.Rows(i).Cells(21).Value
+                        Command.ExecuteNonQuery()
+                    Next
 
-                Parameters.Clear()
+                    Parameters.Clear()
 
-                Adapter = New SqlDataAdapter(Command)
-                Data = New DataSet
+                    Adapter = New SqlDataAdapter(Command)
+                    Data = New DataSet
 
-                Connection.Close()
-                MsgBox("Saved successfully.")
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
-                Connection.Close()
-            End Try
+                    Connection.Close()
+                    MsgBox("Saved successfully.")
+                Catch ex As Exception
+                    MsgBox(ex.Message)
+                    MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                    Connection.Close()
+                End Try
+            Else
+                MsgBox("Table is empty. Can't save payroll.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
+            End If
         Else
             MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
         End If
@@ -2341,5 +2485,15 @@ Public Class DashBoardForm
 
     Private Sub ESYearDateTimePicker_ValueChanged(sender As Object, e As EventArgs) Handles ESYearDateTimePicker.ValueChanged
         ESSaveButton.Enabled = False
+    End Sub
+
+    Private Sub ESISalaryTypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ESISalaryTypeComboBox.SelectedIndexChanged
+        If ESISalaryTypeComboBox.Text = "Teacher" Then
+            ESIRateLabel.Text = "/ Hour"
+        ElseIf ESISalaryTypeComboBox.Text = "Office" Then
+            ESIRateLabel.Text = "/ Day"
+        Else
+            ESIRateLabel.Text = "/ Month"
+        End If
     End Sub
 End Class

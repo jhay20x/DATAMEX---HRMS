@@ -74,9 +74,10 @@ Public Class ProjectAddForm
                             End If
                         Next
 
-                        DashBoardForm.LoadProjects(DashBoardForm.ProjectNameSearchTextBox.Text)
+                        DashBoardForm.LoadProjects()
                         DashBoardForm.LoadProjectDetails()
                         DashBoardForm.DisableButton()
+                        isDone = True
                         MsgBox("A new project has been successfully added.", MsgBoxStyle.OkOnly + MsgBoxStyle.Question, "Alert")
                     End If
                 End If

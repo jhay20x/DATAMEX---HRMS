@@ -24,7 +24,7 @@ Public Class UsersForm
             e.Cancel = False
             DashBoardForm.Enabled = True
             DashBoardForm.DisableButton()
-            DashBoardForm.RefreshDetails()
+            DashBoardForm.LoadEmployees()
             DashBoardForm.LRRefreshButton.PerformClick()
             DashBoardForm.Show()
         Else
@@ -33,7 +33,7 @@ Public Class UsersForm
             Else
                 DashBoardForm.Enabled = True
                 DashBoardForm.DisableButton()
-                DashBoardForm.RefreshDetails()
+                DashBoardForm.LoadEmployees()
                 DashBoardForm.LRRefreshButton.PerformClick()
                 DashBoardForm.Show()
             End If

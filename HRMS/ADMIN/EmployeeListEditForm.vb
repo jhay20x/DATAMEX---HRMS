@@ -137,7 +137,7 @@ Public Class EmployeeListEditForm
                 AddParam("@Photo", GetPhotoByte())
                 ExecutePrepare()
 
-                DashBoardForm.RefreshDetails()
+                DashBoardForm.LoadEmployees()
                 DashBoardForm.DisableButton()
                 MsgBox("Employee information successfully updated.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                 ELELastNameTextBox.Select()
@@ -179,7 +179,7 @@ Public Class EmployeeListEditForm
             e.Cancel = False
             DashBoardForm.Enabled = True
             DashBoardForm.Show()
-            DashBoardForm.RefreshDetails()
+            DashBoardForm.LoadEmployees()
             DashBoardForm.DisableButton()
             EmpIdEdit = ""
         Else
@@ -187,7 +187,7 @@ Public Class EmployeeListEditForm
                 e.Cancel = False
                 DashBoardForm.Enabled = True
                 DashBoardForm.Show()
-                DashBoardForm.RefreshDetails()
+                DashBoardForm.LoadEmployees()
                 DashBoardForm.DisableButton()
                 EmpIdEdit = ""
             Else
@@ -199,7 +199,7 @@ Public Class EmployeeListEditForm
         '    e.Cancel = False
         '    DashBoardForm.Enabled = True
         '    DashBoardForm.Show()
-        '    DashBoardForm.RefreshDetails()
+        '    DashBoardForm.LoadEmployees()
         '    DashBoardForm.DisableButton()
         '    EmpIdEdit = ""
         'Else

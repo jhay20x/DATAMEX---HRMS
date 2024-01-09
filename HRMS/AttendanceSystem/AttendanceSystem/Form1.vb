@@ -31,22 +31,22 @@ Public Class MainForm
     End Sub
 
     Public Sub CheckForUndertime(TimeDiff As Double)
-        Dim EmpTimeOut As Date = GetWorkHourOut()
+        Dim EmpWorkTimeOut As Date = GetWorkHourOut()
         Dim CurTime As Date = Date.Now
         Dim UndertimeVal As TimeSpan
         Dim UndertimeInHours As Double
 
-        UndertimeVal = EmpTimeOut - CurTime
+        UndertimeVal = EmpWorkTimeOut - CurTime
 
         UndertimeInHours = Math.Round(UndertimeVal.TotalHours, 2)
 
-        If CurTime < EmpTimeOut Then
+        If CurTime < EmpWorkTimeOut Then
             UpdateRecord(TimeDiff, UndertimeInHours, Nothing)
-        ElseIf CurTime > EmpTimeOut Then
+        ElseIf CurTime > EmpWorkTimeOut Then
             Dim OTVal As TimeSpan
             Dim OTInHours As Double
 
-            OTVal = CurTime - EmpTimeOut
+            OTVal = CurTime - EmpWorkTimeOut
 
             OTInHours = Math.Round(OTVal.TotalHours, 2)
 
@@ -94,20 +94,25 @@ Public Class MainForm
 
     Public Sub CheckForTimeOut(ByVal EmpID As Long)
         Dim Curdate As Date = Date.Now
-        Dim EmpTimeIn As Date = GetWorkHourIn()
+        Dim EmpTimeIn As Date = Convert.ToDateTime(GetTimeIn(EmpID).ToString).ToString("G")
+
         Dim WorkHours As TimeSpan
         Dim TimeDiff As Double
 
         WorkHours = Curdate - EmpTimeIn
 
-        TimeDiff = Math.Round(WorkHours.TotalHours, 2)
+        TimeDiff = Math.Round(WorkHours.TotalHours, 5)
+
+        MsgBox(Curdate)
+        MsgBox(EmpTimeIn)
+        MsgBox(TimeDiff)
 
         If CheckTimeout(EmpID) Then
             Me.Enabled = False
             MessageDialog.Message = "You already had a Time-out record for today."
             MessageDialog.Show(Me)
         Else
-            If TimeDiff >= 4 Then
+            If TimeDiff >= 0.08333 Then
                 CheckForUndertime(TimeDiff)
                 Me.Enabled = False
                 MessageDialog.Message = "Time-out has been successfully recorded. Goodbye Mr./Mrs./Ms. " & GetEmpName(EmpID)
@@ -120,15 +125,22 @@ Public Class MainForm
         End If
     End Sub
 
-    Public Sub UpdateRecord(ByVal TotalHours As Double, Undertime As String, OT As String)
+    Public Sub UpdateRecord(ByVal WorkHours As Double, Undertime As String, OT As String)
+        GetTotalWorkHours()
         Dim curdate As Date = Date.Today
         Dim curtime As Date = Date.Now
-        Dim Break As Integer = GetBreak()
+        Dim EmpWorkHours As Double
         Dim query = "UPDATE AttendanceRecords SET TimeOut=@TimeOut, TotalHours=@TotalHours, OT=@OT, Undertime=@Undertime WHERE EmployeeID=@EmployeeID AND AttDate=@AttDate"
+
+        If WorkHours >= TotalWorkHours + TotalBreakHours Then
+            EmpWorkHours = WorkHours - TotalBreakHours
+        Else
+            EmpWorkHours = WorkHours
+        End If
 
         Prepare(query)
         AddParam("@TimeOut", curtime)
-        AddParam("@TotalHours", TotalHours - Break)
+        AddParam("@TotalHours", Math.Round(EmpWorkHours, 2))
         If OT > 0 Then
             AddParam("@OT", OT)
         Else
@@ -142,6 +154,24 @@ Public Class MainForm
         AddParam("@EmployeeID", EmpID)
         AddParam("@AttDate", curdate)
         ExecutePrepare()
+    End Sub
+
+    Public TotalWorkHours As Double
+    Public TotalBreakHours As Double
+
+    Public Sub GetTotalWorkHours()
+        Dim query = "SELECT Total, [Break] FROM EmployeeSalaryInformation WHERE EmployeeID = @EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Dim row As DataRow = DataAsTable.Rows(0)
+
+            TotalWorkHours = row("Total")
+            TotalBreakHours = row("Break")
+        End If
     End Sub
 
     Public Function GetEmpName(ByVal EmpID As Long)

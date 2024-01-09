@@ -24,6 +24,10 @@ Partial Class EmployeeListEditForm
     Private Sub InitializeComponent()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ELEFormPanel = New System.Windows.Forms.Panel()
+        Me.ClearPhotoButton = New System.Windows.Forms.Button()
+        Me.IDPhotoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.OpenPhotoButton = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ELEAddressTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -58,15 +62,11 @@ Partial Class EmployeeListEditForm
         Me.ELEUpdateButton = New System.Windows.Forms.Button()
         Me.ELEBackButton = New System.Windows.Forms.Button()
         Me.Label33 = New System.Windows.Forms.Label()
-        Me.ClearPhotoButton = New System.Windows.Forms.Button()
-        Me.IDPhotoPictureBox = New System.Windows.Forms.PictureBox()
-        Me.OpenPhotoButton = New System.Windows.Forms.Button()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.ELEFormPanel.SuspendLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.Panel11.SuspendLayout()
-        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -119,6 +119,48 @@ Partial Class EmployeeListEditForm
         Me.ELEFormPanel.Name = "ELEFormPanel"
         Me.ELEFormPanel.Size = New System.Drawing.Size(765, 472)
         Me.ELEFormPanel.TabIndex = 8
+        '
+        'ClearPhotoButton
+        '
+        Me.ClearPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ClearPhotoButton.Location = New System.Drawing.Point(479, 372)
+        Me.ClearPhotoButton.Name = "ClearPhotoButton"
+        Me.ClearPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.ClearPhotoButton.TabIndex = 109
+        Me.ClearPhotoButton.Text = "Clear"
+        Me.ClearPhotoButton.UseVisualStyleBackColor = True
+        '
+        'IDPhotoPictureBox
+        '
+        Me.IDPhotoPictureBox.BackColor = System.Drawing.Color.Gray
+        Me.IDPhotoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.IDPhotoPictureBox.Location = New System.Drawing.Point(550, 318)
+        Me.IDPhotoPictureBox.Name = "IDPhotoPictureBox"
+        Me.IDPhotoPictureBox.Size = New System.Drawing.Size(130, 130)
+        Me.IDPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.IDPhotoPictureBox.TabIndex = 108
+        Me.IDPhotoPictureBox.TabStop = False
+        '
+        'OpenPhotoButton
+        '
+        Me.OpenPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OpenPhotoButton.Location = New System.Drawing.Point(479, 342)
+        Me.OpenPhotoButton.Name = "OpenPhotoButton"
+        Me.OpenPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.OpenPhotoButton.TabIndex = 107
+        Me.OpenPhotoButton.Text = "Open"
+        Me.OpenPhotoButton.UseVisualStyleBackColor = True
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label14.Location = New System.Drawing.Point(483, 318)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(61, 21)
+        Me.Label14.TabIndex = 106
+        Me.Label14.Tag = ""
+        Me.Label14.Text = "Picture:"
         '
         'Label3
         '
@@ -475,48 +517,6 @@ Partial Class EmployeeListEditForm
         Me.Label33.TabIndex = 0
         Me.Label33.Text = "EMPLOYEE LIST"
         '
-        'ClearPhotoButton
-        '
-        Me.ClearPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ClearPhotoButton.Location = New System.Drawing.Point(660, 344)
-        Me.ClearPhotoButton.Name = "ClearPhotoButton"
-        Me.ClearPhotoButton.Size = New System.Drawing.Size(61, 24)
-        Me.ClearPhotoButton.TabIndex = 109
-        Me.ClearPhotoButton.Text = "Clear"
-        Me.ClearPhotoButton.UseVisualStyleBackColor = True
-        '
-        'IDPhotoPictureBox
-        '
-        Me.IDPhotoPictureBox.BackColor = System.Drawing.Color.Gray
-        Me.IDPhotoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.IDPhotoPictureBox.Location = New System.Drawing.Point(550, 314)
-        Me.IDPhotoPictureBox.Name = "IDPhotoPictureBox"
-        Me.IDPhotoPictureBox.Size = New System.Drawing.Size(100, 100)
-        Me.IDPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.IDPhotoPictureBox.TabIndex = 108
-        Me.IDPhotoPictureBox.TabStop = False
-        '
-        'OpenPhotoButton
-        '
-        Me.OpenPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OpenPhotoButton.Location = New System.Drawing.Point(660, 314)
-        Me.OpenPhotoButton.Name = "OpenPhotoButton"
-        Me.OpenPhotoButton.Size = New System.Drawing.Size(61, 24)
-        Me.OpenPhotoButton.TabIndex = 107
-        Me.OpenPhotoButton.Text = "Open"
-        Me.OpenPhotoButton.UseVisualStyleBackColor = True
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label14.Location = New System.Drawing.Point(483, 318)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(61, 21)
-        Me.Label14.TabIndex = 106
-        Me.Label14.Tag = ""
-        Me.Label14.Text = "Picture:"
-        '
         'EmployeeListEditForm
         '
         Me.AcceptButton = Me.ELEUpdateButton
@@ -536,11 +536,11 @@ Partial Class EmployeeListEditForm
         Me.Panel2.ResumeLayout(False)
         Me.ELEFormPanel.ResumeLayout(False)
         Me.ELEFormPanel.PerformLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel11.ResumeLayout(False)
         Me.Panel11.PerformLayout()
-        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

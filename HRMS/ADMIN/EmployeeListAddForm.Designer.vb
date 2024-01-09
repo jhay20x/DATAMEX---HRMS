@@ -27,6 +27,10 @@ Partial Class EmployeeListAddForm
         Me.ELABackButton = New System.Windows.Forms.Button()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.ELAFormPanel = New System.Windows.Forms.Panel()
+        Me.ClearPhotoButton = New System.Windows.Forms.Button()
+        Me.IDPhotoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.OpenPhotoButton = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ELAAddressTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -55,15 +59,11 @@ Partial Class EmployeeListAddForm
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.OpenPhotoButton = New System.Windows.Forms.Button()
-        Me.IDPhotoPictureBox = New System.Windows.Forms.PictureBox()
-        Me.ClearPhotoButton = New System.Windows.Forms.Button()
         Me.Panel11.SuspendLayout()
         Me.ELAFormPanel.SuspendLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel11
@@ -148,8 +148,50 @@ Partial Class EmployeeListAddForm
         Me.ELAFormPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ELAFormPanel.Location = New System.Drawing.Point(0, 132)
         Me.ELAFormPanel.Name = "ELAFormPanel"
-        Me.ELAFormPanel.Size = New System.Drawing.Size(765, 413)
+        Me.ELAFormPanel.Size = New System.Drawing.Size(765, 440)
         Me.ELAFormPanel.TabIndex = 8
+        '
+        'ClearPhotoButton
+        '
+        Me.ClearPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ClearPhotoButton.Location = New System.Drawing.Point(474, 350)
+        Me.ClearPhotoButton.Name = "ClearPhotoButton"
+        Me.ClearPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.ClearPhotoButton.TabIndex = 105
+        Me.ClearPhotoButton.Text = "Clear"
+        Me.ClearPhotoButton.UseVisualStyleBackColor = True
+        '
+        'IDPhotoPictureBox
+        '
+        Me.IDPhotoPictureBox.BackColor = System.Drawing.Color.Gray
+        Me.IDPhotoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.IDPhotoPictureBox.Location = New System.Drawing.Point(545, 292)
+        Me.IDPhotoPictureBox.Name = "IDPhotoPictureBox"
+        Me.IDPhotoPictureBox.Size = New System.Drawing.Size(130, 130)
+        Me.IDPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.IDPhotoPictureBox.TabIndex = 104
+        Me.IDPhotoPictureBox.TabStop = False
+        '
+        'OpenPhotoButton
+        '
+        Me.OpenPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OpenPhotoButton.Location = New System.Drawing.Point(474, 320)
+        Me.OpenPhotoButton.Name = "OpenPhotoButton"
+        Me.OpenPhotoButton.Size = New System.Drawing.Size(61, 24)
+        Me.OpenPhotoButton.TabIndex = 103
+        Me.OpenPhotoButton.Text = "Open"
+        Me.OpenPhotoButton.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.Label13.Location = New System.Drawing.Point(478, 296)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(61, 21)
+        Me.Label13.TabIndex = 43
+        Me.Label13.Tag = ""
+        Me.Label13.Text = "Picture:"
         '
         'Label3
         '
@@ -433,50 +475,8 @@ Partial Class EmployeeListAddForm
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(765, 545)
+        Me.Panel2.Size = New System.Drawing.Size(765, 572)
         Me.Panel2.TabIndex = 11
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.Label13.Location = New System.Drawing.Point(478, 296)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(61, 21)
-        Me.Label13.TabIndex = 43
-        Me.Label13.Tag = ""
-        Me.Label13.Text = "Picture:"
-        '
-        'OpenPhotoButton
-        '
-        Me.OpenPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OpenPhotoButton.Location = New System.Drawing.Point(655, 292)
-        Me.OpenPhotoButton.Name = "OpenPhotoButton"
-        Me.OpenPhotoButton.Size = New System.Drawing.Size(61, 24)
-        Me.OpenPhotoButton.TabIndex = 103
-        Me.OpenPhotoButton.Text = "Open"
-        Me.OpenPhotoButton.UseVisualStyleBackColor = True
-        '
-        'IDPhotoPictureBox
-        '
-        Me.IDPhotoPictureBox.BackColor = System.Drawing.Color.Gray
-        Me.IDPhotoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.IDPhotoPictureBox.Location = New System.Drawing.Point(545, 292)
-        Me.IDPhotoPictureBox.Name = "IDPhotoPictureBox"
-        Me.IDPhotoPictureBox.Size = New System.Drawing.Size(100, 100)
-        Me.IDPhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.IDPhotoPictureBox.TabIndex = 104
-        Me.IDPhotoPictureBox.TabStop = False
-        '
-        'ClearPhotoButton
-        '
-        Me.ClearPhotoButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ClearPhotoButton.Location = New System.Drawing.Point(655, 322)
-        Me.ClearPhotoButton.Name = "ClearPhotoButton"
-        Me.ClearPhotoButton.Size = New System.Drawing.Size(61, 24)
-        Me.ClearPhotoButton.TabIndex = 105
-        Me.ClearPhotoButton.Text = "Clear"
-        Me.ClearPhotoButton.UseVisualStyleBackColor = True
         '
         'EmployeeListAddForm
         '
@@ -484,12 +484,12 @@ Partial Class EmployeeListAddForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ELABackButton
-        Me.ClientSize = New System.Drawing.Size(765, 545)
+        Me.ClientSize = New System.Drawing.Size(765, 572)
         Me.Controls.Add(Me.Panel2)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(781, 584)
+        Me.MaximumSize = New System.Drawing.Size(781, 611)
         Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(781, 584)
+        Me.MinimumSize = New System.Drawing.Size(781, 611)
         Me.Name = "EmployeeListAddForm"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -498,10 +498,10 @@ Partial Class EmployeeListAddForm
         Me.Panel11.PerformLayout()
         Me.ELAFormPanel.ResumeLayout(False)
         Me.ELAFormPanel.PerformLayout()
+        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        CType(Me.IDPhotoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
