@@ -222,9 +222,11 @@
   <ItemGroup>
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeCredentialsForm.resx">
       <DependentUpon>EmployeeCredentialsForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeDashBoard.resx">
       <DependentUpon>EmployeeDashBoard.vb</DependentUpon>
