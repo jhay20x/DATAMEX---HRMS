@@ -103,10 +103,6 @@ Public Class MainForm
 
         TimeDiff = Math.Round(WorkHours.TotalHours, 5)
 
-        MsgBox(Curdate)
-        MsgBox(EmpTimeIn)
-        MsgBox(TimeDiff)
-
         If CheckTimeout(EmpID) Then
             Me.Enabled = False
             MessageDialog.Message = "You already had a Time-out record for today."

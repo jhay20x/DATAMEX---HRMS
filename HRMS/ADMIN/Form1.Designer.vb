@@ -119,7 +119,6 @@ Partial Class Login
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.Size = New System.Drawing.Size(196, 39)
         Me.PasswordTextBox.TabIndex = 1
-        Me.PasswordTextBox.Text = "Jhayjay"
         Me.PasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.PasswordTextBox.UseSystemPasswordChar = True
         '
@@ -145,7 +144,6 @@ Partial Class Login
         Me.UsernameTextBox.Name = "UsernameTextBox"
         Me.UsernameTextBox.Size = New System.Drawing.Size(196, 39)
         Me.UsernameTextBox.TabIndex = 0
-        Me.UsernameTextBox.Text = "20231111103"
         Me.UsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label1
