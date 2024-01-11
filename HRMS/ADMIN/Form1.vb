@@ -32,6 +32,7 @@
                 EmployeeDashBoard.WelcomeText = "WELCOME!" & Environment.NewLine & row("EmployeeName")
                 EmployeeDashBoard.EmpName = row("EmployeeName")
                 EmployeeDashBoard.EmpID = row("EmployeeID")
+                EmployeeDashBoard.Password = row("Password")
                 EmployeeDashBoard.Show()
                 Me.Close()
                 'MsgBox("Employee accounts are prohibited in accessing the system. Please use the employee portal instead.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")

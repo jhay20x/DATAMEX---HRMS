@@ -82,12 +82,13 @@ Public Class EmployeeListAddForm
                     Dim Datehired As String = Year & "/" & Month & "/" & Day
                     Dim Status As Integer = 1
                     Dim Department As Integer = ELADeptComboBox.SelectedIndex + 1
+                    Dim NewEmpID As String = (Year & Month & Day) & (LastEmpID + 1)
                     Dim query = "INSERT INTO Employees (EmployeeID, LastName, FirstName, MiddleName, StatusID, DepartmentID, 
-                    DateHired, Age, ContactNumber, EmailAddress, Address, SSSNo, PhilHealthNo, PagIbigNo, TIN, Photo) VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
-                    @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN, @Photo);"
+                    DateHired, Age, ContactNumber, EmailAddress, Address, Username, Password, SSSNo, PhilHealthNo, PagIbigNo, TIN, Photo) VALUES (@EmployeeID, @LastName, @FirstName, @MiddleName, @StatusID, @DepartmentID, 
+                    @DateHired, @Age, @ContactNumber, @EmailAddress, @Address, @Username, @Password, @SSSNo, @PhilHealthNo, @PagIbigNo, @TIN, @Photo);"
 
                     Prepare(query)
-                    AddParam("@EmployeeID", (Year & Month & Day) & (LastEmpID + 1))
+                    AddParam("@EmployeeID", NewEmpID)
                     AddParam("@LastName", ELALastNameTextBox.Text)
                     AddParam("@FirstName", ELAFirstNameTextBox.Text)
                     AddParam("@MiddleName", ELAMiddleNameTextBox.Text)
@@ -96,6 +97,8 @@ Public Class EmployeeListAddForm
                     AddParam("@DateHired", Datehired)
                     AddParam("@Age", ELAAgeTextBox.Text)
                     AddParam("@Address", ELAAddressTextBox.Text)
+                    AddParam("@Username", NewEmpID)
+                    AddParam("@Password", NewEmpID)
                     AddParam("@ContactNumber", ELAContTextBox.Text)
                     AddParam("@EmailAddress", ELAEmailTextBox.Text)
                     AddParam("@SSSNo", ELASSSTextBox.Text)

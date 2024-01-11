@@ -7,6 +7,8 @@ Public Class EmployeeDashBoard
     Public WelcomeText As String
     Public EmpID As String
     Public EmpName As String
+    Public Password As String
+
 
     Private Sub MenuHide6Button_Click(sender As Object, e As EventArgs) Handles MenuHide6Button.Click
         Try
@@ -28,6 +30,15 @@ Public Class EmployeeDashBoard
         LeaveLabel.Text = GetLeaveBalance()
         LoadPendingLeaveRequest()
         GetUpcomingProject()
+        CheckPassword(Password, EmpID)
+    End Sub
+
+    Public Sub CheckPassword(Password As String, EmpID As String)
+        If Password = EmpID Then
+            If MsgBox("You still haven't changed your default password. Do you want to change it now?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
+                btnPersonalInfo.PerformClick()
+            End If
+        End If
     End Sub
 
     Public Sub GetUpcomingProject()
@@ -329,62 +340,92 @@ Public Class EmployeeDashBoard
         LeaveBalanceLabel.Text = GetLeaveBalance()
     End Sub
 
+    Public Function CheckIfPending() As Boolean
+        Dim query = "SELECT CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' 
+        THEN '' ELSE Employees.MiddleName END) AS EmployeeName, LeaveType.Type, LeaveRequest.DateFiled, LeaveRequest.DateFrom, LeaveRequest.DateTo,
+		LeaveRequest.Duration, LeaveRequest.Reason, LeaveStatus.Status, LeaveRequest.VerdictDate
+        FROM LeaveRequest
+        LEFT OUTER JOIN Employees
+        ON LeaveRequest.EmployeeID = Employees.EmployeeID
+        LEFT OUTER JOIN LeaveType
+        ON LeaveRequest.LeaveTypeID = LeaveType.ID
+        LEFT OUTER JOIN LeaveStatus
+        ON LeaveRequest.StatusID = LeaveStatus.ID
+        WHERE LeaveRequest.EmployeeID=@EmpID AND LeaveStatus.Status = @LeaveStatus"
+
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        AddParam("@LeaveStatus", "Under Review")
+        ExecutePrepare()
+
+        If Count > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
     Private Sub LeaveRequestAddButton_Click(sender As Object, e As EventArgs) Handles LeaveRequestAddButton.Click
-        Dim LeaveBalance As Integer = LeaveBalanceLabel.Text
-        Dim LeaveDays As Integer
-        Dim StartDate, EndDate As Date
+        MsgBox(CheckIfPending)
+        If CheckIfPending() Then
+            MsgBox(" Request failed. You already have a pending leave request.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
+        Else
+            Dim LeaveBalance As Integer = LeaveBalanceLabel.Text
+            Dim LeaveDays As Integer
+            Dim StartDate, EndDate As Date
 
-        StartDate = LeaveDateFromDTP.Value
-        EndDate = LeaveDateToDTP.Value
+            StartDate = LeaveDateFromDTP.Value
+            EndDate = LeaveDateToDTP.Value
 
-        For i = StartDate.Date.Day To EndDate.Date.Day
-            Dim Day As String = LeaveDateFromDTP.Value.Month & "/" & i & "/" & LeaveDateFromDTP.Value.Year
-            Dim CheckDay As Date
+            For i = StartDate.Date.Day To EndDate.Date.Day
+                Dim Day As String = LeaveDateFromDTP.Value.Month & "/" & i & "/" & LeaveDateFromDTP.Value.Year
+                Dim CheckDay As Date
 
-            Date.TryParse(Day, CheckDay)
+                Date.TryParse(Day, CheckDay)
 
-            If CheckDay.DayOfWeek <> DayOfWeek.Sunday Then
-                LeaveDays += 1
-            End If
-        Next
+                If CheckDay.DayOfWeek <> DayOfWeek.Sunday Then
+                    LeaveDays += 1
+                End If
+            Next
 
-        If LeaveReasonTxt.Text <> "" Then
-            If LeaveDays > LeaveBalance Then
-                MsgBox("Your leave days must not exceed you leave balance. 1 balance equates to 1 day.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
-            Else
-                If MsgBox("Are you sure to proceed to file a leave request?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
-                    Dim query = "INSERT INTO LeaveRequest (EmployeeID, LeaveTypeID, DateFiled, DateFrom, DateTo, Duration, Reason, StatusID, VerdictDate)
+            If LeaveReasonTxt.Text <> "" Then
+                If LeaveDays > LeaveBalance Then
+                    MsgBox("Your leave days must not exceed you leave balance. 1 balance equates to 1 day.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
+                Else
+                    If MsgBox("Are you sure to proceed to file a leave request?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+                        Dim query = "INSERT INTO LeaveRequest (EmployeeID, LeaveTypeID, DateFiled, DateFrom, DateTo, Duration, Reason, StatusID, VerdictDate)
                     VALUES (@EmployeeID, @LeaveTypeID, @DateFiled, @DateFrom, @DateTo, @Duration, @Reason, @StatusID, @VerdictDate)"
 
-                    Prepare(query)
-                    AddParam("@EmployeeID", EmpID)
-                    AddParam("@LeaveTypeID", LeaveTypeCMB.SelectedIndex + 1)
-                    AddParam("@DateFiled", Date.Today)
-                    AddParam("@DateFrom", LeaveDateFromDTP.Value)
-                    AddParam("@DateTo", LeaveDateToDTP.Value)
-                    AddParam("@Duration", LeaveDays)
-                    AddParam("@Reason", LeaveReasonTxt.Text)
-                    AddParam("@StatusID", 1)
-                    AddParam("@VerdictDate", DBNull.Value)
-                    ExecutePrepare()
+                        Prepare(query)
+                        AddParam("@EmployeeID", EmpID)
+                        AddParam("@LeaveTypeID", LeaveTypeCMB.SelectedIndex + 1)
+                        AddParam("@DateFiled", Date.Today)
+                        AddParam("@DateFrom", LeaveDateFromDTP.Value)
+                        AddParam("@DateTo", LeaveDateToDTP.Value)
+                        AddParam("@Duration", LeaveDays)
+                        AddParam("@Reason", LeaveReasonTxt.Text)
+                        AddParam("@StatusID", 1)
+                        AddParam("@VerdictDate", DBNull.Value)
+                        ExecutePrepare()
 
-                    For Each ctrl In Panel9.Controls
-                        If TypeOf ctrl Is ComboBox Then
-                            ctrl.selectedindex = 0
-                        ElseIf TypeOf ctrl Is DateTimePicker Then
-                            ctrl.value = Date.Today
-                        End If
-                    Next
+                        For Each ctrl In Panel9.Controls
+                            If TypeOf ctrl Is ComboBox Then
+                                ctrl.selectedindex = 0
+                            ElseIf TypeOf ctrl Is DateTimePicker Then
+                                ctrl.value = Date.Today
+                            End If
+                        Next
 
-                    UpdateLeaveBalance(LeaveDays)
-                    LeaveReasonTxt.Text = ""
-                    LeaveRequestRefreshButton.PerformClick()
+                        UpdateLeaveBalance(LeaveDays)
+                        LeaveReasonTxt.Text = ""
+                        LeaveRequestRefreshButton.PerformClick()
 
-                    MsgBox("Leave request successfully filed.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+                        MsgBox("Leave request successfully filed.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+                    End If
                 End If
+            Else
+                MsgBox("The reason for the leave must be filled-up first.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
             End If
-        Else
-            MsgBox("The reason for the leave must be filled-up first.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
         End If
     End Sub
 

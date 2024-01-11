@@ -448,6 +448,7 @@ Public Class DashBoardForm
                 gb.Visible = True
                 gb.Enabled = True
                 LoadEmployees()
+                GetWorking()
                 EmployeesDataGridView.CurrentCell = Nothing
             Else
                 gb.Visible = False
@@ -1191,11 +1192,11 @@ Public Class DashBoardForm
     Private Sub ProjectsAllCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles ProjectsAllCheckBox.CheckedChanged
         If ProjectsAllCheckBox.CheckState = CheckState.Checked Then
             ProjectsDepartmentComboBox.Enabled = False
-            ProjectsStatusComboBox.Enabled = False
+            'ProjectsStatusComboBox.Enabled = False
             LoadProjects()
         Else
             ProjectsDepartmentComboBox.Enabled = True
-            ProjectsStatusComboBox.Enabled = True
+            'ProjectsStatusComboBox.Enabled = True
             LoadProjects()
         End If
     End Sub
@@ -1257,10 +1258,10 @@ Public Class DashBoardForm
             Filterquery = ""
         End If
 
-        If ProjectsStatusComboBox.Enabled = True Then
+        If ProjectsDepartmentComboBox.Enabled = True Then
             Statusquery = " AND ProjectsStatus.Status LIKE @Status"
         Else
-            Statusquery = ""
+            Statusquery = " WHERE ProjectsStatus.Status LIKE @Status"
         End If
 
         Dim query = "SELECT Projects.ID, Projects.ProjectName, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS ProjectHead,
@@ -1284,8 +1285,7 @@ Public Class DashBoardForm
         AddParam("@Status", ProjectsStatusComboBox.Text)
         ExecutePrepare()
 
-        ProjectsDataGridView.DataSource = DataAsTable
-        ProjectsDataGridView.CurrentCell = Nothing
+        ProjectsDataGridView.DataSource = DataAsTable.DefaultView
     End Sub
 
     Private Sub btnPay1_Click(sender As Object, e As EventArgs) Handles btnPay1.Click
@@ -2032,10 +2032,10 @@ Public Class DashBoardForm
             Filterquery = ""
         End If
 
-        If EmployeeStatusComboBox.Enabled = True Then
+        If EmployeeDepartmentComboBox.Enabled = True Then
             Statusquery = " AND Status.Status LIKE @Status"
         Else
-            Statusquery = ""
+            Statusquery = " WHERE Status.Status LIKE @Status"
         End If
 
         Dim query = "SELECT Employees.ID, Employees.EmployeeID, CONCAT(Employees.LastName, ', ', Employees.FirstName, ' ', CASE WHEN Employees.MiddleName = 'N/A' THEN '' ELSE Employees.MiddleName END) AS EmployeeName, 
@@ -2060,6 +2060,32 @@ Public Class DashBoardForm
         EmployeesDataGridView.DataSource = DataAsTable.DefaultView
     End Sub
 
+    Public Sub GetWorking()
+        Dim Total, Working, NotWorking As Integer
+        Dim query = "SELECT StatusID FROM Employees"
+
+        Prepare(query)
+        ExecutePrepare()
+
+        For Each row As DataRow In DataAsTable.Rows
+            If row("StatusID") > 0 Then
+                Total += 1
+            End If
+
+            If row("StatusID") = 1 Then
+                Working += 1
+            End If
+
+            If row("StatusID") = 2 Then
+                NotWorking += 1
+            End If
+        Next
+
+        ELTotalLabel.Text = Total
+        ELWorkingLabel.Text = Working
+        ELNWorkingLabel.Text = NotWorking
+    End Sub
+
     Private Sub EmployeeStatusComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles EmployeeStatusComboBox.SelectedIndexChanged
         LoadEmployees()
     End Sub
@@ -2071,11 +2097,11 @@ Public Class DashBoardForm
     Private Sub EmployeeAllCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles EmployeeAllCheckBox.CheckedChanged
         If EmployeeAllCheckBox.CheckState = CheckState.Checked Then
             EmployeeDepartmentComboBox.Enabled = False
-            EmployeeStatusComboBox.Enabled = False
+            'EmployeeStatusComboBox.Enabled = False
             LoadEmployees()
         Else
             EmployeeDepartmentComboBox.Enabled = True
-            EmployeeStatusComboBox.Enabled = True
+            'EmployeeStatusComboBox.Enabled = True
             LoadEmployees()
         End If
     End Sub
@@ -2102,7 +2128,7 @@ Public Class DashBoardForm
     End Sub
 
     Private Sub DashBoardForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If MsgBox("Are you sure to log-out/exit?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
+        If MsgBox("Are you sure to log-out/Exit?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert") = MsgBoxResult.Yes Then
             e.Cancel = False
             Login.Show()
         Else
@@ -2126,7 +2152,7 @@ Public Class DashBoardForm
     End Sub
 
     Public Function CheckIfGenerated() As Boolean
-        Dim query = "SELECT * FROM EmployeeSalary WHERE (MONTH(DateFrom) = @MonthFrom AND DAY(DateFrom) = @DayFrom  AND YEAR(DateFrom) = @YearFrom) AND (MONTH(DateTo) = @MonthTo AND DAY(DateTo) = @DayTo  AND YEAR(DateTo) = @YearTo)"
+        Dim query = "SELECT * FROM EmployeeSalary WHERE (MONTH(DateFrom) = @MonthFrom And DAY(DateFrom) = @DayFrom  And YEAR(DateFrom) = @YearFrom) And (MONTH(DateTo) = @MonthTo And DAY(DateTo) = @DayTo  And YEAR(DateTo) = @YearTo)"
         Dim DayFrom, DayTo As Integer
 
         If ESPayrollTypeComboBox.SelectedIndex = 0 Then
@@ -2181,15 +2207,15 @@ Public Class DashBoardForm
                     End If
 
                     Dim DateFrom As Date
-                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom & "  00:00:00", DateFrom)
+                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom & "  0000:00", DateFrom)
                     Dim DateTo As Date
-                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo & "  00:00:00", DateTo)
+                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo & "  0000:00", DateTo)
 
                     Connection.Open()
 
                     Dim query = "INSERT INTO EmployeeSalary (EmployeeID, DateFrom, DateTo, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay, Tardiness, OTHours, OTPay, 
                 Holiday, HolidayPay, GrossPay, Deduction_Tardiness, SSS, PHIC, HDMF, TaxableIncome, Tax, TotalDeductions, NetPay)
-                VALUES (@EmployeeID, @DateFrom, @DateTo, @PayrollType, @CutOff, @WorkDays, @TotalWorkDays, @TotalHours, @BasicPay, @Tardiness, @OTHours, @OTPay, 
+                VALUES(@EmployeeID, @DateFrom, @DateTo, @PayrollType, @CutOff, @WorkDays, @TotalWorkDays, @TotalHours, @BasicPay, @Tardiness, @OTHours, @OTPay,
                 @Holiday, @HolidayPay, @GrossPay, @Deduction_Tardiness, @SSS, @PHIC, @HDMF, @TaxableIncome, @Tax, @TotalDeductions, @NetPay)"
 
                     Command = New SqlCommand(query, Connection)
@@ -2254,13 +2280,13 @@ Public Class DashBoardForm
                     MsgBox("Saved successfully.")
                 Catch ex As Exception
                     MsgBox(ex.Message)
-                    MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
+                    MsgBox("Payroll For this cutoff has already been generated And saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
                     Connection.Close()
                 End Try
             Else
-                MsgBox("Table is empty. Can't save payroll.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
+                MsgBox("Table Is empty. Can't save payroll.", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Alert")
             End If
-        Else
+            Else
             MsgBox("Payroll for this cutoff has already been generated and saved.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Alert")
         End If
     End Sub
