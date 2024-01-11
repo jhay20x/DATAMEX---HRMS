@@ -1432,7 +1432,7 @@ Public Class DashBoardForm
         Dim OTRate As Double
         Dim Late As Double
         Dim UnderTime As Double
-        Dim Absence As Integer
+        Dim Absence As Double
         Dim HalfDay As Double
         Dim TotalWorkDays As Double
         Dim Rate As Double = GetRate(EmployeeID)
@@ -1663,8 +1663,8 @@ Public Class DashBoardForm
             BasicPay = WorkHours * WorkDays * Rate
             GrossPay = TotalHours * Rate + HolidayPay
 
-            Absence = WorkDays - TotalWorkDays
-            TardinessAmount = (HalfDay + Late + UnderTime + Absence * WorkHours) * Rate
+            Absence = WorkDays * WorkHours - TotalHours
+            TardinessAmount = Absence * Rate
             SSS = GetSSSDeduction(GrossPay, FixedRate)
             PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
@@ -1674,14 +1674,14 @@ Public Class DashBoardForm
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,##0.00"), HalfDay + Late + UnderTime + (Absence * WorkHours), OT.ToString("##,##0.00"), OTPay.ToString("##,##0.00"), HolidayInstance, HolidayPay.ToString("##,##0.00"), GrossPay.ToString("##,##0.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,##0.00"), PhilHealth.ToString("##,##0.00"), PagIbig.ToString("##,##0.00"), TaxableIncome.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,##0.00"), NetPay.ToString("##,##0.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,##0.00"), Absence.ToString("##,##0.00"), OT.ToString("##,##0.00"), OTPay.ToString("##,##0.00"), HolidayInstance, HolidayPay.ToString("##,##0.00"), GrossPay.ToString("##,##0.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,##0.00"), PhilHealth.ToString("##,##0.00"), PagIbig.ToString("##,##0.00"), TaxableIncome.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,##0.00"), NetPay.ToString("##,##0.00"))
         ElseIf SalaryType = 2 Then
             BasicPay = WorkDays * Rate
             GrossPay = TotalHours * (Rate / WorkHours) + OTPay + HolidayPay
             'NetPay = (TotalHours - Late + UnderTime) * (Rate / WorkHours) + OTPay + HolidayPay
 
-            Absence = WorkDays - TotalWorkDays
-            TardinessAmount = (HalfDay + Late + UnderTime + Absence * WorkHours) * (Rate / WorkHours)
+            Absence = WorkDays * WorkHours - TotalHours
+            TardinessAmount = Absence * Rate / WorkHours
             SSS = GetSSSDeduction(GrossPay, FixedRate)
             PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
@@ -1691,14 +1691,14 @@ Public Class DashBoardForm
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,##0.00"), HalfDay + Late + UnderTime + (Absence * WorkHours), OT.ToString("##,##0.00"), OTPay.ToString("##,##0.00"), HolidayInstance, HolidayPay.ToString("##,##0.00"), GrossPay.ToString("##,##0.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,##0.00"), PhilHealth.ToString("##,##0.00"), PagIbig.ToString("##,##0.00"), TaxableIncome.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,##0.00"), NetPay.ToString("##,##0.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,##0.00"), Absence.ToString("##,##0.00"), OT.ToString("##,##0.00"), OTPay.ToString("##,##0.00"), HolidayInstance, HolidayPay.ToString("##,##0.00"), GrossPay.ToString("##,##0.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,##0.00"), PhilHealth.ToString("##,##0.00"), PagIbig.ToString("##,##0.00"), TaxableIncome.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,##0.00"), NetPay.ToString("##,##0.00"))
         ElseIf SalaryType = 3 Then
             BasicPay = Rate / FixedRate
             GrossPay = TotalHours * (Rate / WorkDays / WorkHours / FixedRate) + OTPay + HolidayPay
             'NetPay = Rate / FixedRate / WorkDays / WorkHours * TotalHours + OTPay + HolidayPay
 
-            Absence = WorkDays - TotalWorkDays
-            TardinessAmount = (HalfDay + Late + UnderTime + Absence * WorkHours) * Rate / WorkDays / WorkHours / FixedRate
+            Absence = WorkDays * WorkHours - TotalHours
+            TardinessAmount = Absence * Rate / WorkDays / WorkHours / FixedRate
             SSS = GetSSSDeduction(GrossPay, FixedRate)
             PhilHealth = GetPhilHealthDeduction(GrossPay, FixedRate)
             PagIbig = GetPagIbigDeduction(GrossPay, FixedRate)
@@ -1708,7 +1708,7 @@ Public Class DashBoardForm
 
             NetPay = TaxableIncome - Tax
 
-            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,##0.00"), HalfDay + Late + UnderTime + (Absence * WorkHours), OT.ToString("##,##0.00"), OTPay.ToString("##,##0.00"), HolidayInstance, HolidayPay.ToString("##,##0.00"), GrossPay.ToString("##,##0.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,##0.00"), PhilHealth.ToString("##,##0.00"), PagIbig.ToString("##,##0.00"), TaxableIncome.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,##0.00"), NetPay.ToString("##,##0.00"))
+            ESSalaryDataGridView.Rows.Add(EmployeeID, EmpName, PayrollType, CutOff, WorkDays, TotalWorkDays, TotalHours, BasicPay.ToString("##,##0.00"), Absence.ToString("##,##0.00"), OT.ToString("##,##0.00"), OTPay.ToString("##,##0.00"), HolidayInstance, HolidayPay.ToString("##,##0.00"), GrossPay.ToString("##,##0.00"), TardinessAmount.ToString("##,##0.00"), SSS.ToString("##,##0.00"), PhilHealth.ToString("##,##0.00"), PagIbig.ToString("##,##0.00"), TaxableIncome.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalDeductions.ToString("##,##0.00"), NetPay.ToString("##,##0.00"))
         End If
     End Sub
 
