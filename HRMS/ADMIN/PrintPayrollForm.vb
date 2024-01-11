@@ -144,7 +144,7 @@ Public Class PrintPayrollForm
         'pagesetup.PaperSize = New PaperSize("Custom", 250, longpaper)
 
         Dim pagesetup As New PageSettings With {
-            .PaperSize = New PaperSize("Custom", 500, 150)
+            .PaperSize = New PaperSize("Custom", 600, 200)
         }
         PD.DefaultPageSettings = pagesetup
     End Sub
@@ -172,69 +172,69 @@ Public Class PrintPayrollForm
         center.Alignment = StringAlignment.Center
 
         Dim line As String
-        line = "===================================================================================="
+        line = "============================================================================="
 
         Dim blackPen As New Pen(Color.Black, 2)
 
         Dim x As Single = 5.0F
         Dim y As Single = 5.0F
-        Dim width As Single = 490.0F
-        Dim height As Single = 140.0F
+        Dim width As Single = 590.0F
+        Dim height As Single = 190.0F
 
         e.Graphics.DrawRectangle(blackPen, x, y, width, height)
 
         'range from top
-        e.Graphics.DrawString("DATAMEX COLLEGE OF SAINT ADELINE INC", f8b, Brushes.Black, 10, 10, left)
-        e.Graphics.DrawString("CUTOFF PERIOD: " & CutOffPeriod, f8b, Brushes.Black, 300, 10, left)
+        e.Graphics.DrawString("DATAMEX COLLEGE OF SAINT ADELINE INC", f10b, Brushes.Black, 10, 10, left)
+        e.Graphics.DrawString("CUTOFF PERIOD: " & CutOffPeriod, f10b, Brushes.Black, 370, 10, left)
 
-        e.Graphics.DrawString("Employee Name:", f6b, Brushes.Black, 10, 30, left)
-        e.Graphics.DrawString(EmpName, f6, Brushes.Black, 95, 30, left)
+        e.Graphics.DrawString("Employee Name:", f8b, Brushes.Black, 10, 35, left)
+        e.Graphics.DrawString(EmpName, f8, Brushes.Black, 130, 35, left)
 
-        e.Graphics.DrawString("Total Days/Hours:", f6b, Brushes.Black, 300, 30, left)
-        e.Graphics.DrawString(TotalHours, f6, Brushes.Black, 375, 30, left)
+        e.Graphics.DrawString("Total Days/Hours:", f8b, Brushes.Black, 300, 35, left)
+        e.Graphics.DrawString(TotalHours, f8, Brushes.Black, 425, 35, left)
 
-        e.Graphics.DrawString("ID No.:", f6b, Brushes.Black, 10, 40, left)
-        e.Graphics.DrawString(EmployeeID, f6, Brushes.Black, 95, 40, left)
+        e.Graphics.DrawString("ID No.:", f8b, Brushes.Black, 10, 47, left)
+        e.Graphics.DrawString(EmployeeID, f8, Brushes.Black, 130, 47, left)
 
-        e.Graphics.DrawString("Overtime Hours:", f6b, Brushes.Black, 300, 40, left)
-        e.Graphics.DrawString(OTHours, f6, Brushes.Black, 375, 40, left)
+        e.Graphics.DrawString("Overtime Hours:", f8b, Brushes.Black, 300, 47, left)
+        e.Graphics.DrawString(OTHours, f8, Brushes.Black, 425, 47, left)
 
-        e.Graphics.DrawString(line, f6, Brushes.Black, centermargin, 50, center)
+        e.Graphics.DrawString(line, f8, Brushes.Black, centermargin, 62, center)
 
-        e.Graphics.DrawString("Basic Pay:", f6b, Brushes.Black, 10, 60)
-        e.Graphics.DrawString(BasicPay, f6, Brushes.Black, 95, 60)
+        e.Graphics.DrawString("Basic Pay:", f8b, Brushes.Black, 10, 77)
+        e.Graphics.DrawString(BasicPay, f8, Brushes.Black, 130, 77)
 
-        e.Graphics.DrawString("LATE/UT/ABSENT:", f6b, Brushes.Black, 10, 70)
-        e.Graphics.DrawString(Tardiness, f6, Brushes.Black, 95, 70)
+        e.Graphics.DrawString("LATE/UT/ABSENT:", f8b, Brushes.Black, 10, 89)
+        e.Graphics.DrawString(Tardiness, f8, Brushes.Black, 130, 89)
 
-        e.Graphics.DrawString("SSS:", f6b, Brushes.Black, 300, 70)
-        e.Graphics.DrawString(SSS, f6, Brushes.Black, 375, 70)
+        e.Graphics.DrawString("SSS:", f8b, Brushes.Black, 300, 77)
+        e.Graphics.DrawString(SSS, f8, Brushes.Black, 375, 77)
 
-        e.Graphics.DrawString("Overtime Pay:", f6b, Brushes.Black, 10, 80)
-        e.Graphics.DrawString(OTPay, f6, Brushes.Black, 95, 80)
+        e.Graphics.DrawString("Overtime Pay:", f8b, Brushes.Black, 10, 101)
+        e.Graphics.DrawString(OTPay, f8, Brushes.Black, 130, 101)
 
-        e.Graphics.DrawString("PHIC:", f6b, Brushes.Black, 300, 80)
-        e.Graphics.DrawString(PHIC, f6, Brushes.Black, 375, 80)
+        e.Graphics.DrawString("PHIC:", f8b, Brushes.Black, 300, 89)
+        e.Graphics.DrawString(PHIC, f8, Brushes.Black, 375, 89)
 
-        e.Graphics.DrawString("Holiday Pay:", f6b, Brushes.Black, 10, 90)
-        e.Graphics.DrawString(HolidayPay, f6, Brushes.Black, 95, 90)
+        e.Graphics.DrawString("Holiday Pay:", f8b, Brushes.Black, 10, 113)
+        e.Graphics.DrawString(HolidayPay, f8, Brushes.Black, 130, 113)
 
-        e.Graphics.DrawString("HDMF:", f6b, Brushes.Black, 300, 90)
-        e.Graphics.DrawString(HDMF, f6, Brushes.Black, 375, 90)
+        e.Graphics.DrawString("HDMF:", f8b, Brushes.Black, 300, 101)
+        e.Graphics.DrawString(HDMF, f8, Brushes.Black, 375, 101)
 
-        e.Graphics.DrawString("Gross Pay:", f6b, Brushes.Black, 10, 100)
-        e.Graphics.DrawString(GrossPay, f6, Brushes.Black, 95, 100)
+        e.Graphics.DrawString("Gross Pay:", f8b, Brushes.Black, 10, 125)
+        e.Graphics.DrawString(GrossPay, f8, Brushes.Black, 130, 125)
 
-        e.Graphics.DrawString("Tax:", f6b, Brushes.Black, 300, 100)
-        e.Graphics.DrawString(Tax, f6, Brushes.Black, 375, 100)
+        e.Graphics.DrawString("Tax:", f8b, Brushes.Black, 300, 113)
+        e.Graphics.DrawString(Tax, f8, Brushes.Black, 375, 113)
 
-        e.Graphics.DrawString(line, f6, Brushes.Black, centermargin, 110, center)
+        e.Graphics.DrawString(line, f8, Brushes.Black, centermargin, 140, center)
 
-        e.Graphics.DrawString("TOTAL DEDUCTION:", f6b, Brushes.Black, 10, 120)
-        e.Graphics.DrawString(TotalDeduction, f6, Brushes.Black, 95, 120)
+        e.Graphics.DrawString("TOTAL DEDUCTION:", f8b, Brushes.Black, 10, 155)
+        e.Graphics.DrawString(TotalDeduction, f8, Brushes.Black, 130, 155)
 
-        e.Graphics.DrawString("NET PAY:", f6b, Brushes.Black, 10, 130)
-        e.Graphics.DrawString(NetPay, f6, Brushes.Black, 95, 130)
+        e.Graphics.DrawString("NET PAY:", f8b, Brushes.Black, 10, 167)
+        e.Graphics.DrawString(NetPay, f8, Brushes.Black, 130, 167)
     End Sub
 
     Private Sub PrintPayrollForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
