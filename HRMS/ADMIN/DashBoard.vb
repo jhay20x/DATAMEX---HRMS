@@ -2496,4 +2496,12 @@ Public Class DashBoardForm
             ESIRateLabel.Text = "/ Month"
         End If
     End Sub
+
+    Private Sub DateLabel_Click(sender As Object, e As EventArgs) Handles DateLabel.Click
+
+    End Sub
+
+    Private Sub TimeLabel_Click(sender As Object, e As EventArgs) Handles TimeLabel.Click
+
+    End Sub
 End Class

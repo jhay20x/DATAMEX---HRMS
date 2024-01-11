@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
+Imports System.Runtime.InteropServices.ComTypes
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 Public Class EmployeeDashBoard
@@ -329,37 +330,71 @@ Public Class EmployeeDashBoard
     End Sub
 
     Private Sub LeaveRequestAddButton_Click(sender As Object, e As EventArgs) Handles LeaveRequestAddButton.Click
-        If MsgBox("Are you sure to proceed to file a leave request?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
-            Dim query = "INSERT INTO LeaveRequest (EmployeeID, LeaveTypeID, DateFiled, DateFrom, DateTo, Duration, Reason, StatusID, VerdictDate)
-            VALUES (@EmployeeID, @LeaveTypeID, @DateFiled, @DateFrom, @DateTo, @Duration, @Reason, @StatusID, @VerdictDate)"
-            Dim Duration As TimeSpan = LeaveDateToDTP.Value - LeaveDateFromDTP.Value
+        Dim LeaveBalance As Integer = LeaveBalanceLabel.Text
+        Dim LeaveDays As Integer
+        Dim StartDate, EndDate As Date
 
-            Prepare(query)
-            AddParam("@EmployeeID", EmpID)
-            AddParam("@LeaveTypeID", LeaveTypeCMB.SelectedIndex + 1)
-            AddParam("@DateFiled", Date.Today)
-            AddParam("@DateFrom", LeaveDateFromDTP.Value)
-            AddParam("@DateTo", LeaveDateToDTP.Value)
-            AddParam("@Duration", Duration.TotalDays)
-            AddParam("@Reason", LeaveReasonTxt.Text)
-            AddParam("@StatusID", 1)
-            AddParam("@VerdictDate", DBNull.Value)
-            ExecutePrepare()
+        StartDate = LeaveDateFromDTP.Value
+        EndDate = LeaveDateToDTP.Value
 
-            For Each ctrl In Panel9.Controls
-                If TypeOf ctrl Is TextBox Then
-                    ctrl.text = ""
-                ElseIf TypeOf ctrl Is ComboBox Then
-                    ctrl.selectedindex = 0
-                ElseIf TypeOf ctrl Is DateTimePicker Then
-                    ctrl.value = Date.Today
+        For i = StartDate.Date.Day To EndDate.Date.Day
+            Dim Day As String = LeaveDateFromDTP.Value.Month & "/" & i & "/" & LeaveDateFromDTP.Value.Year
+            Dim CheckDay As Date
+
+            Date.TryParse(Day, CheckDay)
+
+            If CheckDay.DayOfWeek <> DayOfWeek.Sunday Then
+                LeaveDays += 1
+            End If
+        Next
+
+        If LeaveReasonTxt.Text <> "" Then
+            If LeaveDays > LeaveBalance Then
+                MsgBox("Your leave days must not exceed you leave balance. 1 balance equates to 1 day.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
+            Else
+                If MsgBox("Are you sure to proceed to file a leave request?", MsgBoxStyle.YesNo + MsgBoxStyle.Question, "Alert") = MsgBoxResult.Yes Then
+                    Dim query = "INSERT INTO LeaveRequest (EmployeeID, LeaveTypeID, DateFiled, DateFrom, DateTo, Duration, Reason, StatusID, VerdictDate)
+                    VALUES (@EmployeeID, @LeaveTypeID, @DateFiled, @DateFrom, @DateTo, @Duration, @Reason, @StatusID, @VerdictDate)"
+
+                    Prepare(query)
+                    AddParam("@EmployeeID", EmpID)
+                    AddParam("@LeaveTypeID", LeaveTypeCMB.SelectedIndex + 1)
+                    AddParam("@DateFiled", Date.Today)
+                    AddParam("@DateFrom", LeaveDateFromDTP.Value)
+                    AddParam("@DateTo", LeaveDateToDTP.Value)
+                    AddParam("@Duration", LeaveDays)
+                    AddParam("@Reason", LeaveReasonTxt.Text)
+                    AddParam("@StatusID", 1)
+                    AddParam("@VerdictDate", DBNull.Value)
+                    ExecutePrepare()
+
+                    For Each ctrl In Panel9.Controls
+                        If TypeOf ctrl Is ComboBox Then
+                            ctrl.selectedindex = 0
+                        ElseIf TypeOf ctrl Is DateTimePicker Then
+                            ctrl.value = Date.Today
+                        End If
+                    Next
+
+                    UpdateLeaveBalance(LeaveDays)
+                    LeaveReasonTxt.Text = ""
+                    LeaveRequestRefreshButton.PerformClick()
+
+                    MsgBox("Leave request successfully filed.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
                 End If
-            Next
-
-            LeaveRequestRefreshButton.PerformClick()
-
-            MsgBox("Leave request successfully filed.", MsgBoxStyle.OkOnly + MsgBoxStyle.Information, "Alert")
+            End If
+        Else
+            MsgBox("The reason for the leave must be filled-up first.", MsgBoxStyle.OkOnly + MsgBoxStyle.Exclamation, "Alert")
         End If
+    End Sub
+
+    Public Sub UpdateLeaveBalance(Balance As Integer)
+        Dim query = "UPDATE LeaveBalance SET Balance= Balance - @Balance WHERE EmployeeID=@EmpID"
+
+        Prepare(query)
+        AddParam("@EmpID", EmpID)
+        AddParam("@Balance", Balance)
+        ExecutePrepare()
     End Sub
 
     Public Sub LoadProjects(PJName As String)
@@ -613,5 +648,19 @@ Public Class EmployeeDashBoard
                 gb.Enabled = False
             End If
         Next
+    End Sub
+
+    Private Sub DateTimeTimer_Tick(sender As Object, e As EventArgs) Handles DateTimeTimer.Tick
+        Dim CurDateTime As Date = Date.Now
+        TimeLabel.Text = CurDateTime.ToString("hh:mm:ss tt")
+        DateLabel.Text = CurDateTime.ToLongDateString
+    End Sub
+
+    Private Sub DashRefreshButton_Click(sender As Object, e As EventArgs) Handles DashRefreshButton.Click
+        LoadHolidayDetails()
+        GetUpcomingProject()
+        LeaveLabel.Text = GetLeaveBalance()
+        LoadPendingLeaveRequest()
+        GetUpcomingProject()
     End Sub
 End Class
