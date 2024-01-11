@@ -1,8 +1,8 @@
 ﻿Imports System.Data.SqlClient
 
 Module Connections
-    Public ConnectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\Database\HRMS.mdf;Database=HRMS; Integrated Security=True"
-    'Public ConnectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\HRMS.mdf;Database=HRMS; Integrated Security=True"
+    'Public ConnectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Jhayjay Gonzales\source\repos\DATAMEX---HRMS\HRMS\ADMIN\bin\Debug\Database\HRMS.mdf;Database=HRMS; Integrated Security=True"
+    Public ConnectionString As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database\HRMS.mdf;Database=HRMS; Integrated Security=True"
     'Public ConnectionString As String = "Data Source=JHAYJAYGONZALES\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay; MultipleActiveResultSets=true"
     'Public ConnectionString As String = "Data Source=SACRILEGIOUS\GONZALESSERVER;Initial Catalog=HRMS;Persist Security Info=True;User ID=Jhayjay;Password=Jhayjay"
     Public Connection As New SqlConnection(ConnectionString)
