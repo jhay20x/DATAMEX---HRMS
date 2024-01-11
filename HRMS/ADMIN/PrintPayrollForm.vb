@@ -185,7 +185,7 @@ Public Class PrintPayrollForm
 
         'range from top
         e.Graphics.DrawString("DATAMEX COLLEGE OF SAINT ADELINE INC", f10b, Brushes.Black, 10, 10, left)
-        e.Graphics.DrawString("CUTOFF PERIOD: " & CutOffPeriod, f10b, Brushes.Black, 370, 10, left)
+        e.Graphics.DrawString("CUTOFF PERIOD: " & CutOffPeriod, f10b, Brushes.Black, 355, 10, left)
 
         e.Graphics.DrawString("Employee Name:", f8b, Brushes.Black, 10, 35, left)
         e.Graphics.DrawString(EmpName, f8, Brushes.Black, 130, 35, left)
