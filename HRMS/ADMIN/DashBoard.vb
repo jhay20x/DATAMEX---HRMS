@@ -56,7 +56,7 @@ Public Class DashBoardForm
         Dim query = "UPDATE Employees SET OnLeaveID = @Val WHERE EmployeeID = @EmpID"
 
         Prepare(query)
-        If val > 0 Then
+        If IsDBNull(val) Then
             AddParam("@Val", val)
         Else
             AddParam("@Val", DBNull.Value)
@@ -2207,9 +2207,9 @@ Public Class DashBoardForm
                     End If
 
                     Dim DateFrom As Date
-                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom & "  0000:00", DateFrom)
+                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayFrom, DateFrom)
                     Dim DateTo As Date
-                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo & "  0000:00", DateTo)
+                    Date.TryParse(ESYearDateTimePicker.Value.Year & "-" & ESMonthDateTimePicker.Value.Month & "-" & DayTo, DateTo)
 
                     Connection.Open()
 
